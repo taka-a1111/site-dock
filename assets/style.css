@@ -547,3 +547,5 @@ section{padding:96px 0}
 .case dt{color:var(--ink-light);font-weight:700}
 .case dd{margin:0}
 @media (max-width:760px){.case-grid{grid-template-columns:minmax(0,1fr)}.case dl{grid-template-columns:1fr}.case dt{margin-top:6px}}
+.page-hero .eyecatch{margin:24px 0 0;max-width:760px}
+.page-hero .eyecatch img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--rule-soft)}
