@@ -15,6 +15,8 @@
   --stamp:#C8323C;
   --stamp-dark:#A92731;
   --ok:#2F7D5B;
+  --go:#2F7D5B;
+  --go-dark:#24634A;
   --warn:#B7791F;
   --sans:"BIZ UDPGothic","游ゴシック",YuGothic,"メイリオ",Meiryo,sans-serif;
   --serif:"Shippori Mincho","游明朝",YuMincho,serif;
@@ -40,8 +42,8 @@ p,dd,td,li{word-break:auto-phrase;text-wrap:pretty}
 .gnav{display:flex;align-items:center;gap:26px;font-size:14px}
 .gnav a{text-decoration:none;color:var(--ink-mid)}
 .gnav a:hover{color:var(--ink)}
-.gnav a.btn-head{background:var(--stamp);color:#fff;padding:10px 18px;font-size:14px}
-.gnav a.btn-head:hover{background:var(--stamp-dark);color:#fff}
+.gnav a.btn-head{background:var(--go);color:#fff;padding:10px 18px;font-size:14px}
+.gnav a.btn-head:hover{background:var(--go-dark);color:#fff}
 
 /* hero */
 .hero{position:relative;padding:64px 0 96px;overflow:hidden}
@@ -56,8 +58,8 @@ p,dd,td,li{word-break:auto-phrase;text-wrap:pretty}
 .scan-row input::placeholder{color:#97abae}
 .scan-row input:focus{outline:none}
 .scan-row:focus-within{outline:3px solid rgba(200,50,60,.35);outline-offset:2px}
-.btn-scan{background:var(--stamp);color:#fff;font-size:16px;padding:0 24px;border-radius:0;white-space:nowrap}
-.btn-scan:hover{background:var(--stamp-dark)}
+.btn-scan{background:var(--go);color:#fff;font-size:16px;padding:0 24px;border-radius:0;white-space:nowrap}
+.btn-scan:hover{background:var(--go-dark)}
 .btn-scan svg{width:20px;height:20px}
 .scan-note{margin-top:10px;font-size:13px;color:var(--ink-light)}
 .checks{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:14px;font-weight:700}
@@ -393,8 +395,8 @@ section{padding:96px 0}
 .cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--ink);outline-offset:0}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:14px}
 .agree input{margin-top:6px;width:18px;height:18px;flex-shrink:0}
-.btn-submit{background:var(--stamp);color:#fff;font-size:16px;padding:15px 28px;justify-self:start}
-.btn-submit:hover{background:var(--stamp-dark)}
+.btn-submit{background:var(--go);color:#fff;font-size:16px;padding:15px 28px;justify-self:start}
+.btn-submit:hover{background:var(--go-dark)}
 .contact-side{display:grid;gap:16px;align-content:start}
 
 /* cta band (sub pages) */
@@ -402,8 +404,8 @@ section{padding:96px 0}
 .cta-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap}
 .cta-band h2{font-family:var(--serif);font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.45}
 .cta-band p{color:var(--on-ink-mid);margin-top:6px}
-.btn-cta{background:var(--stamp);color:#fff;padding:15px 26px;font-size:16px}
-.btn-cta:hover{background:var(--stamp-dark)}
+.btn-cta{background:var(--go);color:#fff;padding:15px 26px;font-size:16px}
+.btn-cta:hover{background:var(--go-dark)}
 .btn-line{border:1.5px solid var(--ink);color:var(--ink);padding:12px 22px;font-size:15px;background:var(--sheet)}
 .btn-line:hover{background:var(--tint)}
 
