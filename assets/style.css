@@ -512,3 +512,9 @@ section{padding:96px 0}
   .proof{grid-template-columns:minmax(0,1fr)}
   .op-more{display:none}
 }
+
+/* ブログのアイキャッチ */
+.post-thumb.has-img{background:#EEF6F2;padding:0;overflow:hidden;aspect-ratio:3/2}
+.post-thumb.has-img img{width:100%;height:100%;object-fit:cover;display:block}
+.prose .eyecatch{margin:0 0 28px}
+.prose .eyecatch img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--rule-soft)}
