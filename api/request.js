@@ -39,12 +39,6 @@ module.exports = async (req, res) => {
   res.setHeader('cache-control', 'no-store');
   res.setHeader('content-type', 'application/json; charset=utf-8');
   const fail = (code, message) => { res.statusCode = code; res.end(JSON.stringify({ ok: false, message })); };
-  if (req.method === 'GET') {
-    // 設定の有無だけを返す（値は返さない）
-    const names = Object.keys(process.env).filter(k => /SITEDOCK|SUPABASE/i.test(k)).sort();
-    res.statusCode = 200;
-    return res.end(JSON.stringify({ url: !!SB_URL, key: !!SB_KEY, names, env: process.env.VERCEL_ENV || null }));
-  }
   if (req.method !== 'POST') return fail(405, 'POST only');
   if (!SB_URL || !SB_KEY) return fail(503, 'ただいま受付を準備しています。お手数ですが、少し時間をおいてお試しください。');
 
