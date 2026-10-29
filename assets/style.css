@@ -518,3 +518,10 @@ section{padding:96px 0}
 .post-thumb.has-img img{width:100%;height:100%;object-fit:cover;display:block}
 .prose .eyecatch{margin:0 0 28px}
 .prose .eyecatch img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--rule-soft)}
+
+/* スマホのファーストビュー用イラスト */
+.hero-sp-visual{display:none}
+@media (max-width:980px){
+  .hero-sp-visual{display:block;margin:0 0 18px;border-radius:10px;overflow:hidden;border:1px solid var(--rule-soft);background:#EEF6F2;aspect-ratio:2/1}
+  .hero-sp-visual img{width:100%;height:100%;object-fit:cover;display:block}
+}
