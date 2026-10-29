@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029p -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方｜サイトドック</title>
+<meta name="description" content="WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/wordpress-username-exposure.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方">
+<meta property="og:description" content="WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/wordpress-username-exposure.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-008-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029p">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方", "description": "WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-008-v2.webp", "datePublished": "2026-11-09", "dateModified": "2026-11-09", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/wordpress-username-exposure.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "WordPressのユーザー名そのものは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面のプロフィールでは、ユーザー名は変更できない仕様です。変えたい場合は、新しいユーザー名で管理者を作り、記事を引き継いでから古いほうを削除します。削除の画面で、記事を新しいユーザーに割り当てることを忘れないでください。データベースを直接書き換える方法は、失敗すると戻せなくなるため勧めません。作業の前には、必ずバックアップを取りましょう。"}}, {"@type": "Question", "name": "投稿者URLの名前を変えると、検索順位に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿者ページが検索から多く見られていなければ、影響はほとんどありません。変える前に、古い投稿者URLが検索結果に出ているかを確かめておくと安心です。出ている場合は、古いURLから新しいURLへ転送を設定しましょう。記事の中やプロフィールの欄に、古い投稿者URLを直接書いている場合もあります。運営者の自社サイトでも、トップページに古いURLが残っていたため書き換えました。"}}, {"@type": "Question", "name": "REST APIを止めると、ブロックエディタは動かなくなりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "ログインしていない人へのユーザー一覧だけを止める方法なら、ブロックエディタには影響しません。ブロックエディタは、ログインした状態でREST APIを使うためです。一方、REST API全体を止めると、エディタやお問い合わせフォームが動かなくなることがあります。プラグインで止める場合は、どの範囲を止める設定かを確かめてください。止めたあとは、記事の編集と保存が今までどおりできるかを試しておきましょう。"}}, {"@type": "Question", "name": "ユーザー名が「admin」のままです。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。"}}, {"@type": "Question", "name": "自分で確かめるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトドックの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1>WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方</h1>
+    <p><time datetime="2026-11-09">2026.11.09</time>　ログイン・アカウント</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <figure class="eyecatch"><img src="img/eyecatch-008-v2.webp" alt="WordPressのユーザー名、外から見える問題と隠し方。ログインの入口を守る" width="1200" height="630"></figure>
+<p>「WordPressのユーザー名が外から見えるらしい」と聞いて、不安になっていませんか？</p>
+<p>実は、初期設定のままだと、ログインに使う名前を誰でも調べられる状態のサイトが少なくありません。</p>
+<p>この記事では、<span class="mark-yellow">WordPressのユーザー名が漏洩する5つの経路</span>と、隠す手順を紹介します。自分のサイトで見えているかを確かめる方法もまとめました。</p>
+<p>運営者の自社サイトで実際に見つけて直した例も入れています。隠すだけで終わらせず、破られないための備えまで一度に見直してください。</p>
+
+<h2 id="s1">WordPressのユーザー名が漏洩すると何が起きるか</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-username-exposure-fig1.webp" alt="WordPressの記事に出る表示名や投稿者ページのURLと、ログインに使うユーザー名が、初期設定では同じになることを左右に並べて示した図" width="1200" height="800"><figcaption>初期設定では、公開される名前とログイン名がそろってしまいます</figcaption></figure>
+<p>WordPressのユーザー名が漏洩すると、ログインを破る材料を相手に渡すことになります。<span class="mark-yellow">パスワードさえ分かればログインできる状態</span>になるためです。</p>
+<p>ただし、ユーザー名が見えただけで、すぐに乗っ取られるわけではありません。何が危ないのかを正しく知ったうえで、対策の順番を決めましょう。まずは、名前が漏れる仕組みと、守りの中での位置づけを押さえておきます。</p>
+
+<h3>ユーザー名はログインの鍵の半分</h3>
+<p>WordPressの管理画面には、ユーザー名とパスワードの2つを入れてログインします。ユーザー名が分かれば、攻撃する側はパスワードを当てることだけに集中できるのです。</p>
+<p><span class="mark-yellow">総当たりで試す回数がぐっと減る</span>ため、破られる危険が高まります。WordPress.orgの日本語の解説によると、総当たりの攻撃は組み合わせを次々に試すものです。単純な名前やパスワードほど、早く当てられてしまうでしょう。特に管理者の名前が知られると、サイト全体を操作される入口になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/brute-force-attacks/" target="_blank" rel="noopener noreferrer nofollow">ブルートフォース攻撃｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>公開される名前は、初期設定ではログイン名と同じ</h3>
+<p>WordPressには、ログイン名とは別に「表示名」と「投稿者URLの名前」があります。公式の資料によると、どちらも作成時の初期値はログイン名をもとに決まる仕組みです。</p>
+<p>つまり、何も変えなければ、<span class="mark-yellow">記事に出る名前がそのままログイン名</span>になってしまいます。REST APIが返すのはログイン名ではなく、投稿者URLの名前です。ただ、その名前が初期値のままなら、ログイン名を教えているのと変わりません。名前とログイン名を別にしておくことが、対策の出発点になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_insert_user/" target="_blank" rel="noopener noreferrer nofollow">wp_insert_user()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/rest-api/reference/users/" target="_blank" rel="noopener noreferrer nofollow">Users｜REST API Handbook</a></li>
+</ul>
+
+<h3>隠すだけでは守れない</h3>
+<p>ユーザー名を隠しても、パスワードが弱ければ別の方法で破られることがあります。ユーザー名は、ほかのサービスから漏れた情報で知られてしまう場合もあるでしょう。</p>
+<p>そのため、隠すことは<span class="mark-red"><strong>パスワードと二段階認証を強くしたうえでの上乗せ</strong></span>と考えてください。上乗せの対策でも、狙われる回数を減らす効果は十分にあります。手間は少ないので、あわせて済ませておくのがおすすめです。どちらか一方ではなく、両方をそろえることを目指しましょう。</p>
+
+<h2 id="s2">WordPressのユーザー名が漏洩する5つの経路</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-username-exposure-fig2.webp" alt="WordPressのログイン名が外から見える経路として、投稿者ページのURL、REST APIのユーザー一覧、投稿者のサイトマップ、記事やRSSの表示名、ログイン画面のエラーメッセージの5つを放射状に示した図" width="1200" height="800"><figcaption>1つふさいでも、ほかの経路から見えることがあります</figcaption></figure>
+<p>WordPressのユーザー名が漏洩する経路は、主に5つあります。どれもWordPress本体の標準の動きで、<span class="mark-yellow">特別な道具がなくても誰でも確かめられる</span>ものです。</p>
+<p>1つだけふさいでも、ほかの経路から同じ名前が分かってしまいます。順に見ていき、自分のサイトに当てはまるものを洗い出してください。経路ごとに、確かめ方と止め方も違います。</p>
+
+<h3>① 投稿者ページのURL（?author=数字）</h3>
+<p>サイトのアドレスの後ろに「?author=1」と付けて開くと、投稿者ページに移ります。移った先のURLには、投稿者URLの名前がそのまま入る仕組みです。</p>
+<p>WordPress本体では、記事を公開したことのある投稿者がこの転送の対象になります。数字を2、3と変えていけば、<span class="mark-yellow">投稿者を1人ずつ順に調べられる</span>でしょう。攻撃の道具は、この確かめ方を自動で繰り返しています。数字を順に試すだけなので、時間もほとんどかかりません。</p>
+
+<h3>② REST APIのユーザー一覧</h3>
+<p>「/wp-json/wp/v2/users」を開くと、投稿者の一覧が文字のデータで返ってきます。ログインしていない人にも、記事を公開した投稿者の名前と投稿者URLの名前が見える仕様です。</p>
+<p>公式の資料では、ログイン名やメールアドレスは編集用の項目で、外には出ません。それでも、<span class="mark-yellow">投稿者URLの名前がログイン名と同じなら</span>、守れていないのと同じです。ブロックエディタなどもこの仕組みを使うため、止め方には注意が必要になります。</p>
+
+<h3>③ 投稿者のサイトマップ</h3>
+<p>WordPress本体は、検索エンジン向けのサイトマップを自動で作ります。その中に「wp-sitemap-users-1.xml」という投稿者の一覧が含まれる仕組みです。</p>
+<p>中には投稿者ページのURLが並ぶため、<span class="mark-yellow">投稿者URLの名前がまとめて分かってしまいます</span>。ほかのサイトマップのプラグインを使っていると、このファイルが出ていないこともあるでしょう。「/wp-sitemap.xml」を開き、usersを含む行があるかを見てください。</p>
+
+<h3>④ 記事やRSSに出る表示名</h3>
+<p>記事の投稿者欄には、プロフィールで選んだ「ブログ上の表示名」が出ます。この表示名は、RSSの投稿者欄にも同じように書き出される仕様です。</p>
+<p>運営者の自社サイトでも、<span class="mark-yellow">表示名がログイン名のままRSSに出ていました</span>。ページの見た目では投稿者名を消していても、RSSには残ることがあります。見落としやすい経路なので、ほかの経路とあわせて確かめておきましょう。RSSは、サイトのURLの後ろに「/feed/」を付けると開けます。</p>
+
+<h3>⑤ ログイン画面のエラーメッセージ</h3>
+<p>ログイン画面で存在しないユーザー名を入れると、登録されていないという趣旨のエラーが出ます。ユーザー名は合っていてパスワードだけが違うと、別の文が出る仕組みです。</p>
+<p><span class="mark-red"><strong>文の違いから、そのユーザー名が本当にあるかを確かめられてしまいます</strong></span>。WordPress本体のプログラムでも、この2つは別々の文として用意されているのです。エラーの文をそろえる設定やプラグインで、違いをなくせます。ログインの失敗が続いたら止める仕組みと組み合わせると、さらに効果が上がるでしょう。</p>
+
+<h2 id="s3">WordPressのユーザー名が漏洩していないか確かめる方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-username-exposure-fig3.webp" alt="ブラウザで投稿者ページのURLやREST APIを開き、表示された名前を控え、ログイン名と比べて、同じなら見えている、違えば隠れていると判断する流れを示した図" width="1200" height="800"><figcaption>表示された名前とログイン名が同じかどうかで判断します</figcaption></figure>
+<p>WordPressのユーザー名が漏洩していないかは、ブラウザだけで確かめられます。<span class="mark-yellow">表示された名前とログイン名を比べる</span>のが判断のポイントです。</p>
+<p>名前が出ること自体より、それがログイン名と同じかどうかが問題になります。作業は5分ほどで終わるので、管理しているサイトごとに一度試してください。見るのは、3つのURLと管理画面の2か所です。</p>
+
+<h3>ブラウザで3つのURLを開く</h3>
+<p>まず、次の3つのアドレスを、サイトのURLの後ろに付けて開きます。</p>
+<table>
+<thead><tr><th>付けるもの</th><th>見るところ</th></tr></thead>
+<tbody>
+<tr><td>/?author=1</td><td>移った先のURLの「/author/」の後ろ</td></tr>
+<tr><td>/wp-json/wp/v2/users</td><td>「slug」と「name」の値</td></tr>
+<tr><td>/wp-sitemap-users-1.xml</td><td>並んでいる投稿者ページのURL</td></tr>
+</tbody>
+</table>
+<p>数字を2、3と変えて、ほかの投稿者もあわせて見ておきましょう。このとき、<span class="mark-yellow">ログインしていない状態で開く</span>ことが大切です。ブラウザのシークレットウィンドウを使えば、外から見た状態になります。ページが見つからない表示になれば、その経路はふさがっていると判断できるでしょう。どれか1つでも名前が出ていれば、次の手順で比べてみてください。スマホからでも同じように確かめられます。</p>
+
+<h3>表示された名前とログイン名を比べる</h3>
+<p>次に、管理画面の「ユーザー」を開き、自分のユーザー名を確かめます。先ほど控えた名前と同じなら、ログイン名は外から見えている状態です。</p>
+<p>大文字や記号がURL用に変わっていても、<span class="mark-yellow">ほぼ同じなら見えていると考えておく</span>のが安全でしょう。ログイン名が「admin」のような推測しやすいものなら、急いで対策が必要になります。管理者が複数いるサイトでは、全員の分を確かめてください。ユーザー名は、ユーザーの一覧の「ユーザー名」の列で分かります。</p>
+
+<h3>海外からの点検で見えなくても安心しない</h3>
+<p>エックスサーバーには、国外から「/wp-json」へのアクセスを止める設定があります。この設定は、初期状態で有効になっている仕組みです。そのため、海外のサーバーから点検すると、REST APIの一覧が拒否されて見えません。</p>
+<p>運営者の作業環境からも同じように拒否されましたが、<span class="mark-red"><strong>国内からは見えている可能性があります</strong></span>。点検は、国内の回線から行うのが確実です。ほかのサーバーでも、似た制限の設定がないかを確かめておくと、結果を読み違えずに済みます。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s4">WordPressのユーザー名の漏洩を防ぐ手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-username-exposure-fig4.webp" alt="WordPressのユーザー名の漏洩を防ぐ手順として、表示名と投稿者URLを変える、?author=とREST APIの一覧を止める、サイトマップから投稿者を外す、の3つを番号つきで縦に並べた図" width="1200" height="800"><figcaption>まず名前を変え、次に見える経路を止めます</figcaption></figure>
+<p>ユーザー名の漏洩を防ぐ第一歩は、<span class="mark-yellow">公開される名前をログイン名と別にする</span>ことです。名前が別になれば、経路が残っていてもログイン名は分からなくなります。</p>
+<p>そのうえで不要な経路を止めると、守りはさらに固くなるでしょう。作業の前には、念のためバックアップを取っておいてください。どの手順も、管理画面とプラグインの操作だけで進められます。</p>
+
+<h3>表示名と投稿者URLの名前を変える</h3>
+<p>表示名は、管理画面の「ユーザー」の「プロフィール」で変えられます。「ニックネーム」に別の名前を入れ、「ブログ上の表示名」でその名前を選ぶだけです。</p>
+<p>投稿者URLの名前は、管理画面の標準の画面では変えられません。専用のプラグインを使うか、データベースを直接書き換える方法になります。運営者の自社サイトでは、<span class="mark-yellow">古い投稿者URLから新しいURLへの転送</span>も設定しました。転送を入れておけば、古いURLを開いた人も新しいページにたどり着けます。</p>
+
+<h3>?author=とREST APIの一覧を止める</h3>
+<p>?author=数字で開かれたときは、トップページへ転送するように設定します。REST APIは全部を止めず、ログインしていない人へのユーザー一覧だけを止めるのが基本です。</p>
+<p>全部を止めると、ブロックエディタやほかのプラグインが動かなくなるおそれがあります。運営者の自社サイトでは、<span class="mark-yellow">コードを追加するプラグインで2つとも止めました</span>。テーマのファイルを触らずに済むので、テーマを更新しても設定は消えません。セキュリティのプラグインにも、同じ機能を持つものがあります。</p>
+
+<h3>サイトマップから投稿者を外す</h3>
+<p>WordPress本体のサイトマップは、投稿者の一覧だけを外すことも可能です。公式の開発者向けの資料のページに、投稿者の一覧を外すコードの例が寄せられています。</p>
+<p>投稿者ページを検索に出す必要がなければ、<span class="mark-yellow">外しても集客への影響は小さい</span>でしょう。サイトマップのプラグインを使っている場合は、その設定画面で投稿者を外せることが多いです。変えたあとは「/wp-sitemap.xml」を開き、usersの行が消えたかを確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/hooks/wp_sitemaps_add_provider/" target="_blank" rel="noopener noreferrer nofollow">wp_sitemaps_add_provider｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s5">WordPressのユーザー名が漏洩しても破られないための備え</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-username-exposure-fig5.webp" alt="ユーザー名が漏洩しても破られないための備えとして、長いパスワードと二段階認証、ログインの失敗が続いたら止める仕組み、記事を書くアカウントと管理用のアカウントを分ける、の3つを縦のチェックリストで示した図" width="1200" height="800"><figcaption>隠すことと、破られにくくすることの両方が必要です</figcaption></figure>
+<p>WordPressのユーザー名は、すべての経路を隠し切れるとは限りません。<span class="mark-yellow">知られても破られない状態にしておく</span>ことが、本当の守りになります。</p>
+<p>次の3つは、どれも費用をかけずに始められるものです。ユーザー名を隠す作業とあわせて、同じ日に済ませてしまいましょう。どれも一度設定すれば、あとは手間がかからない点も助かるところです。</p>
+
+<h3>長いパスワードと二段階認証にする</h3>
+<p>パスワードは長く、ほかのサービスと使い回さないものにします。WordPress.orgの日本語の解説も、名前や辞書の語、短い文字列を避けるよう勧めているのです。</p>
+<p>あわせて、<span class="mark-yellow">ログインのたびに確認コードを入れる二段階認証</span>も入れておきましょう。パスワードが知られても、手元のスマホがなければログインできなくなります。総当たりの手口については、<a href="small-business-target.html">中小企業のホームページが狙われる理由</a>で詳しく紹介しました。使い回しをやめるだけでも、ほかのサービスから漏れた情報で破られる心配は減ります。</p>
+
+<h3>ログインの失敗が続いたら止める</h3>
+<p>短い時間にログインの失敗が続いたら、しばらく受け付けないようにする仕組みが効果的です。エックスサーバーでは「ログイン試行回数制限設定」が初期状態で有効になっています。</p>
+<p>公式マニュアルによると、制限は24時間後に解除される仕組みです。ほかのサーバーでも、<span class="mark-yellow">サーバーの機能かプラグインで回数を制限する</span>ことができます。自分のサーバーに同じ機能があるか、管理画面で一度確かめておくと安心でしょう。制限がかかったときに自分が締め出されないよう、解除の方法も控えておいてください。</p>
+
+<h3>記事を書くアカウントと管理するアカウントを分ける</h3>
+<p>REST APIの一覧や投稿者ページに出るのは、記事を公開したことのある投稿者だけです。そのため、<span class="mark-yellow">記事を書く用と管理する用のアカウントを分ける</span>と、管理者の名前は表に出にくくなります。</p>
+<p>記事を書く側には「編集者」や「投稿者」の権限だけを与えましょう。ログイン名が「admin」のままなら、新しい管理者を作って記事を引き継ぐのも1つの方法です。WordPress.orgの日本語の解説も、adminは削除か権限の変更を勧めています。</p>
+
+<div class="art-cta"><strong>あなたのサイトのユーザー名は見えていませんか</strong><p>URLを入れるだけで、投稿者ページやREST APIから名前が読めるかを含む7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのユーザー名の漏洩に関するよくある質問</h2>
+
+<h3>WordPressのユーザー名そのものは変えられますか？</h3>
+<p>管理画面のプロフィールでは、ユーザー名は変更できない仕様です。変えたい場合は、新しいユーザー名で管理者を作り、記事を引き継いでから古いほうを削除します。削除の画面で、記事を新しいユーザーに割り当てることを忘れないでください。データベースを直接書き換える方法は、失敗すると戻せなくなるため勧めません。作業の前には、必ずバックアップを取りましょう。</p>
+
+<h3>投稿者URLの名前を変えると、検索順位に影響しますか？</h3>
+<p>投稿者ページが検索から多く見られていなければ、影響はほとんどありません。変える前に、古い投稿者URLが検索結果に出ているかを確かめておくと安心です。出ている場合は、古いURLから新しいURLへ転送を設定しましょう。記事の中やプロフィールの欄に、古い投稿者URLを直接書いている場合もあります。運営者の自社サイトでも、トップページに古いURLが残っていたため書き換えました。</p>
+
+<h3>REST APIを止めると、ブロックエディタは動かなくなりませんか？</h3>
+<p>ログインしていない人へのユーザー一覧だけを止める方法なら、ブロックエディタには影響しません。ブロックエディタは、ログインした状態でREST APIを使うためです。一方、REST API全体を止めると、エディタやお問い合わせフォームが動かなくなることがあります。プラグインで止める場合は、どの範囲を止める設定かを確かめてください。止めたあとは、記事の編集と保存が今までどおりできるかを試しておきましょう。</p>
+
+<h3>ユーザー名が「admin」のままです。どうすればいいですか？</h3>
+<p>adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。</p>
+
+<h3>自分で確かめるのが不安なときはどうすればいいですか？</h3>
+<p>サイトドックの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのユーザー名は、主に5つの経路から外に見えることがあります。初期設定では、公開される名前がログイン名と同じになるためです。</p>
+<p>まず表示名と投稿者URLの名前を変え、不要な経路を止めてください。そのうえで、長いパスワードと二段階認証、ログイン回数の制限で守りを固めましょう。</p>
+<p>今日のうちに、<span class="mark-yellow">自分のサイトで「?author=1」を開いてみる</span>ところから始めてみてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">漏洩すると何が起きるか</a></li><li><a href="#s2">漏洩する5つの経路</a></li><li><a href="#s3">確かめる方法</a></li><li><a href="#s4">漏洩を防ぐ手順</a></li><li><a href="#s5">破られないための備え</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029p"></script>
+</body>
+</html>
