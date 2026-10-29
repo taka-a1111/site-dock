@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029p -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのバージョンを確認する方法（管理画面と外からの両方）｜サイトドック</title>
+<meta name="description" content="WordPressのバージョンを確認する方法を、管理画面の3か所と外からの確かめ方に分けて解説します。最新版との比べ方と、古かったときに更新する前の準備もまとめました。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/wordpress-version-check.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのバージョンを確認する方法（管理画面と外からの両方）">
+<meta property="og:description" content="WordPressのバージョンを確認する方法を、管理画面の3か所と外からの確かめ方に分けて解説します。最新版との比べ方と、古かったときに更新する前の準備もまとめました。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/wordpress-version-check.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-003-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029p">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのバージョンを確認する方法（管理画面と外からの両方）", "description": "WordPressのバージョンを確認する方法を、管理画面の3か所と外からの確かめ方に分けて解説します。最新版との比べ方と、古かったときに更新する前の準備もまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-003-v2.webp", "datePublished": "2026-11-04", "dateModified": "2026-11-04", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/wordpress-version-check.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "管理画面に入れなくても、WordPressのバージョンは分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "分かることがあります。ページのソースの「generator」という表示に、バージョンが書かれていることがあるからです。読み込んでいるファイルの「ver=」の表示も手がかりになります。サイトドックの無料簡易診断でも、URLを入れるだけで確かめられます。ただし、表示を消しているサイトでは、外からは分かりません。その場合は、管理画面にログインできる人に確かめてもらいましょう。"}}, {"@type": "Question", "name": "外からバージョンが見えるのは危険ですか？", "acceptedAnswer": {"@type": "Answer", "text": "最新版を使っていれば、見えても大きな問題にはなりにくいです。危ないのは、古いバージョンが外から見えている場合でしょう。攻撃する側は、弱点のある古い版のサイトを外からの情報で探しているためです。表示を消すことより、まず最新版に保つことを優先してください。そのうえで、generatorの表示を消すと、さらに狙われにくくなります。"}}, {"@type": "Question", "name": "WordPressは自動で更新されないのですか？", "acceptedAnswer": {"@type": "Answer", "text": "初期設定では、マイナーバージョンは自動で更新されます。メジャーバージョンを自動で更新するかどうかは、「更新」の画面で選べる仕組みです。ただし、サーバーの設定やプラグインの影響で、自動更新が止まっていることもあります。自動に任せきりにせず、定期的に確かめてください。止まっていても管理画面にお知らせが出ないこともあるため、注意が必要です。"}}, {"@type": "Question", "name": "バージョンを上げたら、サイトが崩れることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "あります。特に、何年も更新していないサイトや、長く更新されていないプラグインを使っているサイトは注意が必要です。更新の前にバックアップを取り、PHPとプラグインの対応を確かめてから進めましょう。不安な場合は、制作会社や専門家に相談するのが確実です。本番とは別の検証用の環境で先に試せると、さらに安心できます。"}}, {"@type": "Question", "name": "バージョンはどのくらいの頻度で確かめればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "月に1回を目安にしてください。WordPressの修正版は、決まった日ではなく、弱点が見つかったときに出ることが多いからです。管理画面の「更新」の画面を開くか、外からの点検を使えば、数分で確かめられます。ほかのサイト点検と同じ日にまとめると、忘れにくくなります。大きな弱点のニュースが出たときは、その日のうちにも確かめてください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのバージョンを確認する方法（管理画面と外からの両方）"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1>WordPressのバージョンを確認する方法（管理画面と外からの両方）</h1>
+    <p><time datetime="2026-11-04">2026.11.04</time>　WordPress・プラグイン</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <figure class="eyecatch"><img src="img/eyecatch-003-v2.webp" alt="WordPressのバージョンを確認する方法。管理画面と外からの両方" width="1200" height="630"></figure>
+<p>「うちのWordPressは、いまどのバージョンなのだろう？」と気になっていませんか？</p>
+<p>制作会社に任せたままだと、管理画面のどこを見ればいいのかも分かりにくいものです。</p>
+<p>この記事では、<span class="mark-yellow">WordPressのバージョンを管理画面と外から確認する方法</span>を紹介します。確認したあとに最新版と比べる方法と、古かったときの対処もまとめました。</p>
+<p>ホームページの管理を任されている方が、5分ほどで今の状態を確かめられるようになります。</p>
+
+<h2 id="s1">WordPressのバージョンを確認する前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-version-check-fig1.webp" alt="WordPressのバージョン番号7.1.4のうち、7.1が大きな更新を表すメジャーバージョン、最後の4が不具合や弱点を直すマイナーバージョンであることを示した図" width="1200" height="800"><figcaption>番号の前半は機能の更新、最後の数字は修正の回数を表します</figcaption></figure>
+<p>WordPressのバージョンを確認する前に、番号の読み方を知っておくと判断が早くなります。<span class="mark-yellow">番号の前半と最後の数字では意味が違う</span>からです。</p>
+<p>番号の意味が分かれば、確認したあとに「急いで更新すべきか」を自分で判断できます。番号の読み方と、どのバージョンまでが正式に支えられているかを順に見ていきましょう。</p>
+
+<h3>バージョン番号の読み方</h3>
+<p>WordPressのバージョンは「7.1.4」のように、3つの数字で表されます。前半の「7.1」はメジャーバージョンと呼ばれ、新しい機能が入る大きな更新です。</p>
+<p>最後の「4」はマイナーバージョンで、不具合や弱点を直すための小さな更新を表します。最後の数字が古いままだと、<span class="mark-yellow">すでに直された弱点が残った状態</span>です。マイナーバージョンは、初期設定では自動で更新される仕組みになっています。</p>
+
+<h3>最新の系列だけが正式なサポートの対象</h3>
+<p>WordPressの公式の説明では、正式に支えられているのは最新のメジャーバージョンだけです。古い系列にも修正が出ることはありますが、あくまで好意によるもので、保証はありません。</p>
+<p>公式サイトは、最新の系列以外は<span class="mark-yellow">どれも安全に使えるものではない</span>とまで書いています。古い系列のまま使い続けるのは、避けたほうがよいでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/supported-versions/" target="_blank" rel="noopener">Supported Versions – Documentation – WordPress.org</a></li>
+</ul>
+
+<h2 id="s2">WordPressのバージョンを管理画面で確認する3つの方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-version-check-fig2.webp" alt="WordPressの管理画面でバージョンを確認できる場所として、ダッシュボードの概要、更新の画面、画面右下の表示の3か所に番号を付けて示した図" width="1200" height="800"><figcaption>どれか1つで確かめれば十分です</figcaption></figure>
+<p>WordPressのバージョンは、管理画面の3か所で確認できます。ログインできる方は、<span class="mark-red"><strong>まず管理画面で確かめるのが確実</strong></span>です。</p>
+<p>3か所とも、表示されるバージョンは同じです。いちばん見つけやすい場所を選んでください。管理画面に入れない場合は、外から確認する方法を使います。ログイン情報を制作会社が持っている場合も、外からなら自分で確かめられるでしょう。</p>
+
+<h3>① ダッシュボードの「概要」で確かめる</h3>
+<p>管理画面にログインすると、最初に「ダッシュボード」が開きます。その中の「概要」という枠に、使っているWordPressのバージョンとテーマの名前が表示されます。</p>
+<p>「概要」の枠が見当たらない場合は、画面右上の「表示オプション」を開いてください。「概要」にチェックを入れると、<span class="mark-yellow">消えていた枠がふたたび表示されます</span>。ほかの枠を閉じていると、見落としやすい場所です。</p>
+
+<h3>② 「更新」の画面で確かめる</h3>
+<p>左のメニューの「ダッシュボード」から「更新」を開いてください。今のバージョンと、新しい版があるかどうかが表示されます。プラグインやテーマの更新も同じ画面にまとまっています。</p>
+<p>新しい版がある場合は、<span class="mark-yellow">更新を促すお知らせとボタンが出るはず</span>です。ただし、ボタンをすぐに押すのは避けてください。更新の前にやることは、この記事の最後の章で説明します。</p>
+
+<h3>③ 画面右下の表示で確かめる</h3>
+<p>管理画面のどのページでも、いちばん下までスクロールしてみてください。右下に「バージョン 7.1.4」のような表示があります。手早く確かめたいときに便利です。</p>
+<p>新しい版が出ているときは、ここに更新を促す文字が出ることもあります。<span class="mark-yellow">どの画面からでも確かめられる</span>ため、ほかの作業のついでに見る習慣をつけておくとよいでしょう。</p>
+
+<h2 id="s3">WordPressのバージョンを外から確認する方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-version-check-fig3.webp" alt="WordPressのバージョンを外から確認する方法として、ページのソースの情報、読み込んでいるファイルのver表示、無料の点検の3つを、虫眼鏡でのぞくように並べた図" width="1200" height="800"><figcaption>外から見えるかどうかも、あわせて確かめられます</figcaption></figure>
+<p>管理画面に入れない場合でも、WordPressのバージョンは外から分かることがあります。<span class="mark-yellow">外から見えるなら、攻撃する側にも見えている</span>という点に注意が必要です。</p>
+<p>外からの確認は、持ち主でなくてもできます。制作会社にログイン情報を預けたままの場合も、自分で今の状態を知る手段になるでしょう。次の3つの方法があります。</p>
+
+<h3>ページのソースで確かめる</h3>
+<p>ブラウザでサイトを開き、右クリックから「ページのソースを表示」を選びます。表示されたソースの中で「generator」という語を探してください。</p>
+<p>「WordPress 7.1.4」のように書かれていれば、それが使っているバージョンです。<span class="mark-yellow">この表示は初期設定では出る仕組み</span>ですが、テーマやプラグインで消しているサイトもあります。見つからなくても、異常ではありません。</p>
+
+<h3>読み込んでいるファイルの「ver=」で確かめる</h3>
+<p>同じソースの中で「wp-includes」と書かれたファイルの名前を探します。末尾に「ver=7.1.4」のような表示が付いていることがあるでしょう。WordPress本体のファイルには、本体のバージョンが付くためです。</p>
+<p>generatorの表示を消していても、<span class="mark-yellow">こちらは残っていることが多い</span>のが特徴です。ただし、プラグインのファイルにはプラグイン自身のバージョンが付くので、取り違えないようにしてください。</p>
+
+<h3>無料の点検で確かめる</h3>
+<p>ソースを読むのが手間な場合は、外からの点検を使うと早く確かめられます。サイトドックの無料簡易診断なら、URLを入れるだけで、本体のバージョンと最新版との差を判定します。</p>
+<p>運営者の自社サイト2つで試したところ、1つは最新版でした。もう1つは<span class="mark-yellow">1つ前の修正版のまま止まっていた</span>ため、すぐに更新しています。自動更新に任せていても、止まることがあるのです。</p>
+
+<h2 id="s4">確認したWordPressのバージョンを最新版と比べる方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-version-check-fig4.webp" alt="WordPressのバージョンを最新版と比べるとき、最新の系列なら安全、古い系列なら修正の保証がない、最後の数字が古ければ修正版が未適用、と3段階で判断することを示した図" width="1200" height="800"><figcaption>系列と最後の数字の2つを見て判断します</figcaption></figure>
+<p>WordPressのバージョンを確認したら、最新版と比べて、更新が必要かどうかを判断します。見るのは、<span class="mark-yellow">系列が最新かどうかと、最後の数字が最新かどうか</span>の2点です。</p>
+<p>最新版の番号は、WordPress.orgの公式サイトで確かめられます。ニュースやブログの情報は古いこともあるので、比べるときは必ず公式の情報を使ってください。</p>
+
+<h3>最新版は公式サイトで確かめる</h3>
+<p>WordPress.orgのリリースの一覧には、過去のすべての版と公開日が載っています。いちばん上にあるものが最新版です。</p>
+<p>2026年10月29日に、WordPress.orgの更新確認の仕組みで調べました。その時点の最新版は7.1.4です。<span class="mark-yellow">7.1系でも最後の数字が4より小さければ</span>、修正版が未適用ということになります。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/download/releases/" target="_blank" rel="noopener">Releases | WordPress.org</a></li>
+</ul>
+
+<h3>2026年10月時点の主なバージョン</h3>
+<p>2026年10月29日時点で、各系列の最新の修正版は次のとおりです。正式な対象は7.1系だけで、ほかの系列は好意による修正にとどまります。</p>
+<table>
+<thead><tr><th>系列</th><th>その系列の最新版</th><th>扱い</th></tr></thead>
+<tbody>
+<tr><td>7.1系</td><td>7.1.4</td><td>正式なサポートの対象</td></tr>
+<tr><td>7.0系</td><td>7.0.8</td><td>修正は好意によるもの</td></tr>
+<tr><td>6.9系</td><td>6.9.11</td><td>修正は好意によるもの</td></tr>
+</tbody>
+</table>
+<p>6.9系より古い系列を使っている場合は、<span class="mark-yellow">早めに7.1系への更新を計画する</span>のが安全です。古い系列ほど、PHPやプラグインとの相性の確認にも時間がかかります。</p>
+
+<h2 id="s5">WordPressのバージョンが古いときの対処</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-version-check-fig5.webp" alt="WordPressのバージョンが古いときは、バックアップを取る、PHPとプラグインの対応を確かめる、自動更新の設定を見直す、の順に進めることを左から右への矢印で示した図" width="1200" height="800"><figcaption>更新ボタンを押す前に、2つの準備を済ませます</figcaption></figure>
+<p>WordPressのバージョンが古いと分かっても、すぐに更新ボタンを押すのは危険です。準備をしないまま上げると、<span class="mark-red"><strong>表示が崩れたり画面が真っ白になったりします</strong></span>。</p>
+<p>特に、何年も更新していないサイトは注意が必要です。PHPやプラグインが新しい版に対応していないと、更新した瞬間に画面が真っ白になることもあります。次の3つの順で進めてください。</p>
+
+<h3>① バックアップを取ってから更新する</h3>
+<p>更新の前に、サイトのファイルとデータベースを控えます。サーバー会社の自動バックアップがあっても、作業の直前に手動で取っておくと安心です。</p>
+<p><span class="mark-yellow">戻せる状態を作ってから更新する</span>ことで、万一表示が崩れても落ち着いて対応できます。マイナーバージョンの更新でも、この手順は省かないようにしましょう。控えは、パソコンなどサーバーとは別の場所にも保存しておくと確実です。</p>
+
+<h3>② PHPとプラグインの対応を確かめる</h3>
+<p>新しいWordPressは、古いPHPでは動かないことがあります。WordPress.orgは、PHP 8.3以上を推奨しています。サーバーのPHPが古い場合は、先にPHPを上げる必要があるでしょう。</p>
+<p>プラグインも、<span class="mark-yellow">長く更新されていないものは新しい版で動かない</span>おそれがあります。配布ページで最終更新日と対応バージョンを確かめ、必要なら代わりのものを探してください。</p>
+
+<h3>③ 自動更新の設定を見直す</h3>
+<p>「更新」の画面では、メジャーバージョンも自動で更新するかどうかを選べます。小さな会社のサイトなら、少なくともマイナーバージョンの自動更新は止めないのが基本です。</p>
+<p>自動更新に任せていても、何かの理由で止まることがあります。<span class="mark-yellow">月に1回は管理画面か外からの点検で確かめる</span>と、取り残しを防げます。日を決めて、ほかの点検と一緒に行うと続けやすいでしょう。</p>
+
+<div class="art-cta"><strong>あなたのWordPressは最新版ですか</strong><p>URLを入れるだけで、本体のバージョンと最新版との差を含む7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのバージョン確認に関するよくある質問</h2>
+
+<h3>管理画面に入れなくても、WordPressのバージョンは分かりますか？</h3>
+<p>分かることがあります。ページのソースの「generator」という表示に、バージョンが書かれていることがあるからです。読み込んでいるファイルの「ver=」の表示も手がかりになります。サイトドックの無料簡易診断でも、URLを入れるだけで確かめられます。ただし、表示を消しているサイトでは、外からは分かりません。その場合は、管理画面にログインできる人に確かめてもらいましょう。</p>
+
+<h3>外からバージョンが見えるのは危険ですか？</h3>
+<p>最新版を使っていれば、見えても大きな問題にはなりにくいです。危ないのは、古いバージョンが外から見えている場合でしょう。攻撃する側は、弱点のある古い版のサイトを外からの情報で探しているためです。表示を消すことより、まず最新版に保つことを優先してください。そのうえで、generatorの表示を消すと、さらに狙われにくくなります。</p>
+
+<h3>WordPressは自動で更新されないのですか？</h3>
+<p>初期設定では、マイナーバージョンは自動で更新されます。メジャーバージョンを自動で更新するかどうかは、「更新」の画面で選べる仕組みです。ただし、サーバーの設定やプラグインの影響で、自動更新が止まっていることもあります。自動に任せきりにせず、定期的に確かめてください。止まっていても管理画面にお知らせが出ないこともあるため、注意が必要です。</p>
+
+<h3>バージョンを上げたら、サイトが崩れることはありますか？</h3>
+<p>あります。特に、何年も更新していないサイトや、長く更新されていないプラグインを使っているサイトは注意が必要です。更新の前にバックアップを取り、PHPとプラグインの対応を確かめてから進めましょう。不安な場合は、制作会社や専門家に相談するのが確実です。本番とは別の検証用の環境で先に試せると、さらに安心できます。</p>
+
+<h3>バージョンはどのくらいの頻度で確かめればいいですか？</h3>
+<p>月に1回を目安にしてください。WordPressの修正版は、決まった日ではなく、弱点が見つかったときに出ることが多いからです。管理画面の「更新」の画面を開くか、外からの点検を使えば、数分で確かめられます。ほかのサイト点検と同じ日にまとめると、忘れにくくなります。大きな弱点のニュースが出たときは、その日のうちにも確かめてください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのバージョンは、管理画面の3か所か、ページのソースや外からの点検で確かめられます。確認したら、系列と最後の数字の2点を最新版と比べてください。</p>
+<p>正式なサポートの対象は最新の系列だけで、2026年10月29日時点では7.1系です。古かった場合は、バックアップとPHP、プラグインの確認を済ませてから更新しましょう。</p>
+<p>まずは今日、<span class="mark-yellow">管理画面の右下か無料簡易診断でバージョンを確かめる</span>ところから始めてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">確認する前に知っておきたいこと</a></li><li><a href="#s2">管理画面で確認する3つの方法</a></li><li><a href="#s3">外から確認する方法</a></li><li><a href="#s4">最新版と比べる方法</a></li><li><a href="#s5">古いときの対処</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029p"></script>
+</body>
+</html>

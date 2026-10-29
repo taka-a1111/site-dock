@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029p -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方｜サイトドック</title>
+<meta name="description" content="ホームページが改ざんされたかもと感じたときに確認したい7つのサインと、site検索やSearch Consoleで自分で確かめる方法、気づいたときの初動と再発を防ぐ対策をまとめました。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/website-tampering-check.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方">
+<meta property="og:description" content="ホームページが改ざんされたかもと感じたときに確認したい7つのサインと、site検索やSearch Consoleで自分で確かめる方法、気づいたときの初動と再発を防ぐ対策をまとめました。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/website-tampering-check.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-002-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029p">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方", "description": "ホームページが改ざんされたかもと感じたときに確認したい7つのサインと、site検索やSearch Consoleで自分で確かめる方法、気づいたときの初動と再発を防ぐ対策をまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-002-v2.webp", "datePublished": "2026-11-03", "dateModified": "2026-11-03", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/website-tampering-check.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "自分で開くと普通に見えるのに、お客さまは「変なページが出る」と言います。改ざんですか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんの可能性があります。検索結果やスマートフォンから開いたときだけ、別のサイトへ移動させる手口があるためです。お客さまがどの端末で、どこから開いたかを聞き、同じ条件で試してください。それでも分からない場合は、専門家に調べてもらうのが確実でしょう。自分で開いて何も起きないからといって、安心はできません。"}}, {"@type": "Question", "name": "改ざんされたら、サイトはすぐに止めたほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "訪れた人に被害が出るおそれがあるなら、止めることをおすすめします。不正なプログラムが置かれている場合、開いただけでウイルスに感染することもあるからです。止める前に、画面の写しとアクセスの記録を残しておいてください。止め方はサーバー会社に確かめると安全です。止めている間は、トップページにお知らせを出しておくと、お客さまも戸惑いません。"}}, {"@type": "Question", "name": "改ざんは警察に届け出たほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "お客さまの情報が漏れたおそれがある場合や、被害が大きい場合は相談しましょう。警察庁は、最寄りの警察署やサイバー犯罪の相談窓口への相談を案内しています。保存したアクセスの記録や画面の写しを持っていくと、話がスムーズに進みます。事前に電話しておくと、なお安心です。届け出るかどうか迷うときも、まずは相談だけしてみてください。"}}, {"@type": "Question", "name": "バックアップから戻せば、改ざんは解決しますか？", "acceptedAnswer": {"@type": "Answer", "text": "戻すだけでは解決しません。入られた原因の弱点が残っていると、同じ方法でまた改ざんされるからです。戻す前後に、パスワードの変更と、本体やプラグインの更新を必ず行ってください。どの時点のバックアップが無事かも、日付を見て慎重に選ぶ必要があります。改ざんの前から不正なファイルが置かれていた例もあるためです。"}}, {"@type": "Question", "name": "無料の診断で、改ざんされているかどうか分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトドックの無料簡易診断は、改ざんそのものを見つけるものではありません。外から見て、改ざんの原因になりやすい古いプログラムや設定がないかを判定するものです。改ざんが疑われるときは、この記事の確認方法と組み合わせてください。サーバーの中まで調べる場合は詳細診断で対応します。まずは無料簡易診断で、外から見た弱点を確かめてください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
+    <h1>ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</h1>
+    <p><time datetime="2026-11-03">2026.11.03</time>　改ざん・被害対応</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <figure class="eyecatch"><img src="img/eyecatch-002-v2.webp" alt="ホームページの改ざん、7つのサインと確かめ方" width="1200" height="630"></figure>
+<p>「ホームページが改ざんされているかもしれない」と不安になっていませんか？</p>
+<p>お客さまから「変なページが出る」と言われても、自分で開くと普通に見えることがあります。</p>
+<p>この記事では、<span class="mark-yellow">ホームページの改ざんを疑うべき7つのサイン</span>を紹介します。自分で確かめる方法と、気づいたときの初動もまとめました。</p>
+<p>専門の担当者がいない会社でも、今日から点検できる内容に絞っています。</p>
+
+<h2 id="s1">ホームページの改ざんとは</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-check-fig1.webp" alt="ホームページの改ざんには、見た目が書き換わる目に見える改ざんと、裏で別のサイトへ誘導したり不正なファイルを置いたりする見えにくい改ざんがあることを、氷山にたとえて示した図" width="1200" height="800"><figcaption>見た目が変わらない改ざんのほうが、気づくのが遅れます</figcaption></figure>
+<p>ホームページの改ざんとは、持ち主の許可なく、ページの中身や設定を書き換えられることです。警察庁は、不要なファイルを置かれることも改ざんに含めています。</p>
+<p>改ざんされたサイトは、偽の情報を広めたり、訪れた人をウイルスに感染させたりする入口になります。<span class="mark-yellow">自社だけでなく、お客さまにも被害が及ぶ</span>点が、ほかのトラブルとの大きな違いです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/hacked-website.html" target="_blank" rel="noopener">ウェブサイト改ざん対策｜警察庁</a></li>
+</ul>
+
+<h3>改ざんで起きること</h3>
+<p>改ざんで起きることは、大きく3つに分けられます。1つ目は、トップページの見た目が書き換えられることです。2つ目は別のサイトへの勝手な移動、3つ目は裏で不正なページやファイルを置かれることになります。</p>
+<p>見た目が書き換わる改ざんは、すぐに気づけます。やっかいなのは残りの2つでしょう。<span class="mark-yellow">ふだんの表示はそのままで、裏側だけが使われる</span>ため、何か月も放置されることがあります。</p>
+
+<h3>見た目が変わらない改ざんが増えている理由</h3>
+<p>攻撃する側の目的は、目立つことより、サイトを長く使うことに移っています。偽の通販サイトへの誘導や、検索結果を使った宣伝に使うためです。</p>
+<p>そのため、持ち主には気づかれにくい形で書き換えます。<span class="mark-yellow">検索結果やスマートフォンから開いたときだけ</span>、別のサイトへ移動させる手口もあります。管理者がパソコンで開いても、異常が見えません。</p>
+
+<h2 id="s2">ホームページの改ざんを疑うべき7つのサイン</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-check-fig2.webp" alt="ホームページの改ざんを疑うべき7つのサインとして、見覚えのないページ、勝手な移動、警告表示、見覚えのない広告、ログインできない、知らないファイル、外部からの通知を並べたチェックリストの図" width="1200" height="800"><figcaption>1つでも当てはまれば、早めに確かめてください</figcaption></figure>
+<p>ホームページの改ざんは、いくつかのサインで気づけます。<span class="mark-red"><strong>1つでも当てはまったら、まず疑って確かめる</strong></span>ことが大切です。</p>
+<p>サインの多くは、管理者よりも先に、お客さまや外部の会社が気づきます。「気のせいかもしれない」と流さずに、次の7つと照らし合わせてください。上から順に、見つけやすいものを並べました。社内で手分けして確かめるのもよいでしょう。</p>
+
+<h3>① 見覚えのないページが検索結果に出る</h3>
+<p>自社の名前で検索したとき、作った覚えのないページが出てくることがあります。外国語のページや、通販、薬の宣伝などが典型です。</p>
+<p>これは、裏で不正なページを大量に置かれたときに起きます。<span class="mark-yellow">トップページは無事でも、検索結果だけが汚される</span>ことがあるのです。次の章で紹介する「site:」検索を使うと、見つけやすくなります。</p>
+
+<h3>② 別のサイトへ勝手に移動する</h3>
+<p>ページを開いた瞬間に、見覚えのないサイトへ移動するのも典型的なサインです。懸賞の当選画面や、偽のウイルス警告に飛ばされる例がよく見られます。</p>
+<p>この手口は、<span class="mark-yellow">条件を満たしたときだけ移動させる</span>ことが多く、毎回は起きません。お客さまから連絡があったら、どの端末でどこから開いたかを聞いておきましょう。確かめるときの手がかりになります。</p>
+
+<h3>③ ブラウザや検索結果に警告が出る</h3>
+<p>ブラウザに「危険なサイト」という赤い画面が出ることがあります。検索結果に「ハッキングされている可能性」と表示される例もあるでしょう。</p>
+<p>こうした警告は、Googleなどが不正なプログラムや誘導を見つけたときに出ます。警告が出ると、<span class="mark-yellow">訪問者の多くはサイトに入らず引き返して</span>しまうのです。売上や問い合わせにも直接響くため、すぐに確かめてください。</p>
+
+<h3>④ 見覚えのない広告や文字が表示される</h3>
+<p>ページの一部に、入れた覚えのない広告や文字、画像が出ていることもあります。ページの一番下や、目立たない場所に置かれるのが一般的です。</p>
+<p>スマートフォンで開いたときだけ表示される例もあります。<span class="mark-yellow">パソコンとスマートフォンの両方で確かめる</span>と、見落としを減らせます。白い文字で、背景に溶け込むように隠されていることもあるでしょう。</p>
+
+<h3>⑤ 管理画面にログインできない・知らないユーザーがいる</h3>
+<p>いつものパスワードで管理画面に入れなくなったら、乗っ取りを疑います。入れたとしても、知らない管理者のアカウントが増えていないかを見てください。</p>
+<p>攻撃する側は、再び入るための裏口として、アカウントを追加することがあります。<span class="mark-yellow">作った覚えのない管理者がいたら、改ざんの可能性が高い</span>と考えましょう。警察庁の事例にも、ログインできなくなった例が載っています。</p>
+
+<h3>⑥ サーバーに見覚えのないファイルがある</h3>
+<p>サーバーの管理画面やFTPでファイルを見ると、作った覚えのないファイルが置かれていることがあります。名前が意味のない英数字の並びになっているのが特徴です。</p>
+<p>更新した覚えのない日付のファイルも、注意が必要です。<span class="mark-yellow">最近書き換えられたファイルを日付順に並べる</span>と、怪しいものを見つけやすくなります。ただし、消す前に必ず控えを取ってください。</p>
+
+<h3>⑦ サーバー会社やGoogleから通知が届く</h3>
+<p>サーバー会社から「不正なプログラムを見つけた」と連絡が来ることがあります。Googleの「Search Console」に登録していれば、問題があるときにメールが届きます。</p>
+<p>こうした通知は、迷惑メールと間違えて見落とされがちです。<span class="mark-yellow">通知の差出人と内容は、公式サイトで確かめる</span>ようにしてください。通知を装った偽のメールもあるため、本文のリンクは開かないのが安全です。</p>
+
+<h2 id="s3">ホームページの改ざんを自分で確認する方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-check-fig3.webp" alt="ホームページの改ざんを自分で確認する3つの方法として、site検索で見覚えのないページを探す、Search Consoleのセキュリティの問題を見る、スマートフォンと検索結果から開いてみる、をそれぞれ何が分かるかと並べた図" width="1200" height="800"><figcaption>3つとも無料で、専門の道具はいりません</figcaption></figure>
+<p>ホームページの改ざんは、専門の道具がなくても、ある程度は自分で確認できます。どれも無料で、<span class="mark-yellow">1つあたり10分ほどで終わる方法</span>です。</p>
+<p>ここで紹介する3つは、見つけられるサインがそれぞれ違います。1つだけで安心せず、3つを組み合わせてください。月に1回など、日を決めて続けると、早く気づけるようになります。結果は簡単に記録しておきましょう。</p>
+
+<h3>「site:」検索で見覚えのないページを探す</h3>
+<p>Googleの検索窓に「site:」と自社のドメインを続けて入れてみてください。たとえば「site:example.co.jp」です。そのドメインで検索に載っているページが、一覧で表示されます。</p>
+<p>一覧に、作った覚えのないページや外国語のページがないかを見てください。<span class="mark-yellow">ページ数が急に増えているときも注意</span>が必要です。警察庁も、この方法を改ざんの確認に挙げています。</p>
+
+<h3>Search Consoleの「セキュリティの問題」を見る</h3>
+<p>Googleの「Search Console」には、「セキュリティの問題」という報告があります。ハッキングされたコンテンツや、不正なプログラムが見つかると、ここに表示されます。</p>
+<p>問題がなければ、緑のチェックマークが表示されるはずです。<span class="mark-yellow">まだ登録していない場合は、今のうちに登録しておく</span>と安心です。登録しておけば、問題が見つかったときにメールでも知らせてくれます。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener">セキュリティの問題レポート - Search Console ヘルプ</a></li>
+</ul>
+
+<h3>スマートフォンと検索結果から開いて確かめる</h3>
+<p>改ざんの中には、条件を満たしたときだけ別のサイトへ移動させるものがあります。いつものパソコンでブックマークから開くだけでは、見つかりません。</p>
+<p>そこで、<span class="mark-yellow">スマートフォンで、検索結果から自社のサイトを開いて</span>みてください。会社のパソコン以外の回線で試すと、なお確実です。お客さまから連絡があったときの条件に合わせて試すのがコツになります。</p>
+
+<h2 id="s4">ホームページの改ざんに気づいたときの初動</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-check-fig4.webp" alt="ホームページの改ざんに気づいたら、記録を残してサイトを止める、パスワードを変えて弱点をふさぐ、元に戻して関係先に知らせる、の順に進めることを示した手順の図" width="1200" height="800"><figcaption>あわてて消す前に、まず記録を残します</figcaption></figure>
+<p>ホームページの改ざんに気づいたら、あわてて怪しいファイルを消したくなります。しかし、<span class="mark-red"><strong>先に記録を残さないと、原因が分からなくなります</strong></span>。</p>
+<p>原因が分からないまま元に戻すと、同じ弱点から何度も入られかねません。初動は、次の3つの順で進めてください。自分だけで判断がつかない場合は、早めに制作会社や専門家に相談しましょう。</p>
+
+<h3>① 記録を残してサイトを止める</h3>
+<p>まず、おかしな画面を撮影し、気づいた日時とURLを控えます。サーバー会社の管理画面から、アクセスの記録も保存しておきましょう。</p>
+<p>そのうえで、<span class="mark-yellow">被害を広げないためにサイトを一時的に止めます</span>。サーバー会社によっては、管理画面から公開を止められます。止め方が分からない場合は、サーバー会社に問い合わせてください。</p>
+
+<h3>② パスワードを変えて弱点をふさぐ</h3>
+<p>次に、管理画面、サーバー、FTPのパスワードをすべて変えます。改ざんに使われた可能性のあるものは、残さず変えるのが基本です。</p>
+<p>あわせて、WordPress本体やプラグイン、PHPを最新にします。入られた原因の多くは、<span class="mark-yellow">古いまま放置されたプログラムの弱点</span>です。総務省も、基本的な対策の不足が原因になると説明しています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/case/business/02/" target="_blank" rel="noopener">事例2：ホームページが書き換えられた｜国民のためのサイバーセキュリティサイト（総務省）</a></li>
+</ul>
+
+<h3>③ 元に戻して関係先に知らせる</h3>
+<p>改ざんされる前のバックアップがあれば、それを使って元に戻します。戻したあとで、不正なファイルが残っていないかを確かめてください。</p>
+<p>お客さまの情報が漏れたおそれがある場合は、警察や関係先への連絡も必要です。<span class="mark-yellow">警察に相談するときは、保存した記録を持っていく</span>と話が早く進みます。検索結果の警告は、直したあとにSearch Consoleから審査を申し込めば外れます。</p>
+
+<h2 id="s5">ホームページの改ざんを防ぐために続けたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-check-fig5.webp" alt="ホームページの改ざんを防ぐ土台として、本体とプラグインを最新に保つ、管理画面のパスワードとユーザーを見直す、定期的に外から点検する、の3本の柱を建物にたとえた図" width="1200" height="800"><figcaption>3つの柱を続けることが、いちばんの予防になります</figcaption></figure>
+<p>ホームページの改ざんを防ぐ方法は、特別なものではありません。<span class="mark-red"><strong>更新、パスワード、点検の3つを続けること</strong></span>が、いちばん効果的です。</p>
+<p>まず、WordPress本体やプラグイン、PHPを最新に保ちます。次に、管理画面のパスワードを長く複雑にして、使っていないユーザーを消します。そして、外から見た状態を定期的に点検しましょう。</p>
+<p>GMOプライム・ストラテジーは2026年6月、上場企業のサイトの調査結果を発表しました。WordPressサイトの11.2%で、ログイン攻撃の条件が3つそろっていたそうです。<span class="mark-yellow">ログイン名が外から読める状態</span>も、その条件の1つです。サイトドックの無料簡易診断でも、この点を確かめられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://group.gmo/news/article/10064/" target="_blank" rel="noopener">東証上場企業3,941社・約2.5万サイト調査｜GMOインターネットグループ</a></li>
+</ul>
+
+<div class="art-cta"><strong>外から見たあなたのサイトの状態を確かめる</strong><p>URLを入れるだけで、古いプログラムやログイン名の見え方など7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">ホームページの改ざん確認に関するよくある質問</h2>
+
+<h3>自分で開くと普通に見えるのに、お客さまは「変なページが出る」と言います。改ざんですか？</h3>
+<p>改ざんの可能性があります。検索結果やスマートフォンから開いたときだけ、別のサイトへ移動させる手口があるためです。お客さまがどの端末で、どこから開いたかを聞き、同じ条件で試してください。それでも分からない場合は、専門家に調べてもらうのが確実でしょう。自分で開いて何も起きないからといって、安心はできません。</p>
+
+<h3>改ざんされたら、サイトはすぐに止めたほうがいいですか？</h3>
+<p>訪れた人に被害が出るおそれがあるなら、止めることをおすすめします。不正なプログラムが置かれている場合、開いただけでウイルスに感染することもあるからです。止める前に、画面の写しとアクセスの記録を残しておいてください。止め方はサーバー会社に確かめると安全です。止めている間は、トップページにお知らせを出しておくと、お客さまも戸惑いません。</p>
+
+<h3>改ざんは警察に届け出たほうがいいですか？</h3>
+<p>お客さまの情報が漏れたおそれがある場合や、被害が大きい場合は相談しましょう。警察庁は、最寄りの警察署やサイバー犯罪の相談窓口への相談を案内しています。保存したアクセスの記録や画面の写しを持っていくと、話がスムーズに進みます。事前に電話しておくと、なお安心です。届け出るかどうか迷うときも、まずは相談だけしてみてください。</p>
+
+<h3>バックアップから戻せば、改ざんは解決しますか？</h3>
+<p>戻すだけでは解決しません。入られた原因の弱点が残っていると、同じ方法でまた改ざんされるからです。戻す前後に、パスワードの変更と、本体やプラグインの更新を必ず行ってください。どの時点のバックアップが無事かも、日付を見て慎重に選ぶ必要があります。改ざんの前から不正なファイルが置かれていた例もあるためです。</p>
+
+<h3>無料の診断で、改ざんされているかどうか分かりますか？</h3>
+<p>サイトドックの無料簡易診断は、改ざんそのものを見つけるものではありません。外から見て、改ざんの原因になりやすい古いプログラムや設定がないかを判定するものです。改ざんが疑われるときは、この記事の確認方法と組み合わせてください。サーバーの中まで調べる場合は詳細診断で対応します。まずは無料簡易診断で、外から見た弱点を確かめてください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>ホームページの改ざんは、見た目が変わらないまま裏側だけ使われることが多く、気づくのが遅れがちです。7つのサインに1つでも当てはまったら、まず疑って確かめてください。</p>
+<p>確かめるときは、3つの方法を組み合わせます。「site:」検索、Search Console、スマートフォンからの表示です。気づいたら、記録を残してから止め、パスワードの変更と更新を行いましょう。</p>
+<p>そして、<span class="mark-yellow">更新、パスワード、点検の3つを続けること</span>が、改ざんを防ぐいちばんの近道です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">改ざんとは</a></li><li><a href="#s2">疑うべき7つのサイン</a></li><li><a href="#s3">自分で確認する方法</a></li><li><a href="#s4">気づいたときの初動</a></li><li><a href="#s5">防ぐために続けたいこと</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029p"></script>
+</body>
+</html>
