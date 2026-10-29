@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029p -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>エックスサーバーでPHPのバージョンを上げる手順と事前チェック｜サイトドック</title>
+<meta name="description" content="エックスサーバーでPHPのバージョンを上げる手順を、事前チェックから切り替え後の確認、元に戻す方法まで順に解説します。PHP 8.2が2026年末で終わる前の準備にお使いください。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/xserver-php-version.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="エックスサーバーでPHPのバージョンを上げる手順と事前チェック">
+<meta property="og:description" content="エックスサーバーでPHPのバージョンを上げる手順を、事前チェックから切り替え後の確認、元に戻す方法まで順に解説します。PHP 8.2が2026年末で終わる前の準備にお使いください。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/xserver-php-version.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-004-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029p">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "エックスサーバーでPHPのバージョンを上げる手順と事前チェック", "description": "エックスサーバーでPHPのバージョンを上げる手順を、事前チェックから切り替え後の確認、元に戻す方法まで順に解説します。PHP 8.2が2026年末で終わる前の準備にお使いください。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-004-v2.webp", "datePublished": "2026-11-05", "dateModified": "2026-11-05", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/xserver-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを切り替えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えの作業でサイトが長く止まることは、ふつうはありません。ただし、テーマやプラグインが新しい版に対応していないと、エラーで表示されなくなることがあります。そのため、アクセスの少ない時間帯に作業するのが安心です。切り替えたらすぐに表示を確かめ、問題があれば元の版に戻しましょう。事前にバックアップを取っておけば、万一のときも落ち着いて対応できます。"}}, {"@type": "Question", "name": "エックスサーバーで選べるPHPのバージョンはどれですか？", "acceptedAnswer": {"@type": "Answer", "text": "エックスサーバーのマニュアルでは、PHP 7.2から8.5までの版が選べると案内されています。ただし、修正が届く期限が切れた古い版も含まれています。選べるからといって、安全とは限りません。2026年10月時点では、8.3以上を選ぶのが基本です。8.2は2026年12月31日でサポートが終わるため、新しく選ぶのは避けてください。"}}, {"@type": "Question", "name": "PHPのバージョンは、どのくらいの頻度で上げればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "使っている版のサポートが終わる前に上げるのが目安です。PHPは毎年1つずつ新しい版が出て、それぞれ約4年でサポートが終わります。数年に1回は切り替えが必要になると考えておきましょう。年に1回、PHPの公式サイトで期限を確かめる習慣をつけると、慌てずに済みます。WordPressの管理画面に更新のお知らせが出たときも、見直すきっかけにしてください。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で切り替えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えの操作そのものは同じです。サーバーパネルの「PHP Ver.切替」から、ドメインごとに版を選びます。ただし、WordPress以外のサイトでは、サイトヘルスのような確認の画面がありません。自作のプログラムや古いシステムを使っている場合は、作った会社に新しい版で動くか確かめてもらいましょう。確かめられないまま切り替えるのは避けてください。"}}, {"@type": "Question", "name": "自分で作業するのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、事前チェックからまとめて依頼するのが確実です。依頼するときは、今の版と、上げたい版を伝えるとやりとりが早く進みます。今の版が分からなければ、サイトドックの無料簡易診断で外から見える範囲を確かめられます。古いプラグインが多いサイトは、PHPの切り替えと一緒にプラグインの整理も頼むと安心です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "エックスサーバーでPHPのバージョンを上げる手順と事前チェック"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1>エックスサーバーでPHPのバージョンを上げる手順と事前チェック</h1>
+    <p><time datetime="2026-11-05">2026.11.05</time>　PHP・サーバー</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <figure class="eyecatch"><img src="img/eyecatch-004-v2.webp" alt="エックスサーバーでPHPのバージョンを上げる手順と事前チェック" width="1200" height="630"></figure>
+<p>「エックスサーバーのPHPを上げてと言われたけれど、押して大丈夫？」と迷っていませんか？</p>
+<p>切り替えはボタン1つでできますが、準備をしないと表示が崩れることがあります。</p>
+<p>この記事では、<span class="mark-yellow">エックスサーバーでPHPのバージョンを安全に上げる手順</span>を紹介します。事前のチェックから、切り替えたあとの確認、元に戻す方法までまとめました。</p>
+<p>運営者が自社サイトで実際に行った手順なので、作業の前に一度通して読んでおくと安心です。</p>
+
+<h2 id="s1">エックスサーバーでPHPのバージョンを上げる前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-php-version-fig1.webp" alt="エックスサーバーで新しく追加したドメインは初期設定がPHP 8.3になる一方、前から動いているサイトは作った当時の古い版のまま残ることを、2本の流れで比べた図" width="1200" height="800"><figcaption>前から動いているサイトは、自分で切り替えるまで古い版のままです</figcaption></figure>
+<p>エックスサーバーでPHPのバージョンを上げる前に、どの版を選べばよいかを知っておきましょう。<span class="mark-yellow">サポートが続く版を選ぶのが基本</span>です。</p>
+<p>PHPには版ごとに、弱点の修正が届く期限があります。期限を過ぎた版は、弱点が見つかっても直されません。サーバー会社が自動で上げてくれるわけでもないため、自分で切り替える必要があります。</p>
+
+<h3>サポートが続くPHPのバージョン</h3>
+<p>PHPの公式サイトによると、各版の修正が届く期限は次のとおりです。2026年10月28日時点の情報で確かめました。</p>
+<table>
+<thead><tr><th>バージョン</th><th>弱点の修正が届く期限</th></tr></thead>
+<tbody>
+<tr><td>PHP 8.2</td><td>2026年12月31日</td></tr>
+<tr><td>PHP 8.3</td><td>2027年12月31日</td></tr>
+<tr><td>PHP 8.4</td><td>2028年12月31日</td></tr>
+<tr><td>PHP 8.5</td><td>2029年12月31日</td></tr>
+</tbody>
+</table>
+<p>PHP 8.1より古い版は、すでに期限を過ぎています。<span class="mark-yellow">8.2を使っている場合も、年内に上げる計画</span>を立ててください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener">PHP: Supported Versions</a></li>
+</ul>
+
+<h3>今動いているサイトは自動では上がらない</h3>
+<p>エックスサーバーは2025年7月28日から、新しいドメインの初期設定をPHP 8.3にしました。ただし、それより前から動いているサイトの版は変わりません。</p>
+<p>何年も前に作ったサイトは、<span class="mark-yellow">作った当時の古い版のまま動いている</span>ことがよくあります。WordPress.orgもPHP 8.3以上を推奨しています。8.3より古ければ、切り替えを考えましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=16195" target="_blank" rel="noopener">PHP推奨バージョンを「PHP 8.3」へ変更｜エックスサーバー</a></li>
+<li>参考：<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener">Requirements | WordPress.org</a></li>
+</ul>
+
+<h2 id="s2">エックスサーバーでPHPのバージョンを上げる前の3つの事前チェック</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-php-version-fig2.webp" alt="エックスサーバーでPHPを上げる前の事前チェックとして、今のバージョンを確かめる、バックアップを取る、テーマとプラグインの対応を確かめる、の3つをチェックリストで示した図" width="1200" height="800"><figcaption>3つを済ませてから切り替えます</figcaption></figure>
+<p>エックスサーバーでPHPのバージョンを上げる前に、3つのことを確かめます。準備なしで切り替えると、<span class="mark-red"><strong>画面が真っ白になることがあります</strong></span>。</p>
+<p>特に、長く手を入れていないサイトは注意が必要です。古いテーマやプラグインが新しいPHPに対応していないと、切り替えた瞬間にエラーで止まります。どれも数分から数十分で終わる作業です。</p>
+
+<h3>① 今のPHPのバージョンを確かめる</h3>
+<p>まず、今どの版で動いているかを確かめます。サーバーパネルで「PHP Ver.切替」を開くと、ドメインごとの今の版が表示されます。</p>
+<p>WordPressなら、管理画面の「ツール」にある「サイトヘルス」でも分かるでしょう。「情報」の「サーバー」の欄を開いてください。今の版を控えておくと、<span class="mark-yellow">元に戻すときに迷いません</span>。</p>
+
+<h3>② バックアップを取る</h3>
+<p>次に、サイトのファイルとデータベースを控えます。エックスサーバーには自動バックアップがありますが、作業の直前に自分でも取っておくと安心です。</p>
+<p>WordPressなら、バックアップ用のプラグインを使う方法もあるでしょう。<span class="mark-yellow">控えはサーバーとは別の場所にも保存する</span>と、万一のときに確実に戻せます。データベースだけ取り忘れることが多いので、両方そろっているかを確かめてください。</p>
+
+<h3>③ テーマとプラグインの対応を確かめる</h3>
+<p>使っているテーマとプラグインが、新しいPHPに対応しているかを確かめます。配布ページで最終更新日を見て、何年も更新されていないものは要注意です。</p>
+<p>運営者の自社サイトでも、<span class="mark-yellow">古い有料テーマ用のプラグインがPHP 8でエラー</span>を起こしました。管理画面が開かなくなる不具合で、新しい版に入れ替えてから切り替えています。</p>
+
+<h2 id="s3">エックスサーバーでPHPのバージョンを切り替える手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-php-version-fig3.webp" alt="エックスサーバーでPHPのバージョンを切り替える手順として、サーバーパネルにログイン、PHP Ver.切替を開く、ドメインのペンのアイコンを押す、バージョンを選んで設定する、の4つを順に並べた図" width="1200" height="800"><figcaption>サーバーパネルから4つの手順で切り替えます</figcaption></figure>
+<p>事前チェックが済んだら、エックスサーバーのサーバーパネルでPHPのバージョンを切り替えます。<span class="mark-yellow">ドメインごとに切り替える仕組み</span>なので、ほかのサイトには影響しません。</p>
+<p>1つのサーバーで複数のサイトを動かしている場合は、1つずつ切り替えて確かめるのが安全です。アクセスの少ない時間帯に作業すると、不具合が出ても影響を小さくできます。</p>
+
+<h3>サーバーパネルで切り替える</h3>
+<p>エックスサーバーの公式マニュアルによると、手順は次のとおりです。</p>
+<ol>
+<li>サーバーパネルにログインする</li>
+<li>「PHP Ver.切替」をクリックする</li>
+<li>変えたいドメインの右にあるペンのアイコンを押す</li>
+<li>「変更後のバージョン」で版を選び、「設定する」を押す</li>
+</ol>
+<p>以前の画面では、最後のボタンが「変更」と表示されます。ドメインが多いときは、<span class="mark-yellow">右上の絞り込みにドメイン名を入れると探しやすい</span>でしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_program_php_ver.php" target="_blank" rel="noopener">PHPのバージョンについて｜エックスサーバー</a></li>
+</ul>
+
+<h3>どのバージョンを選ぶか</h3>
+<p>選ぶ版に迷ったら、PHP 8.3を選んでください。エックスサーバーの推奨版で、WordPress.orgの推奨にも合い、2027年末まで修正が届きます。</p>
+<p>8.4や8.5はさらに長く使えますが、古いプラグインが対応していないこともあります。<span class="mark-yellow">古いPHPから一気に最新まで上げない</span>ほうが、原因を切り分けやすいはずです。7.4のような古い版からなら、8.3で様子を見るとよいでしょう。</p>
+
+<h2 id="s4">エックスサーバーでPHPのバージョンを上げたあとの表示の確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-php-version-fig4.webp" alt="エックスサーバーでPHPを上げたあとに確かめることとして、サイトの表側、管理画面、サイトヘルスのバージョン表示の3つを確認する様子を示した図" width="1200" height="800"><figcaption>表側と管理画面の両方を確かめます</figcaption></figure>
+<p>エックスサーバーでPHPのバージョンを上げたら、すぐにサイトの表示を確かめます。表側が無事でも、<span class="mark-red"><strong>管理画面だけ壊れていることがあります</strong></span>。</p>
+<p>表側と管理画面の両方を見て、エラーの表示がないかを確かめてください。運営者は切り替えの前と後で全ページを読み込み、見出しや画像の数が変わっていないかまで比べています。</p>
+
+<h3>サイトの表側を確かめる</h3>
+<p>トップページと、よく見られているページをいくつか開きます。問い合わせフォームがあれば、送信の手前まで進めて動くかを確かめましょう。</p>
+<p>「Fatal error」や「重大なエラー」という表示が出たら、PHPの版に合わない部分があります。<span class="mark-yellow">ブラウザの記録が残っていると古い表示のまま</span>のこともあるので、再読み込みしてから判断してください。</p>
+
+<h3>管理画面とサイトヘルスを確かめる</h3>
+<p>管理画面にログインし、ダッシュボードや設定の画面をひととおり開きます。プラグインの設定画面だけエラーになることもあるため、よく使う画面は一度ずつ開いてみましょう。</p>
+<p>最後に「サイトヘルス」の「情報」で、<span class="mark-yellow">PHPの版が切り替えた版になっているか</span>を確かめます。ここで古い版のままなら、切り替えが反映されていません。</p>
+
+<h2 id="s5">エックスサーバーでPHPのバージョンを元に戻す方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-php-version-fig5.webp" alt="エックスサーバーでPHPの切り替え後に不具合が出たら、同じ画面で前の版に戻す、原因のテーマやプラグインを探す、直してからもう一度上げる、の順に進めることを示した図" width="1200" height="800"><figcaption>戻すのも同じ画面からできます</figcaption></figure>
+<p>エックスサーバーでPHPのバージョンを上げて不具合が出たら、まず元の版に戻します。<span class="mark-yellow">戻すのも同じ画面から数分でできる</span>ので、慌てなくて大丈夫です。</p>
+<p>ただし、戻したままにはしないでください。古い版は弱点が直されないため、原因を直してから上げ直す必要があります。戻すことは、あくまで時間を稼ぐための一時的な手段です。</p>
+
+<h3>同じ画面で前の版を選び直す</h3>
+<p>サーバーパネルの「PHP Ver.切替」を開き、同じドメインのペンのアイコンを押します。事前チェックで控えておいた版を選び、「設定する」を押してください。</p>
+<p>公式のよくある質問でも、<span class="mark-yellow">別の版に変えて表示を確かめる</span>よう案内しています。戻したら、表示が元に戻ったかを確かめましょう。ブラウザの再読み込みも忘れずに行ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/support/faq/service_hp_wp_change_php_not_displayed.php" target="_blank" rel="noopener">PHPバージョンを切り替えてから、サイトが正常に表示されなくなりました。｜エックスサーバー</a></li>
+</ul>
+
+<h3>原因を直してから上げ直す</h3>
+<p>エラーの表示に、原因のファイルの場所が書かれていることがあります。「plugins」の後ろの名前がプラグインの名前、「themes」の後ろの名前がテーマの名前です。</p>
+<p>原因が分かったら、そのプラグインを更新するか、代わりのものに置き換えます。<span class="mark-yellow">直したら、もう一度事前チェックから進める</span>と安全です。自分で直すのが難しい場合は、制作会社や専門家に相談してください。</p>
+
+<div class="art-cta"><strong>あなたのサイトのPHPは大丈夫ですか</strong><p>URLを入れるだけで、PHPやWordPressの版を含む7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">エックスサーバーのPHPバージョンに関するよくある質問</h2>
+
+<h3>PHPのバージョンを切り替えると、サイトは止まりますか？</h3>
+<p>切り替えの作業でサイトが長く止まることは、ふつうはありません。ただし、テーマやプラグインが新しい版に対応していないと、エラーで表示されなくなることがあります。そのため、アクセスの少ない時間帯に作業するのが安心です。切り替えたらすぐに表示を確かめ、問題があれば元の版に戻しましょう。事前にバックアップを取っておけば、万一のときも落ち着いて対応できます。</p>
+
+<h3>エックスサーバーで選べるPHPのバージョンはどれですか？</h3>
+<p>エックスサーバーのマニュアルでは、PHP 7.2から8.5までの版が選べると案内されています。ただし、修正が届く期限が切れた古い版も含まれています。選べるからといって、安全とは限りません。2026年10月時点では、8.3以上を選ぶのが基本です。8.2は2026年12月31日でサポートが終わるため、新しく選ぶのは避けてください。</p>
+
+<h3>PHPのバージョンは、どのくらいの頻度で上げればいいですか？</h3>
+<p>使っている版のサポートが終わる前に上げるのが目安です。PHPは毎年1つずつ新しい版が出て、それぞれ約4年でサポートが終わります。数年に1回は切り替えが必要になると考えておきましょう。年に1回、PHPの公式サイトで期限を確かめる習慣をつけると、慌てずに済みます。WordPressの管理画面に更新のお知らせが出たときも、見直すきっかけにしてください。</p>
+
+<h3>WordPress以外のサイトでも、同じ手順で切り替えられますか？</h3>
+<p>切り替えの操作そのものは同じです。サーバーパネルの「PHP Ver.切替」から、ドメインごとに版を選びます。ただし、WordPress以外のサイトでは、サイトヘルスのような確認の画面がありません。自作のプログラムや古いシステムを使っている場合は、作った会社に新しい版で動くか確かめてもらいましょう。確かめられないまま切り替えるのは避けてください。</p>
+
+<h3>自分で作業するのが不安なときはどうすればいいですか？</h3>
+<p>制作会社や保守を頼んでいる会社に、事前チェックからまとめて依頼するのが確実です。依頼するときは、今の版と、上げたい版を伝えるとやりとりが早く進みます。今の版が分からなければ、サイトドックの無料簡易診断で外から見える範囲を確かめられます。古いプラグインが多いサイトは、PHPの切り替えと一緒にプラグインの整理も頼むと安心です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>エックスサーバーでは「PHP Ver.切替」から、ドメインごとにPHPのバージョンを上げられます。今動いているサイトの版は自動では上がらないため、自分で切り替える必要があります。</p>
+<p>切り替える前に、今の版の確認、バックアップ、テーマとプラグインの対応の3つを済ませてください。上げたあとは表側と管理画面を確かめ、不具合があれば同じ画面で元に戻せます。</p>
+<p>PHP 8.2は2026年12月31日でサポートが終わります。<span class="mark-yellow">年内に8.3以上へ上げる予定を決める</span>ところから始めましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">上げる前に知っておきたいこと</a></li><li><a href="#s2">3つの事前チェック</a></li><li><a href="#s3">切り替える手順</a></li><li><a href="#s4">上げたあとの表示の確認</a></li><li><a href="#s5">元に戻す方法</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029p"></script>
+</body>
+</html>
