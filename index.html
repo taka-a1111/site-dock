@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 2026-10-29f -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>サイトドック｜ホームページの弱点を数十秒で無料診断</title>
+<meta name="description" content="古いPHP、更新されていないプラグイン、外から読めるログイン名。攻撃者が最初に確かめる弱点を、URLを入れるだけで数十秒で判定します。登録不要・無料です。">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="service.html">診断について</a><a href="price.html">料金</a><a href="partner.html">制作会社さまへ</a><a href="blog/index.html">ブログ</a><a href="faq.html">よくある質問</a><a href="./#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1><span class="nb">そのホームページ、</span><br><span class="nb">攻撃者には丸見えです。</span></h1>
+        <p class="hero-lead">古いPHP、更新されていないプラグイン、外から読めるログイン名。攻撃者が最初に確かめる弱点を、URLを入れるだけで数十秒で判定します。</p>
+        <form class="scan-form" id="scanForm" data-scan>
+          <div class="scan-row">
+            <label for="domain1">診断するサイトのURL</label>
+            <input id="domain1" type="text" inputmode="url" autocomplete="url" placeholder="example.com" required>
+            <button class="btn btn-scan" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>無料で診断する</button>
+          </div>
+          <p class="scan-note">https:// は不要です。サイトへの書き込みやログインの試行はしません。</p>
+        </form>
+        <div class="checks">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg>登録なしで判定まで無料</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg>サイトに負荷をかけない</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"/></svg>結果は数十秒</span>
+        </div>
+        <div class="mail-box" id="mailBox">
+          <strong>詳しい結果票をメールで受け取る</strong>
+          <p>危ないプラグインの名前と、判定ごとの直し方の手順をお送りします。</p>
+          <form class="mail-row" data-mail>
+            <label for="mail1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">メールアドレス</label>
+            <input id="mail1" type="email" inputmode="email" autocomplete="email" placeholder="info@example.com" required>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+            <button class="btn btn-mail" type="submit">結果票を受け取る</button>
+          </form>
+          <p class="mail-note">メールアドレスのドメインがサイトと違う場合は、サイトの持ち主の確認をしてからお送りします。</p>
+          <p class="form-msg" role="status"></p>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="photo"><img src="img/claude-hero.jpg" alt="ノートパソコンの上に置かれた聴診器" width="1200" height="900"></div>
+        <div class="sheet" id="sheet" aria-live="polite">
+          <span class="sample-tag" id="sheetTag">結果の見本</span>
+          <div class="sheet-head">
+            <div class="sheet-title">サイト健診 結果票</div>
+            <div class="sheet-meta">受診サイト <span id="sheetDomain">www.example.com</span><br>受診日 <span id="sheetDate">2026年10月29日</span></div>
+          </div>
+          <table>
+            <tbody>
+              <tr><th scope="row">SSL証明書</th><td class="val" data-v="有効（残り212日）">有効（残り212日）</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
+              <tr><th scope="row">PHP</th><td class="val" data-v="8.1（サポート終了）">8.1（サポート終了）</td><td class="grade"><span class="g gD" data-g="D">D</span></td></tr>
+              <tr><th scope="row">WordPress本体</th><td class="val" data-v="最新版">最新版</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
+              <tr><th scope="row">プラグイン</th><td class="val" data-v="配布停止1件">配布停止1件</td><td class="grade"><span class="g gE" data-g="E">E</span></td></tr>
+              <tr><th scope="row">ログイン名</th><td class="val" data-v="外から見える状態">外から見える状態</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
+              <tr><th scope="row">不要なファイル</th><td class="val" data-v="readmeが残っている">readmeが残っている</td><td class="grade"><span class="g gB" data-g="B">B</span></td></tr>
+              <tr><th scope="row">セキュリティ設定</th><td class="val" data-v="6項目中2項目">6項目中2項目</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
+            </tbody>
+          </table>
+          <div class="sheet-foot">
+            <p id="sheetFoot">弱点のあるプラグインの更新を、早めにおすすめします。</p>
+            <div class="stamp" id="stamp" aria-label="総合判定 要対策"><small>総合判定</small><span>要対策</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <div><b>その場で判定</b>URLを入れて数十秒で、7項目の結果が出ます</div>
+      <div><b>非侵入型</b>ふつうの閲覧と同じアクセスだけで点検します</div>
+      <div><b>直し方つき</b>結果票に、判定ごとの直し方を書いてお送りします</div>
+      <div><b>再診断は無料</b>詳細診断のあと、直したところをもう一度確かめます</div>
+    </div>
+  </div>
+
+  <section class="feat-sec" id="features">
+    <div class="wrap">
+      <div class="feat-top">
+        <div class="sec-head">
+          <h2>見つけるだけで終わらない、6つの特長</h2>
+          <p>判定を出したあと、直すところまで同じ担当者が見届けます。自分で直したい方には、手順をお渡しします。</p>
+        </div>
+        <div class="feat-photo"><img src="img/claude-work.jpg" alt="キーボードで作業する手元" width="1280" height="720" loading="lazy"></div>
+      </div>
+      <div class="feats">
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+          <h3>その場で結果がわかる</h3>
+          <p>URLを入れて数十秒で、7項目の判定が画面に出ます。何日も待つ必要はありません。</p>
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <h3>自分で直せる手順つき</h3>
+          <p>結果票には、判定ごとの直し方を書きます。社内で対応できるものは、そのまま進められます。</p>
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg>
+          <h3>改ざんをすぐ検知</h3>
+          <p>定期診断では、ページの中身を毎日比べます。書き換えを見つけたら、すぐにご連絡します。</p>
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z"/></svg>
+          <h3>対策まで同じ担当者</h3>
+          <p>診断した担当者が、PHPやプラグインの更新、設定の見直しまで行います。説明のやり直しがいりません。</p>
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 20 11 15 11"/><path d="M19.4 15a8 8 0 11-1.6-8.4L20 11"/></svg>
+          <h3>対策後の再診断は無料</h3>
+          <p>詳細診断のあと、直したところをもう一度点検して、判定が上がったことを確かめます。</p>
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+          <h3>制作会社さま向けプラン</h3>
+          <p>お客さまのサイトをまとめて点検し、御社の名前で報告書を出せます。保守のメニューに加えられます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="items">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>無料の簡易診断で、7つの項目を点検します</h2>
+        <p>どれも、攻撃する側が最初に外から確かめるところです。専門用語がわからなくても読めるように、放っておくと何が起きるかまで結果票に書きます。</p>
+      </div>
+      <div class="items-wrap">
+      <table class="items">
+        <thead><tr><th scope="col">検査項目</th><th scope="col">見ているところ</th><th scope="col">放っておくと</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">SSL証明書</th><td data-label="見ているところ">証明書が有効か、期限が近づいていないか</td><td data-label="放っておくと">ブラウザに「保護されていない通信」と出て、問い合わせが減ります</td></tr>
+          <tr><th scope="row">PHP</th><td data-label="見ているところ">サーバーで動いているPHPのバージョン</td><td data-label="放っておくと">サポートが終わった版は、新しく見つかった弱点が直されません</td></tr>
+          <tr><th scope="row">WordPress本体</th><td data-label="見ているところ">本体のバージョンと、更新が止まっていないか</td><td data-label="放っておくと">公表済みの弱点を狙った攻撃の的になります</td></tr>
+          <tr><th scope="row">プラグイン</th><td data-label="見ているところ">外から分かるプラグインが、最新版から遅れていないか、配布停止になっていないか</td><td data-label="放っておくと">改ざんや不正なページの埋め込みの入り口になりやすい部分です</td></tr>
+          <tr><th scope="row">ログイン名</th><td data-label="見ているところ">管理画面のログイン名が外から読み取れないか</td><td data-label="放っておくと">パスワードを総当たりで試す攻撃を受けやすくなります</td></tr>
+          <tr><th scope="row">不要なファイル</th><td data-label="見ているところ">説明ファイルやファイルの一覧が、公開されたままになっていないか</td><td data-label="放っておくと">バージョンや中身が外から知られ、攻撃の手がかりになります</td></tr>
+          <tr><th scope="row">セキュリティ設定</th><td data-label="見ているところ">ブラウザに守り方を指示する設定（セキュリティヘッダー）</td><td data-label="放っておくと">なりすましページへの埋め込みなどを防ぎにくくなります</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint-sec" id="scale">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>判定は、健康診断と同じA〜Eの5段階です</h2>
+        <p>どこから手をつければいいかが、ひと目でわかります。</p>
+      </div>
+      <div class="scale">
+        <div><span class="g gA">A</span><strong>異常なし</strong><p>今のところ問題は見つかりませんでした。</p></div>
+        <div><span class="g gB">B</span><strong>軽い注意</strong><p>すぐの危険はありませんが、次の更新のときに直しましょう。</p></div>
+        <div><span class="g gC">C</span><strong>経過観察</strong><p>単独では危険が小さくても、ほかの弱点と重なると狙われます。</p></div>
+        <div><span class="g gD">D</span><strong>要対策</strong><p>弱点が残っています。1か月以内の対策をおすすめします。</p></div>
+        <div><span class="g gE">E</span><strong>至急対策</strong><p>攻撃に使われている弱点です。できるだけ早く対策してください。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>料金</h2>
+        <p>まずは無料の簡易診断から。判定を見てから、必要なものだけ選んでいただけます。</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <span class="rec-label"></span>
+          <div class="plan-name">無料簡易診断</div>
+          <p class="plan-for">まず今の状態を知りたい方に</p>
+          <div class="price">0<small>円</small></div>
+          <p class="price-sub">登録なしで判定まで</p>
+          <ul>
+            <li>7項目を自動で点検</li>
+            <li>判定をその場で表示</li>
+            <li>詳しい結果票をメールでお届け</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <span class="rec-label"></span>
+          <div class="plan-name">詳細診断</div>
+          <p class="plan-for">気になる判定が出た方、中まで確かめたい方に</p>
+          <div class="price">29,800<small>円</small></div>
+          <p class="price-sub">1サイト・1回</p>
+          <ul>
+            <li>簡易診断の全項目</li>
+            <li>管理画面とサーバー設定の確認</li>
+            <li>プラグインとアカウントの棚卸し</li>
+            <li>報告書（PDF）と対策の優先順位</li>
+            <li>結果のご説明（オンライン30分）</li>
+            <li>対策後の再診断1回無料</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <span class="rec-label"></span>
+          <div class="plan-name">定期診断ライト</div>
+          <p class="plan-for">自分で更新できる方の見張り役に</p>
+          <div class="price">4,980<small>円／月</small></div>
+          <p class="price-sub">1サイト</p>
+          <ul>
+            <li>週1回の自動点検</li>
+            <li>月1回の結果票</li>
+            <li>使っているプラグインに新しい弱点が出たらメールでお知らせ</li>
+            <li>SSL証明書とドメインの期限のお知らせ</li>
+          </ul>
+        </div>
+        <div class="plan rec">
+          <span class="rec-label">おすすめ</span>
+          <div class="plan-name">定期診断スタンダード</div>
+          <p class="plan-for">更新作業までまるごと任せたい方に</p>
+          <div class="price">19,800<small>円／月</small></div>
+          <p class="price-sub">1サイト</p>
+          <ul>
+            <li>毎日の自動点検</li>
+            <li>改ざんの検知とご連絡</li>
+            <li>月1回のPHP・プラグイン更新の代行</li>
+            <li>更新前のバックアップ</li>
+            <li>月1回の報告書</li>
+            <li>緊急時の初動対応（サイトの一時停止・復旧の手配）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="extra">
+        <div>
+          <strong>対策作業（単発）</strong>
+          <p>PHPの更新、プラグインの更新、不要なアカウントの整理、WAFの設定など。診断結果をもとにお見積もりします。</p>
+        </div>
+        <div class="price">14,800<small>円〜</small></div>
+      </div>
+      <p class="tax-note">表示はすべて税込です。</p>
+    </div>
+  </section>
+
+  <section class="tint-sec" id="flow">
+    <div class="wrap">
+      <div class="sec-head"><h2>ご利用の流れ</h2></div>
+      <ol class="flow">
+        <li><h3>URLを入力</h3><p>診断したいサイトのURLを入れて、ボタンを押すだけです。登録はいりません。</p></li>
+        <li><h3>その場で判定</h3><p>数十秒で、7項目の判定と総合判定が画面に出ます。</p></li>
+        <li><h3>結果票を受け取る</h3><p>メールアドレスを入れると、危ないプラグインの名前と直し方を書いた結果票が届きます。</p></li>
+        <li><h3>必要な対策だけ相談</h3><p>気になる判定があれば、詳細診断や対策作業をご相談ください。無理におすすめはしません。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="partner">
+    <div class="wrap">
+      <div class="partner">
+        <div class="partner-photo"><img src="img/claude-office.jpg" alt="打ち合わせ用のテーブルとノートパソコン" width="1280" height="960" loading="lazy"></div>
+        <div class="partner-body">
+          <h2>制作会社さま、保守会社さまへ</h2>
+          <p>お客さまのサイトの点検を、まとめてお任せいただけます。報告書は御社の名前で出せるので、保守メニューの一つとしてお使いいただけます。</p>
+          <ul>
+            <li>複数サイトの一括点検と、サイトごとの結果票</li>
+            <li>御社名・ロゴ入りの報告書</li>
+            <li>PHP更新などの対策作業も、御社の名前で代行</li>
+          </ul>
+          <p>料金はサイト数に応じてお見積もりします。</p>
+          <p style="margin-top:18px"><a class="btn btn-line" href="partner.html">制作会社さま向けの詳しい内容</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint-sec" id="about">
+    <div class="wrap about">
+      <div class="about-text">
+        <div class="sec-head" style="margin-bottom:24px"><h2>点検するのは、WordPressを12年以上つくってきた担当者です</h2></div>
+        <p class="first">自動の点検で見つけた弱点は、詳細診断と対策作業で、同じ担当者が最後まで直します。</p>
+        <p>これまで、中小企業のWordPressサイトのセキュリティ調査と、PHPの更新、プラグインの更新、使われていないアカウントの整理、WAFの設定までを手がけてきました。</p>
+      </div>
+      <dl>
+        <dt>運営</dt><dd>インフォサクセス</dd>
+        <dt>担当</dt><dd>高崎</dd>
+        <dt>所在地</dt><dd>愛知県名古屋市</dd>
+        <dt>経験</dt><dd>WordPress制作 12年以上、SEO 15年以上</dd>
+        <dt>資格</dt><dd>SEO検定1級</dd>
+        <dt>対応時間</dt><dd>平日 9:00〜18:00</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2>よくある質問</h2></div>
+      <div class="faq">
+        <details><summary>診断でサイトが止まったり、重くなったりしませんか。</summary><p>簡易診断は、ふつうにページを閲覧するのと同じアクセスを数回行うだけです。書き込みやログインの試行はしないので、サイトの動きには影響しません。</p></details>
+        <details><summary>他人のサイトも診断できてしまいませんか。</summary><p>画面に出るのは判定だけです。危ないプラグインの名前などを書いた詳しい結果票は、メールアドレスのドメインがサイトと同じでない場合、サイトの持ち主であることを確認してからお送りします。</p></details>
+        <details><summary>WordPress以外のサイトでも使えますか。</summary><p>SSL証明書、PHP、不要なファイル、セキュリティ設定は、どのサイトでも点検できます。プラグインとログイン名の項目はWordPressのサイトが対象です。</p></details>
+        <details><summary>制作会社につくってもらったサイトでも大丈夫ですか。</summary><p>大丈夫です。結果票は制作会社さまにそのまま転送していただける書き方にしています。対策を制作会社さまにお願いするか、こちらで行うかはお選びいただけます。</p></details>
+        <details><summary>悪い判定が出たら、必ず有料の対策が必要ですか。</summary><p>いいえ。結果票には、ご自身で直せるものはその手順も書いています。手が回らないときだけ、ご相談ください。</p></details>
+        <details><summary>支払い方法を教えてください。</summary><p>請求書をお送りしますので、銀行振込でお支払いください。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-blog" id="blog">
+    <div class="wrap">
+      <div class="sec-head"><h2>ブログ　ホームページを守るための知識</h2><p>PHPの更新、改ざんの見分け方、WordPressの設定まで。中小企業の担当者向けに、毎日1本ずつ書いています。</p></div>
+      <div class="blog-grid"><a class="post-card" href="blog/php-support-end.html" data-cat="PHP・サーバー"><div class="post-thumb "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg></div><div class="post-body"><div class="post-meta"><span class="post-cat">PHP・サーバー</span><time>2026.11.02</time></div><h3>PHPのサポート終了とは？放置したホームページに起きることと確認方法</h3></div></a><div class="post-card soon" data-cat="改ざん・被害対応"><div class="post-thumb k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.5 2 19a2 2 0 0 0 1.8 3h16.4A2 2 0 0 0 22 19L13.7 3.5a2 2 0 0 0-3.4 0Z"/><path d="M12 9v5M12 18h.01"/></svg></div><div class="post-body"><div class="post-meta"><span class="post-cat">改ざん・被害対応</span><span>11月3日（火）公開予定</span></div><h3>ホームページが改ざんされたかも？今すぐ確認したい7つのサイン</h3></div></div><div class="post-card soon" data-cat="WordPress・プラグイン"><div class="post-thumb w"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 9l4 10 3-7 3 7 4-10"/></svg></div><div class="post-body"><div class="post-meta"><span class="post-cat">WordPress・プラグイン</span><span>11月4日（水）公開予定</span></div><h3>WordPressのバージョンを確認する方法（管理画面と外からの両方）</h3></div></div></div>
+      <p class="blog-more"><a class="btn btn-line" href="blog/index.html">記事の一覧を見る</a></p>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="wrap">
+      <div>
+        <h2>狙われる前に、<br>弱点をふさぐ。</h2>
+        <p class="lead">URLを入れるだけで、数十秒で判定が出ます。登録はいりません。結果を見てから、次に何をするか決めてください。</p>
+      </div>
+      <form class="scan-form" data-scan style="margin-top:0">
+        <div class="scan-row">
+          <label for="domain2">診断するサイトのURL</label>
+          <input id="domain2" type="text" inputmode="url" autocomplete="url" placeholder="example.com" required>
+          <button class="btn btn-scan" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>無料で診断する</button>
+        </div>
+        <p class="scan-note">https:// は不要です。サイトへの書き込みやログインの試行はしません。</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="./" class="logo"><img class="logo-img" src="assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="service.html">診断について</a><a href="price.html">料金</a><a href="partner.html">制作会社さまへ</a><a href="blog/index.html">ブログ</a><a href="faq.html">よくある質問</a><a href="about.html">運営者情報</a><a href="contact.html">お問い合わせ</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+    <div class="foot-meta"><span>運営　インフォサクセス（愛知県名古屋市）</span><span>&copy; 2026 サイトドック <span class="build">BUILD_TAG 2026-10-29f</span></span></div>
+  </div>
+</footer>
+
+<script>
+console.log("BUILD_TAG: 2026-10-29f");
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sheet = document.getElementById('sheet');
+  var tbody = sheet.querySelector('tbody');
+  var stamp = document.getElementById('stamp');
+  var foot = document.getElementById('sheetFoot');
+  var tag = document.getElementById('sheetTag');
+  var running = false, last = null;
+  var LABELS = ['SSL証明書','PHP','WordPress本体','プラグイン','ログイン名','不要なファイル','セキュリティ設定'];
+
+  function clean(v){
+    v = (v || '').trim().replace(/^https?:\/\//i,'').replace(/[\/?#].*$/,'');
+    return v.toLowerCase();
+  }
+  function today(){
+    var d = new Date();
+    return d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
+  }
+  function row(label, value, grade, wait){
+    var tr = document.createElement('tr');
+    if (wait) tr.className = 'wait';
+    var th = document.createElement('th'); th.scope = 'row'; th.textContent = label;
+    var v = document.createElement('td'); v.className = 'val'; v.textContent = value;
+    var gtd = document.createElement('td'); gtd.className = 'grade';
+    var g = document.createElement('span');
+    if (wait) { g.className = 'g gW'; }
+    else if (grade === '-') { g.className = 'g gN'; g.textContent = '−'; g.title = '判定なし'; }
+    else { g.className = 'g g' + grade; g.textContent = grade; }
+    gtd.appendChild(g); tr.appendChild(th); tr.appendChild(v); tr.appendChild(gtd);
+    return tr;
+  }
+  function setStamp(label){
+    stamp.classList.remove('st-ok','st-warn');
+    if (label === '良好') stamp.classList.add('st-ok');
+    if (label === '要注意') stamp.classList.add('st-warn');
+    stamp.querySelector('span').textContent = label;
+    stamp.setAttribute('aria-label', '総合判定 ' + label);
+  }
+  function start(domain){
+    document.getElementById('sheetDomain').textContent = domain;
+    document.getElementById('sheetDate').textContent = today();
+    tag.textContent = '診断中';
+    foot.textContent = '点検しています。数十秒お待ちください…';
+    stamp.classList.add('off');
+    tbody.innerHTML = '';
+    LABELS.forEach(function(l){ tbody.appendChild(row(l, '点検中…', '', true)); });
+  }
+  function fail(msg){
+    tag.textContent = '診断できませんでした';
+    foot.textContent = msg;
+    tbody.querySelectorAll('tr').forEach(function(tr){ tr.classList.remove('wait'); tr.querySelector('.val').textContent = '—'; });
+    running = false;
+  }
+  function show(data){
+    var trs = tbody.querySelectorAll('tr');
+    var step = reduce ? 0 : 320;
+    data.rows.forEach(function(r, i){
+      setTimeout(function(){
+        var n = row(r.label, r.value, r.grade, false);
+        if (trs[i]) tbody.replaceChild(n, trs[i]); else tbody.appendChild(n);
+      }, i * step);
+    });
+    setTimeout(function(){
+      setStamp(data.overall.label);
+      stamp.classList.remove('off');
+      tag.textContent = '診断結果';
+      foot.textContent = data.advice;
+      document.getElementById('mailBox').classList.add('show');
+      running = false;
+    }, data.rows.length * step + 200);
+  }
+  function scan(domain){
+    if (running) return;
+    running = true;
+    start(domain);
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 45000);
+    fetch('/api/scan?url=' + encodeURIComponent(domain), ctrl ? { signal: ctrl.signal } : {})
+      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, j: j }; }); })
+      .then(function(x){
+        clearTimeout(timer);
+        if (!x.ok || !x.j.rows) return fail((x.j && x.j.message) || '診断できませんでした。少し待ってからお試しください。');
+        last = x.j; show(x.j);
+      })
+      .catch(function(){ clearTimeout(timer); fail('通信がうまくいきませんでした。少し待ってからお試しください。'); });
+  }
+  document.querySelectorAll('[data-scan]').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = clean(f.querySelector('input').value);
+      if (!d || d.indexOf('.') < 0) { f.querySelector('input').focus(); return; }
+      var narrow = window.matchMedia('(max-width:980px)').matches;
+      var box = document.getElementById('mailBox');
+      box.classList.remove('show');
+      var msg = box.querySelector('.form-msg'); msg.classList.remove('show');
+      if (narrow) { document.querySelector('.hero .visual').after(box); box.style.marginTop = '20px'; }
+      (narrow ? sheet : document.getElementById('top')).scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+      scan(d);
+    });
+  });
+  document.querySelectorAll('[data-mail]').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msg = f.parentNode.querySelector('.form-msg');
+      var btn = f.querySelector('button');
+      if (!last) { msg.textContent = '先にサイトを診断してください。'; msg.classList.add('show'); return; }
+      btn.disabled = true;
+      fetch('/api/request', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({
+        kind: 'report', domain: last.domain, email: f.querySelector('input[type=email]').value,
+        overall: last.overall.label, website: (f.querySelector('[name=website]') || {}).value || ''
+      }) })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if (!j.ok) { msg.textContent = j.message || '受付に失敗しました。'; btn.disabled = false; }
+          else if (j.needsOwnerCheck) { msg.textContent = '受け付けました。メールアドレスのドメインがサイトと違うため、先にサイトの持ち主の確認についてご連絡します。'; }
+          else { msg.textContent = '受け付けました。結果票は1営業日以内にお送りします。'; }
+          msg.classList.add('show');
+        })
+        .catch(function(){ msg.textContent = '通信がうまくいきませんでした。少し待ってからお試しください。'; msg.classList.add('show'); btn.disabled = false; });
+    });
+  });
+})();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "site-dock",
+  "private": true,
+  "description": "サイトドック（WordPressサイトの無料簡易診断）",
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 2026-10-29f -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>診断について｜サイトドック</title>
+<meta name="description" content="サイトドックの無料簡易診断・詳細診断・定期診断で、何をどこまで点検するかをまとめています。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="service.html" class="current" aria-current="page">診断について</a><a href="price.html">料金</a><a href="partner.html">制作会社さまへ</a><a href="blog/index.html">ブログ</a><a href="faq.html">よくある質問</a><a href="./#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+  <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="./">トップ</a> / 診断について</nav>
+    <h1>何を、どこまで点検するのか</h1>
+    <p>無料の簡易診断は、外から見える範囲だけを点検します。詳細診断と定期診断では、管理画面やサーバーの設定まで確かめます。</p>
+  </div></div>
+<section class="sub-sec">
+  <div class="wrap">
+    <h2 class="sec-title">無料簡易診断のしくみ</h2>
+    <p class="sec-lead">攻撃する側は、まず外から見える情報でサイトの弱点を探します。サイトドックは、その同じ情報を先に確かめます。</p>
+    <div class="points">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><h3>ふつうの閲覧と同じアクセス</h3><p>ページや公開ファイルを数回読みに行くだけです。書き込み、ログインの試行、負荷をかけるアクセスはしません。</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg><h3>最新版・サポート期限と照合</h3><p>見つかったPHP・WordPress・プラグインのバージョンを、最新版やサポート期限と照らし合わせます。弱点の情報との細かな照合は詳細診断で行います。</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><h3>A〜Eの判定と直し方</h3><p>画面には7項目の判定を表示します。詳しい結果票には、危ないプラグインの名前と直し方の手順を書きます。</p></div>
+    </div>
+  </div>
+</section>
+<section class="sub-sec">
+  <div class="wrap">
+    <h2 class="sec-title">点検する7つの項目</h2>
+    <div class="items-wrap"><table class="items">
+      <thead><tr><th scope="col">検査項目</th><th scope="col">見ているところ</th><th scope="col">判定の目安</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">SSL証明書</th><td data-label="見ているところ">証明書が有効か、期限まであと何日か</td><td data-label="判定の目安">残り14日を切るとC、7日でD、切れているかエラーならE</td></tr>
+        <tr><th scope="row">PHP</th><td data-label="見ているところ">外から読み取れるPHPのバージョン</td><td data-label="判定の目安">終了が半年以内ならC、終わった版はD、1年以上前に終わった版はE</td></tr>
+        <tr><th scope="row">WordPress本体</th><td data-label="見ているところ">本体のバージョンと最新版との差</td><td data-label="判定の目安">修正版が未適用ならC、2つ以上古い版はD以下</td></tr>
+        <tr><th scope="row">プラグイン</th><td data-label="見ているところ">外から分かるプラグインと、その最新版との差</td><td data-label="判定の目安">更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</td></tr>
+        <tr><th scope="row">ログイン名</th><td data-label="見ているところ">投稿者ページやREST APIからログイン名が読めるか</td><td data-label="判定の目安">読み取れればC</td></tr>
+        <tr><th scope="row">不要なファイル</th><td data-label="見ているところ">説明ファイル（readme）の残り、アップロード先のファイル一覧の公開</td><td data-label="判定の目安">readmeが残っていればB、ファイル一覧が見えればD</td></tr>
+        <tr><th scope="row">セキュリティ設定</th><td data-label="見ているところ">セキュリティヘッダー6項目の有無</td><td data-label="判定の目安">5項目以上でA、4でB、2〜3でC、1でD、0でE</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note-box" style="margin-top:20px">外から版が読み取れない項目は「−」（判定なし）と表示します。版を隠す設定は、それ自体がよい対策です。総合判定は、いちばん悪い項目がDかEなら「要対策」、Cなら「要注意」、それ以外は「良好」です。</p>
+  </div>
+</section>
+<section class="sub-sec tint">
+  <div class="wrap two-col">
+    <div>
+      <h2 class="sec-title">詳細診断で追加で見るところ</h2>
+      <ul class="checklist">
+        <li>管理画面のユーザーと権限（使っていないアカウント、管理者の数）</li>
+        <li>プラグイン・テーマの一覧と更新状況（止まっているもの、配布が終わったもの）</li>
+        <li>サーバーのPHP設定、WAF、自動バックアップの設定</li>
+        <li>公開フォルダに残った不要ファイルとファイルの権限</li>
+        <li>お問い合わせフォームと個人情報の扱い</li>
+      </ul>
+      <p style="margin-top:16px;color:var(--ink-mid)">ログイン情報をお預かりして確認し、報告書（PDF）と対策の優先順位をお渡しします。</p>
+    </div>
+    <div>
+      <h2 class="sec-title">定期診断で毎日見るところ</h2>
+      <ul class="checklist">
+        <li>ページの中身の変化（書き換えや、見覚えのないページの追加）</li>
+        <li>使っているプラグインに出た新しい弱点</li>
+        <li>SSL証明書とドメインの期限</li>
+        <li>サイトが表示されているか</li>
+      </ul>
+      <p style="margin-top:16px;color:var(--ink-mid)">異常を見つけたら、営業日のうちにメールでご連絡します。</p>
+    </div>
+  </div>
+</section>
+<section class="sub-sec" style="padding-top:72px">
+  <div class="wrap two-col">
+    <div>
+      <h2 class="sec-title">他人のサイトは診断できません</h2>
+      <p>画面に出るのは判定だけです。危ないプラグインの名前などを書いた詳しい結果票は、次のどちらかで持ち主であることを確かめてからお送りします。</p>
+      <ul class="checklist" style="margin-top:12px">
+        <li>結果を受け取るメールアドレスが、サイトと同じドメインであること</li>
+        <li>サイトに、こちらがお渡しする確認用のタグを置いていただくこと</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="sec-title">無料簡易診断でわからないこと</h2>
+      <ul class="checklist no">
+        <li>管理画面の中の設定や、ユーザーの権限</li>
+        <li>サーバーの中にあるファイルの改ざん</li>
+        <li>外からバージョンが読めないプラグイン</li>
+        <li>WordPress以外の独自システムの弱点</li>
+      </ul>
+      <p style="margin-top:16px;color:var(--ink-mid)">これらは詳細診断で確かめます。</p>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="./#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="./" class="logo"><img class="logo-img" src="assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="service.html">診断について</a><a href="price.html">料金</a><a href="partner.html">制作会社さまへ</a><a href="blog/index.html">ブログ</a><a href="faq.html">よくある質問</a><a href="about.html">運営者情報</a><a href="contact.html">お問い合わせ</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+    <div class="foot-meta"><span>運営　インフォサクセス（愛知県名古屋市）</span><span>&copy; 2026 サイトドック <span class="build">BUILD_TAG 2026-10-29f</span></span></div>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

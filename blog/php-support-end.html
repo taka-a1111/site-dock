@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 2026-10-29f -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PHPのサポート終了とは？放置したホームページに起きることと確認方法｜サイトドック</title>
+<meta name="description" content="PHPのサポート終了の意味と、放置したホームページに起きること、自分のサイトのPHPのバージョンを確かめる方法をまとめます。">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+  <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1>PHPのサポート終了とは？放置したホームページに起きることと確認方法</h1>
+    <p>2026.11.02　PHP・サーバー</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <p>PHPは、WordPressをはじめ多くのホームページを動かしているプログラムの言語です。PHPにはバージョンごとに「サポート期間」があり、期間が終わると、新しく見つかった弱点が直されなくなります。この記事では、サポート終了の意味と、放置したサイトに起きること、自分のサイトのバージョンを確かめる方法をまとめます。</p>
+    <h2 id="s1">PHPのサポート終了とは</h2>
+    <p>PHPの各バージョンは、公開からおよそ2年間は不具合と弱点の両方が直され、その後のおよそ2年間は弱点の修正だけが続きます。その期間が終わった状態が「サポート終了」です。</p>
+    <table><thead><tr><th>バージョン</th><th>弱点の修正が続く期限</th><th>状態（2026年10月時点）</th></tr></thead><tbody>
+      <tr><td>7.4</td><td>2022年11月28日</td><td>サポート終了</td></tr>
+      <tr><td>8.0</td><td>2023年11月26日</td><td>サポート終了</td></tr>
+      <tr><td>8.1</td><td>2025年12月31日</td><td>サポート終了</td></tr>
+      <tr><td>8.2</td><td>2026年12月31日</td><td>弱点の修正のみ（まもなく終了）</td></tr>
+      <tr><td>8.3</td><td>2027年12月31日</td><td>弱点の修正のみ</td></tr>
+      <tr><td>8.4</td><td>2028年12月31日</td><td>通常のサポート中</td></tr>
+      <tr><td>8.5</td><td>2029年12月31日</td><td>通常のサポート中</td></tr>
+    </tbody></table>
+    <p class="src">出典：PHP公式サイト「Supported Versions」「Unsupported Branches」（2026年10月に確認）</p>
+    <h2 id="s2">放置したホームページに起きること</h2>
+    <h3>新しい弱点が直されない</h3>
+    <p>サポートが終わったバージョンで弱点が見つかっても、修正版は出ません。攻撃の方法が広まったあとも、そのサイトは弱点を抱えたまま動き続けます。</p>
+    <h3>プラグインやWordPress本体を更新できなくなる</h3>
+    <p>新しいWordPressやプラグインは、古いPHPを対象から外していきます。PHPが古いままだと、本体やプラグインの更新も止まり、弱点が重なっていきます。</p>
+    <h3>表示が崩れる・動かなくなる</h3>
+    <p>サーバー会社が古いPHPの提供を終えると、自動で新しいバージョンに切り替わることがあります。準備をしていないと、その日を境にサイトが表示されなくなることもあります。</p>
+    <h2 id="s3">自分のサイトのPHPのバージョンを確かめる方法</h2>
+    <ol>
+      <li>レンタルサーバーの管理画面で、ドメインごとのPHPのバージョンを見る</li>
+      <li>WordPressの管理画面の「ツール」→「サイトヘルス」→「情報」→「サーバー」を見る</li>
+      <li>管理画面に入れない場合は、<a href="../#top">サイトドックの無料簡易診断</a>で外から確かめる</li>
+    </ol>
+    <p>外からバージョンが読めないように設定されているサイトもあります。その場合は、1か2の方法で確かめてください。</p>
+    <h2 id="s4">バージョンを上げる前に確認すること</h2>
+    <ul>
+      <li>サイト全体のバックアップを取る</li>
+      <li>WordPress本体、プラグイン、テーマを先に最新にする</li>
+      <li>配布が終わったプラグインがないか確かめる</li>
+      <li>切り替えたあと、トップページ、お問い合わせフォーム、管理画面を確かめる</li>
+    </ul>
+    <p>表示が崩れたときにすぐ元のバージョンへ戻せるよう、作業はアクセスの少ない時間に行います。</p>
+    <div class="art-cta"><strong>あなたのサイトのPHPは大丈夫ですか</strong><p>URLを入れるだけで、PHPのバージョンを含む7項目を数十秒で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+    <h2 id="s5">まとめ</h2>
+    <p>PHPのサポートが終わると、弱点が直されず、ほかの更新も止まっていきます。まずは今のバージョンを確かめ、8.3以降への更新を計画してください。作業に不安があれば、<a href="../price.html">対策作業</a>でお手伝いします。</p>
+    <div class="author"><div><b>この記事を書いた人</b><br>高崎（インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。</div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol>
+    <li><a href="#s1">PHPのサポート終了とは</a></li><li><a href="#s2">放置したホームページに起きること</a></li><li><a href="#s3">バージョンを確かめる方法</a></li><li><a href="#s4">上げる前に確認すること</a></li><li><a href="#s5">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+    <div class="foot-meta"><span>運営　インフォサクセス（愛知県名古屋市）</span><span>&copy; 2026 サイトドック <span class="build">BUILD_TAG 2026-10-29f</span></span></div>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

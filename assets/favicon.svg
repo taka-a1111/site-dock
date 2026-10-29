@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 112" width="123" height="112" role="img" aria-label="サイトドック"><title>サイトドック</title><rect x="4" y="6" width="100" height="78" rx="12" fill="#12343B"/>
+<rect x="13" y="27" width="82" height="48" rx="5" fill="#FFFFFF"/>
+<circle cx="18" cy="16.5" r="3.6" fill="#FFFFFF"/><circle cx="28" cy="16.5" r="3.6" fill="#FFFFFF"/><circle cx="38" cy="16.5" r="3.6" fill="#FFFFFF"/>
+<path d="M21 54 H38" fill="none" stroke="#5FB39C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M38 54 L45.5 36 L53.5 66" fill="none" stroke="#D8534F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.5 66 L59.5 51 H84" fill="none" stroke="#5FB39C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 60 L117 67.5 V81.5 C117 93.5 109 101.5 98 106 C87 101.5 79 93.5 79 81.5 V67.5 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="11" stroke-linejoin="round"/>
+<path d="M98 60 L117 67.5 V81.5 C117 93.5 109 101.5 98 106 C87 101.5 79 93.5 79 81.5 V67.5 Z" fill="#FFFFFF" stroke="#12343B" stroke-width="6" stroke-linejoin="round"/>
+<path d="M88.5 82.5 L95.5 89.5 L108 76" fill="none" stroke="#5FB39C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
