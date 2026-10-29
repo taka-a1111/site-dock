@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261029q -->
+<!-- BUILD_TAG: 20261029r -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>エックスサーバーでPHPのバージョンを上げる手順と事前チェック｜サイトドック</title>
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261029q">
+<link rel="stylesheet" href="../assets/style.css?v=20261029r">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "エックスサーバーでPHPのバージョンを上げる手順と事前チェック", "description": "エックスサーバーでPHPのバージョンを上げる手順を、事前チェックから切り替え後の確認、元に戻す方法まで順に解説します。PHP 8.2が2026年末で終わる前の準備にお使いください。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-004-v2.webp", "datePublished": "2026-11-05", "dateModified": "2026-11-05", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/xserver-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを切り替えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えの作業でサイトが長く止まることは、ふつうはありません。ただし、テーマやプラグインが新しい版に対応していないと、エラーで表示されなくなることがあります。そのため、アクセスの少ない時間帯に作業するのが安心です。切り替えたらすぐに表示を確かめ、問題があれば元の版に戻しましょう。事前にバックアップを取っておけば、万一のときも落ち着いて対応できます。"}}, {"@type": "Question", "name": "エックスサーバーで選べるPHPのバージョンはどれですか？", "acceptedAnswer": {"@type": "Answer", "text": "エックスサーバーのマニュアルでは、PHP 7.2から8.5までの版が選べると案内されています。ただし、修正が届く期限が切れた古い版も含まれています。選べるからといって、安全とは限りません。2026年10月時点では、8.3以上を選ぶのが基本です。8.2は2026年12月31日でサポートが終わるため、新しく選ぶのは避けてください。"}}, {"@type": "Question", "name": "PHPのバージョンは、どのくらいの頻度で上げればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "使っている版のサポートが終わる前に上げるのが目安です。PHPは毎年1つずつ新しい版が出て、それぞれ約4年でサポートが終わります。数年に1回は切り替えが必要になると考えておきましょう。年に1回、PHPの公式サイトで期限を確かめる習慣をつけると、慌てずに済みます。WordPressの管理画面に更新のお知らせが出たときも、見直すきっかけにしてください。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で切り替えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えの操作そのものは同じです。サーバーパネルの「PHP Ver.切替」から、ドメインごとに版を選びます。ただし、WordPress以外のサイトでは、サイトヘルスのような確認の画面がありません。自作のプログラムや古いシステムを使っている場合は、作った会社に新しい版で動くか確かめてもらいましょう。確かめられないまま切り替えるのは避けてください。"}}, {"@type": "Question", "name": "自分で作業するのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、事前チェックからまとめて依頼するのが確実です。依頼するときは、今の版と、上げたい版を伝えるとやりとりが早く進みます。今の版が分からなければ、サイトドックの無料簡易診断で外から見える範囲を確かめられます。古いプラグインが多いサイトは、PHPの切り替えと一緒にプラグインの整理も頼むと安心です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "エックスサーバーでPHPのバージョンを上げる手順と事前チェック"}]}]</script>
 </head>
 <body>
@@ -182,6 +182,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261029q"></script>
+<script src="../assets/site.js?v=20261029r"></script>
 </body>
 </html>
