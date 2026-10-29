@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029p -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>「保護されていない通信」と表示される原因と直し方｜サイトドック</title>
+<meta name="description" content="ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/not-secure-warning.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「保護されていない通信」と表示される原因と直し方">
+<meta property="og:description" content="ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/not-secure-warning.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-006-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029p">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "「保護されていない通信」と表示される原因と直し方", "description": "ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-006-v2.webp", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/not-secure-warning.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "「保護されていない通信」のまま見ても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "読むだけなら、すぐに大きな被害が出ることは多くありません。ただし、通信の中身は守られていないため、入力した情報を盗み見られるおそれがあります。名前や電話番号、パスワードなどは入力しないでください。自社のサイトで表示が出ている場合は、お客さまが入力をためらうので、早めに直しましょう。閲覧者の側では直せないため、サイトを管理する人の作業が必要です。"}}, {"@type": "Question", "name": "SSL証明書にお金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのレンタルサーバーでは、無料の証明書を使えます。エックスサーバーでも、サーバーパネルから無料で設定できます。有料の証明書は、会社の実在まで確かめるものなど、信頼の度合いを上げたいときに選ぶものです。小さな会社のホームページなら、まずは無料の証明書で十分でしょう。大切なのは、種類よりも期限が切れないように保つことです。"}}, {"@type": "Question", "name": "httpsにしたら、検索の順位は下がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "正しく転送を設定すれば、大きく下がることはふつうありません。httpのアドレスからhttpsのアドレスへ、恒久的な転送を設定するのがポイントです。転送がないと、同じページが2つあるように見えてしまいます。切り替えたら、Search Consoleにhttpsのサイトも登録してください。ページが正しく読まれているかを確かめられます。サイトマップのアドレスもhttpsに直してください。"}}, {"@type": "Question", "name": "スマホだけ「保護されていない通信」と出るのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。"}}, {"@type": "Question", "name": "自分で直すのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、サイトドックの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "「保護されていない通信」と表示される原因と直し方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / SSL・ドメイン・メール</nav>
+    <h1>「保護されていない通信」と表示される原因と直し方</h1>
+    <p><time datetime="2026-11-07">2026.11.07</time>　SSL・ドメイン・メール</p>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+    <figure class="eyecatch"><img src="img/eyecatch-006-v2.webp" alt="「保護されていない通信」と表示される原因と直し方" width="1200" height="630"></figure>
+<p>自社のサイトを開いたら、アドレス欄に「保護されていない通信」と出て驚いたことはありませんか？</p>
+<p>お客さまから「このサイトは大丈夫ですか」と聞かれて、初めて気づく方も少なくありません。</p>
+<p>この記事では、<span class="mark-yellow">保護されていない通信と表示される原因と直し方</span>を紹介します。原因ごとの確かめ方と、同じ表示を出さないための備えもまとめました。</p>
+<p>ホームページの管理を任されている方が、自分で原因を切り分けられるようになる内容です。</p>
+
+<h2 id="s1">「保護されていない通信」と表示される意味</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/not-secure-warning-fig1.webp" alt="ブラウザのアドレス欄の比較として、httpsで鍵のマークが出ている安全な状態と、httpで保護されていない通信と出ている状態を上下に並べた図" width="1200" height="800"><figcaption>鍵のマークの有無で、通信が守られているかが分かります</figcaption></figure>
+<p>「保護されていない通信」は、サイトとの通信が暗号化されていないことを知らせる表示です。<span class="mark-yellow">ブラウザが閲覧者に注意を促している</span>状態だと考えてください。</p>
+<p>この表示が出ても、すぐにサイトが乗っ取られているわけではありません。ただし、お客さまの目には「危ないサイト」と映ります。意味を正しく知ったうえで、早めに直しましょう。</p>
+
+<h3>通信が暗号化されていないという知らせ</h3>
+<p>アドレスが「https」で始まるサイトは、閲覧者とサイトの間の通信が暗号化されています。「http」のままだと、<span class="mark-red"><strong>途中で中身を盗み見られたり書き換えられたりする</strong></span>おそれがあります。</p>
+<p>Chromeなどのブラウザでは、httpのページを開くと「保護されていない通信」と出る仕組みです。<span class="mark-yellow">問い合わせフォームの入力内容も守られない</span>ため、名前や電話番号を送るページでは特に問題になります。</p>
+
+<h3>お客さまと検索に与える影響</h3>
+<p>表示を見たお客さまは、問い合わせや購入をためらうでしょう。せっかく見に来てくれた人が、何もせずに離れる原因になります。</p>
+<p>検索の面でも、Googleはhttpsのページを評価の要素の1つにしています。<span class="mark-yellow">信用と集客の両方で損をしている</span>状態なので、後回しにせず直しましょう。広告を出している場合は、費用をかけて集めた人を逃すことにもなります。</p>
+
+<h2 id="s2">「保護されていない通信」と表示される3つの主な原因</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/not-secure-warning-fig2.webp" alt="保護されていない通信と表示される主な原因として、SSL証明書がない、証明書の期限が切れている、httpsのページにhttpの読み込みが混ざっている、の3つを札で並べた図" width="1200" height="800"><figcaption>原因によって、直す場所が変わります</figcaption></figure>
+<p>「保護されていない通信」と表示される原因は、主に3つです。どれに当たるかで、<span class="mark-yellow">このあとに直す場所が変わってきます</span>。</p>
+<p>まずはアドレス欄の表示と、アドレスが「http」か「https」かを確かめてください。トップページだけでなく、問い合わせフォームなど別のページも開いてみると、原因を絞り込みやすくなります。パソコンとスマホの両方で開くと、さらに確実です。</p>
+
+<h3>① SSL証明書が設定されていない</h3>
+<p>SSL証明書は、httpsで通信するために必要な電子の証明書です。設定されていなければ、サイトはhttpでしか開けません。</p>
+<p>古いサイトや、サーバーを移したばかりのサイトでよく見られます。<span class="mark-yellow">証明書はあるのにhttpのまま開かれている</span>場合も、同じ表示が出ます。httpからhttpsへの転送が設定されていないためです。</p>
+
+<h3>② SSL証明書の期限が切れている</h3>
+<p>SSL証明書には期限があり、切れると通信を守れなくなります。ブラウザは警告の画面を出し、閲覧者がそのまま進むのを止めようとします。</p>
+<p>無料の証明書は期限が短く、自動で更新される仕組みが一般的です。ところが、ドメインの設定を変えたことなどで、<span class="mark-red"><strong>自動更新が止まって期限が切れることがあります</strong></span>。期限切れの警告は、閲覧者に強い不安を与えます。</p>
+
+<h3>③ httpsのページにhttpの読み込みが混ざっている</h3>
+<p>ページ自体はhttpsでも、中の画像や読み込むファイルのアドレスがhttpのままのことがあります。これを「混在コンテンツ」と呼びます。</p>
+<p>混在があると、鍵のマークが外れたり、注意の表示が出たりするでしょう。<span class="mark-yellow">httpsに切り替えたあとに古い記事の画像が残る</span>例がよくあります。ブラウザによっては、その画像やファイルを読み込まずに止めることもあります。</p>
+
+<h2 id="s3">「保護されていない通信」の直し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/not-secure-warning-fig3.webp" alt="保護されていない通信の直し方として、SSL証明書を設定する、httpからhttpsへ転送する、httpの読み込みをhttpsに直す、の3つを順に進める手順の図" width="1200" height="800"><figcaption>証明書、転送、読み込みの順に直します</figcaption></figure>
+<p>「保護されていない通信」は、原因に合わせて直せば消せます。<span class="mark-yellow">証明書、転送、読み込みの順に確かめる</span>と、取りこぼしがありません。</p>
+<p>多くの中小企業が使っているエックスサーバーを例に説明します。ほかのサーバーでも、管理画面の名前が違うだけで、考え方は同じです。分からない場合は、サーバー会社のマニュアルで「SSL」と検索すると手順が見つかります。作業の前には、念のためバックアップを取っておきましょう。</p>
+
+<h3>SSL証明書を設定する</h3>
+<p>エックスサーバーでは、サーバーパネルの「SSL設定」から、ドメインごとに無料の証明書を有効にできます。公式マニュアルによると、反映には最大1時間ほどかかります。</p>
+<p>この証明書は発行から90日が期限で、<span class="mark-yellow">期限の30日前から自動で更新される</span>仕組みです。ただし、ドメインの向き先がエックスサーバーでない場合などは、自動で更新されません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_ssl.php" target="_blank" rel="noopener">無料独自SSL設定｜エックスサーバー</a></li>
+</ul>
+
+<h3>httpからhttpsへ転送する</h3>
+<p>エックスサーバーの公式マニュアルによると、SSL設定だけでは自動の転送は行われません。httpで開かれても、httpsに切り替わらないということです。すべてのページをhttpsにするには、別に転送の設定が必要です。</p>
+<p>WordPressなら、管理画面の「設定」から「一般」を開きます。<span class="mark-yellow">2つのアドレスの欄をhttpsで始まる形に直す</span>ことも忘れないでください。ここがhttpのままだと、ページの中のリンクや画像もhttpで作られてしまいます。</p>
+
+<h3>httpの読み込みをhttpsに直す</h3>
+<p>混在が残っているページは、ブラウザの開発者ツールで探せます。「Mixed Content」という警告が目印です。警告には、httpのままのファイルのアドレスが書かれています。</p>
+<p>記事の中の画像なら、そのアドレスをhttpsに書き換えれば直ります。<span class="mark-yellow">数が多い場合は、置き換え用のプラグインでまとめて直す</span>方法もあるでしょう。置き換えの前には、データベースのバックアップを取っておきましょう。</p>
+
+<h2 id="s4">「保護されていない通信」を再発させないための備え</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/not-secure-warning-fig4.webp" alt="保護されていない通信を再発させないための備えとして、証明書の残りの日数を確かめる、新しく貼る画像や埋め込みのアドレスを確かめる、月に1回外から点検する、の3つを並べた図" width="1200" height="800"><figcaption>一度直しても、設定の変更で元に戻ることがあります</figcaption></figure>
+<p>「保護されていない通信」は、一度直しても再び出ることがあります。<span class="mark-yellow">証明書の更新が止まったり、新しい画像がhttpだったり</span>するためです。</p>
+<p>日ごろから少しだけ気にかけておけば、お客さまに見られる前に気づけます。続けやすい3つの備えを紹介します。どれも数分でできるので、ほかのサイト点検と一緒に行うとよいでしょう。</p>
+
+<h3>証明書の残りの日数を確かめる</h3>
+<p>アドレス欄の鍵のマークを押すと、証明書の情報から期限を確かめられます。自動で更新される証明書なら、残りが30日を切る前に新しくなるのがふつうです。</p>
+<p>運営者の自社サイトを外から点検したときは、証明書の残りが33日と出ていました。残りの日数は、<span class="mark-yellow">自動更新が始まる手前の正常な範囲</span>でした。残りが20日を切っていたら、更新が止まっていないか確かめてください。</p>
+
+<h3>新しく貼る画像や埋め込みに気をつける</h3>
+<p>ほかのサイトの画像や地図、動画を埋め込むときは、そのアドレスがhttpsかを確かめます。昔の記事からコピーしたコードには、httpのアドレスが残っていることがあります。</p>
+<p>運営者が管理する自社サイトも見直しました。すると、<span class="mark-yellow">WordPressの設定のアドレスがhttpのまま</span>残っているものがありました。設定とページの両方を、半年に1回ほど見直しましょう。サイトを作り直したあとは、特に念入りに確かめてください。</p>
+
+<h3>月に1回は外から点検する</h3>
+<p>自分のパソコンでは見慣れてしまい、表示の変化に気づきにくいものです。ブラウザが前に開いたページを覚えていて、古い表示のまま見えていることもあります。月に1回、日を決めて外から点検すると、取りこぼしを防げます。</p>
+<p>サイトドックの無料簡易診断なら、URLを入れるだけで<span class="mark-yellow">証明書の状態と残りの日数</span>が分かる仕組みです。httpからhttpsへの転送があるかも、あわせて判定できるでしょう。</p>
+
+<div class="art-cta"><strong>あなたのサイトは「保護された通信」ですか</strong><p>URLを入れるだけで、SSL証明書の状態やhttpsへの転送を含む7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s5">保護されていない通信に関するよくある質問</h2>
+
+<h3>「保護されていない通信」のまま見ても大丈夫ですか？</h3>
+<p>読むだけなら、すぐに大きな被害が出ることは多くありません。ただし、通信の中身は守られていないため、入力した情報を盗み見られるおそれがあります。名前や電話番号、パスワードなどは入力しないでください。自社のサイトで表示が出ている場合は、お客さまが入力をためらうので、早めに直しましょう。閲覧者の側では直せないため、サイトを管理する人の作業が必要です。</p>
+
+<h3>SSL証明書にお金はかかりますか？</h3>
+<p>多くのレンタルサーバーでは、無料の証明書を使えます。エックスサーバーでも、サーバーパネルから無料で設定できます。有料の証明書は、会社の実在まで確かめるものなど、信頼の度合いを上げたいときに選ぶものです。小さな会社のホームページなら、まずは無料の証明書で十分でしょう。大切なのは、種類よりも期限が切れないように保つことです。</p>
+
+<h3>httpsにしたら、検索の順位は下がりますか？</h3>
+<p>正しく転送を設定すれば、大きく下がることはふつうありません。httpのアドレスからhttpsのアドレスへ、恒久的な転送を設定するのがポイントです。転送がないと、同じページが2つあるように見えてしまいます。切り替えたら、Search Consoleにhttpsのサイトも登録してください。ページが正しく読まれているかを確かめられます。サイトマップのアドレスもhttpsに直してください。</p>
+
+<h3>スマホだけ「保護されていない通信」と出るのはなぜですか？</h3>
+<p>スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。</p>
+
+<h3>自分で直すのが不安なときはどうすればいいですか？</h3>
+<p>制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、サイトドックの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。</p>
+
+<h2 id="s6">まとめ</h2>
+<p>「保護されていない通信」は、通信が守られていないことを知らせる表示です。主な原因は、証明書がない、期限が切れている、httpの読み込みが混ざっている、の3つです。</p>
+<p>証明書を設定し、httpからhttpsへ転送し、残っているhttpの読み込みを直せば表示は消えます。エックスサーバーでは、証明書の設定と転送の設定が別なので注意してください。</p>
+<p>まずは今日、<span class="mark-yellow">自社サイトのアドレス欄に鍵のマークが出ているか</span>を確かめるところから始めましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">表示の意味</a></li><li><a href="#s2">3つの主な原因</a></li><li><a href="#s3">直し方</a></li><li><a href="#s4">再発させないための備え</a></li><li><a href="#s5">よくある質問</a></li><li><a href="#s6">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029p"></script>
+</body>
+</html>
