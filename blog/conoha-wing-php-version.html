@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261030d -->
+<!-- BUILD_TAG: 20261030e -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方｜サイトドック</title>
@@ -11,14 +11,14 @@
 <meta property="og:title" content="ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方">
 <meta property="og:description" content="ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。">
 <meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html">
-<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v2.webp">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v3.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261030d">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方", "description": "ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v2.webp", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。"}}, {"@type": "Question", "name": "複数のサイトがある場合、まとめて変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方"}]}]</script>
+<link rel="stylesheet" href="../assets/style.css?v=20261030e">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方", "description": "ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v3.webp", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。"}}, {"@type": "Question", "name": "複数のサイトがある場合、まとめて変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方"}]}]</script>
 </head>
 <body>
 <header class="site-header">
@@ -33,7 +33,7 @@
     <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
     <h1><span class="h1-main">ConoHa WINGでPHPのバージョンを変更する方法</span><span class="h1-sub" data-sep="｜">事前の準備と戻し方</span></h1>
     <p><time datetime="2026-11-11">2026.11.11</time></p>
-    <figure class="eyecatch"><img src="img/eyecatch-010-v2.webp" alt="ConoHa WINGでPHPのバージョンを変更する方法。管理画面から数分でできる" width="1200" height="630"></figure>
+    <figure class="eyecatch"><img src="img/eyecatch-010-v3.webp" alt="ConoHa WINGでPHPを変更する。事前の準備と戻し方" width="1200" height="630" loading="lazy"></figure>
   </div></div>
 <section class="sub-sec"><div class="wrap article">
   <div class="prose">
@@ -175,6 +175,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261030d"></script>
+<script src="../assets/site.js?v=20261030e"></script>
 </body>
 </html>

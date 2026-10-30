@@ -609,3 +609,8 @@ section + section{border-top:1px solid var(--rule-soft)}
 .mini-stamp.st-ng{color:var(--stamp)}.mini-stamp.st-warn{color:var(--warn)}.mini-stamp.st-ok{color:var(--ok)}
 @media (max-width:560px){.list-sheet{margin-right:8px}.list-sheet td.val{font-size:13px}}
 .sub-sec + .sub-sec{border-top:0}
+/* 記事：アイキャッチは見出しと同じ文字なので、本文の上には出さない（一覧のカードとSNS用） */
+.page-hero .eyecatch{display:none}
+.page-hero:has(.eyecatch){padding-bottom:48px}
+.page-hero:has(.eyecatch) + .sub-sec{padding-top:56px}
+.post-thumb.has-img{background:var(--paper)}
