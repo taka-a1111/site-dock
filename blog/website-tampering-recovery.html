@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261030e -->
+<!-- BUILD_TAG: 20261030c -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ホームページ改ざんの復旧手順｜発見から再発防止まで｜サイトドック</title>
@@ -11,14 +11,14 @@
 <meta property="og:title" content="ホームページ改ざんの復旧手順｜発見から再発防止まで">
 <meta property="og:description" content="ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。">
 <meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html">
-<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v3.webp">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v2.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261030e">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ホームページ改ざんの復旧手順｜発見から再発防止まで", "description": "ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v3.webp", "datePublished": "2026-11-10", "dateModified": "2026-11-10", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ホームページの改ざんの復旧には、どのくらい時間がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "被害の大きさと、改ざん前のバックアップがあるかどうかで変わります。バックアップから戻せる場合は、作業そのものは数時間で済むこともあるでしょう。原因の調査や不正なコードの削除が必要な場合は、数日以上かかることも珍しくありません。Googleの警告を外す審査にも、数日から数週間かかります。慌てずに、段階ごとに進めてください。"}}, {"@type": "Question", "name": "自分で復旧しても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "バックアップから戻して、パスワードの変更と更新まで自分でできるなら、自分で進めても構いません。ただし、原因が分からないまま戻すと、同じ入口から再び改ざんされることがあります。不正なコードが記事に入り込んでいる場合は、専門家に頼みましょう。お客さまの情報が漏れた疑いがあるときも、早めの相談が大切です。"}}, {"@type": "Question", "name": "改ざんされたことを、お客さまに知らせる必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "偽のサイトへの誘導や、不審なメールの送信など、お客さまに影響が出ている場合は知らせるべきです。黙っていると、あとで分かったときに信用を大きく損ないます。サイトのお知らせで、起きたことと期間、行った対応を伝えましょう。個人情報が漏れた疑いがある場合は、個人情報保護委員会への報告が必要になることもあります。判断に迷うときは、専門家や弁護士に相談してください。"}}, {"@type": "Question", "name": "バックアップから戻したのに、また改ざんされました。なぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんの入口がふさがれていないことが、いちばんの理由です。古いプラグインの弱点や、変えていないパスワードが残っていると、同じ方法で入られます。バックアップの中に、すでに不正なファイルが含まれていた可能性もあるでしょう。戻す日を選ぶときは、改ざんが始まった日より前のものを使ってください。入口が分からない場合は、専門家にログを見てもらうのが近道です。"}}, {"@type": "Question", "name": "自分で調べるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、制作会社や保守を頼んでいる会社に、気づいたことと記録を見せて相談しましょう。IPAの企業組織向けの相談窓口でも、応急処置の助言を受けられます。今の状態を外から確かめたいときは、サイトドックの無料簡易診断が役立つでしょう。詳しく調べたい場合は、有料の詳細診断で、管理画面やサーバーの中まで確かめられます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ホームページ改ざんの復旧手順｜発見から再発防止まで"}]}]</script>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261030c">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ホームページ改ざんの復旧手順｜発見から再発防止まで", "description": "ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v2.webp", "datePublished": "2026-11-10", "dateModified": "2026-11-10", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ホームページの改ざんの復旧には、どのくらい時間がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "被害の大きさと、改ざん前のバックアップがあるかどうかで変わります。バックアップから戻せる場合は、作業そのものは数時間で済むこともあるでしょう。原因の調査や不正なコードの削除が必要な場合は、数日以上かかることも珍しくありません。Googleの警告を外す審査にも、数日から数週間かかります。慌てずに、段階ごとに進めてください。"}}, {"@type": "Question", "name": "自分で復旧しても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "バックアップから戻して、パスワードの変更と更新まで自分でできるなら、自分で進めても構いません。ただし、原因が分からないまま戻すと、同じ入口から再び改ざんされることがあります。不正なコードが記事に入り込んでいる場合は、専門家に頼みましょう。お客さまの情報が漏れた疑いがあるときも、早めの相談が大切です。"}}, {"@type": "Question", "name": "改ざんされたことを、お客さまに知らせる必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "偽のサイトへの誘導や、不審なメールの送信など、お客さまに影響が出ている場合は知らせるべきです。黙っていると、あとで分かったときに信用を大きく損ないます。サイトのお知らせで、起きたことと期間、行った対応を伝えましょう。個人情報が漏れた疑いがある場合は、個人情報保護委員会への報告が必要になることもあります。判断に迷うときは、専門家や弁護士に相談してください。"}}, {"@type": "Question", "name": "バックアップから戻したのに、また改ざんされました。なぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんの入口がふさがれていないことが、いちばんの理由です。古いプラグインの弱点や、変えていないパスワードが残っていると、同じ方法で入られます。バックアップの中に、すでに不正なファイルが含まれていた可能性もあるでしょう。戻す日を選ぶときは、改ざんが始まった日より前のものを使ってください。入口が分からない場合は、専門家にログを見てもらうのが近道です。"}}, {"@type": "Question", "name": "自分で調べるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、制作会社や保守を頼んでいる会社に、気づいたことと記録を見せて相談しましょう。IPAの企業組織向けの相談窓口でも、応急処置の助言を受けられます。今の状態を外から確かめたいときは、サイトドックの無料簡易診断が役立つでしょう。詳しく調べたい場合は、有料の詳細診断で、管理画面やサーバーの中まで確かめられます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ホームページ改ざんの復旧手順｜発見から再発防止まで"}]}]</script>
 </head>
 <body>
 <header class="site-header">
@@ -33,7 +33,7 @@
     <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
     <h1><span class="h1-main">ホームページ改ざんの復旧手順</span><span class="h1-sub" data-sep="｜">発見から再発防止まで</span></h1>
     <p><time datetime="2026-11-10">2026.11.10</time></p>
-    <figure class="eyecatch"><img src="img/eyecatch-009-v3.webp" alt="改ざんからの復旧手順。発見から再発防止まで" width="1200" height="630" loading="lazy"></figure>
+    <figure class="eyecatch"><img src="img/eyecatch-009-v2.webp" alt="ホームページ改ざんの復旧手順。発見から再発防止まで、消す前に記録を残す" width="1200" height="630"></figure>
   </div></div>
 <section class="sub-sec"><div class="wrap article">
   <div class="prose">
@@ -166,7 +166,7 @@
 </div></section>
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
     <a href="../#top" class="btn btn-cta">無料で診断する</a>
   </div>
 </section>
@@ -179,6 +179,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261030e"></script>
+<script src="../assets/site.js?v=20261030c"></script>
 </body>
 </html>
