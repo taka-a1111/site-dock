@@ -550,3 +550,16 @@ section{padding:96px 0}
 @media (max-width:760px){.case-grid{grid-template-columns:minmax(0,1fr)}.case dl{grid-template-columns:1fr}.case dt{margin-top:6px}}
 .page-hero .eyecatch{margin:24px 0 0;max-width:760px}
 .page-hero .eyecatch img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--rule-soft)}
+/* 記事の1枚目（タイトル・アイキャッチ）2026-10-30 */
+.page-hero h1 .h1-main{display:block}
+.page-hero h1 .h1-sub{display:block;margin-top:.4em;font-size:.6em;line-height:1.5;font-weight:700;color:var(--ink-mid)}
+.page-hero .eyecatch{margin-top:28px}
+.page-hero .eyecatch img{border:0}
+.page-hero:has(.eyecatch){padding-bottom:32px}
+.page-hero:has(.eyecatch) + .sub-sec{padding-top:40px}
+@media (max-width:560px){
+  .page-hero:has(.eyecatch) h1{font-size:24px;line-height:1.45}
+  .page-hero .eyecatch{margin-top:20px}
+  .page-hero:has(.eyecatch){padding-bottom:24px}
+  .page-hero:has(.eyecatch) + .sub-sec{padding-top:28px}
+}
