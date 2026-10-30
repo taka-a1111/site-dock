@@ -708,3 +708,19 @@ section + section{border-top:1px solid var(--rule-soft)}
 .mark-yellow{background:linear-gradient(transparent 58%,#FFE98A 58%);padding:0 1px}
 .mark-red{color:var(--stamp)}
 .mark-red strong{font-weight:700}
+
+/* 追従ボタン（スマホ・タブレット） */
+.float-cta{display:none}
+@media (max-width:980px){
+  .float-cta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;align-items:center;gap:12px;padding:10px 16px 10px 14px;background:var(--go);color:#fff;text-decoration:none;border-radius:4px;box-shadow:0 6px 18px rgba(13,39,45,.28),0 1px 0 rgba(255,255,255,.12) inset;transition:transform .25s ease,opacity .25s ease}
+  .float-cta:active{background:var(--go-dark)}
+  .float-cta .fc-ico{flex:0 0 auto;width:34px;height:34px;display:grid;place-items:center;background:#fff;border-radius:50%;color:var(--go)}
+  .float-cta .fc-ico svg{width:19px;height:19px}
+  .float-cta .fc-txt{flex:1 1 auto;min-width:0;line-height:1.3}
+  .float-cta strong{display:block;font-family:var(--display);font-weight:900;font-size:16.5px;letter-spacing:.03em}
+  .float-cta small{display:block;font-size:11.5px;color:#D8EEE4;margin-top:2px}
+  .float-cta .fc-arrow{flex:0 0 auto;font-size:20px;font-weight:700}
+  .float-cta.is-hidden{transform:translateY(140%);opacity:0;pointer-events:none}
+  body.has-float-cta .site-footer{padding-bottom:110px}
+}
+@media (prefers-reduced-motion:reduce){.float-cta{transition:none}}

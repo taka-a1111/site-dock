@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261031h -->
+<!-- BUILD_TAG: 20261031i -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>「保護されていない通信」と表示される原因と直し方｜サイトドック</title>
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261031h">
+<link rel="stylesheet" href="../assets/style.css?v=20261031i">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "「保護されていない通信」と表示される原因と直し方", "description": "ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-006-v2.webp", "datePublished": "2026-11-07", "dateModified": "2026-11-07", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/not-secure-warning.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "「保護されていない通信」のまま見ても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "読むだけなら、すぐに大きな被害が出ることは多くありません。ただし、通信の中身は守られていないため、入力した情報を盗み見られるおそれがあります。名前や電話番号、パスワードなどは入力しないでください。自社のサイトで表示が出ている場合は、お客さまが入力をためらうので、早めに直しましょう。閲覧者の側では直せないため、サイトを管理する人の作業が必要です。"}}, {"@type": "Question", "name": "SSL証明書にお金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのレンタルサーバーでは、無料の証明書を使えます。エックスサーバーでも、サーバーパネルから無料で設定できます。有料の証明書は、会社の実在まで確かめるものなど、信頼の度合いを上げたいときに選ぶものです。小さな会社のホームページなら、まずは無料の証明書で十分でしょう。大切なのは、種類よりも期限が切れないように保つことです。"}}, {"@type": "Question", "name": "httpsにしたら、検索の順位は下がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "正しく転送を設定すれば、大きく下がることはふつうありません。httpのアドレスからhttpsのアドレスへ、恒久的な転送を設定するのがポイントです。転送がないと、同じページが2つあるように見えてしまいます。切り替えたら、Search Consoleにhttpsのサイトも登録してください。ページが正しく読まれているかを確かめられます。サイトマップのアドレスもhttpsに直してください。"}}, {"@type": "Question", "name": "スマホだけ「保護されていない通信」と出るのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。"}}, {"@type": "Question", "name": "自分で直すのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、サイトドックの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "「保護されていない通信」と表示される原因と直し方"}]}]</script>
 </head>
 <body>
@@ -152,6 +152,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261031h"></script>
+<script src="../assets/site.js?v=20261031i"></script>
 </body>
 </html>

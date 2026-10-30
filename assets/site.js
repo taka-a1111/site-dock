@@ -53,4 +53,37 @@
       });
     });
   });
+  // 追従ボタン（スマホ・タブレット）：URL入力欄が見えている間は隠す
+  (function(){
+    var top = document.getElementById('scanForm');
+    var a = document.createElement('a');
+    a.className = 'float-cta is-hidden';
+    a.href = top ? '#top' : '/#top';
+    a.setAttribute('aria-label', '無料でサイトを診断する（URLを入れるだけ・登録不要）');
+    a.innerHTML = '<span class="fc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M7.5 10.5h1.6l1-2 1.8 4 1-2h1.6"/></svg></span><span class="fc-txt"><strong>無料でサイトを診断する</strong><small>URLだけ・登録不要・数十秒で判定</small></span><span class="fc-arrow" aria-hidden="true">→</span>';
+    document.body.appendChild(a);
+    document.body.classList.add('has-float-cta');
+    var hideFor = Array.prototype.slice.call(document.querySelectorAll('[data-scan], #mailBox, .cta-band, .art-cta, [data-contact-form]'));
+    var seen = new Set();
+    var started = false;
+    var update = function(){ a.classList.toggle('is-hidden', !started || seen.size > 0); };
+    if ('IntersectionObserver' in window && hideFor.length) {
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting && e.target.offsetParent !== null) seen.add(e.target); else seen.delete(e.target); });
+        update();
+      }, { threshold: 0.15 });
+      hideFor.forEach(function(el){ io.observe(el); });
+    }
+    var onScroll = function(){ var s = window.scrollY > 240; if (s !== started) { started = s; update(); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    if (top) {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var input = document.getElementById('domain1');
+        top.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (input) setTimeout(function(){ try { input.focus({ preventScroll: true }); } catch (x) { input.focus(); } }, 450);
+      });
+    }
+  })();
 })();
