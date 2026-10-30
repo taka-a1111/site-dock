@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261030c -->
+<!-- BUILD_TAG: 20261030d -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方｜サイトドック</title>
@@ -16,8 +16,8 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261030c">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261030d">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方", "description": "WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-008-v2.webp", "datePublished": "2026-11-09", "dateModified": "2026-11-09", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/wordpress-username-exposure.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "WordPressのユーザー名そのものは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面のプロフィールでは、ユーザー名は変更できない仕様です。変えたい場合は、新しいユーザー名で管理者を作り、記事を引き継いでから古いほうを削除します。削除の画面で、記事を新しいユーザーに割り当てることを忘れないでください。データベースを直接書き換える方法は、失敗すると戻せなくなるため勧めません。作業の前には、必ずバックアップを取りましょう。"}}, {"@type": "Question", "name": "投稿者URLの名前を変えると、検索順位に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿者ページが検索から多く見られていなければ、影響はほとんどありません。変える前に、古い投稿者URLが検索結果に出ているかを確かめておくと安心です。出ている場合は、古いURLから新しいURLへ転送を設定しましょう。記事の中やプロフィールの欄に、古い投稿者URLを直接書いている場合もあります。運営者の自社サイトでも、トップページに古いURLが残っていたため書き換えました。"}}, {"@type": "Question", "name": "REST APIを止めると、ブロックエディタは動かなくなりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "ログインしていない人へのユーザー一覧だけを止める方法なら、ブロックエディタには影響しません。ブロックエディタは、ログインした状態でREST APIを使うためです。一方、REST API全体を止めると、エディタやお問い合わせフォームが動かなくなることがあります。プラグインで止める場合は、どの範囲を止める設定かを確かめてください。止めたあとは、記事の編集と保存が今までどおりできるかを試しておきましょう。"}}, {"@type": "Question", "name": "ユーザー名が「admin」のままです。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。"}}, {"@type": "Question", "name": "自分で確かめるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトドックの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方"}]}]</script>
 </head>
 <body>
@@ -186,7 +186,7 @@
 </div></section>
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
     <a href="../#top" class="btn btn-cta">無料で診断する</a>
   </div>
 </section>
@@ -199,6 +199,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261030c"></script>
+<script src="../assets/site.js?v=20261030d"></script>
 </body>
 </html>

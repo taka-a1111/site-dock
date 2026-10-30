@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261030c -->
+<!-- BUILD_TAG: 20261030d -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WordPressのバージョンを確認する方法（管理画面と外からの両方）｜サイトドック</title>
@@ -16,8 +16,8 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261030c">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261030d">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのバージョンを確認する方法（管理画面と外からの両方）", "description": "WordPressのバージョンを確認する方法を、管理画面の3か所と外からの確かめ方に分けて解説します。最新版との比べ方と、古かったときに更新する前の準備もまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-003-v2.webp", "datePublished": "2026-11-04", "dateModified": "2026-11-04", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/wordpress-version-check.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "管理画面に入れなくても、WordPressのバージョンは分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "分かることがあります。ページのソースの「generator」という表示に、バージョンが書かれていることがあるからです。読み込んでいるファイルの「ver=」の表示も手がかりになります。サイトドックの無料簡易診断でも、URLを入れるだけで確かめられます。ただし、表示を消しているサイトでは、外からは分かりません。その場合は、管理画面にログインできる人に確かめてもらいましょう。"}}, {"@type": "Question", "name": "外からバージョンが見えるのは危険ですか？", "acceptedAnswer": {"@type": "Answer", "text": "最新版を使っていれば、見えても大きな問題にはなりにくいです。危ないのは、古いバージョンが外から見えている場合でしょう。攻撃する側は、弱点のある古い版のサイトを外からの情報で探しているためです。表示を消すことより、まず最新版に保つことを優先してください。そのうえで、generatorの表示を消すと、さらに狙われにくくなります。"}}, {"@type": "Question", "name": "WordPressは自動で更新されないのですか？", "acceptedAnswer": {"@type": "Answer", "text": "初期設定では、マイナーバージョンは自動で更新されます。メジャーバージョンを自動で更新するかどうかは、「更新」の画面で選べる仕組みです。ただし、サーバーの設定やプラグインの影響で、自動更新が止まっていることもあります。自動に任せきりにせず、定期的に確かめてください。止まっていても管理画面にお知らせが出ないこともあるため、注意が必要です。"}}, {"@type": "Question", "name": "バージョンを上げたら、サイトが崩れることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "あります。特に、何年も更新していないサイトや、長く更新されていないプラグインを使っているサイトは注意が必要です。更新の前にバックアップを取り、PHPとプラグインの対応を確かめてから進めましょう。不安な場合は、制作会社や専門家に相談するのが確実です。本番とは別の検証用の環境で先に試せると、さらに安心できます。"}}, {"@type": "Question", "name": "バージョンはどのくらいの頻度で確かめればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "月に1回を目安にしてください。WordPressの修正版は、決まった日ではなく、弱点が見つかったときに出ることが多いからです。管理画面の「更新」の画面を開くか、外からの点検を使えば、数分で確かめられます。ほかのサイト点検と同じ日にまとめると、忘れにくくなります。大きな弱点のニュースが出たときは、その日のうちにも確かめてください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのバージョンを確認する方法（管理画面と外からの両方）"}]}]</script>
 </head>
 <body>
@@ -163,7 +163,7 @@
 </div></section>
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
     <a href="../#top" class="btn btn-cta">無料で診断する</a>
   </div>
 </section>
@@ -176,6 +176,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261030c"></script>
+<script src="../assets/site.js?v=20261030d"></script>
 </body>
 </html>
