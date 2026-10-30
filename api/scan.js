@@ -6,7 +6,7 @@ const dns = require('node:dns').promises;
 const net = require('node:net');
 const tls = require('node:tls');
 
-const UA = 'SiteDockBot/1.0 (+https://site-dock.jp/service.html)';
+const UA = 'SiteDockBot/1.0 (+https://site-dock.com/service.html)';
 const MAX_BODY = 700 * 1024;
 const cache = new Map();   // domain -> {t, data}
 const hits = new Map();    // ip -> [timestamps]
