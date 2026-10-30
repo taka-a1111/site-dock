@@ -703,3 +703,8 @@ section + section{border-top:1px solid var(--rule-soft)}
 .legend p.gauge{margin-top:8px;font-size:12.5px;line-height:1.65;color:var(--ink-mid);border-top:1px dashed var(--rule);padding-top:8px}
 .legend p.gauge b{display:block;min-width:0;font-size:11.5px;color:var(--ink-light)}
 @media (min-width:561px){.legend p.see b{display:block}}
+
+/* 文字の装飾（記事と同じ）：黄色のマーカーと赤の太字 */
+.mark-yellow{background:linear-gradient(transparent 58%,#FFE98A 58%);padding:0 1px}
+.mark-red{color:var(--stamp)}
+.mark-red strong{font-weight:700}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-31g -->
+<!-- BUILD_TAG: 2026-10-31h -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>サイトドック｜ホームページの弱点を無料で点検</title>
@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261031g">
+<link rel="stylesheet" href="assets/style.css?v=20261031h">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
       <h1><span class="nb">WordPressの</span><span class="nb">更新と設定を、</span><br><span class="nb">URLだけで</span><span class="nb">無料チェック</span></h1>
       <div class="hero-grid">
         <div class="hero-side">
-          <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など7項目を、公開されている情報だけで点検します。<span class="lead-more">何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</span></p>
+          <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など<span class="mark-yellow">7項目を、公開されている情報だけで点検します</span>。<span class="lead-more">何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</span></p>
           <form class="scan-box" id="scanForm" data-scan>
             <label for="domain1">診断するサイトのURL</label>
             <div class="scan-row">
@@ -97,7 +97,7 @@
     <div class="wrap">
       <div class="sec-head wide">
         <h2>無料の簡易診断で見る、7つの項目</h2>
-        <p>どれも、攻撃する側が最初に外から確かめるところです。ホームページのどこを見ているのかを、番号で示しました。放っておくと何が起きるかまで、結果票に書きます。</p>
+        <p>どれも、<span class="mark-yellow">攻撃する側が最初に外から確かめるところ</span>です。ホームページのどこを見ているのかを、番号で示しました。放っておくと何が起きるかまで、結果票に書きます。</p>
       </div>
       <div class="anatomy">
         <figure class="anatomy-map"><svg class="anatomy-svg" viewBox="0 0 360 412" role="img" aria-label="ホームページと、それを動かすサーバーの絵。点検する7か所に番号と名前を付けた図。1 SSL証明書はアドレス欄の鍵、2 PHPはサーバー、3 WordPress本体はページ、4 プラグインは部品、5 ログイン名はログイン画面、6 不要なファイルは公開されたファイル、7 セキュリティ設定は守りの盾" font-family="Zen Kaku Gothic New, BIZ UDPGothic, sans-serif">
@@ -131,7 +131,7 @@
 <g class="pin"><rect x="24" y="238" width="111" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="36" cy="250" r="8.5" fill="#fff"/><text x="36" y="254" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">6</text><text x="49" y="254.2" font-size="11.5" font-weight="700" fill="#fff">不要なファイル</text></g>
 <g class="pin"><rect x="226" y="372" width="123" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="238" cy="384" r="8.5" fill="#fff"/><text x="238" y="388" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">7</text><text x="251" y="388.2" font-size="11.5" font-weight="700" fill="#fff">セキュリティ設定</text></g>
 </svg></figure>
-        <ol class="legend"><li data-n="1"><span class="n" aria-hidden="true">1</span><div><h3>SSL証明書</h3><p class="see"><b>見ているところ</b>サイトの証明書が有効か、期限まであと何日残っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>期限が切れると、ページを開いた人の画面いっぱいに「この接続ではプライバシーが保護されません」などの警告が出て、多くの人がそこで引き返します。お問い合わせフォームに入力された内容も守られなくなります。</p></div><p class="gauge"><b>判定の目安</b>残り14日を切るとC、7日でD、切れているかエラーならE</p></div></li><li data-n="2"><span class="n" aria-hidden="true">2</span><div><h3>PHP</h3><p class="see"><b>見ているところ</b>サーバーが返す情報から読み取れるPHPのバージョンと、その版のサポート期限。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>サポートが終わった版には、新しく見つかった弱点の修正版が出ません。サーバー会社の画面で何年も切り替えていないサイトは、公表済みの弱点が残ったまま動き続けることになります。</p></div><p class="gauge"><b>判定の目安</b>終了まで半年以内ならC、終わった版はD、1年以上前に終わった版はE</p></div></li><li data-n="3"><span class="n" aria-hidden="true">3</span><div><h3>WordPress本体</h3><p class="see"><b>見ているところ</b>外から読み取れる本体のバージョンが、最新版からどれだけ遅れているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>直された弱点は、内容が公表されます。古い版のサイトは、その情報をもとに狙いを付けられやすくなります。自動更新が止まっていても、管理画面に知らせが出ないことがあります。</p></div><p class="gauge"><b>判定の目安</b>修正版が未適用ならC、2つ以上古い版はD以下</p></div></li><li data-n="4"><span class="n" aria-hidden="true">4</span><div><h3>プラグイン</h3><p class="see"><b>見ているところ</b>ページから分かるプラグインの名前と版が、最新版から遅れていないか。配布が止まっていないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>古いプラグインの弱点は、改ざんや不正なページの埋め込みの入り口として狙われます。配布が止まったプラグインは、弱点が見つかっても直されず、使い続ける限り危険が残ります。</p></div><p class="gauge"><b>判定の目安</b>更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</p></div></li><li data-n="5"><span class="n" aria-hidden="true">5</span><div><h3>ログイン名</h3><p class="see"><b>見ているところ</b>投稿者ページや、外から情報を読み出す仕組み（REST API）から、管理画面のログイン名が読み取れないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>ログイン名が分かると、攻撃する側はパスワードを当てるだけで済みます。総当たりで試す攻撃を受けやすくなり、弱いパスワードのままだと管理画面を乗っ取られるおそれがあります。</p></div><p class="gauge"><b>判定の目安</b>読み取れればC</p></div></li><li data-n="6"><span class="n" aria-hidden="true">6</span><div><h3>不要なファイル</h3><p class="see"><b>見ているところ</b>本体やプラグインの説明ファイル（readme）が残っていないか。アップロード先のフォルダの中身が一覧で見えないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>説明ファイルから使っている版が分かり、弱点のある版かどうかを外から確かめられてしまいます。ファイルの一覧が見えると、公開するつもりのない書類や画像まで見られるおそれがあります。</p></div><p class="gauge"><b>判定の目安</b>readmeが残っていればB、ファイルの一覧が見えればD</p></div></li><li data-n="7"><span class="n" aria-hidden="true">7</span><div><h3>セキュリティ設定</h3><p class="see"><b>見ているところ</b>ブラウザに守り方を指示する6つの設定（セキュリティヘッダー）が入っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>自分のページを他人のサイトの枠の中に表示されたり、通信をhttpsに固定できなかったりします。なりすましページへの悪用や、情報の抜き取りを防ぐ手立てが弱くなります。</p></div><p class="gauge"><b>判定の目安</b>6項目中5項目以上でA、4でB、2〜3でC、1でD、0でE</p></div></li></ol>
+        <ol class="legend"><li data-n="1"><span class="n" aria-hidden="true">1</span><div><h3>SSL証明書</h3><p class="see"><b>見ているところ</b>サイトの証明書が有効か、期限まであと何日残っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>期限が切れると、ページを開いた人の画面いっぱいに「この接続ではプライバシーが保護されません」などの警告が出て、<span class="mark-red"><strong>多くの人がそこで引き返します</strong></span>。お問い合わせフォームに入力された内容も守られなくなります。</p></div><p class="gauge"><b>判定の目安</b>残り14日を切るとC、7日でD、切れているかエラーならE</p></div></li><li data-n="2"><span class="n" aria-hidden="true">2</span><div><h3>PHP</h3><p class="see"><b>見ているところ</b>サーバーが返す情報から読み取れるPHPのバージョンと、その版のサポート期限。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>サポートが終わった版には、新しく見つかった弱点の<span class="mark-red"><strong>修正版が出ません</strong></span>。サーバー会社の画面で何年も切り替えていないサイトは、公表済みの弱点が残ったまま動き続けることになります。</p></div><p class="gauge"><b>判定の目安</b>終了まで半年以内ならC、終わった版はD、1年以上前に終わった版はE</p></div></li><li data-n="3"><span class="n" aria-hidden="true">3</span><div><h3>WordPress本体</h3><p class="see"><b>見ているところ</b>外から読み取れる本体のバージョンが、最新版からどれだけ遅れているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>直された弱点は、内容が公表されます。古い版のサイトは、その情報をもとに狙いを付けられやすくなります。自動更新が止まっていても、管理画面に知らせが出ないことがあります。</p></div><p class="gauge"><b>判定の目安</b>修正版が未適用ならC、2つ以上古い版はD以下</p></div></li><li data-n="4"><span class="n" aria-hidden="true">4</span><div><h3>プラグイン</h3><p class="see"><b>見ているところ</b>ページから分かるプラグインの名前と版が、最新版から遅れていないか。配布が止まっていないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>古いプラグインの弱点は、改ざんや不正なページの埋め込みの入り口として狙われます。配布が止まったプラグインは、弱点が見つかっても直されず、使い続ける限り危険が残ります。</p></div><p class="gauge"><b>判定の目安</b>更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</p></div></li><li data-n="5"><span class="n" aria-hidden="true">5</span><div><h3>ログイン名</h3><p class="see"><b>見ているところ</b>投稿者ページや、外から情報を読み出す仕組み（REST API）から、管理画面のログイン名が読み取れないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>ログイン名が分かると、攻撃する側はパスワードを当てるだけで済みます。総当たりで試す攻撃を受けやすくなり、弱いパスワードのままだと<span class="mark-red"><strong>管理画面を乗っ取られるおそれ</strong></span>があります。</p></div><p class="gauge"><b>判定の目安</b>読み取れればC</p></div></li><li data-n="6"><span class="n" aria-hidden="true">6</span><div><h3>不要なファイル</h3><p class="see"><b>見ているところ</b>本体やプラグインの説明ファイル（readme）が残っていないか。アップロード先のフォルダの中身が一覧で見えないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>説明ファイルから使っている版が分かり、弱点のある版かどうかを外から確かめられてしまいます。ファイルの一覧が見えると、公開するつもりのない書類や画像まで見られるおそれがあります。</p></div><p class="gauge"><b>判定の目安</b>readmeが残っていればB、ファイルの一覧が見えればD</p></div></li><li data-n="7"><span class="n" aria-hidden="true">7</span><div><h3>セキュリティ設定</h3><p class="see"><b>見ているところ</b>ブラウザに守り方を指示する6つの設定（セキュリティヘッダー）が入っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>自分のページを他人のサイトの枠の中に表示されたり、通信をhttpsに固定できなかったりします。なりすましページへの悪用や、情報の抜き取りを防ぐ手立てが弱くなります。</p></div><p class="gauge"><b>判定の目安</b>6項目中5項目以上でA、4でB、2〜3でC、1でD、0でE</p></div></li></ol>
       </div>
       <p class="sec-link"><a href="service.html">判定の基準を見る</a></p>
     </div>
@@ -163,9 +163,9 @@
       <figure class="sec-art"><img src="img/illust-features.webp" alt="画面の弱点を虫めがねで見つけ、スパナと歯車で直し、盾で守るまでの流れを3つの場面で描いたイラスト" width="1188" height="414" loading="lazy"></figure>
       <div class="feats">
         <div class="feat"><h3>その場で結果がわかる</h3><p>URLを入れて数十秒で、7項目の判定が画面に出ます。何日も待つ必要はありません。</p></div>
-        <div class="feat"><h3>自分で直せる手順つき</h3><p>結果票には、判定ごとの直し方を書きます。社内で対応できるものは、そのまま進められます。</p></div>
+        <div class="feat"><h3>自分で直せる手順つき</h3><p>結果票には、判定ごとの直し方を書きます。<span class="mark-yellow">社内で対応できるものは、そのまま進められます</span>。</p></div>
         <div class="feat"><h3>改ざんを毎日チェック</h3><p>定期診断スタンダードでは、ページの中身を毎日1回比べます。書き換えを見つけたら担当者が確かめ、営業日のうちにメールでご連絡します。</p></div>
-        <div class="feat"><h3>対策まで同じ担当者</h3><p>診断した担当者が、PHPやプラグインの更新、設定の見直しまで行います。説明のやり直しがいりません。</p></div>
+        <div class="feat"><h3>対策まで同じ担当者</h3><p>診断した担当者が、PHPやプラグインの更新、設定の見直しまで行います。<span class="mark-yellow">説明のやり直しがいりません</span>。</p></div>
         <div class="feat"><h3>対策後の再診断は無料</h3><p>詳細診断のあと、直したところをもう一度点検して、判定が上がったことを確かめます。</p></div>
         <div class="feat"><h3>制作会社さま向けプラン</h3><p>お客さまのサイトをまとめて点検し、御社の名前で報告書を出せます。保守のメニューに加えられます。</p></div>
       </div>
@@ -177,7 +177,7 @@
     <div class="wrap about">
       <div class="about-text">
         <h2>点検するのは、WordPressを12年以上つくってきた担当者です</h2>
-        <p class="first">サイトドックは、Web制作とSEOの仕事をしているインフォサクセスが運営しています。自動の点検で見つけた弱点は、詳細診断と対策作業で、同じ担当者が最後まで直します。</p>
+        <p class="first">サイトドックは、Web制作とSEOの仕事をしているインフォサクセスが運営しています。自動の点検で見つけた弱点は、詳細診断と対策作業で、<span class="mark-yellow">同じ担当者が最後まで直します</span>。</p>
         <p>これまで、制作会社さまからのご依頼で、中小企業のWordPressサイトのセキュリティ調査、PHPの更新、プラグインの更新、使われていないアカウントの整理、WAFの設定を手がけてきました。自分で運営しているWordPressサイトも、同じ手順で点検しています。</p>
         <p class="about-links"><a href="about.html">運営者情報と対応事例を見る</a><a href="https://crowdworks.jp/public/employees/548145" target="_blank" rel="noopener">クラウドワークスのプロフィール</a><a href="https://www.lancers.jp/profile/orangerancer" target="_blank" rel="noopener">ランサーズのプロフィール</a></p>
         <figure class="about-art"><img src="img/illust-about.webp" alt="ノートパソコンの画面に点検結果の一覧を出し、横の点検表にチェックを入れている机の上のイラスト" width="1176" height="628" loading="lazy"></figure>
@@ -189,7 +189,7 @@
           <dt>経験</dt><dd>WordPress制作 12年以上、SEO 15年以上</dd>
           <dt>資格</dt><dd>SEO検定1級</dd>
           <dt>対応時間</dt><dd>平日 9:00〜18:00</dd>
-          <dt>営業電話</dt><dd>診断をした方に、こちらから電話をかけることはありません</dd>
+          <dt>営業電話</dt><dd>診断をした方に、<span class="mark-red"><strong>こちらから電話をかけることはありません</strong></span></dd>
         </dl>
         <ul class="proof">
           <li><b>228<small>件</small></b>クラウドワークスでの受注実績（総合評価4.9、評価134件）</li>
@@ -206,7 +206,7 @@
     <div class="wrap">
       <div class="sec-head wide">
         <h2>料金</h2>
-        <p>まずは無料の簡易診断から。判定を見てから、必要なものだけ選んでいただけます。表示はすべて税込です。</p>
+        <p>まずは無料の簡易診断から。<span class="mark-yellow">判定を見てから、必要なものだけ選んでいただけます</span>。表示はすべて税込です。</p>
       </div>
       <div class="plans">
         <div class="plan">
@@ -280,7 +280,7 @@
         <li><h3>URLを入力</h3><p>診断したいサイトのURLを入れて、ボタンを押すだけです。登録はいりません。</p></li>
         <li><h3>その場で判定</h3><p>数十秒で、7項目の判定と総合判定が画面に出ます。</p></li>
         <li><h3>結果票を受け取る</h3><p>メールアドレスを入れると、危ないプラグインの名前と直し方を書いた結果票が届きます。</p></li>
-        <li><h3>必要な対策だけ相談</h3><p>気になる判定があれば、詳細診断や対策作業をご相談ください。無理におすすめはしません。</p></li>
+        <li><h3>必要な対策だけ相談</h3><p>気になる判定があれば、詳細診断や対策作業をご相談ください。<span class="mark-yellow">無理におすすめはしません</span>。</p></li>
       </ol>
     </div>
   </section>
@@ -290,7 +290,7 @@
       <div class="partner">
         <div class="partner-head">
           <h2>制作会社さま、保守会社さまへ</h2>
-          <p>お客さまのサイトの点検を、まとめてお任せいただけます。報告書は御社の名前で出せるので、保守メニューの一つとしてお使いいただけます。料金はサイト数に応じてお見積もりします。</p>
+          <p>お客さまのサイトの点検を、まとめてお任せいただけます。<span class="mark-yellow">報告書は御社の名前で出せる</span>ので、保守メニューの一つとしてお使いいただけます。料金はサイト数に応じてお見積もりします。</p>
           <figure class="partner-art"><img src="img/illust-partner.webp" alt="複数のサイトの点検結果を、1冊の報告書と点検表にまとめるイラスト" width="938" height="572" loading="lazy"></figure>
         </div>
         <div class="partner-body">
@@ -312,7 +312,7 @@
         <p class="sec-link"><a href="faq.html">質問をすべて見る</a></p>
       </div>
       <div class="faq">
-        <details><summary>診断でサイトが止まったり、重くなったりしませんか。</summary><p>簡易診断は、ふつうにページを閲覧するのと同じアクセスを数回行うだけです。書き込みやログインの試行はしないので、サイトの動きには影響しません。</p></details>
+        <details><summary>診断でサイトが止まったり、重くなったりしませんか。</summary><p>簡易診断は、ふつうにページを閲覧するのと同じアクセスを数回行うだけです。<span class="mark-yellow">書き込みやログインの試行はしないので</span>、サイトの動きには影響しません。</p></details>
         <details><summary>他人のサイトも診断できてしまいませんか。</summary><p>画面に出るのは判定だけです。危ないプラグインの名前などを書いた詳しい結果票は、メールアドレスのドメインがサイトと同じでない場合、サイトの持ち主であることを確認してからお送りします。</p></details>
         <details><summary>WordPress以外のサイトでも使えますか。</summary><p>SSL証明書、PHP、不要なファイル、セキュリティ設定は、どのサイトでも点検できます。プラグインとログイン名の項目はWordPressのサイトが対象です。</p></details>
         <details><summary>制作会社につくってもらったサイトでも大丈夫ですか。</summary><p>大丈夫です。結果票は制作会社さまにそのまま転送していただける書き方にしています。対策を制作会社さまにお願いするか、こちらで行うかはお選びいただけます。</p></details>
@@ -358,7 +358,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-10-31g");
+console.log("BUILD_TAG: 2026-10-31h");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -483,6 +483,6 @@ console.log("BUILD_TAG: 2026-10-31g");
   });
 })();
 </script>
-<script src="assets/site.js?v=20261031g"></script>
+<script src="assets/site.js?v=20261031h"></script>
 </body>
 </html>
