@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261029r -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ホームページ改ざんの復旧手順｜発見から再発防止まで｜サイトドック</title>
+<meta name="description" content="ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ホームページ改ざんの復旧手順｜発見から再発防止まで">
+<meta property="og:description" content="ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261029r">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ホームページ改ざんの復旧手順｜発見から再発防止まで", "description": "ホームページが改ざんされたときの復旧手順を、記録と停止、原因の調べ方、バックアップからの戻し方、Googleへの審査依頼まで順に解説します。再発を防ぐ備えもまとめました。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-009-v2.webp", "datePublished": "2026-11-10", "dateModified": "2026-11-10", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/website-tampering-recovery.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ホームページの改ざんの復旧には、どのくらい時間がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "被害の大きさと、改ざん前のバックアップがあるかどうかで変わります。バックアップから戻せる場合は、作業そのものは数時間で済むこともあるでしょう。原因の調査や不正なコードの削除が必要な場合は、数日以上かかることも珍しくありません。Googleの警告を外す審査にも、数日から数週間かかります。慌てずに、段階ごとに進めてください。"}}, {"@type": "Question", "name": "自分で復旧しても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "バックアップから戻して、パスワードの変更と更新まで自分でできるなら、自分で進めても構いません。ただし、原因が分からないまま戻すと、同じ入口から再び改ざんされることがあります。不正なコードが記事に入り込んでいる場合は、専門家に頼みましょう。お客さまの情報が漏れた疑いがあるときも、早めの相談が大切です。"}}, {"@type": "Question", "name": "改ざんされたことを、お客さまに知らせる必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "偽のサイトへの誘導や、不審なメールの送信など、お客さまに影響が出ている場合は知らせるべきです。黙っていると、あとで分かったときに信用を大きく損ないます。サイトのお知らせで、起きたことと期間、行った対応を伝えましょう。個人情報が漏れた疑いがある場合は、個人情報保護委員会への報告が必要になることもあります。判断に迷うときは、専門家や弁護士に相談してください。"}}, {"@type": "Question", "name": "バックアップから戻したのに、また改ざんされました。なぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんの入口がふさがれていないことが、いちばんの理由です。古いプラグインの弱点や、変えていないパスワードが残っていると、同じ方法で入られます。バックアップの中に、すでに不正なファイルが含まれていた可能性もあるでしょう。戻す日を選ぶときは、改ざんが始まった日より前のものを使ってください。入口が分からない場合は、専門家にログを見てもらうのが近道です。"}}, {"@type": "Question", "name": "自分で調べるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、制作会社や保守を頼んでいる会社に、気づいたことと記録を見せて相談しましょう。IPAの企業組織向けの相談窓口でも、応急処置の助言を受けられます。今の状態を外から確かめたいときは、サイトドックの無料簡易診断が役立つでしょう。詳しく調べたい場合は、有料の詳細診断で、管理画面やサーバーの中まで確かめられます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ホームページ改ざんの復旧手順｜発見から再発防止まで"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
+    <h1>ホームページ改ざんの復旧手順｜発見から再発防止まで</h1>
+    <p><time datetime="2026-11-10">2026.11.10</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-009-v2.webp" alt="ホームページ改ざんの復旧手順。発見から再発防止まで、消す前に記録を残す" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「ホームページが改ざんされてしまった。何から手をつければいいのだろう」と焦っていませんか？</p>
+<p>慌てて怪しいファイルを消すと、原因が分からなくなり、同じ被害を繰り返すおそれがあるのです。</p>
+<p>この記事では、<span class="mark-yellow">ホームページの改ざんから復旧する手順</span>を、発見から再発防止まで順に紹介します。気づいた直後にやることと、Googleの警告を外す方法もまとめました。</p>
+<p>運営者が自社サイトの点検で確かめた、バックアップの保存期間などの事実も入れています。被害が起きる前の備えとしても読んでください。</p>
+
+<h2 id="s1">ホームページの改ざんから復旧するまでの流れ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-recovery-fig1.webp" alt="ホームページの改ざんからの復旧を、記録、停止、原因の特定、復元、再発防止の5つの段階で左から右へ進める流れとして示した図" width="1200" height="800"><figcaption>止めて、調べて、戻して、ふさぐ順に進めます</figcaption></figure>
+<p>ホームページの改ざんからの復旧は、<span class="mark-yellow">記録、停止、原因の特定、復元、再発防止の順</span>に進めます。順番を守ると、作業の抜けや二度手間が減るでしょう。まずは全体の流れをつかみ、いまどの段階にいるのかを確かめてください。</p>
+<p>被害の大きさによって、自分で直せる場合と専門家に頼むべき場合があります。どちらの場合でも、流れを知っておくと話が早く進むはずです。</p>
+
+<h3>復旧は5つの段階で進める</h3>
+<p>改ざんに気づいたら、まず画面の様子や届いた通知を記録に残します。次に、サイトを一時的に止めて、パスワードを変えましょう。そのうえで原因を探し、改ざん前のバックアップなどを使って元の状態に戻す流れです。</p>
+<p>最後に、Googleの警告を外す手続きと、再発を防ぐ対策を行います。<span class="mark-yellow">止めて、調べて、戻して、ふさぐ</span>という順番だと覚えておくとよいでしょう。段階ごとに、やったことと日時をメモしておくと、あとで関係先に説明するときに役立ちます。</p>
+
+<h3>慌てて消すと原因が分からなくなる</h3>
+<p>改ざんに気づくと、怪しいファイルをすぐに消したくなるでしょう。ところが、消してしまうと、どこから入られたのかを調べる手がかりも失われます。入口をふさがないまま元に戻すと、<span class="mark-red"><strong>同じ方法で何度でも改ざんされる</strong></span>おそれがあるのです。</p>
+<p>消す前に、ファイル名と更新日時、置かれていた場所を控えてください。控えを取ったうえで削除すれば、原因を調べる作業と両立できます。自分で控えを取るのが難しいときは、触らずに専門家へ相談するのも1つの方法です。</p>
+
+<h2 id="s2">ホームページの改ざんに気づいたら復旧の前にやる3つのこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-recovery-fig2.webp" alt="ホームページの改ざんに気づいたら復旧の前にやることとして、状況を記録して残す、サイトを一時的に止める、パスワードをすべて変える、の3つを番号つきのカードで並べた図" width="1200" height="800"><figcaption>この3つは、気づいたその日のうちに済ませます</figcaption></figure>
+<p>ホームページの改ざんに気づいたら、復旧の作業に入る前に<span class="mark-yellow">被害が広がらないようにする</span>ことが先です。改ざんされたページは、開いた人を偽のサイトへ誘導し続けている場合があります。次の3つは、気づいたその日のうちに済ませてください。</p>
+<p>1人で抱えず、制作会社や社内の担当者にも早めに知らせましょう。どれも、専門の知識がなくても進められる作業です。</p>
+
+<h3>① 状況を記録して残す</h3>
+<p>最初に、改ざんされた画面をスクリーンショットで残します。表示がおかしいページのURL、気づいた日時、見つけたきっかけもメモしてください。サーバー会社やGoogleから届いたメールは、消さずに保存しておきましょう。</p>
+<p>こうした記録は、原因を調べるときや、警察などに相談するときに役立つ材料です。多くのレンタルサーバーでは、管理画面から<span class="mark-yellow">アクセスログを取り出せます</span>。保存される期間は短いことが多いので、早めに控えを取っておくと安心です。</p>
+
+<h3>② サイトを一時的に止める</h3>
+<p>改ざんされたままのページを公開し続けると、訪れた人に被害が広がってしまうでしょう。総務省も、復旧に時間がかかる場合は<span class="mark-yellow">一時的にホームページを非公開にする</span>ことを挙げています。</p>
+<p>止め方は、メンテナンス中の表示に切り替える方法と、サーバー側で公開を止める方法の2つです。管理画面に入れない場合は、サーバー会社に連絡して止めてもらうことも考えてください。止めている間に、次のパスワードの変更と原因の調査を進めます。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/case/business/02/" target="_blank" rel="noopener noreferrer nofollow">事例2 ホームページが書き換えられた｜総務省</a></li>
+</ul>
+
+<h3>③ パスワードをすべて変える</h3>
+<p>改ざんした相手は、盗んだパスワードで再びログインしてくることがあります。管理者に加え、<span class="mark-red"><strong>サーバーの管理画面、FTP、データベースのパスワード</strong></span>も変えてください。同じパスワードをほかのサービスでも使っていれば、そちらも変えましょう。</p>
+<p>wp-config.phpの認証用キーを変えると、ログイン中の人を締め出せます。変えた後のパスワードは、長く推測されにくいものにしてください。パスワードの管理ツールを使えば、長いパスワードでも覚えておく必要はありません。</p>
+
+<h2 id="s3">ホームページの改ざんの原因を探して復旧に備える</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-recovery-fig3.webp" alt="ホームページの改ざんの原因を探す方法として、不審なファイルと変更日時、見覚えのないユーザーやプラグイン、サーバーのアクセスログの3か所を虫眼鏡で確かめる様子を縦に並べた図" width="1200" height="800"><figcaption>入口が分かれば、戻したあとにふさげます</figcaption></figure>
+<p>ホームページの改ざんから復旧する前に、<span class="mark-yellow">どこから入られたのかを突き止める</span>ことが欠かせません。入口が分かれば、戻したあとで確実にふさげるからです。総務省は、改ざんの多くが安易なパスワードや残ったままの弱点から起きると説明しています。</p>
+<p>次の3つを順に確かめていきましょう。調べた結果は、記録のメモに書き足しておいてください。</p>
+
+<h3>不審なファイルと変更日時を確かめる</h3>
+<p>サーバーのファイルマネージャーやFTPで、最近更新されたファイルを探します。特に、画像を入れる「uploads」のフォルダにPHPのファイルがあれば要注意です。見覚えのない名前のファイルや、<span class="mark-yellow">同じ時刻にまとめて書き換えられたファイル</span>も手がかりになります。</p>
+<p>運営者も自社サイトの点検で、uploadsのフォルダにPHPのファイルがないかを確かめました。見つけたファイルは、削除する前に名前と場所を控えてください。</p>
+
+<h3>見覚えのないユーザーやプラグインを確かめる</h3>
+<p>WordPressの管理画面で「ユーザー」を開き、知らない管理者がいないかを見ます。改ざんした相手が、次に入るための裏口として管理者を足していることがあるからです。</p>
+<p>運営者の自社サイトの点検でも、<span class="mark-yellow">数年前の外注先の編集者アカウント</span>が2つ残っていました。改ざんとは関係なくても、使っていないアカウントは入口になりかねません。プラグインの一覧にも、入れた覚えのないものがないかを確かめましょう。見つけたら、削除する前に作成日と名前を控えておくと調査に役立ちます。</p>
+
+<h3>サーバーのアクセスログを確かめる</h3>
+<p>アクセスログには、いつ、どこから、どのページにアクセスがあったかが残ります。管理画面へのログインや、不審なファイルへのアクセスの日時を探すのが基本です。<span class="mark-yellow">ファイルの更新日時の前後</span>を重点的に見ると、入口を絞り込みやすくなります。</p>
+<p>ログを読むには慣れが必要なので、難しいと感じたら専門家に見てもらってください。そのときのために、ログの控えは早めに取っておきましょう。保存期間を過ぎたログは、あとから取り出せなくなります。</p>
+
+<h2 id="s4">ホームページの改ざんを復旧する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-recovery-fig4.webp" alt="ホームページの改ざんを復旧する手順として、改ざん前のバックアップがあれば戻し、なければ本体を入れ直して作り直し、どちらも最後に本体とプラグインとPHPを最新にしてから公開を再開する分かれ道の図" width="1200" height="800"><figcaption>バックアップがあるかどうかで、戻し方が分かれます</figcaption></figure>
+<p>原因の見当がついたら、ホームページの改ざんを復旧する作業に入りましょう。復旧の方法は、<span class="mark-yellow">改ざん前のバックアップがあるかどうか</span>で変わります。どちらの方法でも、最後に弱点をふさぐ作業までをひとまとまりと考えてください。</p>
+<p>戻すだけで終わると、同じ入口から再び改ざんされるおそれが残ります。作業の前には、今の状態も念のためバックアップしておくと安心です。</p>
+
+<h3>改ざん前のバックアップから戻す</h3>
+<p>レンタルサーバーの自動バックアップを使えば、管理画面から過去の状態に戻せます。エックスサーバーの場合、Webデータとデータベースを別々に戻す仕組みです。マニュアルでは、バックアップの日より後に作られたファイルは、戻すと削除されると説明されています。</p>
+<p>運営者が自社サイトのサーバーで確かめたところ、<span class="mark-yellow">Webデータは7日分、データベースは14日分</span>でした。改ざんに気づくのが遅れると、戻せる日が残っていないこともあるのです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_restore.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからのデータ復元｜エックスサーバー</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_db_restore.php" target="_blank" rel="noopener noreferrer nofollow">データベース自動バックアップからの復元｜エックスサーバー</a></li>
+</ul>
+
+<h3>バックアップがないときは入れ直して作り直す</h3>
+<p>戻せるバックアップがない場合は、WordPressの本体を入れ直すところから始めるのが基本です。管理画面の「更新」にある<span class="mark-yellow">本体を再インストールするボタン</span>で、ファイルを入れ直せます。ただし、テーマやプラグイン、画像などが入る「wp-content」は対象外です。</p>
+<p>テーマとプラグインは、公式の配布元から最新版を入れ直しましょう。記事に埋め込まれた不正なコードは、1つずつ探して消すことになります。手間がかかるので、専門家に頼むほうが早く済む場合も多いでしょう。</p>
+
+<h3>本体・プラグイン・PHPを最新にする</h3>
+<p>戻した直後のサイトは、改ざんされたときと同じ弱点を抱えたままです。本体、プラグイン、テーマ、PHPを、<span class="mark-red"><strong>どれも最新の版に上げてから公開を再開</strong></span>してください。使っていないプラグインやテーマは、この機会に削除しましょう。</p>
+<p>詳しくは、<a href="wordpress-plugin-vulnerability.html">WordPressのプラグインに脆弱性が見つかったときの対処法</a>で紹介しています。更新が終わったら、表示と問い合わせフォームが正しく動くかも確かめておくと安心です。あわせて、新しいパスワードで管理画面に入れるかも見ておきましょう。</p>
+
+<h2 id="s5">ホームページの改ざんを復旧したあとにやること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/website-tampering-recovery-fig5.webp" alt="ホームページの改ざんを復旧したあとにやることとして、Googleに審査をリクエストする、関係先に知らせて相談窓口に届け出る、再発を防ぐ仕組みを整える、の3つをチェックリストで示した図" width="1200" height="800"><figcaption>戻したあとの片づけまでが、復旧の作業です</figcaption></figure>
+<p>ホームページの改ざんを復旧したら、<span class="mark-yellow">周りに残った影響を片づける</span>作業が残っています。検索結果の警告や、取引先への説明などがそれにあたるでしょう。二度と同じ被害にあわないための仕組みづくりも、この段階で済ませてください。</p>
+<p>どれも後回しにすると、お客さまの信用を取り戻すまでの時間が延びてしまいます。1つずつ順に片づけていきましょう。</p>
+
+<h3>Googleに審査をリクエストする</h3>
+<p>警告が付いた場合は、Search Consoleの「セキュリティの問題」を確かめてください。Googleのヘルプでは、<span class="mark-yellow">すべてのページで問題を直してから</span>審査を頼むよう案内しています。一部のページだけ直しても、検索結果の表示は変わりません。</p>
+<p>審査を頼むときは、何が起きて、どう直したかを具体的に書きます。審査には数日から数週間かかるため、結果が届くまで再送しないようにしましょう。直し残しがあると、次の結果が届くまでの期間が延びることがあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener noreferrer nofollow">セキュリティの問題レポート｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>関係先に知らせて相談窓口に届け出る</h3>
+<p>偽のサイトへの誘導などで、お客さまに被害が出ている場合は、サイト上でお知らせを出します。お知らせには、起きたことと期間、すでに行った対応を書いておくと伝わりやすいでしょう。</p>
+<p>被害の相談は、IPAの<span class="mark-yellow">企業組織向けサイバーセキュリティ相談窓口</span>が受け付けています。応急処置の助言や、専門業者の紹介などを受けられる窓口です。犯罪としての相談は、都道府県警察のサイバー犯罪の相談窓口が受け付けています。どちらに相談するか迷うときは、まずIPAの窓口に連絡すると案内を受けられるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/todokede/incidentportal.html" target="_blank" rel="noopener noreferrer nofollow">サイバーセキュリティ 相談・届出窓口一覧｜IPA</a></li>
+</ul>
+
+<h3>再発を防ぐ仕組みを整える</h3>
+<p>復旧が終わったら、同じことを繰り返さないための仕組みを整えることが大切です。月に1回は本体とプラグインの更新を確かめ、外からの点検で弱点が残っていないかを見ましょう。バックアップは、<span class="mark-yellow">サーバーの外にも月に1回ほど控えを取る</span>と安心です。</p>
+<p>自動バックアップだけでは、気づくのが遅れたときに戻せる日がなくなってしまいます。改ざんのサインの見つけ方は、<a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a>にまとめました。</p>
+
+<div class="art-cta"><strong>復旧したサイトに、弱点は残っていませんか</strong><p>URLを入れるだけで、WordPressやPHPの版、ログイン名など7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">ホームページの改ざんの復旧に関するよくある質問</h2>
+
+<h3>ホームページの改ざんの復旧には、どのくらい時間がかかりますか？</h3>
+<p>被害の大きさと、改ざん前のバックアップがあるかどうかで変わります。バックアップから戻せる場合は、作業そのものは数時間で済むこともあるでしょう。原因の調査や不正なコードの削除が必要な場合は、数日以上かかることも珍しくありません。Googleの警告を外す審査にも、数日から数週間かかります。慌てずに、段階ごとに進めてください。</p>
+
+<h3>自分で復旧しても大丈夫ですか？</h3>
+<p>バックアップから戻して、パスワードの変更と更新まで自分でできるなら、自分で進めても構いません。ただし、原因が分からないまま戻すと、同じ入口から再び改ざんされることがあります。不正なコードが記事に入り込んでいる場合は、専門家に頼みましょう。お客さまの情報が漏れた疑いがあるときも、早めの相談が大切です。</p>
+
+<h3>改ざんされたことを、お客さまに知らせる必要はありますか？</h3>
+<p>偽のサイトへの誘導や、不審なメールの送信など、お客さまに影響が出ている場合は知らせるべきです。黙っていると、あとで分かったときに信用を大きく損ないます。サイトのお知らせで、起きたことと期間、行った対応を伝えましょう。個人情報が漏れた疑いがある場合は、個人情報保護委員会への報告が必要になることもあります。判断に迷うときは、専門家や弁護士に相談してください。</p>
+
+<h3>バックアップから戻したのに、また改ざんされました。なぜですか？</h3>
+<p>改ざんの入口がふさがれていないことが、いちばんの理由です。古いプラグインの弱点や、変えていないパスワードが残っていると、同じ方法で入られます。バックアップの中に、すでに不正なファイルが含まれていた可能性もあるでしょう。戻す日を選ぶときは、改ざんが始まった日より前のものを使ってください。入口が分からない場合は、専門家にログを見てもらうのが近道です。</p>
+
+<h3>自分で調べるのが不安なときはどうすればいいですか？</h3>
+<p>まずは、制作会社や保守を頼んでいる会社に、気づいたことと記録を見せて相談しましょう。IPAの企業組織向けの相談窓口でも、応急処置の助言を受けられます。今の状態を外から確かめたいときは、サイトドックの無料簡易診断が役立つでしょう。詳しく調べたい場合は、有料の詳細診断で、管理画面やサーバーの中まで確かめられます。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>ホームページの改ざんからの復旧は、記録、停止、原因の特定、復元、再発防止の順に進めます。怪しいファイルをすぐに消さず、まず記録を残して、パスワードを変えてください。</p>
+<p>戻したあとは、本体とプラグイン、PHPを最新にし、Googleへの審査も忘れずに頼みましょう。</p>
+<p>被害が起きる前に、<span class="mark-yellow">サーバーの外にもバックアップの控えを取る</span>ところから始めてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">復旧するまでの流れ</a></li><li><a href="#s2">復旧の前にやる3つのこと</a></li><li><a href="#s3">原因を探して復旧に備える</a></li><li><a href="#s4">復旧する手順</a></li><li><a href="#s5">復旧したあとにやること</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261029r"></script>
+</body>
+</html>
