@@ -636,8 +636,6 @@ section + section{border-top:1px solid var(--rule-soft)}
 .anatomy{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 64px;align-items:start}
 .anatomy-map{position:sticky;top:104px;margin:0;background:var(--tint);border:1px solid var(--rule-soft);padding:28px 24px 16px}
 .anatomy-svg{display:block;width:100%;height:auto}
-.anatomy-svg .pin circle{fill:var(--stamp);stroke:#fff;stroke-width:3}
-.anatomy-svg .pin text{font-family:var(--display);font-weight:900;font-size:15px;fill:#fff}
 .anatomy-map figcaption{margin-top:8px;text-align:center;font-size:12.5px;color:var(--ink-mid)}
 .legend{list-style:none;border-top:2px solid var(--ink)}
 .legend li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:20px 0;border-bottom:1px solid var(--rule)}
@@ -673,4 +671,19 @@ section + section{border-top:1px solid var(--rule-soft)}
   .scan-box{padding:16px 14px 12px;box-shadow:6px 6px 0 var(--tint)}
   .scan-box .scan-row{flex-direction:column}
   .scan-box .btn-scan{padding:15px 20px;font-size:17px}
+}
+
+/* mobile first view: the whole URL box fits on the first screen */
+@media (max-width:560px){
+  .hero{padding-top:16px}
+  .hero-art-sp{max-width:230px;margin:0 auto 10px}
+  .hero-lead{font-size:15px;line-height:1.85}
+  .hero-lead .lead-more{display:none}
+  .hero-grid{margin-top:14px}
+  .scan-box{margin-top:18px;padding:14px 14px 10px}
+  .scan-box > label{font-size:16px;margin-bottom:8px}
+  .scan-box .scan-row{gap:8px}
+  .scan-box .scan-row input{padding:12px 12px;font-size:17px}
+  .scan-box .btn-scan{padding:13px 20px}
+  .scan-box .scan-note{margin-top:8px;font-size:12px;line-height:1.6}
 }
