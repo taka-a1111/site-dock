@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261030b -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方｜サイトドック</title>
+<meta name="description" content="ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。">
+<link rel="canonical" href="https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方">
+<meta property="og:description" content="ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。">
+<meta property="og:url" content="https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html">
+<meta property="og:image" content="https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v2.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261030b">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方", "description": "ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-010-v2.webp", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/conoha-wing-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。"}}, {"@type": "Question", "name": "複数のサイトがある場合、まとめて変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1><span class="h1-main">ConoHa WINGでPHPのバージョンを変更する方法</span><span class="h1-sub" data-sep="｜">事前の準備と戻し方</span></h1>
+    <p><time datetime="2026-11-11">2026.11.11</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-010-v2.webp" alt="ConoHa WINGでPHPのバージョンを変更する方法。管理画面から数分でできる" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「ConoHa WINGのPHPを上げたいけれど、サイトが崩れたら困る」と迷っていませんか？</p>
+<p>PHPの切り替え自体は、管理画面から数分で終わります。ただし、準備をせずに切り替えると、古いプラグインが動かなくなるおそれがあるのです。</p>
+<p>この記事では、<span class="mark-yellow">ConoHa WINGでPHPのバージョンを変更する方法</span>を、準備から順に紹介します。うまくいかなかったときの戻し方もまとめました。</p>
+<p>運営者が自社サイトでPHPを上げたときに起きたことと、その直し方も入れています。作業の前に一度通して読んでおくと安心です。</p>
+
+<h2 id="s1">ConoHa WINGでPHPのバージョンを変更する前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/conoha-wing-php-version-fig1.webp" alt="PHPの8.2から8.5までの版ごとに弱点の修正が続く期限を横の帯で並べ、8.2は2026年末で終わり、WordPressは8.3以上を推奨していることを示した図" width="1200" height="800"><figcaption>今から選ぶなら、8.3以上が目安です</figcaption></figure>
+<p>ConoHa WINGでPHPを変更する前に、<span class="mark-yellow">どのバージョンを選べばよいか</span>を決めておきましょう。あわせて、設定がどの範囲に効くのかも知っておくと迷いません。</p>
+<p>古い版のまま使い続けると、弱点が見つかっても直されなくなります。2つの点を順に確かめてください。どちらも、切り替えの手順そのものより先に押さえておきたい点です。</p>
+
+<h3>PHPのサポート期限と推奨されるバージョン</h3>
+<p>PHPは、公開から2年は通常のサポート、その後の2年は弱点の修正だけが続く仕組みです。php.netによると、<span class="mark-red"><strong>PHP 8.2の弱点の修正は2026年12月31日で終わります</strong></span>。WordPressの公式サイトが推奨しているのも、PHP 8.3以上です。</p>
+<p>今から選ぶなら、8.3以上の版にしておくと、しばらく切り替えずに済むでしょう。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。サポート終了の意味は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>で紹介しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer nofollow">Requirements｜WordPress.org</a></li>
+</ul>
+
+<h3>設定はドメインごとに決まる</h3>
+<p>ConoHa WINGのPHPは、初期状態ではサーバー全体で共通の設定が使われる仕組みです。公式マニュアルによると、バージョンはドメインごとにも変えられます。ドメインごとに設定すると、<span class="mark-yellow">サーバー共通の設定よりも優先</span>されるのです。</p>
+<p>複数のサイトを1つの契約で動かしている場合は、サイトごとに版を確かめてください。1つだけ上げたつもりでも、ほかのサイトが古いままのことがあります。管理画面で、ドメインを切り替えながら1つずつ見ていくのが確実です。</p>
+
+<h2 id="s2">ConoHa WINGでPHPのバージョンを変更する前の3つの準備</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/conoha-wing-php-version-fig2.webp" alt="ConoHa WINGでPHPのバージョンを変更する前の準備として、今のバージョンを確かめる、バックアップを確かめる、テーマとプラグインを最新にする、の3つを番号つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>準備を済ませておくと、戻す手間が小さくなります</figcaption></figure>
+<p>ConoHa WINGでPHPのバージョンを変更する前に、<span class="mark-yellow">3つの準備を済ませておく</span>と安心です。切り替えそのものは数分で終わりますが、準備を飛ばすと戻す手間が大きくなります。</p>
+<p>どれも管理画面の操作だけでできるので、順に進めていきましょう。特に、テーマやプラグインが古いまま何年もたっているサイトは、念入りに確かめてください。</p>
+
+<h3>① 今のPHPのバージョンを確かめる</h3>
+<p>まず、今のPHPのバージョンを確かめておきましょう。ConoHa WINGでは、PHP設定の画面の「PHPバージョン」欄に今の版が表示される仕組みです。WordPressなら、「ツール」の「サイトヘルス」にある「情報」タブでも見られます。</p>
+<p><span class="mark-yellow">今の版を控えておくと、戻すときに迷いません</span>。外からの点検では、サーバーが返す情報から版が分かる場合もあります。版が外から見えている状態は、それ自体が攻撃の手がかりになるので注意が必要です。</p>
+
+<h3>② バックアップを確かめる</h3>
+<p>ConoHa WINGには、無料の自動バックアップが全プランに付いています。公式サイトによると、1日1回取得され、<span class="mark-yellow">過去14日分のデータから戻せる</span>仕組みです。</p>
+<p>切り替えの直前に、管理画面のバックアップの一覧で、前日分があるかを見ておきましょう。念のため、WordPressのファイルとデータベースを手元にも保存しておくとさらに安心です。手元の控えがあれば、14日より前の状態にも戻せるようになります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.conoha.jp/wing/function/autobackup/" target="_blank" rel="noopener noreferrer nofollow">自動バックアップ｜ConoHa WING</a></li>
+</ul>
+
+<h3>③ テーマとプラグインを最新にする</h3>
+<p>古いテーマやプラグインは、新しいPHPに対応していないことがあります。切り替えの前に、WordPressの本体とテーマ、プラグインを最新にしておいてください。配布ページで「PHPの必要バージョン」や「検証済み」の表示を見ると、対応の目安になるでしょう。</p>
+<p><span class="mark-yellow">何年も更新されていないプラグイン</span>は、この機会に置き換えを考えましょう。使っていないものは、停止ではなく削除まで済ませておくと安心です。テーマを自作したり改造したりしている場合は、作った人に対応を確かめておきましょう。</p>
+
+<h2 id="s3">ConoHa WINGでPHPのバージョンを変更する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/conoha-wing-php-version-fig3.webp" alt="ConoHa WINGでPHPのバージョンを変更する手順として、WINGを選ぶ、サイト管理からサイト設定を開く、応用設定のPHP設定を開く、編集から版を選んで保存する、の4つの段階を左から右へ矢印でつないだ図" width="1200" height="800"><figcaption>サイト設定の「応用設定」から切り替えます</figcaption></figure>
+<p>ConoHa WINGでPHPを変更する作業は、<span class="mark-yellow">コントロールパネルのサイト設定</span>から行います。公式マニュアルの手順に沿って、画面の名前もそのまま載せました。画面の配置は変わることがあるので、見つからないときは公式マニュアルも見てください。</p>
+<p>操作そのものは、慣れていなくてもすぐに終わるでしょう。作業は、サイトを見る人が少ない時間帯に行うと安心です。</p>
+
+<h3>PHP設定の画面を開く</h3>
+<p>コントロールパネルにログインし、上部の「WING」を選びます。左のメニューで「サイト管理」を開き、続けて「サイト設定」を選んでください。画面上部のタブを「応用設定」に切り替え、「PHP設定」を開きます。</p>
+<p>「PHPバージョン」の欄に、今の版が表示されているはずです。<span class="mark-yellow">対象のドメインが選ばれているか</span>も確かめましょう。複数のサイトがある場合は、ここを間違えると別のサイトの版が変わってしまいます。画面の名前が見当たらないときは、公式マニュアルの最新の画面で確かめてください。</p>
+
+<h3>PHPのバージョンを選んで保存する</h3>
+<p>「PHPバージョン」の右にある鉛筆のアイコンの「編集」を押します。一覧から使いたい版を選び、「保存」を押せば切り替えは完了です。一度に大きく上げるのが不安なら、<span class="mark-yellow">1つずつ版を上げて表示を確かめる</span>方法もあります。</p>
+<p>例えば7.4から8.3へ上げる場合は、8.0、8.1と順に試すと原因を絞り込みやすいでしょう。選んだ版と日時は、作業の記録として控えておいてください。他社の手順は、<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>にまとめました。</p>
+
+<h3>.htaccessに足される記述は消さない</h3>
+<p>ドメインごとに版を変えると、.htaccessというファイルに記述が足されます。公式マニュアルによると、足されるのは「AddHandler」で始まる行です。<span class="mark-red"><strong>この行を消すと、設定がかみ合わなくなるおそれがあります</strong></span>。</p>
+<p>.htaccessをほかの目的で編集するときは、この行を残したまま書き足してください。プラグインが.htaccessを書き換えることもあるので、切り替えの後に中身を見ておくと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.conoha.jp/w/configphp/" target="_blank" rel="noopener noreferrer nofollow">PHPの設定をする｜ConoHa WINGサポート</a></li>
+</ul>
+
+<h2 id="s4">ConoHa WINGでPHPのバージョンを変更したあとの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/conoha-wing-php-version-fig4.webp" alt="ConoHa WINGでPHPのバージョンを変更したあとに確かめる場所として、サイトヘルスの版の表示、サイトの表側と問い合わせフォーム、管理画面の3つを並べたカードの図" width="1200" height="800"><figcaption>版の表示、表側、管理画面の3か所を見ます</figcaption></figure>
+<p>ConoHa WINGでPHPのバージョンを変更したら、<span class="mark-yellow">すぐにサイトの表示を確かめる</span>ことが大切です。問題があっても、気づくのが早ければ前の版に戻すだけで済みます。見る場所は、版の表示とサイトの表側、管理画面の3つです。</p>
+<p>次の順で確かめてください。お客さまが見るページだけでなく、問い合わせフォームの送信も忘れずに試しましょう。</p>
+
+<h3>サイトヘルスでバージョンを確かめる</h3>
+<p>WordPressの管理画面で「ツール」から「サイトヘルス」を開きます。「情報」タブの「サーバー」の欄に、いま動いているPHPの版が表示されるはずです。<span class="mark-yellow">選んだ版と同じ数字になっているか</span>を見てください。</p>
+<p>違う版のままなら、別のドメインの設定を変えていないかを確かめましょう。サイトヘルスの「状態」タブに、新しい問題が出ていないかもあわせて見ておくと安心です。表示が変わらないときは、ブラウザを再読み込みしてからもう一度開きましょう。</p>
+
+<h3>表側と管理画面の表示を確かめる</h3>
+<p>トップページや主な記事、問い合わせフォームを開き、表示や動きがおかしくないかを見ます。管理画面も、投稿の編集やよく使う設定の画面を開いておきましょう。</p>
+<p>運営者は自社サイトでPHPを上げたとき、<span class="mark-yellow">前後で全ページの表示を比べて</span>確かめました。ページ数が多いサイトでも、主なページだけは切り替えの前に開いておくと比べやすいでしょう。スマホでも、主なページを開いて崩れがないかを見ておくと安心です。フォームは、テストの送信を1回行い、メールが届くかまで確かめてください。</p>
+
+<h2 id="s5">ConoHa WINGでPHPのバージョンを変更してうまくいかないとき</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/conoha-wing-php-version-fig5.webp" alt="ConoHa WINGでPHPのバージョンを変更してうまくいかないときの対処として、前のバージョンに戻す、原因のプラグインを探して入れ替える、自動バックアップから戻す、の3段階を上から順に示した図" width="1200" height="800"><figcaption>まずは前の版に戻すのが近道です</figcaption></figure>
+<p>PHPを上げて表示が崩れても、<span class="mark-yellow">前の版に戻せば元どおりになる</span>ことがほとんどです。画面が真っ白になったり、エラーの文が出たりしても、データが消えたわけではありません。</p>
+<p>原因を突き止めてから上げ直せば、新しい版で使い続けられます。戻す、原因を探す、バックアップから戻すの順で考えてください。焦って何度も切り替えるより、1つずつ確かめるほうが早く片づくでしょう。</p>
+
+<h3>前のバージョンに戻す</h3>
+<p>表示がおかしいと気づいたら、まずPHP設定の画面で前の版を選び直して保存します。<span class="mark-red"><strong>迷ったら、すぐ前の版に戻すのが最も早い対処</strong></span>です。戻したら、サイトヘルスで版が戻ったことと、表示が元どおりかを確かめてください。</p>
+<p>戻しただけでは古い版のままなので、原因を探して上げ直す準備を進めましょう。PHP 8.2のサポートが終わる年末までには、上げ直しを済ませておくと安心です。戻す操作も、切り替えと同じ「編集」から行えます。</p>
+
+<h3>原因のプラグインを探して入れ替える</h3>
+<p>よくある原因は、新しいPHPに対応していない古いテーマやプラグインです。運営者の自社サイト（別のサーバー）でも、PHPを8.3に上げたら管理画面にエラーが出ました。原因は、何年も更新していなかったプラグインでした。</p>
+<p><span class="mark-yellow">新しい版のプラグインに入れ替えたところ</span>、エラーは出なくなっています。プラグインを1つずつ停止して表示を見ると、原因を絞り込めるでしょう。原因が分かったら、そのプラグインの更新か、同じ機能の別のものへの置き換えを考えます。</p>
+
+<h3>自動バックアップから戻す</h3>
+<p>前の版に戻しても直らないときは、ConoHa WINGの自動バックアップを使います。戻したデータは、「backup_data_web」というフォルダに置かれる仕組みです。そこから必要なファイルを、ファイルマネージャーやFTPで元の場所へ移します。</p>
+<p><span class="mark-yellow">戻したファイルは24時間で消える</span>ので、早めに作業してください。大きなサイトの場合は、無理せず専門家に頼むのも1つの方法です。公式マニュアルでは、1週間に5回以上戻すと、しばらく使えなくなる場合があるとされています。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.conoha.jp/w/recovery-web/" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからの復元手順(Webデータ)｜ConoHa WINGサポート</a></li>
+</ul>
+
+<div class="art-cta"><strong>あなたのサイトのPHPは何版ですか</strong><p>URLを入れるだけで、PHPやWordPressの版、ログイン名など7項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">ConoHa WINGのPHPバージョンに関するよくある質問</h2>
+
+<h3>PHPのバージョンを変えると、サイトは止まりますか？</h3>
+<p>切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。</p>
+
+<h3>どのPHPのバージョンを選べばいいですか？</h3>
+<p>WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。</p>
+
+<h3>WordPress以外のサイトでも、同じ手順で変えられますか？</h3>
+<p>PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。</p>
+
+<h3>複数のサイトがある場合、まとめて変えられますか？</h3>
+<p>サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。</p>
+
+<h3>自分で切り替えるのが不安なときはどうすればいいですか？</h3>
+<p>制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>ConoHa WINGでは、「応用設定」のPHP設定から、ドメインごとに版を変えられます。切り替えの前に、今の版の控え、バックアップ、テーマとプラグインの更新を済ませておきましょう。</p>
+<p>切り替えたら、サイトヘルスと表示を確かめ、崩れたら前の版に戻してください。</p>
+<p>8.2は2026年末で弱点の修正が終わるので、<span class="mark-yellow">年内に8.3以上へ上げておく</span>ことをおすすめします。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">変更する前に知っておきたいこと</a></li><li><a href="#s2">変更する前の3つの準備</a></li><li><a href="#s3">変更する手順</a></li><li><a href="#s4">変更したあとの確認</a></li><li><a href="#s5">うまくいかないとき</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>狙われる前に、弱点をふさぐ。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261030b"></script>
+</body>
+</html>
