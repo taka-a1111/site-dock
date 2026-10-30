@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-31b -->
+<!-- BUILD_TAG: 2026-10-31c -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>サイトドック｜ホームページの弱点を無料で点検</title>
@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261031b">
+<link rel="stylesheet" href="assets/style.css?v=20261031c">
 </head>
 <body>
 
@@ -31,6 +31,14 @@
       <div class="hero-grid">
         <div class="hero-side">
           <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など7項目を、公開されている情報だけで点検します。何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</p>
+          <form class="scan-box" id="scanForm" data-scan>
+            <label for="domain1">診断するサイトのURL</label>
+            <div class="scan-row">
+              <input id="domain1" type="text" inputmode="url" autocomplete="url" placeholder="例：example.com" required>
+              <button class="btn btn-scan" type="submit">無料で診断する</button>
+            </div>
+            <p class="scan-note">https:// は不要です。サイトへの書き込みやログインの試行はしません。</p>
+          </form>
           <ul class="checks">
             <li>登録なしで、判定まで無料</li>
             <li>ふつうの閲覧と同じアクセスだけ。サイトに負荷をかけません</li>
@@ -44,13 +52,6 @@
               <div class="sheet-title">サイト健診 受診票</div>
               <div class="sheet-meta">受診日 <span id="sheetDate">2026年10月29日</span><span class="vh">　受診サイト <span id="sheetDomain">www.example.com</span></span></div>
             </div>
-            <form class="sheet-form" id="scanForm" data-scan>
-              <label for="domain1">受診サイト</label>
-              <div class="scan-row">
-                <input id="domain1" type="text" inputmode="url" autocomplete="url" placeholder="example.com" required>
-                <button class="btn btn-scan" type="submit">無料で診断する</button>
-              </div>
-            </form>
             <div class="sheet-body">
               <span class="sample-tag" id="sheetTag">結果の見本</span>
               <table>
@@ -71,16 +72,10 @@
               </div>
             </div>
           </div>
-          <p class="scan-note">https:// は不要です。サイトへの書き込みやログインの試行はしません。</p>
         </div>
 
         <div class="hero-trust">
           <figure class="hero-art"><img src="img/illust-hero.webp" alt="ブラウザに表示したホームページを、虫めがねと聴診器で点検し、点検表にチェックを入れているイラスト" width="1068" height="671"></figure>
-          <a class="op-card" href="about.html">
-            <span class="op-mark" aria-hidden="true">高</span>
-            <span class="op-text"><span class="op-name">運営　インフォサクセス　<span style="white-space:nowrap">担当 高崎</span></span><span class="op-sub">WordPress制作12年以上・SEO15年以上・SEO検定1級</span></span>
-            <span class="op-more">運営者情報</span>
-          </a>
           <div class="mail-box" id="mailBox">
             <strong>詳しい結果票をメールで受け取る</strong>
             <p>危ないプラグインの名前と、判定ごとの直し方の手順をお送りします。</p>
@@ -344,7 +339,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-10-31b");
+console.log("BUILD_TAG: 2026-10-31c");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -469,6 +464,6 @@ console.log("BUILD_TAG: 2026-10-31b");
   });
 })();
 </script>
-<script src="assets/site.js?v=20261031b"></script>
+<script src="assets/site.js?v=20261031c"></script>
 </body>
 </html>

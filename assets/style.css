@@ -659,3 +659,18 @@ section + section{border-top:1px solid var(--rule-soft)}
   .legend p{font-size:13.5px;margin-top:4px}
   .legend p b{display:block;min-width:0;font-size:11.5px}
 }
+
+/* URL input: its own box, separate from the sample result sheet */
+.scan-box{margin-top:28px;background:var(--sheet);border:2px solid var(--ink);padding:18px 18px 14px;box-shadow:8px 8px 0 var(--tint)}
+.scan-box > label{display:block;font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:10px}
+.scan-box .scan-row{display:flex;gap:10px;background:transparent}
+.scan-box .scan-row input{flex:1;min-width:0;border:2px solid var(--rule);border-radius:4px;background:#fff;font-size:18px;padding:14px 14px}
+.scan-box .scan-row input:focus{outline:none;border-color:var(--go);box-shadow:0 0 0 3px rgba(47,125,91,.25)}
+.scan-box .btn-scan{border-radius:4px;padding:0 22px;font-size:16px}
+.scan-box .scan-note{margin-top:10px;font-size:12.5px}
+.scan-box + .checks{margin-top:24px}
+@media (max-width:560px){
+  .scan-box{padding:16px 14px 12px;box-shadow:6px 6px 0 var(--tint)}
+  .scan-box .scan-row{flex-direction:column}
+  .scan-box .btn-scan{padding:15px 20px;font-size:17px}
+}
