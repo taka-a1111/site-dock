@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 20261030b -->
+<!-- BUILD_TAG: 20261030c -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了｜サイトドック</title>
@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20261030b">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了", "description": "PHPのサポート終了とは何か、放置したホームページに起きる3つのことと、自分のサイトのバージョンを確かめる方法、安全に更新する手順をまとめました。8.2は2026年末で終わります。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-001-v2.webp", "datePublished": "2026-11-02", "dateModified": "2026-11-02", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/php-support-end.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのサポートが終わっても、サイトはそのまま表示されますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの場合、そのまま表示されます。サポートが終わってもPHPが止まるわけではなく、弱点が直されなくなるだけだからです。見た目に変化がないため、気づかないまま何年も放置されやすいことが、いちばんの問題でしょう。表示が続いているうちに、更新の計画を立ててください。まずは今のバージョンを確かめるところからで十分です。"}}, {"@type": "Question", "name": "サーバー会社がPHPを自動で新しくしてくれることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー会社によっては、古いPHPの提供を終えるときに、期日を決めて新しい版へ切り替えます。ただし、切り替えで表示が崩れても、サイトの中身の修正までは対応してもらえないことがほとんどです。お知らせのメールが届いたら、期日より前に自分で切り替えて確かめておくと安全でしょう。メールには期日と移る先の版が書かれているので、見落とさないようにしてください。"}}, {"@type": "Question", "name": "PHPを上げて表示が崩れたら、元のバージョンに戻せますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの共用サーバーでは、管理画面から元のバージョンに戻せます。ただし、サーバー会社やプランによっては、切り替えたあとに戻せないこともあるため注意が必要です。作業の前に戻せるかどうかを案内で確かめておきましょう。戻せない場合は、バックアップからの復元を前提に進めてください。復元の手順も、作業の前に一度確かめておくと安心です。"}}, {"@type": "Question", "name": "PHP 8.2を使っている場合、いつまでに切り替えればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "8.2のセキュリティサポートは2026年12月31日で終わるため、それまでに切り替えます。年末はサーバー会社や制作会社も混み合うので、11月中に準備を始めるのが現実的です。移る先は通常のサポートが続く8.4か8.5を選ぶと、次の切り替えまでの期間を長く取れるでしょう。8.4なら、弱点の修正は2028年末まで続きます。"}}, {"@type": "Question", "name": "PHPのバージョンを外から見えないようにできますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。PHPの設定「expose_php」を無効にすると、応答にバージョンが書き添えられなくなります。共用サーバーでは、管理画面のphp.iniの設定から変えられることもあるでしょう。ただし、見えなくしても古い版の弱点は残ります。バージョンの更新と組み合わせることが前提です。設定を変えたあとは、無料簡易診断で表示が消えたかを確かめられます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了"}]}]</script>
+<link rel="stylesheet" href="../assets/style.css?v=20261030c">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了", "description": "PHPのサポート終了とは何か、放置したホームページに起きる3つのことと、自分のサイトのバージョンを確かめる方法、安全に更新する手順をまとめました。8.2は2026年末で終わります。", "image": "https://site-dock-orcin.vercel.app/blog/img/eyecatch-001-v2.webp", "datePublished": "2026-10-29", "dateModified": "2026-10-29", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock-orcin.vercel.app/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock-orcin.vercel.app/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock-orcin.vercel.app/blog/php-support-end.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのサポートが終わっても、サイトはそのまま表示されますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの場合、そのまま表示されます。サポートが終わってもPHPが止まるわけではなく、弱点が直されなくなるだけだからです。見た目に変化がないため、気づかないまま何年も放置されやすいことが、いちばんの問題でしょう。表示が続いているうちに、更新の計画を立ててください。まずは今のバージョンを確かめるところからで十分です。"}}, {"@type": "Question", "name": "サーバー会社がPHPを自動で新しくしてくれることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー会社によっては、古いPHPの提供を終えるときに、期日を決めて新しい版へ切り替えます。ただし、切り替えで表示が崩れても、サイトの中身の修正までは対応してもらえないことがほとんどです。お知らせのメールが届いたら、期日より前に自分で切り替えて確かめておくと安全でしょう。メールには期日と移る先の版が書かれているので、見落とさないようにしてください。"}}, {"@type": "Question", "name": "PHPを上げて表示が崩れたら、元のバージョンに戻せますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの共用サーバーでは、管理画面から元のバージョンに戻せます。ただし、サーバー会社やプランによっては、切り替えたあとに戻せないこともあるため注意が必要です。作業の前に戻せるかどうかを案内で確かめておきましょう。戻せない場合は、バックアップからの復元を前提に進めてください。復元の手順も、作業の前に一度確かめておくと安心です。"}}, {"@type": "Question", "name": "PHP 8.2を使っている場合、いつまでに切り替えればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "8.2のセキュリティサポートは2026年12月31日で終わるため、それまでに切り替えます。年末はサーバー会社や制作会社も混み合うので、11月中に準備を始めるのが現実的です。移る先は通常のサポートが続く8.4か8.5を選ぶと、次の切り替えまでの期間を長く取れるでしょう。8.4なら、弱点の修正は2028年末まで続きます。"}}, {"@type": "Question", "name": "PHPのバージョンを外から見えないようにできますか？", "acceptedAnswer": {"@type": "Answer", "text": "できます。PHPの設定「expose_php」を無効にすると、応答にバージョンが書き添えられなくなります。共用サーバーでは、管理画面のphp.iniの設定から変えられることもあるでしょう。ただし、見えなくしても古い版の弱点は残ります。バージョンの更新と組み合わせることが前提です。設定を変えたあとは、無料簡易診断で表示が消えたかを確かめられます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock-orcin.vercel.app/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock-orcin.vercel.app/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了"}]}]</script>
 </head>
 <body>
 <header class="site-header">
@@ -32,7 +32,7 @@
     <div class="page-hero"><div class="wrap">
     <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
     <h1><span class="h1-main">PHPのサポート終了とは？放置の危険と確認・更新の手順</span><span class="h1-sub" data-sep="｜">8.2は2026年末で終了</span></h1>
-    <p><time datetime="2026-11-02">2026.11.02</time></p>
+    <p><time datetime="2026-10-29">2026.10.29</time></p>
     <figure class="eyecatch"><img src="img/eyecatch-001-v2.webp" alt="PHPのサポート終了、放置の危険と更新手順。8.2は2026年末で終了" width="1200" height="630"></figure>
   </div></div>
 <section class="sub-sec"><div class="wrap article">
@@ -201,6 +201,6 @@
     </nav>
   </div>
 </footer>
-<script src="../assets/site.js?v=20261030b"></script>
+<script src="../assets/site.js?v=20261030c"></script>
 </body>
 </html>

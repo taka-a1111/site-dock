@@ -37,6 +37,13 @@
   });
   // blog category filter
   var chips = document.querySelectorAll('.cat-chips button');
+  // 公開済みの記事が無いカテゴリのボタンは出さない
+  chips.forEach(function(c){
+    var cat = c.getAttribute('data-cat');
+    if (cat === 'all') return;
+    var has = Array.prototype.some.call(document.querySelectorAll('.blog-grid .post-card:not(.soon)'), function(card){ return card.getAttribute('data-cat') === cat; });
+    if (!has) c.hidden = true;
+  });
   chips.forEach(function(c){
     c.addEventListener('click', function(){
       chips.forEach(function(x){ x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });

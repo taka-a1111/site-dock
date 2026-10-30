@@ -563,3 +563,7 @@ section{padding:96px 0}
   .page-hero:has(.eyecatch){padding-bottom:24px}
   .page-hero:has(.eyecatch) + .sub-sec{padding-top:28px}
 }
+
+/* 公開予定の記事は一覧に出さない（毎朝の自動公開でリンクのカードに変わる） */
+.post-card.soon{display:none}
+.sheet-scope{margin:10px 0 0;padding:0 16px;font-size:12px;line-height:1.6;color:var(--ink-mid)}

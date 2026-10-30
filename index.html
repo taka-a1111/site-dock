@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-29p -->
+<!-- BUILD_TAG: 2026-10-30a -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>サイトドック｜ホームページの弱点を無料で点検</title>
-<meta name="description" content="古いPHP、更新されていないプラグイン、外から読めるログイン名。攻撃する側が最初に確かめるところを、URLを入れるだけで無料で点検します。WordPress制作12年のインフォサクセスが運営しています。">
+<meta name="description" content="WordPressの更新と設定の状態を、URLを入れるだけで無料でチェックします。PHPやプラグインのバージョン、外から読めるログイン名など7項目を、公開されている情報だけで点検します。WordPress制作12年のインフォサクセスが運営しています。">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261030b">
+<link rel="stylesheet" href="assets/style.css?v=20261030c">
 </head>
 <body>
 
@@ -28,8 +28,8 @@
     <div class="wrap">
       <div>
         <div class="hero-sp-visual"><img style="width:100%;height:auto" src="blog/img/eyecatch-012.jpg" alt="ホームページを聴診器で点検し、チェック項目を確かめるイラスト" width="1080" height="720"></div>
-        <h1><span class="nb">そのホームページ、</span><br><span class="nb">攻撃者に丸見えに</span><br class="br-sp"><span class="nb">なっていませんか？</span></h1>
-        <p class="hero-lead">古いPHP、更新されていないプラグイン、外から読めるログイン名。攻撃する側が最初に確かめるところを、URLを入れるだけで無料で点検します。</p>
+        <h1><span class="nb">WordPressの</span><br class="br-sp"><span class="nb">更新と設定を、</span><br><span class="nb">URLだけで</span><span class="nb">無料チェック</span></h1>
+        <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など7項目を、公開されている情報だけで点検します。何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</p>
         <form class="scan-form" id="scanForm" data-scan>
           <div class="scan-row">
             <label for="domain1">診断するサイトのURL</label>
@@ -81,6 +81,7 @@
               <tr><th scope="row">セキュリティ設定</th><td class="val" data-v="6項目中2項目">6項目中2項目</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
             </tbody>
           </table>
+          <p class="sheet-scope">外から確かめられる範囲の判定です。「−」は外から読み取れなかった項目です。</p>
           <div class="sheet-foot">
             <p id="sheetFoot">弱点のあるプラグインの更新を、早めにおすすめします。</p>
             <div class="stamp" id="stamp" aria-label="総合判定 要対策"><small>総合判定</small><span>要対策</span></div>
@@ -121,8 +122,8 @@
         </div>
         <div class="feat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg>
-          <h3>改ざんをすぐ検知</h3>
-          <p>定期診断では、ページの中身を毎日比べます。書き換えを見つけたら、すぐにご連絡します。</p>
+          <h3>改ざんを毎日チェック</h3>
+          <p>定期診断スタンダードでは、ページの中身を毎日1回比べます。書き換えを見つけたら担当者が確かめ、営業日のうちにメールでご連絡します。</p>
         </div>
         <div class="feat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z"/></svg>
@@ -198,14 +199,14 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>判定は、健康診断と同じA〜Eの5段階です</h2>
-        <p>どこから手をつければいいかが、ひと目でわかります。</p>
+        <p>どこから手をつければいいかが、ひと目でわかります。判定は、外から確かめられる範囲での結果です。管理画面の中やサーバーの中は、詳細診断で確かめます。</p>
       </div>
       <div class="scale">
-        <div><span class="g gA">A</span><strong>異常なし</strong><p>今のところ問題は見つかりませんでした。</p></div>
+        <div><span class="g gA">A</span><strong>問題なし</strong><p>外から確かめられる範囲では、問題は見つかりませんでした。</p></div>
         <div><span class="g gB">B</span><strong>軽い注意</strong><p>すぐの危険はありませんが、次の更新のときに直しましょう。</p></div>
         <div><span class="g gC">C</span><strong>経過観察</strong><p>単独では危険が小さくても、ほかの弱点と重なると狙われます。</p></div>
         <div><span class="g gD">D</span><strong>要対策</strong><p>弱点が残っています。1か月以内の対策をおすすめします。</p></div>
-        <div><span class="g gE">E</span><strong>至急対策</strong><p>攻撃に使われている弱点です。できるだけ早く対策してください。</p></div>
+        <div><span class="g gE">E</span><strong>至急対策</strong><p>直される見込みのない弱点や期限切れがあります。できるだけ早く対策してください。</p></div>
       </div>
     </div>
   </section>
@@ -332,8 +333,8 @@
 
   <section class="home-blog" id="blog">
     <div class="wrap">
-      <div class="sec-head"><h2>ブログ　ホームページを守るための知識</h2><p>PHPの更新、改ざんの見分け方、WordPressの設定まで。中小企業の担当者向けに、毎日1本ずつ公開していきます。</p></div>
-      <div class="blog-grid"><a class="post-card" href="blog/php-support-end.html" data-cat="PHP・サーバー"><div class="post-thumb has-img"><img src="blog/img/eyecatch-001-v2.webp" alt="" width="1200" height="630" loading="lazy"></div><div class="post-body"><div class="post-meta"><span class="post-cat">PHP・サーバー</span><time>2026.11.02</time></div><h3>PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</h3></div></a></div>
+      <div class="sec-head"><h2>ブログ　ホームページを守るための知識</h2><p>PHPの更新、改ざんの見分け方、WordPressの設定まで。中小企業の担当者向けにまとめています。</p></div>
+      <div class="blog-grid"><a class="post-card" href="blog/php-support-end.html" data-cat="PHP・サーバー"><div class="post-thumb has-img"><img src="blog/img/eyecatch-001-v2.webp" alt="" width="1200" height="630" loading="lazy"></div><div class="post-body"><div class="post-meta"><span class="post-cat">PHP・サーバー</span><time>2026.10.29</time></div><h3>PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</h3></div></a></div>
       <p class="blog-more"><a class="btn btn-line" href="blog/index.html">記事の一覧を見る</a></p>
     </div>
   </section>
@@ -366,7 +367,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-10-29p");
+console.log("BUILD_TAG: 2026-10-30a");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -490,6 +491,6 @@ console.log("BUILD_TAG: 2026-10-29p");
   });
 })();
 </script>
-<script src="assets/site.js?v=20261030b"></script>
+<script src="assets/site.js?v=20261030c"></script>
 </body>
 </html>

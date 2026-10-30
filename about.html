@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-29p -->
+<!-- BUILD_TAG: 2026-10-30a -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>運営者情報｜サイトドック</title>
@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261030b">
+<link rel="stylesheet" href="assets/style.css?v=20261030c">
 </head>
 <body>
 <header class="site-header">
@@ -64,12 +64,13 @@
       </div>
       <div class="case">
         <p class="case-tag">自動車販売店　WordPressの保守と更新（2026年10月）</p>
-        <h3>何年も止まっていたサイトを、表示を崩さずに最新へ</h3>
+        <h3>何年も止まっていたサイトを、表示を崩さずに段階的に更新</h3>
         <dl>
           <dt>ご相談</dt><dd>お知らせ欄が更新できない。容量不足のような英語のエラーが出る。</dd>
           <dt>調べたこと</dt><dd>エラーの原因の切り分け、サーバーの容量、本体・プラグイン・PHPの版、公開されているファイル。</dd>
           <dt>結果</dt><dd>容量は原因ではなく、編集画面の設定と古いプログラムが原因でした。PHPは5.6、WordPressは5.9のまま止まっていて、エラーの記録ファイル（debug.log）が外から読める状態でした。</dd>
-          <dt>対策</dt><dd>バックアップを取ったうえでPHPを5.6から7.4へ、WordPressを7.1へ上げ、プラグイン13件を更新。公開されていた記録ファイルを消し、記録が外に出ない設定に直しました。</dd>
+          <dt>対策</dt><dd>バックアップを取ったうえで、PHPを5.6から7.4へ、WordPressを5.9から7.1へ上げ、プラグイン13件を更新しました。公開されていた記録ファイルを消し、記録が外に出ない設定に直しています。</dd>
+          <dt>今後</dt><dd>PHP 7.4は、今のWordPressが動く最低限の版で、サポートはすでに終わっています。このサーバーではPHPを一度上げると5.6に戻せないため、まず確実に動く範囲まで上げました。続けてPHP 8.4への引き上げをご提案し、ご依頼をいただいています。</dd>
         </dl>
       </div>
     </div>
@@ -90,6 +91,6 @@
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20261030b"></script>
+<script src="assets/site.js?v=20261030c"></script>
 </body>
 </html>
