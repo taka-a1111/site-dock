@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-31j -->
+<!-- BUILD_TAG: 2026-10-31k -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>サイトドック｜ホームページの弱点を無料で点検</title>
-<meta name="description" content="WordPressの更新と設定の状態を、URLを入れるだけで無料でチェックします。PHPやプラグインのバージョン、外から読めるログイン名など7項目を、公開されている情報だけで点検します。WordPress制作12年のインフォサクセスが運営しています。">
+<meta name="description" content="WordPressの更新と設定の状態を、URLを入れるだけで無料でチェックします。PHPやプラグインのバージョン、外から読めるログイン名など8項目を、公開されている情報だけで点検します。WordPress制作12年のインフォサクセスが運営しています。">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261031i">
+<link rel="stylesheet" href="assets/style.css?v=20261031j">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
       <h1><span class="nb">WordPressの</span><span class="nb">更新と設定を、</span><br><span class="nb">URLだけで</span><span class="nb">無料チェック</span></h1>
       <div class="hero-grid">
         <div class="hero-side">
-          <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など<span class="mark-yellow">7項目を、公開されている情報だけで点検します</span>。<span class="lead-more">何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</span></p>
+          <p class="hero-lead">PHPやプラグインのバージョン、外から読めるログイン名など<span class="mark-yellow">8項目を、公開されている情報だけで点検します</span>。<span class="lead-more">何が確かめられて、何が外からは分からないのかも、あわせてお伝えします。</span></p>
           <form class="scan-box" id="scanForm" data-scan>
             <label for="domain1">診断するサイトのURL</label>
             <div class="scan-row">
@@ -56,13 +56,14 @@
               <span class="sample-tag" id="sheetTag">結果の見本</span>
               <table>
                 <tbody>
-                  <tr><th scope="row">SSL証明書</th><td class="val" data-v="有効（残り212日）">有効（残り212日）</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
-                  <tr><th scope="row">PHP</th><td class="val" data-v="8.1（サポート終了）">8.1（サポート終了）</td><td class="grade"><span class="g gD" data-g="D">D</span></td></tr>
-                  <tr><th scope="row">WordPress本体</th><td class="val" data-v="最新版">最新版</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
-                  <tr><th scope="row">プラグイン</th><td class="val" data-v="配布停止1件">配布停止1件</td><td class="grade"><span class="g gE" data-g="E">E</span></td></tr>
-                  <tr><th scope="row">ログイン名</th><td class="val" data-v="外から見える状態">外から見える状態</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
-                  <tr><th scope="row">不要なファイル</th><td class="val" data-v="readmeが残っている">readmeが残っている</td><td class="grade"><span class="g gB" data-g="B">B</span></td></tr>
-                  <tr><th scope="row">セキュリティ設定</th><td class="val" data-v="6項目中2項目">6項目中2項目</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
+                  <tr><th scope="row">通信ののぞき見<small>SSL証明書</small></th><td class="val" data-v="有効（残り212日）">有効（残り212日）</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
+                  <tr><th scope="row">土台のプログラム<small>PHP</small></th><td class="val" data-v="8.1（サポート終了）">8.1（サポート終了）</td><td class="grade"><span class="g gD" data-g="D">D</span></td></tr>
+                  <tr><th scope="row">本体の更新漏れ<small>WordPress本体</small></th><td class="val" data-v="最新版">最新版</td><td class="grade"><span class="g gA" data-g="A">A</span></td></tr>
+                  <tr><th scope="row">危ない追加機能<small>プラグイン</small></th><td class="val" data-v="配布停止1件">配布停止1件</td><td class="grade"><span class="g gE" data-g="E">E</span></td></tr>
+                  <tr><th scope="row">ログイン名の丸見え<small>ユーザー名</small></th><td class="val" data-v="外から見える状態">外から見える状態</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
+                  <tr><th scope="row">見えてはいけないファイル<small>不要なファイル</small></th><td class="val" data-v="readmeが残っている">readmeが残っている</td><td class="grade"><span class="g gB" data-g="B">B</span></td></tr>
+                  <tr><th scope="row">守りの設定の抜け<small>セキュリティ設定</small></th><td class="val" data-v="6項目中2項目">6項目中2項目</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
+                  <tr><th scope="row">なりすましメール<small>SPF・DMARC</small></th><td class="val" data-v="DMARCが未設定">DMARCが未設定</td><td class="grade"><span class="g gC" data-g="C">C</span></td></tr>
                 </tbody>
               </table>
               <p class="sheet-scope">外から確かめられる範囲の判定です。「−」は外から読み取れなかった項目です。</p>
@@ -96,11 +97,11 @@
   <section id="items">
     <div class="wrap">
       <div class="sec-head wide">
-        <h2>無料の簡易診断で見る、7つの項目</h2>
+        <h2>無料の簡易診断で見る、8つの項目</h2>
         <p>どれも、<span class="mark-yellow">攻撃する側が最初に外から確かめるところ</span>です。ホームページのどこを見ているのかを、番号で示しました。放っておくと何が起きるかまで、結果票に書きます。</p>
       </div>
       <div class="anatomy">
-        <figure class="anatomy-map"><svg class="anatomy-svg" viewBox="0 0 360 412" role="img" aria-label="ホームページと、それを動かすサーバーの絵。点検する7か所に番号と名前を付けた図。1 SSL証明書はアドレス欄の鍵、2 PHPはサーバー、3 WordPress本体はページ、4 プラグインは部品、5 ログイン名はログイン画面、6 不要なファイルは公開されたファイル、7 セキュリティ設定は守りの盾" font-family="Zen Kaku Gothic New, BIZ UDPGothic, sans-serif">
+        <figure class="anatomy-map"><svg class="anatomy-svg" viewBox="0 0 360 470" role="img" aria-label="ホームページと、それを動かすサーバーの絵。点検する8か所に番号と名前を付けた図。1 SSL証明書はアドレス欄の鍵、2 PHPはサーバー、3 WordPress本体はページ、4 プラグインは部品、5 ログイン名はログイン画面、6 不要なファイルは公開されたファイル、7 セキュリティ設定は守りの盾、8 SPF・DMARCはメールの封筒" font-family="Zen Kaku Gothic New, BIZ UDPGothic, sans-serif">
 <rect x="12" y="12" width="336" height="250" rx="10" fill="#fff" stroke="#12343B" stroke-width="3"/>
 <path d="M22 12h316a10 10 0 0110 10v24H12V22a10 10 0 0110-10z" fill="#12343B"/>
 <g fill="#7CC4A5"><circle cx="28" cy="29" r="3.5"/><circle cx="40" cy="29" r="3.5"/><circle cx="52" cy="29" r="3.5"/></g>
@@ -130,8 +131,10 @@
 <g class="pin"><rect x="234" y="238" width="88" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="246" cy="250" r="8.5" fill="#fff"/><text x="246" y="254" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">5</text><text x="259" y="254.2" font-size="11.5" font-weight="700" fill="#fff">ログイン名</text></g>
 <g class="pin"><rect x="24" y="238" width="111" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="36" cy="250" r="8.5" fill="#fff"/><text x="36" y="254" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">6</text><text x="49" y="254.2" font-size="11.5" font-weight="700" fill="#fff">不要なファイル</text></g>
 <g class="pin"><rect x="226" y="372" width="123" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="238" cy="384" r="8.5" fill="#fff"/><text x="238" y="388" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">7</text><text x="251" y="388.2" font-size="11.5" font-weight="700" fill="#fff">セキュリティ設定</text></g>
+<g fill="#fff" stroke="#12343B" stroke-width="2.5" stroke-linejoin="round"><rect x="112" y="414" width="62" height="42" rx="4"/><path d="M114 417l29 21 29-21" fill="none"/></g>
+<g class="pin"><rect x="182" y="423" width="112" height="24" rx="12" fill="#C8323C" stroke="#fff" stroke-width="2"/><circle cx="194" cy="435" r="8.5" fill="#fff"/><text x="194" y="439" text-anchor="middle" font-size="11.5" font-weight="900" fill="#C8323C">8</text><text x="207" y="439.2" font-size="11.5" font-weight="700" fill="#fff">SPF・DMARC</text></g>
 </svg></figure>
-        <ol class="legend"><li data-n="1"><span class="n" aria-hidden="true">1</span><div><h3>SSL証明書</h3><p class="see"><b>見ているところ</b>サイトの証明書が有効か、期限まであと何日残っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>期限が切れると、ページを開いた人の画面いっぱいに「この接続ではプライバシーが保護されません」などの警告が出て、<span class="mark-red"><strong>多くの人がそこで引き返します</strong></span>。お問い合わせフォームに入力された内容も守られなくなります。</p></div><p class="gauge"><b>判定の目安</b>残り14日を切るとC、7日でD、切れているかエラーならE</p></div></li><li data-n="2"><span class="n" aria-hidden="true">2</span><div><h3>PHP</h3><p class="see"><b>見ているところ</b>サーバーが返す情報から読み取れるPHPのバージョンと、その版のサポート期限。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>サポートが終わった版には、新しく見つかった弱点の<span class="mark-red"><strong>修正版が出ません</strong></span>。2026年10月21日には、ログインなしで外からサーバー上のプログラムを動かされるおそれのある弱点が2件公表されました。深刻度はどちらも最高ランクの「緊急」です。1件目はメモリが足りなくなったときの後始末の誤りを、2件目は前の閲覧で使い終えた情報が次の閲覧まで残る不具合を突くものです。修正版が出たのは8.2〜8.5だけで、8.1以前には出ていません（8.2も2026年12月末で終了）。<span class="mark-yellow">公表の直後から、この弱点を狙う通信が相次いで観測されています</span>。サーバー会社の画面で何年も切り替えていないサイトは、2つの弱点が残ったまま動き続けることになります。</p></div><p class="gauge"><b>判定の目安</b>終了まで半年以内ならC、終わった版はD、1年以上前に終わった版はE</p></div></li><li data-n="3"><span class="n" aria-hidden="true">3</span><div><h3>WordPress本体</h3><p class="see"><b>見ているところ</b>外から読み取れる本体のバージョンが、最新版からどれだけ遅れているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>直された弱点は、内容が公表されます。古い版のサイトは、その情報をもとに狙いを付けられやすくなります。自動更新が止まっていても、管理画面に知らせが出ないことがあります。</p></div><p class="gauge"><b>判定の目安</b>修正版が未適用ならC、2つ以上古い版はD以下</p></div></li><li data-n="4"><span class="n" aria-hidden="true">4</span><div><h3>プラグイン</h3><p class="see"><b>見ているところ</b>ページから分かるプラグインの名前と版が、最新版から遅れていないか。配布が止まっていないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>古いプラグインの弱点は、改ざんや不正なページの埋め込みの入り口として狙われます。配布が止まったプラグインは、弱点が見つかっても直されず、使い続ける限り危険が残ります。</p></div><p class="gauge"><b>判定の目安</b>更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</p></div></li><li data-n="5"><span class="n" aria-hidden="true">5</span><div><h3>ログイン名</h3><p class="see"><b>見ているところ</b>投稿者ページや、外から情報を読み出す仕組み（REST API）から、管理画面のログイン名が読み取れないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>ログイン名が分かると、攻撃する側はパスワードを当てるだけで済みます。総当たりで試す攻撃を受けやすくなり、弱いパスワードのままだと<span class="mark-red"><strong>管理画面を乗っ取られるおそれ</strong></span>があります。</p></div><p class="gauge"><b>判定の目安</b>読み取れればC</p></div></li><li data-n="6"><span class="n" aria-hidden="true">6</span><div><h3>不要なファイル</h3><p class="see"><b>見ているところ</b>本体やプラグインの説明ファイル（readme）が残っていないか。アップロード先のフォルダの中身が一覧で見えないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>説明ファイルから使っている版が分かり、弱点のある版かどうかを外から確かめられてしまいます。ファイルの一覧が見えると、公開するつもりのない書類や画像まで見られるおそれがあります。</p></div><p class="gauge"><b>判定の目安</b>readmeが残っていればB、ファイルの一覧が見えればD</p></div></li><li data-n="7"><span class="n" aria-hidden="true">7</span><div><h3>セキュリティ設定</h3><p class="see"><b>見ているところ</b>ブラウザに守り方を指示する6つの設定（セキュリティヘッダー）が入っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>自分のページを他人のサイトの枠の中に表示されたり、通信をhttpsに固定できなかったりします。なりすましページへの悪用や、情報の抜き取りを防ぐ手立てが弱くなります。</p></div><p class="gauge"><b>判定の目安</b>6項目中5項目以上でA、4でB、2〜3でC、1でD、0でE</p></div></li></ol>
+        <ol class="legend"><li data-n="1"><span class="n" aria-hidden="true">1</span><div><h3>通信ののぞき見・警告画面<span class="tag">SSL証明書</span></h3><p class="see"><b>見ているところ</b>サイトの証明書が有効か、期限まであと何日残っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>期限が切れると、ページを開いた人の画面いっぱいに「この接続ではプライバシーが保護されません」などの警告が出て、<span class="mark-red"><strong>多くの人がそこで引き返します</strong></span>。お問い合わせフォームに入力された内容も守られなくなります。</p></div><p class="gauge"><b>判定の目安</b>残り14日を切るとC、7日でD、切れているかエラーならE</p></div></li><li data-n="2"><span class="n" aria-hidden="true">2</span><div><h3>修正が止まった土台のプログラム<span class="tag">PHP</span></h3><p class="see"><b>見ているところ</b>サーバーが返す情報から読み取れるPHPのバージョンと、その版のサポート期限。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>サポートが終わった版には、新しく見つかった弱点の<span class="mark-red"><strong>修正版が出ません</strong></span>。2026年10月21日には、ログインなしで外からサーバー上のプログラムを動かされるおそれのある弱点が2件公表されました。深刻度はどちらも最高ランクの「緊急」です。1件目はメモリが足りなくなったときの後始末の誤りを、2件目は前の閲覧で使い終えた情報が次の閲覧まで残る不具合を突くものです。修正版が出たのは8.2〜8.5だけで、8.1以前には出ていません（8.2も2026年12月末で終了）。<span class="mark-yellow">公表の直後から、この弱点を狙う通信が相次いで観測されています</span>。サーバー会社の画面で何年も切り替えていないサイトは、2つの弱点が残ったまま動き続けることになります。</p></div><p class="gauge"><b>判定の目安</b>終了まで半年以内ならC、終わった版はD、1年以上前に終わった版はE</p></div></li><li data-n="3"><span class="n" aria-hidden="true">3</span><div><h3>本体の更新漏れ<span class="tag">WordPress本体</span></h3><p class="see"><b>見ているところ</b>外から読み取れる本体のバージョンが、最新版からどれだけ遅れているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>直された弱点は、内容が公表されます。古い版のサイトは、その情報をもとに狙いを付けられやすくなります。自動更新が止まっていても、管理画面に知らせが出ないことがあります。</p></div><p class="gauge"><b>判定の目安</b>修正版が未適用ならC、2つ以上古い版はD以下</p></div></li><li data-n="4"><span class="n" aria-hidden="true">4</span><div><h3>危ない追加機能<span class="tag">プラグイン</span></h3><p class="see"><b>見ているところ</b>ページから分かるプラグインの名前と版が、最新版から遅れていないか。配布が止まっていないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>古いプラグインの弱点は、改ざんや不正なページの埋め込みの入り口として狙われます。配布が止まったプラグインは、弱点が見つかっても直されず、使い続ける限り危険が残ります。</p></div><p class="gauge"><b>判定の目安</b>更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</p></div></li><li data-n="5"><span class="n" aria-hidden="true">5</span><div><h3>ログイン名の丸見え<span class="tag">ユーザー名</span></h3><p class="see"><b>見ているところ</b>投稿者ページや、外から情報を読み出す仕組み（REST API）から、管理画面のログイン名が読み取れないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>ログイン名が分かると、攻撃する側はパスワードを当てるだけで済みます。総当たりで試す攻撃を受けやすくなり、弱いパスワードのままだと<span class="mark-red"><strong>管理画面を乗っ取られるおそれ</strong></span>があります。</p></div><p class="gauge"><b>判定の目安</b>読み取れればC</p></div></li><li data-n="6"><span class="n" aria-hidden="true">6</span><div><h3>見えてはいけないファイル<span class="tag">不要なファイル</span></h3><p class="see"><b>見ているところ</b>本体やプラグインの説明ファイル（readme）が残っていないか。アップロード先のフォルダの中身が一覧で見えないか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>説明ファイルから使っている版が分かり、弱点のある版かどうかを外から確かめられてしまいます。ファイルの一覧が見えると、公開するつもりのない書類や画像まで見られるおそれがあります。</p></div><p class="gauge"><b>判定の目安</b>readmeが残っていればB、ファイルの一覧が見えればD</p></div></li><li data-n="7"><span class="n" aria-hidden="true">7</span><div><h3>守りの設定の抜け<span class="tag">セキュリティ設定</span></h3><p class="see"><b>見ているところ</b>ブラウザに守り方を指示する6つの設定（セキュリティヘッダー）が入っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>自分のページを他人のサイトの枠の中に表示されたり、通信をhttpsに固定できなかったりします。なりすましページへの悪用や、情報の抜き取りを防ぐ手立てが弱くなります。</p></div><p class="gauge"><b>判定の目安</b>6項目中5項目以上でA、4でB、2〜3でC、1でD、0でE</p></div></li><li data-n="8"><span class="n" aria-hidden="true">8</span><div><h3>なりすましメール<span class="tag">SPF・DMARC</span></h3><p class="see"><b>見ているところ</b>ドメインの公開情報（DNS）に、メールの送り主を確かめる2つの設定（SPF・DMARC）が入っているか。</p><div class="risk"><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><p><b>放っておくと</b>会社のドメインをかたった偽のメールが、お客さまや取引先に届きやすくなります。振込先の変更を装った詐欺などに使われると、会社の信用に直接響きます。Gmailなどは送り主を確かめられないメールを迷惑メールに回すことがあり、自社のメールが届かない原因にもなります。</p></div><p class="gauge"><b>判定の目安</b>両方ありでA、DMARCが見張りだけ（p=none）ならB、どちらかがないとC、両方ないとD</p></div></li></ol>
       </div>
       <p class="sec-link"><a href="service.html">判定の基準を見る</a></p>
     </div>
@@ -162,7 +165,7 @@
       <div class="feats-wrap">
       <figure class="sec-art"><img src="img/illust-features.webp" alt="画面の弱点を虫めがねで見つけ、スパナと歯車で直し、盾で守るまでの流れを3つの場面で描いたイラスト" width="1188" height="414" loading="lazy"></figure>
       <div class="feats">
-        <div class="feat"><h3>その場で結果がわかる</h3><p>URLを入れて数十秒で、7項目の判定が画面に出ます。何日も待つ必要はありません。</p></div>
+        <div class="feat"><h3>その場で結果がわかる</h3><p>URLを入れて数十秒で、8項目の判定が画面に出ます。何日も待つ必要はありません。</p></div>
         <div class="feat"><h3>自分で直せる手順つき</h3><p>結果票には、判定ごとの直し方を書きます。<span class="mark-yellow">社内で対応できるものは、そのまま進められます</span>。</p></div>
         <div class="feat"><h3>改ざんを毎日チェック</h3><p>定期診断スタンダードでは、ページの中身を毎日1回比べます。書き換えを見つけたら担当者が確かめ、営業日のうちにメールでご連絡します。</p></div>
         <div class="feat"><h3>対策まで同じ担当者</h3><p>診断した担当者が、PHPやプラグインの更新、設定の見直しまで行います。<span class="mark-yellow">説明のやり直しがいりません</span>。</p></div>
@@ -215,7 +218,7 @@
           <div class="price">0<small>円</small></div>
           <p class="price-sub">登録なしで判定まで</p>
           <ul>
-            <li>7項目を自動で点検</li>
+            <li>8項目を自動で点検</li>
             <li>判定をその場で表示</li>
             <li>詳しい結果票をメールでお届け</li>
           </ul>
@@ -278,10 +281,29 @@
       <div class="sec-head wide"><h2>ご利用の流れ</h2></div>
       <ol class="flow">
         <li><h3>URLを入力</h3><p>診断したいサイトのURLを入れて、ボタンを押すだけです。登録はいりません。</p></li>
-        <li><h3>その場で判定</h3><p>数十秒で、7項目の判定と総合判定が画面に出ます。</p></li>
+        <li><h3>その場で判定</h3><p>数十秒で、8項目の判定と総合判定が画面に出ます。</p></li>
         <li><h3>結果票を受け取る</h3><p>メールアドレスを入れると、危ないプラグインの名前と直し方を書いた結果票が届きます。</p></li>
         <li><h3>必要な対策だけ相談</h3><p>気になる判定があれば、詳細診断や対策作業をご相談ください。<span class="mark-yellow">無理におすすめはしません</span>。</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="report-sec" id="report">
+    <div class="wrap">
+      <div class="report">
+        <div class="report-head">
+          <h2>結果票の見本</h2>
+          <p>メールアドレスを入れていただくと、この形の結果票をお送りします。どこに弱点があるかを部位図で示し、<span class="mark-yellow">先に直す3つは直し方まで1ページ目に</span>まとめます。</p>
+          <ul class="checks">
+            <li>総合判定と、8項目それぞれのA〜Eの判定</li>
+            <li>危ないプラグインの名前と、直す順番</li>
+            <li>2ページ目に、全項目の直し方の手順</li>
+            <li>制作会社さまへ、そのまま転送できる書式</li>
+          </ul>
+          <a class="btn btn-scan report-btn" href="#top">無料で診断して受け取る</a>
+        </div>
+        <figure class="report-fig"><img src="img/report-sample.webp" alt="結果票の見本。総合判定E、ホームページの部位図に8項目の判定の色の印、先に直す3つ（PHPの切り替え、本体の更新、追加機能の更新）と直し方を載せた1ページ目" width="1000" height="1414" loading="lazy" decoding="async"><figcaption>結果票の1ページ目（見本）。example.com は見本用のサイトです。</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -314,7 +336,7 @@
       <div class="faq">
         <details><summary>診断でサイトが止まったり、重くなったりしませんか。</summary><p>簡易診断は、ふつうにページを閲覧するのと同じアクセスを数回行うだけです。<span class="mark-yellow">書き込みやログインの試行はしないので</span>、サイトの動きには影響しません。</p></details>
         <details><summary>他人のサイトも診断できてしまいませんか。</summary><p>画面に出るのは判定だけです。危ないプラグインの名前などを書いた詳しい結果票は、メールアドレスのドメインがサイトと同じでない場合、サイトの持ち主であることを確認してからお送りします。</p></details>
-        <details><summary>WordPress以外のサイトでも使えますか。</summary><p>SSL証明書、PHP、不要なファイル、セキュリティ設定は、どのサイトでも点検できます。プラグインとログイン名の項目はWordPressのサイトが対象です。</p></details>
+        <details><summary>WordPress以外のサイトでも使えますか。</summary><p>通信ののぞき見（SSL証明書）、土台のプログラム（PHP）、守りの設定（セキュリティ設定）、なりすましメール（SPF・DMARC）は、どのサイトでも点検できます。WordPress本体、プラグイン、ログイン名、不要なファイルの4項目はWordPressのサイトが対象です。</p></details>
         <details><summary>制作会社につくってもらったサイトでも大丈夫ですか。</summary><p>大丈夫です。結果票は制作会社さまにそのまま転送していただける書き方にしています。対策を制作会社さまにお願いするか、こちらで行うかはお選びいただけます。</p></details>
         <details><summary>悪い判定が出たら、必ず有料の対策が必要ですか。</summary><p>いいえ。結果票には、ご自身で直せるものはその手順も書いています。手が回らないときだけ、ご相談ください。</p></details>
         <details><summary>支払い方法を教えてください。</summary><p>請求書をお送りしますので、銀行振込でお支払いください。</p></details>
@@ -358,7 +380,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-10-31j");
+console.log("BUILD_TAG: 2026-10-31k");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -367,7 +389,7 @@ console.log("BUILD_TAG: 2026-10-31j");
   var foot = document.getElementById('sheetFoot');
   var tag = document.getElementById('sheetTag');
   var running = false, last = null;
-  var LABELS = ['SSL証明書','PHP','WordPress本体','プラグイン','ログイン名','不要なファイル','セキュリティ設定'];
+  var LABELS = [['通信ののぞき見','SSL証明書'],['土台のプログラム','PHP'],['本体の更新漏れ','WordPress本体'],['危ない追加機能','プラグイン'],['ログイン名の丸見え','ユーザー名'],['見えてはいけないファイル','不要なファイル'],['守りの設定の抜け','セキュリティ設定'],['なりすましメール','SPF・DMARC']];
 
   function clean(v){
     v = (v || '').trim().replace(/^https?:\/\//i,'').replace(/[\/?#].*$/,'');
@@ -377,10 +399,11 @@ console.log("BUILD_TAG: 2026-10-31j");
     var d = new Date();
     return d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
   }
-  function row(label, value, grade, wait){
+  function row(label, value, grade, wait, tg){
     var tr = document.createElement('tr');
     if (wait) tr.className = 'wait';
     var th = document.createElement('th'); th.scope = 'row'; th.textContent = label;
+    if (tg) { var sm = document.createElement('small'); sm.textContent = tg; th.appendChild(sm); }
     var v = document.createElement('td'); v.className = 'val'; v.textContent = value;
     var gtd = document.createElement('td'); gtd.className = 'grade';
     var g = document.createElement('span');
@@ -405,7 +428,7 @@ console.log("BUILD_TAG: 2026-10-31j");
     foot.textContent = '点検しています。数十秒お待ちください…';
     stamp.classList.add('off');
     tbody.innerHTML = '';
-    LABELS.forEach(function(l){ tbody.appendChild(row(l, '点検中…', '', true)); });
+    LABELS.forEach(function(l){ tbody.appendChild(row(l[0], '点検中…', '', true, l[1])); });
   }
   function fail(msg){
     tag.textContent = '診断できませんでした';
@@ -418,7 +441,7 @@ console.log("BUILD_TAG: 2026-10-31j");
     var step = reduce ? 0 : 320;
     data.rows.forEach(function(r, i){
       setTimeout(function(){
-        var n = row(r.label, r.value, r.grade, false);
+        var n = row(r.label, r.value, r.grade, false, r.tag);
         if (trs[i]) tbody.replaceChild(n, trs[i]); else tbody.appendChild(n);
       }, i * step);
     });
@@ -483,6 +506,6 @@ console.log("BUILD_TAG: 2026-10-31j");
   });
 })();
 </script>
-<script src="assets/site.js?v=20261031i"></script>
+<script src="assets/site.js?v=20261031j"></script>
 </body>
 </html>

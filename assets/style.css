@@ -724,3 +724,22 @@ section + section{border-top:1px solid var(--rule-soft)}
   body.has-float-cta .site-footer{padding-bottom:110px}
 }
 @media (prefers-reduced-motion:reduce){.float-cta{transition:none}}
+
+/* 項目名に添える専門の名前の札 */
+.legend h3 .tag,.items th .tag{display:inline-block;margin-left:8px;font-family:var(--sans);font-size:11.5px;font-weight:700;color:var(--go);background:var(--tint);padding:1px 8px;vertical-align:2px;letter-spacing:0;line-height:1.6;white-space:nowrap}
+.sheet tbody th small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:400;color:var(--ink-light);line-height:1.3;margin-top:1px}
+.js .hero .sheet tr:nth-child(8) .g{animation-delay:1.19s}
+
+/* 結果票の見本 */
+.report{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px 72px;align-items:center}
+.report-head h2{font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1.32}
+.report-head > p{margin-top:18px;color:var(--ink-mid);font-size:14.5px}
+.report-btn{margin-top:28px;padding:15px 28px;border-radius:3px}
+.report-fig{margin:0;background:var(--tint);border:1px solid var(--rule-soft);padding:32px 40px 18px}
+.report-fig img{width:100%;height:auto;background:#fff;box-shadow:0 12px 32px rgba(13,39,45,.18)}
+.report-fig figcaption{margin-top:14px;text-align:center;font-size:12.5px;color:var(--ink-mid)}
+@media (max-width:980px){
+  .report{grid-template-columns:minmax(0,1fr);gap:28px}
+  .report-fig{padding:16px 16px 10px;max-width:560px;width:100%;margin:0 auto}
+}
+@media (max-width:560px){.report-btn{display:flex;width:100%}}

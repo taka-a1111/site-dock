@@ -122,8 +122,51 @@ function certInfo(host) {
   });
 }
 
+// なりすましメール対策：ドメインの公開情報（DNSのTXT記録）を読むだけ
+// DNS は公開の DNS-over-HTTPS で引く（実行環境の DNS に左右されないように）
+const DOH = ['https://cloudflare-dns.com/dns-query', 'https://dns.google/resolve'];
+async function txt(name) {
+  for (const base of DOH) {
+    try {
+      const res = await fetch(`${base}?name=${encodeURIComponent(name)}&type=TXT`, { headers: { accept: 'application/dns-json' }, signal: AbortSignal.timeout(4000) });
+      if (!res.ok) continue;
+      const j = await res.json();
+      if (j.Status === 3) return [];            // そのドメインに記録なし
+      if (j.Status !== 0) continue;
+      return (j.Answer || []).filter(a => a.type === 16).map(a => String(a.data).replace(/^"|"$/g, '').replace(/"\s*"/g, ''));
+    } catch (e) { /* 次の問い合わせ先へ */ }
+  }
+  return null;                                   // 確認できず
+}
+async function mailCheck(host) {
+  const base = host.replace(/^www\./, '');
+  // DMARC はサブドメインに無ければ、親のドメイン（example.co.jp など）の記録が使われる
+  const lb = base.split('.');
+  const orgLen = lb.length >= 3 && lb[lb.length - 1] === 'jp' && /^(co|or|ne|ac|go|ed|lg|gr|ad)$/.test(lb[lb.length - 2]) ? 3 : 2;
+  const org = lb.slice(-orgLen).join('.');
+  const [root, dm0] = await Promise.all([txt(base), txt('_dmarc.' + base)]);
+  let dm = dm0;
+  if (dm && !dm.some(t => /^v=DMARC1/i.test(t.trim())) && org !== base) dm = await txt('_dmarc.' + org);
+  if (root === null || dm === null) return { error: true };
+  const spf = root.find(t => /^v=spf1(\s|$)/i.test(t.trim()));
+  const dmarc = dm.find(t => /^v=DMARC1\s*;/i.test(t.trim()));
+  const policy = dmarc ? ((dmarc.match(/(?:^|;)\s*p\s*=\s*(\w+)/i) || [])[1] || '').toLowerCase() : '';
+  return { spf: !!spf, dmarc: !!dmarc, policy };
+}
+
 // ---------- 判定の部品 ----------
 const ORDER = { A: 1, B: 2, C: 3, D: 4, E: 5 };
+// 画面と結果票に出す名前［一般の言葉, 専門の名前］
+const NAMES = {
+  ssl: ['通信ののぞき見', 'SSL証明書'],
+  php: ['土台のプログラム', 'PHP'],
+  core: ['本体の更新漏れ', 'WordPress本体'],
+  plugins: ['危ない追加機能', 'プラグイン'],
+  users: ['ログイン名の丸見え', 'ユーザー名'],
+  files: ['見えてはいけないファイル', '不要なファイル'],
+  headers: ['守りの設定の抜け', 'セキュリティ設定'],
+  mail: ['なりすましメール', 'SPF・DMARC'],
+};
 const worst = gs => gs.filter(g => ORDER[g]).sort((a, b) => ORDER[b] - ORDER[a])[0] || 'A';
 const cmpVer = (a, b) => {
   const pa = String(a).split(/[.-]/).map(n => parseInt(n, 10) || 0), pb = String(b).split(/[.-]/).map(n => parseInt(n, 10) || 0);
@@ -218,6 +261,7 @@ async function runScan(host) {
   const tasks = {
     cert: finalUrl.protocol === 'https:' ? certInfo(finalHost) : Promise.resolve({ error: 'nohttps' }),
     httpRedirect: get(`http://${finalHost}/`, { follow: false, max: 1024, timeout: 5000 }),
+    mail: mailCheck(host),
   };
   if (isWp) {
     Object.assign(tasks, {
@@ -339,8 +383,17 @@ async function runScan(host) {
   const sg = n >= 5 ? 'A' : n === 4 ? 'B' : n >= 2 ? 'C' : n === 1 ? 'D' : 'E';
   rows.push({ key: 'headers', label: 'セキュリティ設定', value: `6項目中${n}項目`, grade: sg });
 
+  // 8. なりすましメール（SPF・DMARC）
+  const m = r.mail || { error: true };
+  if (m.error) rows.push({ key: 'mail', label: 'メール', value: '確認できず', grade: '-' });
+  else if (!m.spf && !m.dmarc) rows.push({ key: 'mail', label: 'メール', value: 'SPF・DMARCともに未設定', grade: 'D' });
+  else if (!m.dmarc) rows.push({ key: 'mail', label: 'メール', value: 'DMARCが未設定', grade: 'C' });
+  else if (!m.spf) rows.push({ key: 'mail', label: 'メール', value: 'SPFが未設定', grade: 'C' });
+  else if (m.policy !== 'quarantine' && m.policy !== 'reject') rows.push({ key: 'mail', label: 'メール', value: 'DMARCが見張りだけ（p=none）', grade: 'B' });
+  else rows.push({ key: 'mail', label: 'メール', value: 'SPF・DMARCとも設定あり', grade: 'A' });
+
   // 総合判定と、いちばん先にやること
-  const order = ['ssl', 'plugins', 'php', 'core', 'files', 'users', 'headers'];
+  const order = ['ssl', 'plugins', 'php', 'core', 'files', 'users', 'mail', 'headers'];
   const w = worst(rows.map(x => x.grade));
   const overall = ORDER[w] >= 4 ? '要対策' : w === 'C' ? '要注意' : '良好';
   const ADV = {
@@ -351,6 +404,7 @@ async function runScan(host) {
     files: '外から見えるファイル一覧や不要なファイルを、閉じることをおすすめします。',
     users: 'ログイン名が外から見えないようにする設定をおすすめします。',
     headers: 'サーバーのセキュリティ設定を足すことをおすすめします。',
+    mail: '会社名をかたったメールを防ぐ設定（SPF・DMARC）を、ドメインに足すことをおすすめします。',
   };
   let advice = '大きな弱点は見つかりませんでした。定期的な点検で、この状態を保てます。';
   for (const g of ['E', 'D', 'C']) {
@@ -359,7 +413,7 @@ async function runScan(host) {
   }
 
   rows.sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
-  const display = ['ssl', 'php', 'core', 'plugins', 'users', 'files', 'headers'];
+  const display = ['ssl', 'php', 'core', 'plugins', 'users', 'files', 'headers', 'mail'];
   rows.sort((a, b) => display.indexOf(a.key) - display.indexOf(b.key));
 
   return {
@@ -367,7 +421,7 @@ async function runScan(host) {
     finalUrl: finalUrl.href,
     wordpress: isWp,
     checkedAt: new Date().toISOString(),
-    rows: rows.map(({ key, label, value, grade }) => ({ key, label, value, grade })),
+    rows: rows.map(({ key, value, grade }) => ({ key, label: NAMES[key][0], tag: NAMES[key][1], value, grade })),
     overall: { grade: w, label: overall },
     advice,
   };

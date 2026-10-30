@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-31j -->
+<!-- BUILD_TAG: 2026-10-31k -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>診断について｜サイトドック</title>
@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261031i">
+<link rel="stylesheet" href="assets/style.css?v=20261031j">
 </head>
 <body>
 <header class="site-header">
@@ -33,23 +33,24 @@
     <div class="points">
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><h3>ふつうの閲覧と同じアクセス</h3><p>ページや公開ファイルを数回読みに行くだけです。<span class="mark-red"><strong>書き込み、ログインの試行、負荷をかけるアクセスはしません</strong></span>。</p></div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg><h3>最新版・サポート期限と照合</h3><p>見つかったPHP・WordPress・プラグインのバージョンを、最新版やサポート期限と照らし合わせます。弱点の情報との細かな照合は詳細診断で行います。</p></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><h3>A〜Eの判定と直し方</h3><p>画面には7項目の判定を表示します。詳しい結果票には、危ないプラグインの名前と直し方の手順を書きます。</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><h3>A〜Eの判定と直し方</h3><p>画面には8項目の判定を表示します。詳しい結果票には、危ないプラグインの名前と直し方の手順を書きます。</p></div>
     </div>
   </div>
 </section>
 <section class="sub-sec">
   <div class="wrap">
-    <h2 class="sec-title">点検する7つの項目</h2>
+    <h2 class="sec-title">点検する8つの項目</h2>
     <div class="items-wrap"><table class="items">
       <thead><tr><th scope="col">検査項目</th><th scope="col">見ているところ</th><th scope="col">判定の目安</th></tr></thead>
       <tbody>
-        <tr><th scope="row">SSL証明書</th><td data-label="見ているところ">証明書が有効か、期限まであと何日か</td><td data-label="判定の目安">残り14日を切るとC、7日でD、切れているかエラーならE</td></tr>
-        <tr><th scope="row">PHP</th><td data-label="見ているところ">外から読み取れるPHPのバージョン</td><td data-label="判定の目安">終了が半年以内ならC、終わった版はD、1年以上前に終わった版はE</td></tr>
-        <tr><th scope="row">WordPress本体</th><td data-label="見ているところ">本体のバージョンと最新版との差</td><td data-label="判定の目安">修正版が未適用ならC、2つ以上古い版はD以下</td></tr>
-        <tr><th scope="row">プラグイン</th><td data-label="見ているところ">外から分かるプラグインと、その最新版との差</td><td data-label="判定の目安">更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</td></tr>
-        <tr><th scope="row">ログイン名</th><td data-label="見ているところ">投稿者ページやREST APIからログイン名が読めるか</td><td data-label="判定の目安">読み取れればC</td></tr>
-        <tr><th scope="row">不要なファイル</th><td data-label="見ているところ">説明ファイル（readme）の残り、アップロード先のファイル一覧の公開</td><td data-label="判定の目安">readmeが残っていればB、ファイル一覧が見えればD</td></tr>
-        <tr><th scope="row">セキュリティ設定</th><td data-label="見ているところ">セキュリティヘッダー6項目の有無</td><td data-label="判定の目安">5項目以上でA、4でB、2〜3でC、1でD、0でE</td></tr>
+        <tr><th scope="row">通信ののぞき見・警告画面<span class="tag">SSL証明書</span></th><td data-label="見ているところ">証明書が有効か、期限まであと何日か</td><td data-label="判定の目安">残り14日を切るとC、7日でD、切れているかエラーならE</td></tr>
+        <tr><th scope="row">修正が止まった土台のプログラム<span class="tag">PHP</span></th><td data-label="見ているところ">外から読み取れるPHPのバージョン</td><td data-label="判定の目安">終了が半年以内ならC、終わった版はD、1年以上前に終わった版はE</td></tr>
+        <tr><th scope="row">本体の更新漏れ<span class="tag">WordPress本体</span></th><td data-label="見ているところ">本体のバージョンと最新版との差</td><td data-label="判定の目安">修正版が未適用ならC、2つ以上古い版はD以下</td></tr>
+        <tr><th scope="row">危ない追加機能<span class="tag">プラグイン</span></th><td data-label="見ているところ">外から分かるプラグインと、その最新版との差</td><td data-label="判定の目安">更新の遅れ1件でC、2件以上でD、配布停止のものがあればE</td></tr>
+        <tr><th scope="row">ログイン名の丸見え<span class="tag">ユーザー名</span></th><td data-label="見ているところ">投稿者ページやREST APIからログイン名が読めるか</td><td data-label="判定の目安">読み取れればC</td></tr>
+        <tr><th scope="row">見えてはいけないファイル<span class="tag">不要なファイル</span></th><td data-label="見ているところ">説明ファイル（readme）の残り、アップロード先のファイル一覧の公開</td><td data-label="判定の目安">readmeが残っていればB、ファイル一覧が見えればD</td></tr>
+        <tr><th scope="row">守りの設定の抜け<span class="tag">セキュリティ設定</span></th><td data-label="見ているところ">セキュリティヘッダー6項目の有無</td><td data-label="判定の目安">5項目以上でA、4でB、2〜3でC、1でD、0でE</td></tr>
+        <tr><th scope="row">なりすましメール<span class="tag">SPF・DMARC</span></th><td data-label="見ているところ">ドメインの公開情報（DNS）にあるSPF・DMARCの設定</td><td data-label="判定の目安">両方ありでA、DMARCが見張りだけならB、どちらかがないとC、両方ないとD</td></tr>
       </tbody>
     </table></div>
     <p class="note-box" style="margin-top:20px">外から版が読み取れない項目は「−」（判定なし）と表示します。版を隠す設定は、それ自体がよい対策です。総合判定は、いちばん悪い項目がDかEなら「要対策」、Cなら「要注意」、それ以外は「良好」です。</p>
@@ -117,6 +118,6 @@
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20261031i"></script>
+<script src="assets/site.js?v=20261031j"></script>
 </body>
 </html>
