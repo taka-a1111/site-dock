@@ -313,7 +313,7 @@ section + section{border-top:1px solid var(--rule-soft)}
   .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
   .site-header .wrap{height:60px}
   .gnav a.btn-head{padding:9px 12px;font-size:13px}
-  .hero h1{font-size:clamp(30px,8.6vw,40px);line-height:1.25}
+  .hero h1{font-size:calc((100vw - 32px) / 13.1);line-height:1.38}
   .hero-lead{font-size:16px}
   .sheet-head{padding:14px 16px 12px}
   .sheet-title{font-size:18px;letter-spacing:.08em}
