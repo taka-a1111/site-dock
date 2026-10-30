@@ -406,6 +406,7 @@ section{padding:96px 0}
 .cta-band p{color:var(--on-ink-mid);margin-top:6px}
 .btn-cta{background:var(--go);color:#fff;padding:15px 26px;font-size:16px}
 .btn-cta:hover{background:var(--go-dark)}
+.prose a.btn-cta,.prose a.btn-cta:hover{color:#fff;text-decoration:none}
 .btn-line{border:1.5px solid var(--ink);color:var(--ink);padding:12px 22px;font-size:15px;background:var(--sheet)}
 .btn-line:hover{background:var(--tint)}
 
