@@ -735,6 +735,9 @@ section + section{border-top:1px solid var(--rule-soft)}
 .report{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px 72px;align-items:center}
 .report-head h2{font-weight:900;font-size:clamp(24px,3vw,36px);line-height:1.32}
 .report-head > p{margin-top:18px;color:var(--ink-mid);font-size:14.5px}
+.report-head > p.report-pages{display:inline-block;margin-top:22px;padding:4px 12px;border:1px solid var(--ink);font-weight:700;font-size:13.5px;color:var(--ink);letter-spacing:.04em}
+.report-head .checks{margin-top:14px}
+.report-head > p.report-note{margin-top:12px;font-size:13.5px}
 .report-btn{margin-top:28px;padding:15px 28px;border-radius:3px}
 .report-fig{margin:0;background:var(--tint);border:1px solid var(--rule-soft);padding:32px 40px 18px}
 .report-fig img{width:100%;height:auto;background:#fff;box-shadow:0 12px 32px rgba(13,39,45,.18)}
