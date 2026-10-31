@@ -4,26 +4,26 @@
 <!-- BUILD_TAG: 20261031m -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方｜サイトドック</title>
+<title>WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方｜スキゼロ</title>
 <meta name="description" content="WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。">
-<link rel="canonical" href="https://site-dock.com/blog/wordpress-username-exposure.html">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-username-exposure.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方">
 <meta property="og:description" content="WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。">
-<meta property="og:url" content="https://site-dock.com/blog/wordpress-username-exposure.html">
-<meta property="og:image" content="https://site-dock.com/blog/img/eyecatch-008-v2.webp">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-username-exposure.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-008-v2.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.svg?v=20261031n" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=20261031m">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方", "description": "WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。", "image": "https://site-dock.com/blog/img/eyecatch-008-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock.com/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock.com/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock.com/blog/wordpress-username-exposure.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "WordPressのユーザー名そのものは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面のプロフィールでは、ユーザー名は変更できない仕様です。変えたい場合は、新しいユーザー名で管理者を作り、記事を引き継いでから古いほうを削除します。削除の画面で、記事を新しいユーザーに割り当てることを忘れないでください。データベースを直接書き換える方法は、失敗すると戻せなくなるため勧めません。作業の前には、必ずバックアップを取りましょう。"}}, {"@type": "Question", "name": "投稿者URLの名前を変えると、検索順位に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿者ページが検索から多く見られていなければ、影響はほとんどありません。変える前に、古い投稿者URLが検索結果に出ているかを確かめておくと安心です。出ている場合は、古いURLから新しいURLへ転送を設定しましょう。記事の中やプロフィールの欄に、古い投稿者URLを直接書いている場合もあります。運営者の自社サイトでも、トップページに古いURLが残っていたため書き換えました。"}}, {"@type": "Question", "name": "REST APIを止めると、ブロックエディタは動かなくなりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "ログインしていない人へのユーザー一覧だけを止める方法なら、ブロックエディタには影響しません。ブロックエディタは、ログインした状態でREST APIを使うためです。一方、REST API全体を止めると、エディタやお問い合わせフォームが動かなくなることがあります。プラグインで止める場合は、どの範囲を止める設定かを確かめてください。止めたあとは、記事の編集と保存が今までどおりできるかを試しておきましょう。"}}, {"@type": "Question", "name": "ユーザー名が「admin」のままです。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。"}}, {"@type": "Question", "name": "自分で確かめるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトドックの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方", "description": "WordPressのユーザー名が漏洩する5つの経路と、外から見えるかの確かめ方、表示名の変更やREST APIの制限で隠す手順をまとめました。破られないための備えも紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-008-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "name": "スキゼロ", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg?v=20261031n"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-username-exposure.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "WordPressのユーザー名そのものは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面のプロフィールでは、ユーザー名は変更できない仕様です。変えたい場合は、新しいユーザー名で管理者を作り、記事を引き継いでから古いほうを削除します。削除の画面で、記事を新しいユーザーに割り当てることを忘れないでください。データベースを直接書き換える方法は、失敗すると戻せなくなるため勧めません。作業の前には、必ずバックアップを取りましょう。"}}, {"@type": "Question", "name": "投稿者URLの名前を変えると、検索順位に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "投稿者ページが検索から多く見られていなければ、影響はほとんどありません。変える前に、古い投稿者URLが検索結果に出ているかを確かめておくと安心です。出ている場合は、古いURLから新しいURLへ転送を設定しましょう。記事の中やプロフィールの欄に、古い投稿者URLを直接書いている場合もあります。運営者の自社サイトでも、トップページに古いURLが残っていたため書き換えました。"}}, {"@type": "Question", "name": "REST APIを止めると、ブロックエディタは動かなくなりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "ログインしていない人へのユーザー一覧だけを止める方法なら、ブロックエディタには影響しません。ブロックエディタは、ログインした状態でREST APIを使うためです。一方、REST API全体を止めると、エディタやお問い合わせフォームが動かなくなることがあります。プラグインで止める場合は、どの範囲を止める設定かを確かめてください。止めたあとは、記事の編集と保存が今までどおりできるかを試しておきましょう。"}}, {"@type": "Question", "name": "ユーザー名が「admin」のままです。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。"}}, {"@type": "Question", "name": "自分で確かめるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "スキゼロの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方"}]}]</script>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
   </div>
@@ -173,14 +173,14 @@
 <p>adminは推測されやすい名前なので、早めに変えることをおすすめします。新しいユーザー名で管理者を作り、記事を引き継いでから、adminのユーザーを削除する流れです。WordPress.orgの日本語の解説でも、この方法が紹介されています。あわせて、パスワードを長いものに変え、二段階認証も入れてください。ログイン名を変えるだけでなく、破られにくくすることまで済ませると安心でしょう。</p>
 
 <h3>自分で確かめるのが不安なときはどうすればいいですか？</h3>
-<p>サイトドックの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。</p>
+<p>スキゼロの無料簡易診断では、投稿者ページやREST APIから名前が読めるかを判定します。読めた名前がログイン名と同じかは、管理画面のユーザー名と比べて確かめてください。結果を見て、見えている項目から順に対策していけば十分です。設定を変えるのが難しい場合は、有料の対策作業でログイン制限などの設定もお任せいただけます。まずは、今の状態を知るところから始めましょう。</p>
 
 <h2 id="s7">まとめ</h2>
 <p>WordPressのユーザー名は、主に5つの経路から外に見えることがあります。初期設定では、公開される名前がログイン名と同じになるためです。</p>
 <p>まず表示名と投稿者URLの名前を変え、不要な経路を止めてください。そのうえで、長いパスワードと二段階認証、ログイン回数の制限で守りを固めましょう。</p>
 <p>今日のうちに、<span class="mark-yellow">自分のサイトで「?author=1」を開いてみる</span>ところから始めてみてください。</p>
 
-    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
   </div>
   <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">漏洩すると何が起きるか</a></li><li><a href="#s2">漏洩する5つの経路</a></li><li><a href="#s3">確かめる方法</a></li><li><a href="#s4">漏洩を防ぐ手順</a></li><li><a href="#s5">破られないための備え</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
 </div></section>
@@ -193,7 +193,7 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="foot-links" aria-label="サイト情報">
       <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
     </nav>

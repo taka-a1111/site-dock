@@ -1,4 +1,4 @@
-// サイトドック 持ち主の確認（結果票の送付前）
+// スキゼロ 持ち主の確認（結果票の送付前）
 // 確認のメールにあるURLを開くと、サイトの <head> の確認用の1行、またはドメインのTXT記録を確かめ、
 // 見つかれば結果票の作成と送付を始める。
 
@@ -10,14 +10,14 @@ const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&a
 
 function page(title, body, status = 200) {
   return { status, html: `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>${esc(title)}｜サイトドック</title>
+<title>${esc(title)}｜スキゼロ</title>
 <style>body{margin:0;background:#F1F4F2;color:#12343B;font-family:"BIZ UDPGothic","游ゴシック","Yu Gothic","メイリオ","Noto Sans JP",sans-serif;line-height:1.8}
 main{max-width:640px;margin:48px auto;background:#fff;border:1px solid #C9D9D2;border-radius:8px;padding:32px 28px}
 h1{font-size:22px;margin:0 0 12px}p{margin:10px 0;font-size:15px}code{display:block;background:#F4F6F5;border:1px solid #E3ECE8;padding:10px 12px;font-size:13px;word-break:break-all;margin:6px 0}
 a.btn{display:inline-block;margin-top:14px;background:#2F7D5B;color:#fff;text-decoration:none;padding:12px 22px;border-radius:3px;font-weight:700}
 .logo{font-weight:900;font-size:18px;margin-bottom:18px}.logo a{color:#12343B;text-decoration:none}
 @media (max-width:680px){main{margin:16px;padding:24px 18px}}</style></head>
-<body><main><div class="logo"><a href="/">サイトドック</a></div><h1>${esc(title)}</h1>${body}</main></body></html>` };
+<body><main><div class="logo"><a href="/">スキゼロ</a></div><h1>${esc(title)}</h1>${body}</main></body></html>` };
 }
 
 async function hasMeta(host, code) {
@@ -25,7 +25,7 @@ async function hasMeta(host, code) {
     const r = await get(url, { max: 400 * 1024, timeout: 8000 }).catch(() => ({}));
     if (!r || !r.body) continue;
     const metas = r.body.match(/<meta[^>]+>/gi) || [];
-    if (metas.some(m => /name\s*=\s*["']site-dock-verification["']/i.test(m) && m.includes(code))) return true;
+    if (metas.some(m => /name\s*=\s*["'](?:sukizero|site-dock)-verification["']/i.test(m) && m.includes(code))) return true;
     return false;
   }
   return false;
@@ -35,7 +35,7 @@ async function hasTxt(host, code) {
   const names = [host, host.replace(/^www\./, '')];
   for (const n of [...new Set(names)]) {
     const t = await txt(n).catch(() => null);
-    if (t && t.some(v => v.trim() === `site-dock-verification=${code}`)) return true;
+    if (t && t.some(v => [`sukizero-verification=${code}`, `site-dock-verification=${code}`].includes(v.trim()))) return true;
   }
   return false;
 }
@@ -64,8 +64,8 @@ module.exports = async (req, res) => {
     const ok = host && ((await hasMeta(host, row.verify_code)) || (await hasTxt(host, row.verify_code)));
     if (!ok) {
       return send(page('まだ確認用の1行が見つかりません', `<p>${esc(row.domain)} のトップページの &lt;head&gt; の中、またはドメインのTXT記録に、確認用の1行が見つかりませんでした。</p>
-<p>サイトに入れる場合：</p><code>&lt;meta name="site-dock-verification" content="${esc(row.verify_code)}"&gt;</code>
-<p>DNSに足す場合（TXT記録）：</p><code>site-dock-verification=${esc(row.verify_code)}</code>
+<p>サイトに入れる場合：</p><code>&lt;meta name="sukizero-verification" content="${esc(row.verify_code)}"&gt;</code>
+<p>DNSに足す場合（TXT記録）：</p><code>sukizero-verification=${esc(row.verify_code)}</code>
 <p>キャッシュ用のプラグインを使っている場合は、キャッシュを消してからお試しください。DNSは反映まで数十分かかることがあります。</p>
 <a class="btn" href="/api/verify?id=${id}&amp;t=${esc(token)}">入れたので、もう一度確かめる</a>`));
     }

@@ -4,26 +4,26 @@
 <!-- BUILD_TAG: 20261031m -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方｜サイトドック</title>
+<title>ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方｜スキゼロ</title>
 <meta name="description" content="ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。">
-<link rel="canonical" href="https://site-dock.com/blog/conoha-wing-php-version.html">
+<link rel="canonical" href="https://sukizero.com/blog/conoha-wing-php-version.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方">
 <meta property="og:description" content="ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。">
-<meta property="og:url" content="https://site-dock.com/blog/conoha-wing-php-version.html">
-<meta property="og:image" content="https://site-dock.com/blog/img/eyecatch-010-v2.webp">
+<meta property="og:url" content="https://sukizero.com/blog/conoha-wing-php-version.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-010-v2.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.svg?v=20261031n" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=20261031m">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方", "description": "ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。", "image": "https://site-dock.com/blog/img/eyecatch-010-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock.com/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock.com/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock.com/blog/conoha-wing-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。"}}, {"@type": "Question", "name": "複数のサイトがある場合、まとめて変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方", "description": "ConoHa WINGでPHPのバージョンを変更する方法を、事前の準備から切り替えの手順、変更後の確認、うまくいかないときの戻し方まで順に解説します。8.2のサポートが年末で終わる前に確かめてください。", "image": "https://sukizero.com/blog/img/eyecatch-010-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "name": "スキゼロ", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg?v=20261031n"}}, "mainEntityOfPage": "https://sukizero.com/blog/conoha-wing-php-version.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えは管理画面で保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは、見る人の少ない時間帯に行うと安心です。崩れたら、すぐに前の版へ戻しましょう。前の版に戻せば、表示は元どおりになることがほとんどです。戻したあとで原因を探し、落ち着いて上げ直せば十分でしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3以上が目安です。テーマやプラグインが対応していれば、8.4を選ぶ方法もあります。迷ったら、使っているテーマの配布元の案内を確かめてください。プラグインの配布ページで、対応している版を確かめるのも1つの方法です。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定の画面は、WordPressを使っているかどうかに関係なく使えます。WordPress以外ではサイトヘルスがないため、版はPHP設定の画面で確かめるのが確実です。独自に作られたサイトは、古い書き方のプログラムが動かなくなることがあります。制作した会社に、新しい版で動くかを先に確かめておきましょう。"}}, {"@type": "Question", "name": "複数のサイトがある場合、まとめて変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ConoHa WINGでPHPのバージョンを変更する方法｜事前の準備と戻し方"}]}]</script>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
   </div>
@@ -149,14 +149,14 @@
 <p>サーバー共通の設定を変えると、ドメインごとに設定していないサイトにまとめて効きます。ただし、ドメインごとに版を決めているサイトには、その設定が優先される仕組みです。一度に全部のサイトを変えると、どのサイトで問題が起きたか分かりにくくなります。1つずつ切り替えて、表示を確かめながら進めるのがおすすめです。</p>
 
 <h3>自分で切り替えるのが不安なときはどうすればいいですか？</h3>
-<p>制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、サイトドックの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。</p>
+<p>制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられるでしょう。切り替えの作業そのものを任せたい場合は、有料の対策作業でも承っています。一人で悩まず、早めに相談してください。</p>
 
 <h2 id="s7">まとめ</h2>
 <p>ConoHa WINGでは、「応用設定」のPHP設定から、ドメインごとに版を変えられます。切り替えの前に、今の版の控え、バックアップ、テーマとプラグインの更新を済ませておきましょう。</p>
 <p>切り替えたら、サイトヘルスと表示を確かめ、崩れたら前の版に戻してください。</p>
 <p>8.2は2026年末で弱点の修正が終わるので、<span class="mark-yellow">年内に8.3以上へ上げておく</span>ことをおすすめします。</p>
 
-    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
   </div>
   <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">変更する前に知っておきたいこと</a></li><li><a href="#s2">変更する前の3つの準備</a></li><li><a href="#s3">変更する手順</a></li><li><a href="#s4">変更したあとの確認</a></li><li><a href="#s5">うまくいかないとき</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
 </div></section>
@@ -169,7 +169,7 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="foot-links" aria-label="サイト情報">
       <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
     </nav>

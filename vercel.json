@@ -78,7 +78,29 @@
           "value": "site-dock-orcin.vercel.app"
         }
       ],
-      "destination": "https://site-dock.com/:path*",
+      "destination": "https://sukizero.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "site-dock.com"
+        }
+      ],
+      "destination": "https://sukizero.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.site-dock.com"
+        }
+      ],
+      "destination": "https://sukizero.com/:path*",
       "permanent": true
     }
   ]

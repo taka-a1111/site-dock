@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://site-dock.com/sitemap.xml
+Sitemap: https://sukizero.com/sitemap.xml

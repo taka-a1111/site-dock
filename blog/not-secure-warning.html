@@ -4,26 +4,26 @@
 <!-- BUILD_TAG: 20261031m -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>「保護されていない通信」と表示される原因と直し方｜サイトドック</title>
+<title>「保護されていない通信」と表示される原因と直し方｜スキゼロ</title>
 <meta name="description" content="ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。">
-<link rel="canonical" href="https://site-dock.com/blog/not-secure-warning.html">
+<link rel="canonical" href="https://sukizero.com/blog/not-secure-warning.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「保護されていない通信」と表示される原因と直し方">
 <meta property="og:description" content="ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。">
-<meta property="og:url" content="https://site-dock.com/blog/not-secure-warning.html">
-<meta property="og:image" content="https://site-dock.com/blog/img/eyecatch-006-v2.webp">
+<meta property="og:url" content="https://sukizero.com/blog/not-secure-warning.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-006-v2.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.svg?v=20261031n" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css?v=20261031m">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "「保護されていない通信」と表示される原因と直し方", "description": "ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。", "image": "https://site-dock.com/blog/img/eyecatch-006-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "サイトドック（インフォサクセス）", "url": "https://site-dock.com/about.html"}, "publisher": {"@type": "Organization", "name": "サイトドック", "logo": {"@type": "ImageObject", "url": "https://site-dock.com/assets/logo.svg"}}, "mainEntityOfPage": "https://site-dock.com/blog/not-secure-warning.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "「保護されていない通信」のまま見ても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "読むだけなら、すぐに大きな被害が出ることは多くありません。ただし、通信の中身は守られていないため、入力した情報を盗み見られるおそれがあります。名前や電話番号、パスワードなどは入力しないでください。自社のサイトで表示が出ている場合は、お客さまが入力をためらうので、早めに直しましょう。閲覧者の側では直せないため、サイトを管理する人の作業が必要です。"}}, {"@type": "Question", "name": "SSL証明書にお金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのレンタルサーバーでは、無料の証明書を使えます。エックスサーバーでも、サーバーパネルから無料で設定できます。有料の証明書は、会社の実在まで確かめるものなど、信頼の度合いを上げたいときに選ぶものです。小さな会社のホームページなら、まずは無料の証明書で十分でしょう。大切なのは、種類よりも期限が切れないように保つことです。"}}, {"@type": "Question", "name": "httpsにしたら、検索の順位は下がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "正しく転送を設定すれば、大きく下がることはふつうありません。httpのアドレスからhttpsのアドレスへ、恒久的な転送を設定するのがポイントです。転送がないと、同じページが2つあるように見えてしまいます。切り替えたら、Search Consoleにhttpsのサイトも登録してください。ページが正しく読まれているかを確かめられます。サイトマップのアドレスもhttpsに直してください。"}}, {"@type": "Question", "name": "スマホだけ「保護されていない通信」と出るのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。"}}, {"@type": "Question", "name": "自分で直すのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、サイトドックの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://site-dock.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://site-dock.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "「保護されていない通信」と表示される原因と直し方"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "「保護されていない通信」と表示される原因と直し方", "description": "ホームページに「保護されていない通信」と表示される意味と主な原因、原因ごとの直し方をまとめました。SSL証明書の設定や期限、httpの混在を確かめる手順も紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-006-v2.webp", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "name": "スキゼロ", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg?v=20261031n"}}, "mainEntityOfPage": "https://sukizero.com/blog/not-secure-warning.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "「保護されていない通信」のまま見ても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "読むだけなら、すぐに大きな被害が出ることは多くありません。ただし、通信の中身は守られていないため、入力した情報を盗み見られるおそれがあります。名前や電話番号、パスワードなどは入力しないでください。自社のサイトで表示が出ている場合は、お客さまが入力をためらうので、早めに直しましょう。閲覧者の側では直せないため、サイトを管理する人の作業が必要です。"}}, {"@type": "Question", "name": "SSL証明書にお金はかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのレンタルサーバーでは、無料の証明書を使えます。エックスサーバーでも、サーバーパネルから無料で設定できます。有料の証明書は、会社の実在まで確かめるものなど、信頼の度合いを上げたいときに選ぶものです。小さな会社のホームページなら、まずは無料の証明書で十分でしょう。大切なのは、種類よりも期限が切れないように保つことです。"}}, {"@type": "Question", "name": "httpsにしたら、検索の順位は下がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "正しく転送を設定すれば、大きく下がることはふつうありません。httpのアドレスからhttpsのアドレスへ、恒久的な転送を設定するのがポイントです。転送がないと、同じページが2つあるように見えてしまいます。切り替えたら、Search Consoleにhttpsのサイトも登録してください。ページが正しく読まれているかを確かめられます。サイトマップのアドレスもhttpsに直してください。"}}, {"@type": "Question", "name": "スマホだけ「保護されていない通信」と出るのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。"}}, {"@type": "Question", "name": "自分で直すのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、スキゼロの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "「保護されていない通信」と表示される原因と直し方"}]}]</script>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a href="../" class="logo" aria-label="サイトドック トップへ"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
   </div>
@@ -107,7 +107,7 @@
 
 <h3>月に1回は外から点検する</h3>
 <p>自分のパソコンでは見慣れてしまい、表示の変化に気づきにくいものです。ブラウザが前に開いたページを覚えていて、古い表示のまま見えていることもあります。月に1回、日を決めて外から点検すると、取りこぼしを防げます。</p>
-<p>サイトドックの無料簡易診断なら、URLを入れるだけで<span class="mark-yellow">証明書の状態と残りの日数</span>が分かる仕組みです。httpからhttpsへの転送があるかも、あわせて判定できるでしょう。</p>
+<p>スキゼロの無料簡易診断なら、URLを入れるだけで<span class="mark-yellow">証明書の状態と残りの日数</span>が分かる仕組みです。httpからhttpsへの転送があるかも、あわせて判定できるでしょう。</p>
 
 <div class="art-cta"><strong>あなたのサイトは「保護された通信」ですか</strong><p>URLを入れるだけで、SSL証明書の状態やhttpsへの転送を含む8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
 
@@ -126,14 +126,14 @@
 <p>スマホで、httpのアドレスを開いている可能性があります。ブックマークや過去の履歴に、httpのアドレスが残っていることがあるからです。httpからhttpsへの転送を設定すれば、どのアドレスから開いてもhttpsになります。また、スマホ向けにだけ表示される画像や広告に、httpの読み込みが混ざっていることもあります。パソコンでスマホの表示に切り替えて開発者ツールを見ると、原因を探しやすいでしょう。</p>
 
 <h3>自分で直すのが不安なときはどうすればいいですか？</h3>
-<p>制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、サイトドックの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。</p>
+<p>制作会社や保守を頼んでいる会社に、表示が出ているページのアドレスを伝えて相談するのが確実です。サーバーの管理画面にログインできるかも、あわせて確かめておくと話が早く進みます。今の状態が分からなければ、スキゼロの無料簡易診断で、証明書と転送の状態を外から確かめられます。混在の修正までまとめて頼むと、取りこぼしを防げるでしょう。</p>
 
 <h2 id="s6">まとめ</h2>
 <p>「保護されていない通信」は、通信が守られていないことを知らせる表示です。主な原因は、証明書がない、期限が切れている、httpの読み込みが混ざっている、の3つです。</p>
 <p>証明書を設定し、httpからhttpsへ転送し、残っているhttpの読み込みを直せば表示は消えます。エックスサーバーでは、証明書の設定と転送の設定が別なので注意してください。</p>
 <p>まずは今日、<span class="mark-yellow">自社サイトのアドレス欄に鍵のマークが出ているか</span>を確かめるところから始めましょう。</p>
 
-    <div class="author"><div><b>この記事を書いた人</b><br>サイトドック（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
   </div>
   <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">表示の意味</a></li><li><a href="#s2">3つの主な原因</a></li><li><a href="#s3">直し方</a></li><li><a href="#s4">再発させないための備え</a></li><li><a href="#s5">よくある質問</a></li><li><a href="#s6">まとめ</a></li></ol></aside>
 </div></section>
@@ -146,7 +146,7 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg" alt="サイトドック" width="538" height="112"></a>
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261031n" alt="スキゼロ" width="409" height="112"></a>
     <nav class="foot-links" aria-label="サイト情報">
       <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
     </nav>
