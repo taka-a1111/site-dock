@@ -2,5 +2,12 @@
   "name": "site-dock",
   "private": true,
   "description": "サイトドック（WordPressサイトの無料簡易診断）",
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "153.0.0",
+    "@vercel/functions": "3.10.5",
+    "puppeteer-core": "25.16.0"
+  }
 }

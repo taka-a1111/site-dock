@@ -151,7 +151,7 @@ async function mailCheck(host) {
   const spf = root.find(t => /^v=spf1(\s|$)/i.test(t.trim()));
   const dmarc = dm.find(t => /^v=DMARC1\s*;/i.test(t.trim()));
   const policy = dmarc ? ((dmarc.match(/(?:^|;)\s*p\s*=\s*(\w+)/i) || [])[1] || '').toLowerCase() : '';
-  return { spf: !!spf, dmarc: !!dmarc, policy };
+  return { spf: !!spf, dmarc: !!dmarc, policy, spfRecord: spf || '', dmarcRecord: dmarc || '', org };
 }
 
 // ---------- 判定の部品 ----------
@@ -278,6 +278,8 @@ async function runScan(host) {
   const r = {}; keys.forEach((k, i) => { r[k] = vals[i]; });
 
   const rows = [];
+  // 結果票（持ち主にだけ送る）に載せる詳しい内容。画面の API では返さない
+  const detail = { https, wordpress: isWp };
 
   // 1. SSL証明書
   if (!https || r.cert.error === 'nohttps') {
@@ -286,6 +288,7 @@ async function runScan(host) {
     rows.push({ key: 'ssl', label: 'SSL証明書', value: '確認できず', grade: '-' });
   } else {
     const d = days(r.cert.validTo);
+    detail.cert = { validTo: r.cert.validTo.toISOString(), daysLeft: d, authorized: r.cert.authorized };
     if (!r.cert.authorized) rows.push({ key: 'ssl', label: 'SSL証明書', value: d < 0 ? '期限切れ' : '証明書にエラー', grade: 'E' });
     else if (d < 0) rows.push({ key: 'ssl', label: 'SSL証明書', value: '期限切れ', grade: 'E' });
     else if (d < 7) rows.push({ key: 'ssl', label: 'SSL証明書', value: `残り${d}日`, grade: 'D' });
@@ -296,6 +299,7 @@ async function runScan(host) {
   // 2. PHP
   const powered = [h.get('x-powered-by'), r.login && r.login.headers && r.login.headers.get('x-powered-by')].filter(Boolean).join(' ');
   const pm = powered.match(/PHP\/([0-9]+\.[0-9]+(?:\.[0-9]+)?)/i);
+  detail.php = { version: pm ? pm[1] : null, exposed: !!pm };
   if (pm) {
     const g = gradePhp(pm[1]);
     rows.push({ key: 'php', label: 'PHP', value: g.value, grade: g.grade, exposed: true });
@@ -313,6 +317,7 @@ async function runScan(host) {
       if (fm) ver = fm[1];
     }
     const latest = r.latest;
+    detail.core = { version: ver || null, latest: latest || null };
     if (!ver) rows.push({ key: 'core', label: 'WordPress本体', value: '版は外から見えない設定', grade: '-' });
     else if (!latest) rows.push({ key: 'core', label: 'WordPress本体', value: `${ver}（最新版を確認できず）`, grade: '-' });
     else if (cmpVer(ver, latest) >= 0) rows.push({ key: 'core', label: 'WordPress本体', value: '最新版', grade: 'A' });
@@ -324,6 +329,7 @@ async function runScan(host) {
     }
 
     const plugins = findPlugins(html).slice(0, 12);
+    detail.plugins = { found: plugins.length, list: [] };
     if (!plugins.length) {
       rows.push({ key: 'plugins', label: 'プラグイン', value: '外から確認できるものなし', grade: '-' });
     } else {
@@ -331,6 +337,8 @@ async function runScan(host) {
       let old = 0, closed = 0, checked = 0;
       plugins.forEach((p, i) => {
         const inf = infos[i];
+        detail.plugins.list.push({ slug: p.slug, have: p.version, latest: inf.version || null,
+          state: inf.closed ? 'closed' : (!inf.version || !p.version || cmpVer(p.version, inf.version) > 0) ? 'unknown' : cmpVer(p.version, inf.version) < 0 ? 'old' : 'ok' });
         if (inf.closed) { closed++; checked++; pluginNames.push({ slug: p.slug, state: 'closed' }); return; }
         if (!inf.version || !p.version) return;
         if (cmpVer(p.version, inf.version) > 0) return; // ver= がプラグインの版ではない
@@ -351,12 +359,14 @@ async function runScan(host) {
       usersExposed = r.users.status === 200 && Array.isArray(j) && j.some(u => u && u.slug);
     } catch (e) {}
     const authorExposed = !!(r.author && r.author.location && /\/author\/[^/]+/i.test(r.author.location));
+    detail.users = { rest: usersExposed, author: authorExposed };
     rows.push(usersExposed || authorExposed
       ? { key: 'users', label: 'ログイン名', value: '外から見える状態', grade: 'C' }
       : { key: 'users', label: 'ログイン名', value: '外から見えない', grade: 'A' });
 
     const readme = r.readme && r.readme.status === 200 && /WordPress/i.test(r.readme.body || '');
     const listing = r.uploads && r.uploads.status === 200 && /<title>\s*Index of/i.test(r.uploads.body || '');
+    detail.files = { readme: !!readme, listing: !!listing };
     if (listing) rows.push({ key: 'files', label: '不要なファイル', value: readme ? 'ファイル一覧とreadmeが見える' : 'ファイル一覧が見える', grade: 'D' });
     else if (readme) rows.push({ key: 'files', label: '不要なファイル', value: 'readmeが残っている', grade: 'B' });
     else rows.push({ key: 'files', label: '不要なファイル', value: '見つからず', grade: 'A' });
@@ -380,11 +390,13 @@ async function runScan(host) {
     ['リファラーの制限', !!hv('referrer-policy')],
   ];
   const n = items.filter(i => i[1]).length;
+  detail.headers = items.map(([name, ok]) => ({ name, ok }));
   const sg = n >= 5 ? 'A' : n === 4 ? 'B' : n >= 2 ? 'C' : n === 1 ? 'D' : 'E';
   rows.push({ key: 'headers', label: 'セキュリティ設定', value: `6項目中${n}項目`, grade: sg });
 
   // 8. なりすましメール（SPF・DMARC）
   const m = r.mail || { error: true };
+  detail.mail = m;
   if (m.error) rows.push({ key: 'mail', label: 'メール', value: '確認できず', grade: '-' });
   else if (!m.spf && !m.dmarc) rows.push({ key: 'mail', label: 'メール', value: 'SPF・DMARCともに未設定', grade: 'D' });
   else if (!m.dmarc) rows.push({ key: 'mail', label: 'メール', value: 'DMARCが未設定', grade: 'C' });
@@ -424,6 +436,7 @@ async function runScan(host) {
     rows: rows.map(({ key, value, grade }) => ({ key, label: NAMES[key][0], tag: NAMES[key][1], value, grade })),
     overall: { grade: w, label: overall },
     advice,
+    detail,
   };
 }
 
@@ -449,6 +462,7 @@ module.exports = async (req, res) => {
   try {
     const data = await runScan(host);
     if (data.error) { res.statusCode = 502; return res.end(JSON.stringify({ error: data.error, message: 'サイトに接続できませんでした。URLを確かめるか、少し待ってからお試しください。' })); }
+    delete data.detail; // 詳しい内容は画面に出さない
     cache.set(host, { t: now, data });
     res.statusCode = 200; res.end(JSON.stringify(data));
   } catch (e) {
@@ -459,3 +473,6 @@ module.exports = async (req, res) => {
 module.exports.runScan = runScan;
 module.exports.normalize = normalize;
 module.exports.gradePhp = gradePhp;
+module.exports.get = get;
+module.exports.txt = txt;
+module.exports.checkHost = checkHost;

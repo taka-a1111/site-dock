@@ -6,7 +6,12 @@
       "maxDuration": 30
     },
     "api/request.js": {
-      "maxDuration": 15
+      "maxDuration": 60,
+      "includeFiles": "node_modules/@sparticuz/chromium/bin/**"
+    },
+    "api/verify.js": {
+      "maxDuration": 60,
+      "includeFiles": "node_modules/@sparticuz/chromium/bin/**"
     }
   },
   "headers": [

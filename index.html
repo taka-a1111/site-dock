@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-10-31p -->
+<!-- BUILD_TAG: 2026-10-31q -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>サイトドック｜ホームページの弱点を無料で点検</title>
@@ -393,7 +393,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-10-31p");
+console.log("BUILD_TAG: 2026-10-31q");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -510,8 +510,8 @@ console.log("BUILD_TAG: 2026-10-31p");
         .then(function(r){ return r.json(); })
         .then(function(j){
           if (!j.ok) { msg.textContent = j.message || '受付に失敗しました。'; btn.disabled = false; }
-          else if (j.needsOwnerCheck) { msg.textContent = '受け付けました。メールアドレスのドメインがサイトと違うため、先にサイトの持ち主の確認についてご連絡します。'; }
-          else { msg.textContent = '受け付けました。結果票は1営業日以内にお送りします。'; }
+          else if (j.needsOwnerCheck) { msg.textContent = '受け付けました。メールアドレスのドメインがサイトと違うため、先に持ち主の確認の手順をメールでお送りします。'; }
+          else { msg.textContent = '受け付けました。結果票（A4・全8ページのPDF）をメールでお送りします。届かない場合は、迷惑メールのフォルダもご確認ください。'; }
           msg.classList.add('show');
         })
         .catch(function(){ msg.textContent = '通信がうまくいきませんでした。少し待ってからお試しください。'; msg.classList.add('show'); btn.disabled = false; });
