@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "sukizero-site",
 	"main": "./src/worker.ts",
-	// 管理者の初期設定が済むまで、仮URLは外から開けないようにしておく
+	// 仮URL（workers.dev）は確認用に開けてよい。管理画面（/_emdash）は src/worker.ts で sukizero.com 以外では404にしている
 	"workers_dev": false,
 	"preview_urls": false,
 	"compatibility_date": "2026-02-24",
@@ -20,6 +20,14 @@
 			"bucket_name": "sukizero-media",
 		},
 	],
+	// PDF（結果票）を作る「ブラウザ実行」（Browser Rendering）
+	"browser": { "binding": "BROWSER" },
+	// 公開してよい設定値。秘密の値（RESEND_API_KEY・NVD_API_KEY）は wrangler secret で入れる
+	"vars": {
+		"SITEDOCK_SUPABASE_URL": "https://fgbqheodukryhcmrjucn.supabase.co",
+		"SITEDOCK_SUPABASE_KEY": "sb_publishable_gGLBPr0f3AqjdvNlgJk5dA_pBQjWfHP",
+		"SITEDOCK_MAIL_FROM": "スキゼロ <report@sukizero.com>",
+	},
 	// Sandboxed plugins require Worker Loader, available on Workers paid plans. Uncomment to enable:
 	// "worker_loaders": [{ "binding": "LOADER" }],
 	// General maintenance cron trigger
