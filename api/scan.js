@@ -240,7 +240,7 @@ function findPlugins(html) {
 }
 
 // ---------- 診断本体 ----------
-async function runScan(host) {
+async function runScan(host, opts = {}) {
   const startUrl = `https://${host}/`;
   let home = await get(startUrl);
   let https = true;
@@ -427,6 +427,12 @@ async function runScan(host) {
   rows.sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
   const display = ['ssl', 'php', 'core', 'plugins', 'users', 'files', 'headers', 'mail'];
   rows.sort((a, b) => display.indexOf(a.key) - display.indexOf(b.key));
+
+  // NVD との照合（結果票用。画面の API では使わない）
+  if (opts.nvd && (detail.php && detail.php.version || detail.core && detail.core.version || detail.plugins && detail.plugins.list.length)) {
+    try { detail.nvd = await require('../lib/nvd.js').lookup(detail, { budget: opts.nvdBudget || 20000 }); }
+    catch (e) { detail.nvd = { error: String(e && e.message || e) }; }
+  }
 
   return {
     domain: host,
