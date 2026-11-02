@@ -224,7 +224,7 @@ export function renderArticle(p: Post): string {
 	return out.replace(`<h1>${esc(p.title)}</h1>`, `<h1>${h1html(p.title)}</h1>`);
 }
 
-/** Vercel版と同じセキュリティヘッダー（vercel.json の headers） */
+/** Vercel版と同じセキュリティヘッダー（vercel.json の headers）。CSP だけ、Cloudflare が自動で足すアクセス解析（Web Analytics）のタグを許す */
 export const SECURITY_HEADERS: Record<string, string> = {
 	"Strict-Transport-Security": "max-age=31536000; includeSubDomains",
 	"X-Content-Type-Options": "nosniff",
@@ -232,7 +232,7 @@ export const SECURITY_HEADERS: Record<string, string> = {
 	"Referrer-Policy": "strict-origin-when-cross-origin",
 	"Permissions-Policy": "camera=(), microphone=(), geolocation=()",
 	"Content-Security-Policy":
-		"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+		"default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
 };
 
 export function htmlResponse(body: string, status = 200, host?: string): Response {
