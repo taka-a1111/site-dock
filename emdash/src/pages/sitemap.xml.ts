@@ -5,13 +5,16 @@ import { BASE, FIXED, FIXED_LASTMOD, allPosts, isLive, todayJST } from "../lib/s
 export const GET: APIRoute = async () => {
 	const today = todayJST();
 	const posts = (await allPosts()).filter((p) => isLive(p, today)).sort((a, b) => (a.slug < b.slug ? -1 : 1));
-	const fixed = ["about", "contact", "faq", "index", "partner", "price", "privacy", "service", "terms", "tokushoho"].filter(
+	// 特商法・プライバシー・利用規約は noindex にしているので載せない（2026-11-05）
+	const fixed = ["about", "contact", "faq", "index", "partner", "price", "service"].filter(
 		(n) => n === "index" || FIXED.includes(n),
 	);
+	/** ページごとの最終更新日。直したページだけここに書く（無ければ FIXED_LASTMOD） */
+	const LASTMOD: Record<string, string> = { about: "2026-11-05" };
 	const url = (loc: string, lastmod: string) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
 	const newest = posts.reduce((m, p) => ((p.modified || p.date) > m ? p.modified || p.date : m), FIXED_LASTMOD);
 	const lines = [
-		...fixed.map((n) => url(n === "index" ? `${BASE}/` : `${BASE}/${n}.html`, FIXED_LASTMOD)),
+		...fixed.map((n) => url(n === "index" ? `${BASE}/` : `${BASE}/${n}.html`, LASTMOD[n] || FIXED_LASTMOD)),
 		url(`${BASE}/blog/index.html`, newest),
 		...posts.map((p) => url(`${BASE}/blog/${p.slug}.html`, p.modified || p.date)),
 	];
