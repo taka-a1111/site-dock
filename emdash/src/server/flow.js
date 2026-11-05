@@ -38,6 +38,13 @@ async function helm(title, note) {
   catch (e) { console.error('helm', e.message); }
 }
 
+// 対応の要らない知らせは、タスクにせず案件メモに1行足す（Helm は確認事項をタスクとして受け付けない）
+async function helmNote(note) {
+  if (envOf('SITEDOCK_NO_HELM')) { console.log('[helm skipped]', note); return; }
+  try { await rpc('helm_intake_post', { p_source: 'スキゼロ（自動受付）', p_project: 'スキゼロ', p_payload: { note } }); }
+  catch (e) { console.error('helm', e.message); }
+}
+
 async function uploadPdf(path, buf) {
   const r = await fetch(`${SB().url}/storage/v1/object/sitedock-reports/${path.split('/').map(encodeURIComponent).join('/')}`, {
     method: 'POST', headers: { apikey: SB().key, authorization: `Bearer ${SB().key}`, 'content-type': 'application/pdf', 'x-upsert': 'false' }, body: buf, signal: AbortSignal.timeout(15000),
@@ -111,7 +118,7 @@ ${SIGN}`;
       attachments: [{ filename: `スキゼロ_結果票_${host}_${reportId}.pdf`, content: b64(pdf) }],
     });
     await updateRequest(id, token, { status: 'sent', sent: true, report_path: saved ? path : null, last_error: null });
-    await helm(`結果票を自動送付 ${host}`, `・結果票（${reportId}、総合判定 ${og}）をメールで自動送付済み。対応は不要\n・営業の連絡はしない。返信やお問い合わせが来たら対応する`);
+    await helmNote(`・結果票を自動送付（${host}、${reportId}、総合判定 ${og}）。対応は不要。営業の連絡はしない`);
     return { ok: true, reason: 'sent' };
   } catch (e) {
     console.error('processReport', e);
@@ -151,7 +158,7 @@ ${link}
 ${SIGN}`;
   try {
     await sendMail({ to: row.email, subject: `【スキゼロ】結果票の送付の前に、持ち主の確認をお願いします（${row.domain}）`, text });
-    await helm(`持ち主の確認待ち ${row.domain}`, '・メールのドメインがサイトと違うため、確認のお願いを自動で送付済み。確認が済むと結果票も自動で送る。対応は不要');
+    await helmNote(`・持ち主の確認のお願いを自動で送付（${row.domain}）。確認が済むと結果票も自動で送る。対応は不要`);
   } catch (e) {
     console.error('ownercheck', e);
     await updateRequest(id, token, { last_error: String(e.message || e) });
