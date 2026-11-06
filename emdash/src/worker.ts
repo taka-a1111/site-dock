@@ -1,4 +1,7 @@
 import handler, { createScheduledHandler, PluginBridge } from "@emdash-cms/cloudflare/worker";
+import { runFollowups } from "./server/followup.js";
+
+const emdashScheduled = createScheduledHandler();
 
 export { PluginBridge };
 
@@ -17,5 +20,11 @@ export default {
 		}
 		return handler.fetch!(request as any, env as any, ctx);
 	},
-	scheduled: createScheduledHandler(),
+	async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
+		// 毎分：EmDash の予約処理。1時間に1回（7分）：結果票のあとの案内メール
+		const pe = (globalThis as any).process?.env;
+		if (pe) for (const [k, v] of Object.entries(env as any)) if (typeof v === "string" && !pe[k]) pe[k] = v;
+		if (new Date(controller.scheduledTime).getUTCMinutes() === 7) ctx.waitUntil(runFollowups().catch((e) => console.error("followup", e)));
+		return (emdashScheduled as any)(controller, env, ctx);
+	},
 } satisfies ExportedHandler<Env>;

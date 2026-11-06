@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-11-02b -->
+<!-- BUILD_TAG: 2026-11-06a -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>スキゼロ｜ホームページの弱点を無料で点検</title>
@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261102b">
+<link rel="stylesheet" href="assets/style.css?v=20261106a">
 </head>
 <body>
 
@@ -100,6 +100,7 @@
             <p class="mail-note">メールアドレスのドメインがサイトと違う場合は、サイトの持ち主の確認をしてからお送りします。</p>
             <p class="form-msg" role="status"></p>
           </div>
+          <div class="next-box" id="nextBox" aria-live="polite"></div>
         </div>
       </div>
     </div>
@@ -239,6 +240,7 @@
             <li>判定をその場で表示</li>
             <li>詳しい結果票（A4・全8ページ）をメールでお届け</li>
           </ul>
+          <a class="btn plan-btn" href="./#top">無料で診断する</a>
         </div>
         <div class="plan">
           <div class="plan-name">詳細診断</div>
@@ -253,6 +255,7 @@
             <li>結果のご説明（オンライン30分）</li>
             <li>対策後の再診断1回無料</li>
           </ul>
+          <a class="btn plan-btn" href="contact.html?plan=detail">詳細診断を申し込む</a>
         </div>
         <div class="plan">
           <div class="plan-name">定期診断ライト</div>
@@ -265,6 +268,7 @@
             <li>使っているプラグインに新しい弱点が出たらメールでお知らせ</li>
             <li>SSL証明書とドメインの期限のお知らせ</li>
           </ul>
+          <a class="btn plan-btn" href="contact.html?plan=light">ライトを申し込む</a>
         </div>
         <div class="plan rec">
           <span class="rec-label">おすすめ</span>
@@ -280,6 +284,7 @@
             <li>月1回の報告書</li>
             <li>緊急時の初動対応（サイトの一時停止・復旧の手配）</li>
           </ul>
+          <a class="btn plan-btn" href="contact.html?plan=standard">スタンダードを申し込む</a>
         </div>
       </div>
       <div class="extra">
@@ -287,7 +292,7 @@
           <strong>対策作業（単発）</strong>
           <p>PHPの更新、プラグインの更新、不要なアカウントの整理、WAFの設定など。診断結果をもとにお見積もりします。</p>
         </div>
-        <div class="price">14,800<small>円〜</small></div>
+        <div class="extra-r"><div class="price">14,800<small>円〜</small></div><a class="btn btn-line" href="contact.html?plan=fix">見積もりを頼む</a></div>
       </div>
       <p class="sec-link"><a href="price.html">料金とお支払いの詳しい条件</a></p>
     </div>
@@ -399,7 +404,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-11-02b");
+console.log("BUILD_TAG: 2026-11-06a");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -470,8 +475,31 @@ console.log("BUILD_TAG: 2026-11-02b");
       tag.textContent = '診断結果';
       foot.textContent = data.advice;
       document.getElementById('mailBox').classList.add('show');
+      showNext(data);
       running = false;
     }, data.rows.length * step + 200);
+  }
+  function showNext(data){
+    var nb = document.getElementById('nextBox');
+    if (!nb) return;
+    var d = encodeURIComponent(data.domain || '');
+    var L = data.overall && data.overall.label;
+    var T = {
+      '要対策': ['D・E判定の項目があります', '攻撃の入口になりやすいところです。直し方が分からない、手が回らないときは、ご相談ください。結果のご説明は無料です。',
+        [['結果を無料で相談する', 'contact.html?plan=consult&url=' + d, 1], ['対策作業の見積もりを頼む', 'contact.html?plan=fix&url=' + d, 0]]],
+      '要注意': ['急ぎではありませんが、直しておくと安心です', 'C判定の項目は、ほかの弱点と重なると狙われやすくなります。1か月以内を目安に直してください。直し方のご相談は無料です。',
+        [['結果を無料で相談する', 'contact.html?plan=consult&url=' + d, 1], ['見張りを任せる（月4,980円〜）', 'price.html', 0]]],
+      '良好': ['今は大きな弱点はありません', 'プラグインの弱点は、毎月のように新しく公表されます。今の状態を保つには、定期的な点検がおすすめです。',
+        [['見張りを任せる（月4,980円〜）', 'price.html', 1]]]
+    }[L];
+    if (!T) { nb.classList.remove('show'); return; }
+    nb.innerHTML = '';
+    var st = document.createElement('strong'); st.textContent = T[0]; nb.appendChild(st);
+    var p = document.createElement('p'); p.textContent = T[1]; nb.appendChild(p);
+    var acts = document.createElement('div'); acts.className = 'next-acts';
+    T[2].forEach(function(b){ var a = document.createElement('a'); a.className = 'btn ' + (b[2] ? 'next-go' : 'btn-line'); a.href = b[1]; a.textContent = b[0]; acts.appendChild(a); });
+    nb.appendChild(acts);
+    nb.classList.add('show');
   }
   function scan(domain){
     if (running) return;
@@ -497,7 +525,8 @@ console.log("BUILD_TAG: 2026-11-02b");
       var box = document.getElementById('mailBox');
       box.classList.remove('show');
       var msg = box.querySelector('.form-msg'); msg.classList.remove('show');
-      if (narrow) { document.querySelector('.hero .visual').after(box); box.style.marginTop = '20px'; }
+      var nb = document.getElementById('nextBox'); if (nb) nb.classList.remove('show');
+      if (narrow) { document.querySelector('.hero .visual').after(box); box.style.marginTop = '20px'; if (nb) box.after(nb); }
       (narrow ? sheet : document.getElementById('top')).scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
       scan(d);
     });
@@ -525,6 +554,6 @@ console.log("BUILD_TAG: 2026-11-02b");
   });
 })();
 </script>
-<script src="assets/site.js?v=20261102b"></script>
+<script src="assets/site.js?v=20261106a"></script>
 </body>
 </html>

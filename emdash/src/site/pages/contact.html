@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-11-02b -->
+<!-- BUILD_TAG: 2026-11-06a -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>お問い合わせ｜スキゼロ</title>
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261102b">
+<link rel="stylesheet" href="assets/style.css?v=20261106a">
 </head>
 <body>
 <header class="site-header">
@@ -39,12 +39,13 @@
   </div></div>
 <section class="sub-sec"><div class="wrap two-col">
   <form class="cform" data-contact-form>
+    <p class="plan-note" id="planNote" role="status"></p>
     <div><label for="c-company">会社名・屋号<span class="opt">任意</span></label><input id="c-company" type="text" autocomplete="organization"></div>
     <div><label for="c-name">お名前<span class="req">必須</span></label><input id="c-name" type="text" autocomplete="name" required></div>
     <div><label for="c-mail">メールアドレス<span class="req">必須</span></label><input id="c-mail" type="email" autocomplete="email" required></div>
     <div><label for="c-tel">電話番号<span class="opt">任意</span></label><input id="c-tel" type="tel" autocomplete="tel"></div>
     <div><label for="c-url">対象サイトのURL<span class="opt">任意</span></label><input id="c-url" type="url" inputmode="url" placeholder="https://www.example.com"></div>
-    <div><label for="c-kind">ご相談の種類<span class="req">必須</span></label><select id="c-kind" required><option value="">選んでください</option><option>詳細診断を申し込みたい</option><option>定期診断を申し込みたい</option><option>対策作業を頼みたい</option><option>改ざんされたかもしれない（急ぎ）</option><option>制作会社・保守会社としての相談</option><option>そのほか</option></select></div>
+    <div><label for="c-kind">ご相談の種類<span class="req">必須</span></label><select id="c-kind" required><option value="">選んでください</option><option data-plan="consult">結果票の無料説明（オンライン30分）</option><option data-plan="detail">詳細診断を申し込みたい</option><option data-plan="light">定期診断ライトを申し込みたい</option><option data-plan="standard">定期診断スタンダードを申し込みたい</option><option data-plan="fix">対策作業の見積もりを頼みたい</option><option data-plan="urgent">改ざんされたかもしれない（急ぎ）</option><option data-plan="partner">制作会社・保守会社としての相談</option><option>そのほか</option></select></div>
     <div><label for="c-body">ご相談の内容<span class="req">必須</span></label><textarea id="c-body" required></textarea></div>
     <label class="agree" for="c-agree"><input id="c-agree" type="checkbox" required><span><a href="privacy.html">プライバシーポリシー</a>に同意します</span></label>
     <button class="btn btn-submit" type="submit">送信する</button>
@@ -66,6 +67,6 @@
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=20261102b"></script>
+<script src="assets/site.js?v=20261106a"></script>
 </body>
 </html>

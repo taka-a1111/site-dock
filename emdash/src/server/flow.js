@@ -52,12 +52,12 @@ async function uploadPdf(path, buf) {
   if (!r.ok) throw new Error(`storage ${r.status} ${(await r.text()).slice(0, 200)}`);
 }
 
-async function sendMail({ to, subject, text, attachments }) {
+async function sendMail({ to, subject, text, attachments, headers }) {
   const html = '<div style="font-family:\'游ゴシック\',\'Yu Gothic\',\'メイリオ\',Meiryo,\'Noto Sans JP\',sans-serif;font-size:14px;line-height:1.8;color:#12343B">'
     + text.split('\n').map(l => (l ? l.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])).replace(/(https:\/\/[^\s]+)/g, '<a href="$1">$1</a>') : '&nbsp;')).join('<br>') + '</div>';
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST', headers: { authorization: `Bearer ${resendKey()}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ from: fromOf(), to: [to], subject, text, html, attachments }), signal: AbortSignal.timeout(20000),
+    body: JSON.stringify({ from: fromOf(), to: [to], subject, text, html, attachments, headers }), signal: AbortSignal.timeout(20000),
   });
   if (!r.ok) throw new Error(`resend ${r.status} ${(await r.text()).slice(0, 300)}`);
   return r.json();
@@ -107,6 +107,9 @@ ${fixes.length ? '先に直す項目：' + fixes.map(r => `${r.label}（${r.tag}
 結果票の2ページ目から、項目ごとの直し方の手順を載せています。そのまま制作会社さまへ転送していただけます。
 直したあとは、同じURLでもう一度診断すると、直ったかどうかを確かめられます。
 ${SITE}/
+
+${ORDER[og] >= 4 ? '直し方が分からない、手が回らないときは、対策作業（14,800円から）も承ります。結果票をもとにお見積もりします。\n' : ''}結果票の見方や、どこから直すかのご説明は無料です（オンライン30分、またはメール）。
+${SITE}/contact.html?plan=consult&url=${encodeURIComponent(host)}&no=${reportId}
 
 受付番号：${reportId}
 
@@ -171,5 +174,5 @@ function b64(u8) {
   return btoa(s);
 }
 
-export { createRequest, getRequest, updateRequest, processReport, sendOwnerCheck, helm, reportIdOf };
+export { createRequest, getRequest, updateRequest, processReport, sendOwnerCheck, helm, helmNote, reportIdOf, sendMail, rpc as rpcCall };
 export const configured = () => !!(SB().url && SB().key);

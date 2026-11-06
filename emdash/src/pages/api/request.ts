@@ -44,6 +44,7 @@ export const POST: APIRoute = async ({ request }) => {
     name: clip(b.name, 100), company: clip(b.company, 150), tel: clip(b.tel, 40),
     topic: clip(b.topic, 60), message: clip(b.message, 4000), overall: clip(b.overall, 20),
     needs_owner_check: !!(domain && needsOwnerCheck),
+    optin: kind === 'report' && b.optin === true,
   };
 
   let created;

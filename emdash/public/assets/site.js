@@ -35,6 +35,48 @@
         .catch(function(){ m.textContent = '通信がうまくいきませんでした。少し待ってからお試しください。'; m.classList.add('err', 'show'); btn.disabled = false; });
     });
   });
+  // お問い合わせ：料金のボタンから来たら、種類とURLを入れておき、選んだプランの流れを出す
+  (function(){
+    var kind = document.getElementById('c-kind');
+    if (!kind) return;
+    var note = document.getElementById('planNote');
+    var body = document.getElementById('c-body');
+    var NOTE = {
+      consult: ['結果票の無料説明', '結果票の見方や、どこから直すかを無料でご説明します（オンライン30分、またはメール）。受付番号か対象サイトのURLと、ご希望の日時の候補を書いてください。'],
+      detail: ['詳細診断のお申し込みの流れ', '送信のあと、2営業日以内にメールで請求書と日程をご案内します。ご入金を確かめてから診断を始めます。送信した時点では、料金はかかりません。'],
+      light: ['定期診断ライトのお申し込みの流れ', '送信のあと、2営業日以内にメールで開始日と、初月分（日割り）のご請求をご案内します。1か月単位で、最低契約期間はありません。送信した時点では、料金はかかりません。'],
+      standard: ['定期診断スタンダードのお申し込みの流れ', '送信のあと、2営業日以内にメールで開始日と、初月分（日割り）のご請求をご案内します。1か月単位で、最低契約期間はありません。送信した時点では、料金はかかりません。'],
+      fix: ['対策作業のお見積もり', '結果票の受付番号や、気になっている症状を書いてください。お見積もりをお送りし、ご了承をいただいてから作業します。お支払いは作業のあとです。']
+    };
+    var HOLD = {
+      consult: '例：結果票の受付番号 SD-…。D判定のプラグインを自分で直せるか知りたいです。平日の午後が都合よいです。',
+      detail: '例：管理画面の中まで見てほしいです。制作会社とは今は連絡が取れません。',
+      light: '例：更新は自分でしています。見落としがないよう見張ってほしいです。',
+      standard: '例：更新作業もまとめてお願いしたいです。サーバーはエックスサーバーです。',
+      fix: '例：結果票でPHPがD判定でした。切り替えをお願いしたいです。'
+    };
+    var planOf = function(){ var o = kind.options[kind.selectedIndex]; return o ? o.getAttribute('data-plan') : null; };
+    var render = function(){
+      var p = planOf();
+      if (note) {
+        if (NOTE[p]) { note.innerHTML = ''; var b = document.createElement('b'); b.textContent = NOTE[p][0]; note.appendChild(b); note.appendChild(document.createElement('br')); note.appendChild(document.createTextNode(NOTE[p][1])); note.classList.add('show'); }
+        else note.classList.remove('show');
+      }
+      if (body) body.placeholder = HOLD[p] || '';
+    };
+    kind.addEventListener('change', render);
+    var q = new URLSearchParams(location.search);
+    var plan = q.get('plan');
+    if (plan) {
+      for (var i = 0; i < kind.options.length; i++) if (kind.options[i].getAttribute('data-plan') === plan) { kind.selectedIndex = i; break; }
+    }
+    var u = (q.get('url') || '').replace(/[^a-z0-9.:\/\-]/gi, '').slice(0, 200);
+    var url = document.getElementById('c-url');
+    if (u && url && !url.value) url.value = /^https?:\/\//i.test(u) ? u : 'https://' + u;
+    var no = (q.get('no') || '').replace(/[^A-Z0-9-]/g, '').slice(0, 20);
+    if (no && body && !body.value) body.value = '結果票の受付番号：' + no + '\n';
+    render();
+  })();
   // blog category filter
   var chips = document.querySelectorAll('.cat-chips button');
   // 公開済みの記事が無いカテゴリのボタンは出さない

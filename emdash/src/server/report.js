@@ -570,6 +570,7 @@ ${foot(7)}</div>`;
 <div class="box"><h3>ご相談・お問い合わせ</h3><ul>
 <li>お問い合わせフォーム：https://sukizero.com/contact.html</li>
 <li>営業日（平日9:00〜18:00）のうちにご返信します。この結果票の受付番号（${esc(reportId)}）をお書き添えください。</li>
+<li>結果票の見方や、どこから直すかのご説明は無料です（オンライン30分、またはメール）。お問い合わせフォームの種類で「結果票の無料説明」を選んでください。</li>
 <li>無理なおすすめはしません。結果票の見方だけのご質問も歓迎です。</li>
 </ul></div>
 ${logRows.length ? `<h3 style="font-size:14px;font-weight:900;margin-top:16px">対応の記録<small style="font-weight:400;font-size:11px;color:var(--mid);margin-left:8px">印刷して、直した日と担当を書き込めます</small></h3>
