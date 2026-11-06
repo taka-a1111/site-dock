@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- BUILD_TAG: 2026-11-06a -->
+<!-- BUILD_TAG: 2026-11-06b -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>スキゼロ｜ホームページの弱点を無料で点検</title>
@@ -97,6 +97,7 @@
               <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
               <button class="btn btn-mail" type="submit">結果票を受け取る</button>
             </form>
+            <label class="optin" for="optin1"><input id="optin1" type="checkbox"><span>結果票のあとに、点検の時期の目安やサービスのご案内をメールで受け取る（いつでも止められます）</span></label>
             <p class="mail-note">メールアドレスのドメインがサイトと違う場合は、サイトの持ち主の確認をしてからお送りします。</p>
             <p class="form-msg" role="status"></p>
           </div>
@@ -404,7 +405,7 @@
 </footer>
 
 <script>
-console.log("BUILD_TAG: 2026-11-06a");
+console.log("BUILD_TAG: 2026-11-06b");
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sheet = document.getElementById('sheet');
@@ -540,7 +541,7 @@ console.log("BUILD_TAG: 2026-11-06a");
       btn.disabled = true;
       fetch('/api/request', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({
         kind: 'report', domain: last.domain, email: f.querySelector('input[type=email]').value,
-        overall: last.overall.label, website: (f.querySelector('[name=website]') || {}).value || ''
+        overall: last.overall.label, optin: !!(document.getElementById('optin1') || {}).checked, website: (f.querySelector('[name=website]') || {}).value || ''
       }) })
         .then(function(r){ return r.json(); })
         .then(function(j){
