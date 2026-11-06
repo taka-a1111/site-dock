@@ -135,29 +135,28 @@ async function sendOwnerCheck(id, token, verifyCode, row) {
     await helm(`結果票の送付（持ち主の確認が先） ${row.domain}`, `・メールのドメインがサイトと違うため、持ち主の確認が必要\n・メール送信の設定（RESEND_API_KEY）がまだのため、確認のお願いを手動で送る\n・確認用の1行：<meta name="sukizero-verification" content="${verifyCode}">\n・確認のURL：${link}`);
     return;
   }
-  const text = `このたびは、スキゼロの無料簡易診断をご利用いただき、ありがとうございます。
-${row.domain} の結果票をお送りする前に、サイトの持ち主であることの確認をお願いします。
+  const reportId = reportIdOf(id);
+  const text = `スキゼロの無料簡易診断をご利用いただき、ありがとうございます。
+${row.domain} の結果票は、サイトの持ち主の方にだけお送りしています。
+お申し込みのメールアドレスとサイトのドメインが違うため、次のどちらか1つを設定していただけますでしょうか。
 
-結果票には、古いプラグインの名前など、攻撃の手がかりになる情報が載ります。ほかの方のサイトの結果をお送りしないよう、メールアドレスのドメインがサイトと違う場合は、確認をお願いしています。
-
-確認の方法は、次のどちらか1つです。
-
-方法1：サイトの <head> の中に、次の1行を入れる
+・サイトの <head> に次の1行を入れる（WordPressなら「WPCode」などのプラグインで入れられます）
 <meta name="sukizero-verification" content="${verifyCode}">
-（WordPressなら、テーマの「ヘッダーにコードを追加」の欄や、プラグイン「WPCode」などで入れられます）
 
-方法2：ドメインの設定（DNS）に、次のTXT記録を足す
+・ドメインの設定（DNS）に次のTXT記録を足す
 sukizero-verification=${verifyCode}
 
-入れ終わったら、次のURLを開いてください。確認ができしだい、結果票を自動でお送りします。
+設定が済みましたら、こちらのページで確認が終わり、結果票をお送りします（7日間有効です）。
 ${link}
 
-確認が済んだら、入れた1行は消してかまいません。
-このURLの有効期限は7日間です。お心当たりがない場合は、このメールを破棄してください。
+確認が済んだあとは、入れた1行を消していただいてかまいません。
+お申し込みに心当たりがない場合は、このメールは読み捨ててください。
+
+受付番号：${reportId}
 
 ${SIGN}`;
   try {
-    await sendMail({ to: row.email, subject: `【スキゼロ】結果票の送付の前に、持ち主の確認をお願いします（${row.domain}）`, text });
+    await sendMail({ to: row.email, subject: `【スキゼロ】${row.domain} の結果票のお送りについて`, text });
     await helmNote(`・持ち主の確認のお願いを自動で送付（${row.domain}）。確認が済むと結果票も自動で送る。対応は不要`);
   } catch (e) {
     console.error('ownercheck', e);
