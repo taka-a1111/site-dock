@@ -23,7 +23,7 @@ export const BASE = "https://sukizero.com";
 /** CSS の版。トップページの style.css?v= に合わせる（build.py と同じ） */
 export const CSS_VER = /style\.css\?v=([^"]+)/.exec(PAGES.index)![1];
 /** 固定ページの最終更新日（サイトマップ用）。固定ページを直したら上げる */
-export const FIXED_LASTMOD = "2026-10-31";
+export const FIXED_LASTMOD = "2026-11-11";
 
 export interface Post {
 	id: string;
@@ -194,8 +194,11 @@ export function renderArticle(p: Post): string {
 			datePublished: p.date,
 			dateModified: p.modified || p.date,
 			author: { "@type": "Organization", name: "スキゼロ（インフォサクセス）", url: `${BASE}/about.html` },
-			publisher: { "@type": "Organization", name: "スキゼロ", logo: { "@type": "ImageObject", url: `${BASE}/assets/logo.svg` } },
+			publisher: { "@type": "Organization", "@id": `${BASE}/#org`, name: "スキゼロ", url: `${BASE}/`, logo: { "@type": "ImageObject", url: `${BASE}/assets/logo.svg` } },
 			mainEntityOfPage: url,
+			inLanguage: "ja",
+			articleSection: p.cat,
+			isPartOf: { "@id": `${BASE}/#website` },
 		},
 	];
 	if (faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq });
