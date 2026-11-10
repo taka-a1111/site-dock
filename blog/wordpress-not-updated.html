@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に｜スキゼロ</title>
+<meta name="description" content="WordPressを何年も更新していないサイトを、安全に最新版へ上げる手順をまとめました。更新前の3つの準備、段階的に上げる順番、真っ白になったときの戻し方、自分で触らないほうがいい場合の見分け方まで解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-not-updated.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に">
+<meta property="og:description" content="WordPressを何年も更新していないサイトを、安全に最新版へ上げる手順をまとめました。更新前の3つの準備、段階的に上げる順番、真っ白になったときの戻し方、自分で触らないほうがいい場合の見分け方まで解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-not-updated.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-011-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-12">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に", "description": "WordPressを何年も更新していないサイトを、安全に最新版へ上げる手順をまとめました。更新前の3つの準備、段階的に上げる順番、真っ白になったときの戻し方、自分で触らないほうがいい場合の見分け方まで解説します。", "image": "https://sukizero.com/blog/img/eyecatch-011-v3.webp", "datePublished": "2026-11-12", "dateModified": "2026-11-12", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-not-updated.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "何年も更新していないWordPressは、一気に最新版へ上げても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "3.7以降の版なら、管理画面から最新版へ直接上げる操作は可能です。ただし公式の手順書は、メジャーリリースを2つ以上またぐ場合に段階的な更新を勧めています。バックアップを確かめたうえで、検証用のコピーで先に試してください。問題が出なければ、本番でも同じ順番で進めましょう。途中の版は、公式のリリースアーカイブから入手できます。"}}, {"@type": "Question", "name": "更新していないWordPressは、どのくらい危険ですか？", "acceptedAnswer": {"@type": "Answer", "text": "公式にサポートされるのは最新版だけです。古い系統にも修正が配られることはありますが、保証はありません。4.1から4.6までの版は、2025年7月でセキュリティ更新が終わりました。7.1.4の修正がさかのぼって配られるのも、4.7系までです。古い版ほど、直されないままの弱点が残っている期間が長くなります。"}}, {"@type": "Question", "name": "WordPressとPHPは、どちらを先に上げればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "基本は、WordPress本体とプラグインを先に上げ、PHPを最後に切り替えます。新しいPHPは、古い本体やプラグインを動かせないことがあるためです。ただし、PHPが古すぎて最新の本体を入れられない場合もあります。そのときは、今のPHPで動く版まで本体を上げてから、PHPを切り替えてください。順番に迷ったら、検証用のコピーで試すと確かです。"}}, {"@type": "Question", "name": "更新したら画面が真っ白になりました。どうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、管理者あてにリカバリーモードの案内メールが届いていないかを確かめます。届いていれば、リンクから入って問題のプラグインを止めてください。届かない場合は、サーバーの管理画面でプラグインのフォルダ名を変えると無効にできます。それでも直らないときは、更新の前に取ったバックアップから戻しましょう。エックスサーバーなら、サーバーの管理画面から復元を申し込めます。"}}, {"@type": "Question", "name": "自分で更新するのが不安なときは、どこに頼めばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "最初に、サイトを作った制作会社へ相談してください。テーマの改造や独自の機能を知っているのは、作った会社だからです。連絡が取れないときは、保守や更新の代行を受けている会社を探しましょう。依頼の前に、本体とPHPの版、プラグインの一覧を伝えると話が早く進みます。今の状態は、スキゼロの無料簡易診断でも外から確かめられるので、活用してください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressを何年も更新していないときの安全な更新手順</span><span class="h1-sub" data-sep="｜">一気に上げずに段階的に</span></h1>
+    <p><time datetime="2026-11-12">2026.11.12</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-011-v3.webp" alt="何年も更新していないWordPressの安全な更新。一気に上げずに段階的に" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「WordPressを何年も更新していない。今さら更新ボタンを押して、サイトが壊れないだろうか」と迷っていませんか？</p>
+<p>古いまま置いておくのは危険ですが、準備なしに一気に上げると、画面が真っ白になることもあるのです。</p>
+<p>この記事では、<span class="mark-yellow">何年も更新していないWordPressを安全に上げる手順</span>を紹介します。準備、順番、確認の3つに分け、自分で触らないほうがいい場合の見分け方もまとめました。</p>
+<p>数字や仕様は、WordPress公式の発表を2026年11月11日に確かめたものです。運営者が自社サイトを点検して分かったことも入れています。</p>
+
+<h2 id="s1">WordPressを何年も更新していないと起きること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-not-updated-fig1.webp" alt="WordPressを何年も更新していないと起きることを、修正が届かない、自動更新から取り残される、土台のPHPも古くなる、の3枚のカードで示した図" width="1200" height="800"><figcaption>古いままのサイトには、修正が届かなくなります</figcaption></figure>
+<p>WordPressを何年も更新していないサイトは、見た目が変わらなくても中身が古くなっています。<span class="mark-yellow">公式にサポートされるのは最新版だけ</span>だからです。2026年11月11日時点の最新版は、10月28日に出た7.1.4でした。</p>
+<p>古い版を使い続けると、見つかった弱点が直されないまま残ります。どんな状態になるのかを、3つに分けて確かめてください。</p>
+
+<h3>修正が届くのは新しい版だけ</h3>
+<p>WordPressの公式ページは、サポートするのは最新のメジャーリリースだけだと書いています。古い系統への修正は好意で配られるもので、保証も期限もありません。長く使える特別な版も用意されていないのです。</p>
+<p>実際に、4.1から4.6までの版は、2025年7月でセキュリティ更新が打ち切られました。7.1.4の修正も、さかのぼって配られるのは4.7系までです。<span class="mark-red"><strong>4.6以前のままのサイトには、もう修正が届きません</strong></span>。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/supported-versions/" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜WordPress.org</a></li>
+<li>参考：<a href="https://wordpress.org/news/2025/06/dropping-security-updates-for-wordpress-versions-4-1-through-4-6/" target="_blank" rel="noopener noreferrer nofollow">Dropping security updates for WordPress versions 4.1 through 4.6｜WordPress.org</a></li>
+<li>参考：<a href="https://wordpress.org/news/2026/10/wordpress-7-1-4/" target="_blank" rel="noopener noreferrer nofollow">WordPress 7.1.4｜WordPress.org</a></li>
+</ul>
+
+<h3>自動更新から取り残される</h3>
+<p>WordPressには、小さな修正を自動で入れる仕組みがあります。2026年7月17日の7.0.2では、緊急の弱点が直されました。影響が大きかったため、公式が自動更新を強制的に動かしています。多くのサイトは、何もしなくても直った状態になりました。</p>
+<p>ところが、自動更新を止めているサイトには、この修正が入りません。書き込みの権限が足りずに失敗しているサイトも同じです。<span class="mark-yellow">何年も版が変わっていないなら、自動更新は動いていない</span>と考えてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release/" target="_blank" rel="noopener noreferrer nofollow">WordPress 7.0.2 Release｜WordPress.org</a></li>
+</ul>
+
+<h3>土台のPHPも一緒に古くなる</h3>
+<p>WordPressが古いサイトは、動かしているPHPも古いことがよくあります。公式が勧めるのはPHP 8.3以上です。7.4でも動きますが、すでにサポートが終わった版だと注意書きがあります。</p>
+<p>2026年10月21日には、PHPに重大な弱点が2件見つかりました。<span class="mark-yellow">8.2より前のPHPには、この修正が出ません</span>。本体だけでなく、土台も合わせて上げる計画が必要です。PHPの期限は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>で確かめられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer nofollow">Requirements｜WordPress.org</a></li>
+<li>参考：<a href="https://wordpress.org/news/2026/10/critical-php-security-release/" target="_blank" rel="noopener noreferrer nofollow">Critical PHP Security Release｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s2">何年も更新していないWordPressを上げる前の3つの準備</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-not-updated-fig2.webp" alt="何年も更新していないWordPressを上げる前の準備として、今の版を控える、バックアップを取って確かめる、検証用のコピーで試す、の3つを番号つきの手順で並べた図" width="1200" height="800"><figcaption>準備の3つが終わるまで、更新ボタンは押しません</figcaption></figure>
+<p>何年も更新していないWordPressは、いきなり更新ボタンを押さないでください。<span class="mark-yellow">戻せる状態を先に作ってから上げる</span>のが、壊さないための基本です。公式の手順書も、バックアップが終わるまで更新しないよう求めています。</p>
+<p>準備は次の3つです。どれもWordPressの管理画面と、サーバーの管理画面でできます。順番に進めましょう。</p>
+
+<h3>① 今の版を控える</h3>
+<p>最初に、今の状態をメモに残します。控えるのは、WordPress本体、PHP、テーマ、プラグインそれぞれの版です。本体の版は、管理画面の「更新」で分かります。PHPの版は、「ツール」の「サイトヘルス」で確かめてください。</p>
+<p>古い管理画面には、サイトヘルスがないこともあるでしょう。その場合は、サーバーの管理画面でPHPの版を見てください。<span class="mark-yellow">控えがあれば、不具合のときに元の版へ戻せます</span>。確かめ方は、<a href="wordpress-version-check.html">WordPressのバージョンを確認する方法（管理画面と外からの両方）</a>にまとめました。</p>
+
+<h3>② バックアップを取って確かめる</h3>
+<p>次に、ファイルとデータベースの両方をバックアップします。ファイルは、テーマや画像が入ったWordPressのフォルダ全体です。データベースには、記事や設定が入っています。片方だけでは元に戻せません。</p>
+<p>取ったあとは、中身が開けるかを確かめてください。<span class="mark-red"><strong>開けないバックアップは、無いのと同じ</strong></span>です。エックスサーバーの自動バックアップは、過去14日分が残ります。一部の古いサーバーでは7日分なので、日数も見ておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/functions/service_backup.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップ｜エックスサーバー</a></li>
+</ul>
+
+<h3>③ 検証用のコピーで先に試す</h3>
+<p>できれば、本番と同じ内容のコピーを作り、先にそこで試してください。サーバー会社によっては、コピーを作る機能が用意されています。サブドメインにバックアップを戻して作る方法もあるでしょう。</p>
+<p>コピーが作れないときは、アクセスの少ない時間に本番で作業します。その場合も、<span class="mark-yellow">戻す手順を紙に書いてから始める</span>と安心です。検証用のコピーは、検索に載らないよう設定してください。作業が終わったら消すことも忘れないようにしましょう。</p>
+
+<h2 id="s3">何年も更新していないWordPressを段階的に上げる手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-not-updated-fig3.webp" alt="何年も更新していないWordPressを上げる手順を、プラグインを止める、本体を段階的に上げる、プラグインとテーマを上げる、PHPを切り替える、の4段の階段で示した図" width="1200" height="800"><figcaption>一気に上げず、1段ずつ確かめながら進めます</figcaption></figure>
+<p>準備ができたら、何年も更新していないWordPressを順番に上げていきます。<span class="mark-yellow">本体、プラグインとテーマ、PHPの順に1つずつ</span>進めるのがコツです。まとめて上げると、どこで壊れたのかが分からなくなります。</p>
+<p>1つ上げるたびに、トップページと管理画面が開くかを見てください。問題がなければ次へ進みます。作業は、時間に余裕のある日に行いましょう。</p>
+
+<h3>プラグインを止めてから本体を上げる</h3>
+<p>公式の手順書は、本体を上げる前に全部のプラグインを無効にするよう書いています。古いプラグインが新しい本体とぶつかり、更新の途中で止まるのを防ぐためです。止める前に、有効だったものを控えておきましょう。</p>
+<p>無効にしたら、管理画面の「更新」から本体を上げてください。途中で「データベースの更新が必要です」と出ることがあります。<span class="mark-yellow">出たらボタンを押して、最後まで進めてください</span>。上げたあとにログインできないときは、ブラウザのCookieを消すと入れることがあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/upgrading-wordpress-extended-instructions/" target="_blank" rel="noopener noreferrer nofollow">WordPress の更新 – 詳細な手順｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>版が大きく離れているときは段階的に</h3>
+<p>3.7以降の版なら、管理画面のボタン1つで最新版まで上げられる仕組みです。ただし公式の手順書は、メジャーリリースを2つ以上またぐ場合に、段階的な更新を勧めています。ぶつかりやデータベースの破損を減らすためです。</p>
+<p>段階的に上げるときは、公式のリリースアーカイブから途中の版を入手します。<span class="mark-yellow">1段上げるごとに表示を確かめる</span>と、原因を追いやすくなるでしょう。手作業での入れ替えでは、wp-config.phpとwp-contentを消さないでください。</p>
+
+<h3>プラグインとテーマ、最後にPHP</h3>
+<p>本体が上がったら、プラグインとテーマを更新します。そのあと、控えを見ながらプラグインを1つずつ有効に戻してください。戻すたびに表示を見れば、問題のあるものを特定できます。</p>
+<p>PHPの切り替えは最後です。運営者が自社サイト15件を点検したときも、古い部品が見つかりました。PHP 8で止まる、2020年の版のプラグインです。<span class="mark-yellow">先に新しい版へ入れ替えてから切り替えました</span>。手順は、<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>を見てください。</p>
+
+<h2 id="s4">何年も更新していないWordPressを上げたあとの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-not-updated-fig4.webp" alt="何年も更新していないWordPressを上げたあとに確かめる、ページの表示、お問い合わせフォーム、管理画面、自動更新の設定、の4項目を縦のチェックリストで示した図" width="1200" height="800"><figcaption>上げたあとは、見た目と動きの両方を確かめます</figcaption></figure>
+<p>何年も更新していないWordPressは、上げ終わったあとの確認が欠かせません。<span class="mark-yellow">トップページだけ見て終わりにしない</span>でください。古い作りの部分ほど、奥のページで崩れが出やすいからです。</p>
+<p>確認で見る場所と、うまくいかなかったときの戻し方を知っておきましょう。次に同じ状態へ戻らないための設定も大切です。3つに分けて紹介します。</p>
+
+<h3>表示とフォームを確かめる</h3>
+<p>主なページを、パソコンとスマートフォンの両方で開きます。見るのは、レイアウトの崩れ、画像の抜け、メニューの動きです。更新の前に主なページの画面を保存しておくと、見比べやすくなります。</p>
+<p>お問い合わせフォームは、実際に送ってメールが届くかを試してください。<span class="mark-yellow">フォームの不具合は、見た目では気づけません</span>。予約や決済の機能があるサイトは、そこも1件通して確かめましょう。管理画面で記事の保存ができるかも見ておくと安心です。</p>
+
+<h3>真っ白になったときの戻し方</h3>
+<p>画面が真っ白になったら、落ち着いて原因を1つずつ外しましょう。WordPress 5.2以降は、管理者あてにリカバリーモードの案内メールが届きます。メールのリンクから入り、問題のプラグインを止めてください。</p>
+<p>メールが来ないときは、サーバーの管理画面でプラグインのフォルダ名を変えると止められます。名前を変えたフォルダのプラグインは、無効として扱われるためです。それでも直らなければ、バックアップから戻しましょう。<span class="mark-yellow">戻せるのは、準備でバックアップを確かめた場合だけ</span>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_restore.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからのデータ復元｜エックスサーバー</a></li>
+</ul>
+
+<h3>次から止まらないようにする</h3>
+<p>最新版まで上がったら、小さな修正の自動更新が動いているかを確かめてください。管理画面の「更新」に、自動更新の状態が書かれています。プラグインも、一覧の画面から自動更新を選べるようになりました。</p>
+<p>自動更新に任せきりにせず、月に1回は管理画面を開いてください。<span class="mark-yellow">更新の通知が届くメールアドレスも見直します</span>。退職した担当者のアドレスのままだと、失敗の知らせに誰も気づけません。使っていないプラグインは、この機会に削除しましょう。</p>
+
+<h2 id="s5">何年も更新していないWordPressを自分で上げないほうがいい場合</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-not-updated-fig5.webp" alt="何年も更新していないWordPressを自分で上げないほうがいい場合を、自分で進めてよい条件と、先に相談したい3つの場合に分けて、左右の比較で示した図" width="1200" height="800"><figcaption>3つのどれかに当てはまるなら、先に相談します</figcaption></figure>
+<p>何年も更新していないWordPressの中には、自分で上げないほうがいいサイトもあります。<span class="mark-yellow">更新で直る問題と、更新で壊れる問題は別</span>だからです。当てはまる場合は、手を付ける前に制作会社や専門家へ相談してください。</p>
+<p>見分けるポイントは3つです。どれも、更新ボタンを押す前に確かめられます。当てはまるかどうか、1つずつ見ていきましょう。</p>
+
+<h3>すでに改ざんされた疑いがある</h3>
+<p>身に覚えのないページやユーザーがあるなら、先に調べます。改ざんされたサイトを更新しても、仕込まれたファイルは消えません。更新で上書きされるのは、本体のファイルだけだからです。</p>
+<p>そのうえ、更新すると日時が変わり、侵入の手がかりが追いにくくなります。<span class="mark-red"><strong>疑いがあるうちは、更新より先に記録を残してください</strong></span>。サインは、<a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a>で確かめられます。</p>
+
+<h3>テーマを直接書き換えている</h3>
+<p>制作会社がテーマのファイルを直接書き換えているサイトは、注意が必要です。テーマを更新すると、書き換えた部分が消えてしまいます。デザインが崩れたり、独自の機能が動かなくなったりするでしょう。</p>
+<p>子テーマを使っているかどうかは、管理画面の「外観」で分かります。<span class="mark-yellow">子テーマがなく、独自の改造がある場合は要注意</span>です。作った会社に、更新してよいかを先に聞いてください。連絡が取れないときは、検証用のコピーで試すのが安全です。</p>
+
+<h3>開発が止まったプラグインに頼っている</h3>
+<p>何年も更新が出ていないプラグインは、新しい本体やPHPで動かないことがあります。公式の配布ページから消えているものも同じです。予約や会員の機能をそのプラグインに任せているなら、止まったときの影響は大きくなります。</p>
+<p>この場合は、代わりのプラグインへ置き換える作業が必要です。<span class="mark-yellow">データの移し替えを伴うので、時間と費用がかかります</span>。更新の前に、どのプラグインが止まっているかを一覧にしましょう。置き換えの見積もりを取ってから、日程を決めてください。</p>
+
+<div class="art-cta"><strong>そのWordPress、どこまで古くなっていますか</strong><p>URLを入れるだけで、WordPressやPHPの版、プラグインなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">更新していないWordPressに関するよくある質問</h2>
+
+<h3>何年も更新していないWordPressは、一気に最新版へ上げても大丈夫ですか？</h3>
+<p>3.7以降の版なら、管理画面から最新版へ直接上げる操作は可能です。ただし公式の手順書は、メジャーリリースを2つ以上またぐ場合に段階的な更新を勧めています。バックアップを確かめたうえで、検証用のコピーで先に試してください。問題が出なければ、本番でも同じ順番で進めましょう。途中の版は、公式のリリースアーカイブから入手できます。</p>
+
+<h3>更新していないWordPressは、どのくらい危険ですか？</h3>
+<p>公式にサポートされるのは最新版だけです。古い系統にも修正が配られることはありますが、保証はありません。4.1から4.6までの版は、2025年7月でセキュリティ更新が終わりました。7.1.4の修正がさかのぼって配られるのも、4.7系までです。古い版ほど、直されないままの弱点が残っている期間が長くなります。</p>
+
+<h3>WordPressとPHPは、どちらを先に上げればいいですか？</h3>
+<p>基本は、WordPress本体とプラグインを先に上げ、PHPを最後に切り替えます。新しいPHPは、古い本体やプラグインを動かせないことがあるためです。ただし、PHPが古すぎて最新の本体を入れられない場合もあります。そのときは、今のPHPで動く版まで本体を上げてから、PHPを切り替えてください。順番に迷ったら、検証用のコピーで試すと確かです。</p>
+
+<h3>更新したら画面が真っ白になりました。どうすればいいですか？</h3>
+<p>まず、管理者あてにリカバリーモードの案内メールが届いていないかを確かめます。届いていれば、リンクから入って問題のプラグインを止めてください。届かない場合は、サーバーの管理画面でプラグインのフォルダ名を変えると無効にできます。それでも直らないときは、更新の前に取ったバックアップから戻しましょう。エックスサーバーなら、サーバーの管理画面から復元を申し込めます。</p>
+
+<h3>自分で更新するのが不安なときは、どこに頼めばいいですか？</h3>
+<p>最初に、サイトを作った制作会社へ相談してください。テーマの改造や独自の機能を知っているのは、作った会社だからです。連絡が取れないときは、保守や更新の代行を受けている会社を探しましょう。依頼の前に、本体とPHPの版、プラグインの一覧を伝えると話が早く進みます。今の状態は、スキゼロの無料簡易診断でも外から確かめられるので、活用してください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressを何年も更新していないサイトには、弱点の修正が届かなくなっています。公式にサポートされるのは最新版だけで、古いPHPにも修正は出ません。</p>
+<p>上げるときは、版を控え、バックアップを確かめ、検証用のコピーで試してから始めてください。本体、プラグインとテーマ、PHPの順に、1つずつ確かめながら進めます。</p>
+<p>改ざんの疑いや独自の改造があるなら、<span class="mark-yellow">更新ボタンを押す前に、作った会社へ相談</span>しましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">更新していないと起きること</a></li><li><a href="#s2">上げる前の3つの準備</a></li><li><a href="#s3">段階的に上げる手順</a></li><li><a href="#s4">上げたあとの確認</a></li><li><a href="#s5">自分で上げないほうがいい場合</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
