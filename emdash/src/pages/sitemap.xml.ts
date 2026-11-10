@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
 		(n) => n === "index" || FIXED.includes(n),
 	);
 	/** ページごとの最終更新日。直したページだけここに書く（無ければ FIXED_LASTMOD） */
-	const LASTMOD: Record<string, string> = { about: "2026-11-05", index: "2026-11-06", price: "2026-11-06", contact: "2026-11-06" };
+	const LASTMOD: Record<string, string> = { about: "2026-11-10", index: "2026-11-06", price: "2026-11-06", contact: "2026-11-06" };
 	const url = (loc: string, lastmod: string) => `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
 	const newest = posts.reduce((m, p) => ((p.modified || p.date) > m ? p.modified || p.date : m), FIXED_LASTMOD);
 	const lines = [
