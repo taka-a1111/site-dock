@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる｜スキゼロ</title>
+<meta name="description" content="SSL証明書の期限切れを防ぐために、有効期限の確かめ方と、自動更新が止まる原因、期限切れに気づく仕組みの作り方をまとめました。2026年から有効期間が短くなっていく流れと、切れてしまったときの直し方も解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/ssl-certificate-expiry.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる">
+<meta property="og:description" content="SSL証明書の期限切れを防ぐために、有効期限の確かめ方と、自動更新が止まる原因、期限切れに気づく仕組みの作り方をまとめました。2026年から有効期間が短くなっていく流れと、切れてしまったときの直し方も解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/ssl-certificate-expiry.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-014-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-15">
+<meta property="article:section" content="SSL・ドメイン・メール">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる", "description": "SSL証明書の期限切れを防ぐために、有効期限の確かめ方と、自動更新が止まる原因、期限切れに気づく仕組みの作り方をまとめました。2026年から有効期間が短くなっていく流れと、切れてしまったときの直し方も解説します。", "image": "https://sukizero.com/blog/img/eyecatch-014-v3.webp", "datePublished": "2026-11-15", "dateModified": "2026-11-15", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/ssl-certificate-expiry.html", "inLanguage": "ja", "articleSection": "SSL・ドメイン・メール", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "SSL証明書の期限が切れても、サイトは見られますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのブラウザは、期限が切れたサイトを開く前に警告画面を出します。詳細を開いて先へ進めば見られることもあるものの、ほとんどの訪問者はそこで引き返すのです。"}}, {"@type": "Question", "name": "無料のSSL証明書は、有料のものより危ないのですか？", "acceptedAnswer": {"@type": "Answer", "text": "通信を守る仕組みそのものは、無料でも有料でも変わりません。違いは、運営している組織の実在を証明するかどうかや、補償などの付いてくるものになります。"}}, {"@type": "Question", "name": "自動更新にしていれば、何もしなくて大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "自動更新は、DNSの向き先などの前提が保たれている間だけ働きます。向き先を変えたり、サーバーを移したりすると、知らないうちに止まることがあるのです。"}}, {"@type": "Question", "name": "SSL証明書の有効期間が短くなると、費用は上がりますか？", "acceptedAnswer": {"@type": "Answer", "text": "無料の証明書は、有効期間が短くなっても費用はかかりません。有料の証明書は、契約の期間と証明書の期間が分かれる形で、追加の費用なしに再発行する会社もあるのです。"}}, {"@type": "Question", "name": "証明書の期限は、どのくらいの間隔で確かめればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "自動更新の証明書なら、月に1度確かめれば十分なことが多いでしょう。有効期間が短くなっていくので、年に1度の確認では間に合わなくなるのです。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / SSL・ドメイン・メール</nav>
+    <h1><span class="h1-main">SSL証明書の期限切れを防ぐ方法と確認のしかた</span><span class="h1-sub" data-sep="｜">有効期間は47日へ短くなる</span></h1>
+    <p><time datetime="2026-11-15">2026.11.15</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-014-v3.webp" alt="SSL証明書の期限切れは、自動更新と外からの見張りで防ぐ" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「SSL証明書が切れたらどうなる？」「自動更新で本当に大丈夫？」と気になっていませんか？</p>
+<p>証明書が切れると、訪れた人のブラウザに大きな警告が出て、サイトはほとんど開いてもらえなくなります。しかも、期限は持ち主が気づかないうちに静かに近づいてくるものです。</p>
+<p>この記事では、<span class="mark-yellow">SSL証明書の期限切れを防ぐ確かめ方と仕組み</span>を整理しました。切れてしまったときの直し方もまとめています。</p>
+<p>参照したのは、エックスサーバーとLet's Encryptの公式の案内です。2026年11月14日に内容を確かめました。このサイトの無料簡易診断の判定の決め方も紹介します。</p>
+
+<h2 id="s1">SSL証明書が期限切れになると起きること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig1.webp" alt="SSL証明書が期限切れになると起きることを、警告画面で人が離れる、フォームやメールが止まる、信用を失う、の3つに分けて示した図" width="1200" height="800"><figcaption>期限が1日過ぎただけで、サイトの入口がふさがれます</figcaption></figure>
+<p>SSL証明書の期限切れは、サイトの中身が壊れていなくても起こる、入口の問題です。証明書は、ブラウザとサイトの間の通信を守る身分証のような役割を持っています。ところが、期限切れの影響はサイト全体に及ぶのです。</p>
+<p><span class="mark-red"><strong>期限を1日過ぎただけで、ほとんどの訪問者が先へ進めなくなります</strong></span>。何が起きるのかを、3つに分けて確かめてください。</p>
+
+<h3>ブラウザに警告画面が出て人が離れる</h3>
+<p>期限が切れたサイトを開くと、ブラウザは中身を表示する前に、全面の警告画面を出します。「この接続ではプライバシーが保護されません」といった表示です。</p>
+<p>先へ進むには、ふだん見かけない小さなリンクを押す必要があります。<span class="mark-yellow">ほとんどの人は、そこで引き返してしまう</span>のです。</p>
+<p>検索から来た人も、広告から来た人も、同じ画面で止まります。集客のための費用も、そのまま無駄になるでしょう。広告を出しているなら、期限切れの間は配信を止めることも考えてください。</p>
+
+<h3>お問い合わせやメールの仕組みも止まる</h3>
+<p>影響は、画面の表示だけではありません。お問い合わせフォームの送信や、外部のサービスとのやり取りも、証明書のエラーで止まることがあります。</p>
+<p>決済や予約のサービスは、安全につながらない相手との通信を断る作りが一般的です。<span class="mark-yellow">表から見えないところで注文や予約が失われる</span>おそれもあります。</p>
+<p>メールの送受信に同じ証明書を使っている場合は、メールソフトにも警告が出るのです。気づいたときには、何日分もの問い合わせが届いていなかったということもありえます。</p>
+
+<h3>「放置されたサイト」と見られる</h3>
+<p>警告画面は、訪れた人に「このサイトは管理されていないのでは」という印象を与えます。会社の顔であるホームページで、信用を落とすのは避けたいところです。</p>
+<p>直したあとも、一度警告を見た人がすぐに戻ってくるとは限りません。<span class="mark-yellow">期限切れは、切れる前に防ぐのがいちばん安上がり</span>です。</p>
+<p>警告の原因が、期限切れ以外のこともあります。<a href="not-secure-warning.html">「保護されていない通信」と表示される原因と直し方</a>も参考にしてください。</p>
+
+<h2 id="s2">SSL証明書の期限切れに備えて期限を確かめる3つの方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig2.webp" alt="SSL証明書の期限切れに備えて期限を確かめる3つの方法を、ブラウザの鍵マーク、サーバーの管理画面、外からの点検ツールの順に並べた図" width="1200" height="800"><figcaption>どれも数分で確かめられます</figcaption></figure>
+<p>SSL証明書の期限は、特別な道具がなくても確かめられます。期限切れを防ぐ第一歩は、今の状態を知ることです。まずは、自分のサイトの証明書がいつまで有効かを知ることから始めてください。</p>
+<p><span class="mark-yellow">期限の日付と、自動で更新されるかどうか</span>の2つが分かれば十分です。確かめ方を、手軽な順に3つ紹介します。どれも、数分あれば終わる作業でしょう。</p>
+
+<h3>① ブラウザの鍵マークから見る</h3>
+<p>いちばん手軽なのは、ブラウザで自分のサイトを開いて確かめる方法です。アドレスバーの左にあるマークを押し、「この接続は保護されています」から証明書の情報を開きます。</p>
+<p>表示された画面の「有効期間」の欄に、いつからいつまで有効かが書かれているはずです。<span class="mark-yellow">「有効期限」の日付をメモしておく</span>と、次に確かめる時期の目安になります。</p>
+<p>ブラウザによって表示の名前が少し違いますが、見る場所はほぼ同じです。スマホでは見られないことが多いので、パソコンで確かめてください。</p>
+
+<h3>② サーバーの管理画面で見る</h3>
+<p>レンタルサーバーを使っているなら、管理画面のSSLの設定画面でも確かめられます。エックスサーバーなら、サーバーパネルの「SSL設定」です。</p>
+<p>この画面では、期限の日付に加えて、証明書の種類も分かります。<span class="mark-yellow">無料の証明書か、有料の証明書か</span>によって、更新のされ方が違うからです。</p>
+<p>複数のドメインを持っているなら、一覧で一度に見比べられるのも助かる点でしょう。期限の近いものから順に確かめてください。期限の日付は、表にして残しておくと次に見比べやすくなります。</p>
+
+<h3>③ 外からの点検ツールで見る</h3>
+<p>このサイトの無料簡易診断でも、SSL証明書の残り日数を確かめています。URLを入れるだけで、ほかの7項目と一緒に判定する仕組みです。</p>
+<p>判定は、残りが14日以上ならA、14日未満ならC、7日未満ならDにしています。<span class="mark-yellow">期限が切れているか、証明書にエラーがあればE</span>です。</p>
+<p>複数のサイトを持っているなら、月に1度まとめて確かめると見落としを防げます。判定の理由が分かるよう、結果には残り日数も添えました。</p>
+
+<h2 id="s3">SSL証明書の自動更新が止まって期限切れになる原因</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig3.webp" alt="SSL証明書の自動更新が止まって期限切れになる原因を、DNSの向き先の変更、有料証明書の手続き忘れ、通知の届かないメールアドレス、の3つで示した図" width="1200" height="800"><figcaption>「自動のはず」が止まる場面は、ほぼ決まっています</figcaption></figure>
+<p>多くのレンタルサーバーの無料の証明書は、自動で更新される仕組みです。エックスサーバーの無料独自SSLも、有効期間は90日で、自動で更新されます。</p>
+<p>それでも期限切れが起きるのは、<span class="mark-yellow">自動更新の前提が、知らないうちに崩れている</span>からです。よくある原因を3つ挙げます。自分のサイトに当てはまらないか、確かめながら読んでください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/functions/ssl/freessl.php" target="_blank" rel="noopener noreferrer nofollow">無料独自SSL｜エックスサーバー</a></li>
+</ul>
+
+<h3>ドメインの向き先を変えた</h3>
+<p>無料の証明書は、更新のたびに「このドメインはこのサーバーのものか」を確かめて発行されます。DNSの設定を変えて別のサービスに向けると、この確認が通らなくなるのです。</p>
+<p>エックスサーバーのマニュアルも、wwwあり・なしの両方がサーバーを向く必要があるとしています。<span class="mark-yellow">メールを移したつもりが、サイトの向き先まで変わっていた</span>という例も珍しくないのです。</p>
+<p>DNSを触ったあとは、数日おいて証明書の期限が延びているかを確かめておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_ssl.php" target="_blank" rel="noopener noreferrer nofollow">無料独自SSL設定｜エックスサーバー</a></li>
+</ul>
+
+<h3>有料の証明書の手続きを忘れた</h3>
+<p>有料の証明書は、種類によって更新の手続きが要ります。企業の実在を証明する種類の証明書は、自動では延長されないものが一般的です。</p>
+<p>エックスサーバーは、企業認証とEVの証明書について、期限の35日前を目安に案内を送るとしています。<span class="mark-yellow">担当者が辞めて、そのメールを誰も読んでいなかった</span>という例は珍しくありません。</p>
+<p>契約の更新と、証明書の更新が別の手続きになっている場合もあるので注意してください。契約の担当とサイトの担当が別の人なら、なおさら確かめておきましょう。</p>
+
+<h3>期限の知らせが届かない</h3>
+<p>Let's Encryptは、以前は期限が近づくとメールで知らせていました。しかし、この知らせは2025年6月4日で終わっています。自分で証明書を入れていたサイトでは、知らせが来なくなったことに気づきにくいのです。</p>
+<p>サーバー会社の通知も、登録したメールアドレスが古ければ届きません。<span class="mark-yellow">知らせが来ないことを、問題がないことと取り違えない</span>ようにしてください。</p>
+<p>制作会社に管理を任せている場合も、通知が誰に届いているかを一度確かめておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://letsencrypt.org/2025/01/22/ending-expiration-emails/" target="_blank" rel="noopener noreferrer nofollow">Ending Support for Expiration Notification Emails｜Let's Encrypt</a></li>
+</ul>
+
+<h2 id="s4">SSL証明書の有効期間が短くなり期限切れが起きやすくなる</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig4.webp" alt="SSL証明書の有効期間が短くなっていく流れを、398日から200日、100日、47日へと階段状に下がる図" width="1200" height="800"><figcaption>有効期間は3段階で短くなり、更新の回数が増えていきます</figcaption></figure>
+<p>SSL証明書の期限切れは、これから起きやすくなります。証明書の有効期間の上限が、段階的に短くなるためです。更新の回数が増えれば、どこかで止まる機会もそれだけ増えるでしょう。</p>
+<p><span class="mark-red"><strong>2029年3月15日以降に発行される証明書は、最長47日になります</strong></span>。日程と、持ち主への影響を、順に確かめてください。いま使っている証明書の種類を思い浮かべながら読むと、分かりやすいはずです。</p>
+
+<h3>200日、100日、47日の順に短くなる</h3>
+<p>エックスサーバーの案内によると、証明書の最大の有効期間は、これまで398日でした。2026年3月15日以降は200日、2027年3月15日以降は100日に短くなります。</p>
+<p>そして、2029年3月15日以降は47日です。<span class="mark-yellow">1年に1回の更新が、1年に8回ほどに増える</span>計算になります。</p>
+<p>これは、証明書の業界の決まりを定める団体の方針によるものです。新しい期間は、その日以降に発行される証明書から当てはまります。今の証明書が、すぐに切れるわけではありません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=17614" target="_blank" rel="noopener noreferrer nofollow">オプション独自SSL(有償のSSL証明書)の有効期間短縮に伴うご案内｜エックスサーバー</a></li>
+</ul>
+
+<h3>無料の証明書も45日に短くなる</h3>
+<p>Let's Encryptも、いまの90日から、2028年までに45日へ短くすると発表しました。2027年2月10日には、標準の証明書が64日になる予定です。</p>
+<p>多くの利用者は何もしなくてよいとしつつ、自動更新が短い期間に対応しているかの確認を求めています。<span class="mark-yellow">手で更新する運用は勧められない</span>、という立場です。</p>
+<p>更新の時期を自動で教える仕組み（ARI）を使うことも勧めています。レンタルサーバーの利用者なら、この対応はサーバー会社の仕事です。</p>
+<ul class="ref">
+<li>参考：<a href="https://letsencrypt.org/2025/12/02/from-90-to-45/" target="_blank" rel="noopener noreferrer nofollow">Decreasing Certificate Lifetimes to 45 Days｜Let's Encrypt</a></li>
+</ul>
+
+<h3>手で更新する証明書ほど負担が増える</h3>
+<p>レンタルサーバーの無料の証明書を使っているなら、多くの場合は自動のまま対応できるでしょう。エックスサーバーも、無料独自SSLはこれまでどおり自動で更新すると案内しています。</p>
+<p>負担が増えるのは、有料の証明書を手で入れ替えている場合です。<span class="mark-yellow">年に1回の作業のつもりでいると、すぐに期限が来てしまう</span>でしょう。</p>
+<p>いまのうちに、自動更新できる形に変えられないか、サーバー会社に相談しておくと安心です。制作会社が管理しているなら、その会社にも聞いてみてください。</p>
+
+<h2 id="s5">SSL証明書の期限切れを防ぐ仕組みの作り方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig5.webp" alt="SSL証明書の期限切れを防ぐ仕組みを、自動更新にする、外から見張る、通知先を見直す、の3つの歯車で示した図" width="1200" height="800"><figcaption>自動に任せたうえで、外から見張るのが基本です</figcaption></figure>
+<p>SSL証明書の期限切れの多くは、仕組みで防げます。基本は、自動で更新し、その結果を外から見張ることです。人の記憶に頼る運用は、更新の回数が増えるほど破れやすくなります。</p>
+<p><span class="mark-yellow">自動に任せる部分と、人が見る部分を分けておく</span>のがこつです。作り方を3つに分けて紹介します。どれも、一度決めてしまえば手間はほとんどかかりません。</p>
+
+<h3>できるだけ自動更新の証明書にする</h3>
+<p>会社案内のサイトなら、レンタルサーバーの無料の証明書で足りることがほとんどです。自動で更新されるので、手で入れ替える手間がかかりません。</p>
+<p>有料の証明書が必要な場合も、サーバー会社が更新を代行してくれるかを確かめます。<span class="mark-yellow">自分で証明書のファイルを入れ替える運用は、できるだけ減らす</span>のが安全です。</p>
+<p>ドメインやDNSを別の会社で管理しているなら、向き先を変える前に証明書への影響を聞きましょう。</p>
+
+<h3>期限を外から見張る</h3>
+<p>自動更新に任せていても、更新が失敗していないかは外から確かめておきましょう。Let's Encryptも、更新に失敗したときに知らせが届く見張りの仕組みを勧めているのです。</p>
+<p>見張りの道具には、期限の何日前に知らせるかを決められるものがあります。<span class="mark-yellow">残り30日、14日、7日のように段階を分けて知らせる</span>と、慌てずに済むはずです。</p>
+<p>道具を使わない場合は、月に1度、この記事の確かめ方で期限を見る日を決めておくとよいでしょう。</p>
+
+<h3>通知先と担当を見直す</h3>
+<p>サーバー会社やドメインの会社からの知らせが、誰のメールに届くかを確かめます。ドメインの会社とサーバーの会社の、両方の登録を見てください。辞めた人や、使っていないアドレスに届いていないでしょうか。</p>
+<p>会社で使うなら、個人ではなく、複数の人が読める共有のアドレスにしておくと安心です。<span class="mark-yellow">誰が見て、誰が直すかを決めておく</span>と、知らせが来たときに止まりません。</p>
+<p>制作会社に任せている場合も、期限の確認を契約に含めてもらうと抜けが減ります。</p>
+
+<h2 id="s6">SSL証明書が期限切れになったときの直し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-certificate-expiry-fig6.webp" alt="SSL証明書が期限切れになったときの直し方を、種類を確かめる、更新や再設定をする、表示とフォームを確かめる、の3つの手順で示した図" width="1200" height="800"><figcaption>原因によって、直す場所が変わります</figcaption></figure>
+<p>もし期限が切れてしまっても、多くの場合はその日のうちに直せます。警告が出ている間も訪問者は離れていくので、早めに手を打ちたいところです。慌てて設定を変える前に、どの証明書が切れたのかを確かめてください。</p>
+<p><span class="mark-yellow">証明書の種類と、更新が止まった原因</span>が分かれば、直す場所は決まるはずです。直す場所を間違えると、時間だけが過ぎてしまいます。順番に見ていきましょう。</p>
+
+<h3>無料の証明書が切れたとき</h3>
+<p>まず、DNSの向き先が今のサーバーになっているかを確かめます。向き先が正しければ、管理画面で設定し直すと、新しい証明書が発行されることが多いのです。</p>
+<p>エックスサーバーのマニュアルにも、設定の追加と、他社のサーバーでの確認の方法が載っています。<span class="mark-yellow">向き先が違うまま設定し直しても、発行は通らない</span>ので注意してください。</p>
+<p>反映までに時間がかかることもあるので、少し待ってから表示を確かめましょう。</p>
+
+<h3>有料の証明書が切れたとき</h3>
+<p>有料の証明書は、契約しているサーバー会社や販売店で、更新の手続きと再発行を行います。手続きのあと、新しい証明書をサーバーに入れる作業が必要な場合もあるのです。</p>
+<p>企業の実在の確認が要る種類は、発行まで日数がかかることがあります。<span class="mark-yellow">急ぎのときは、いったん無料の証明書に切り替える</span>方法も、サーバー会社に相談してみてください。</p>
+<p>サイトシールを貼っている場合は、表示が古いままになっていないかも確かめます。再発行に費用がかかるかは契約によって違うので、確かめておきましょう。</p>
+
+<h3>直したあとに確かめること</h3>
+<p>証明書を入れ替えたら、パソコンとスマホの両方で、wwwあり・なしのアドレスを開いて確かめます。お問い合わせフォームから、試しに1件送っておくと安心です。</p>
+<p>あわせて、なぜ切れたのかを記録し、同じことが起きない仕組みに直しておきます。<span class="mark-yellow">直したあとの外からの点検</span>には、このサイトの無料簡易診断も役に立つでしょう。</p>
+<p>点検の種類の違いは、<a href="website-security-diagnosis.html">ホームページのセキュリティ診断とは？無料と有料の違いと選び方</a>で紹介しました。</p>
+
+<div class="art-cta"><strong>SSL証明書の残り日数を、いま無料で確かめる</strong><p>URLを入れるだけで、SSL証明書の残り日数やPHPの版など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s7">SSL証明書の期限切れに関するよくある質問</h2>
+
+<h3>SSL証明書の期限が切れても、サイトは見られますか？</h3>
+<p>多くのブラウザは、期限が切れたサイトを開く前に警告画面を出します。詳細を開いて先へ進めば見られることもあるものの、ほとんどの訪問者はそこで引き返すのです。</p>
+<p>そのため、実際には「見られない」のとほぼ同じと考えてください。フォームの送信や外部サービスとの連携も止まることがあります。気づいたら、何より先に直すことを優先しましょう。</p>
+
+<h3>無料のSSL証明書は、有料のものより危ないのですか？</h3>
+<p>通信を守る仕組みそのものは、無料でも有料でも変わりません。違いは、運営している組織の実在を証明するかどうかや、補償などの付いてくるものになります。</p>
+<p>会社案内のサイトなら、無料の証明書で足りることがほとんどです。自動で更新されるので、期限切れを防ぐ点ではむしろ扱いやすいでしょう。個人情報を多く扱うサイトでは、運営元を示せる有料の証明書を選ぶ会社もあります。</p>
+
+<h3>自動更新にしていれば、何もしなくて大丈夫ですか？</h3>
+<p>自動更新は、DNSの向き先などの前提が保たれている間だけ働きます。向き先を変えたり、サーバーを移したりすると、知らないうちに止まることがあるのです。</p>
+<p>月に1度は外から残り日数を確かめ、減り続けていないかを見てください。残りが30日を切っても増えないなら、更新が止まっているサインです。サーバーを移したあとは、特に気をつけてください。</p>
+
+<h3>SSL証明書の有効期間が短くなると、費用は上がりますか？</h3>
+<p>無料の証明書は、有効期間が短くなっても費用はかかりません。有料の証明書は、契約の期間と証明書の期間が分かれる形で、追加の費用なしに再発行する会社もあるのです。</p>
+<p>エックスサーバーも、有効期間の短縮に合わせた再発行に追加の費用はかからないと案内しています。ほかの会社の場合は、契約先に確かめてください。手で入れ替える作業を頼んでいるなら、その手間賃が増えることも考えられます。</p>
+
+<h3>証明書の期限は、どのくらいの間隔で確かめればいいですか？</h3>
+<p>自動更新の証明書なら、月に1度確かめれば十分なことが多いでしょう。有効期間が短くなっていくので、年に1度の確認では間に合わなくなるのです。</p>
+<p>複数のサイトを持っているなら、一覧で見られる見張りの道具を使うと手間が減ります。自分で続けるのが難しければ、定期的な点検を任せる方法もあるのです。有料の証明書を手で更新しているなら、期限の1か月前には予定に入れておいてください。</p>
+
+<h2 id="s8">まとめ</h2>
+<p>SSL証明書の期限が切れると、警告画面でほとんどの訪問者が離れ、フォームや連携も止まります。まずは、ブラウザやサーバーの管理画面で、期限の日付と更新の仕組みを確かめてください。</p>
+<p>有効期間は2029年に向けて短くなっていきます。<span class="mark-yellow">自動更新に任せたうえで、外から期限を見張る</span>形に整えておきましょう。</p>
+<p>切れてしまったときは、証明書の種類と原因を確かめてから、直す場所を決めてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">期限切れで起きること</a></li><li><a href="#s2">期限を確かめる3つの方法</a></li><li><a href="#s3">自動更新が止まる原因</a></li><li><a href="#s4">有効期間が短くなる</a></li><li><a href="#s5">期限切れを防ぐ仕組み</a></li><li><a href="#s6">期限切れの直し方</a></li><li><a href="#s7">よくある質問</a></li><li><a href="#s8">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
