@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止｜スキゼロ</title>
+<meta name="description" content="WordPressの管理画面に不正ログインされたときに、すぐやることを順番にまとめました。記録と控え、パスワードの変更、知らないユーザーの削除から、裏口の確認、再発を防ぐ設定、専門家に頼む目安まで解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-unauthorized-login.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止">
+<meta property="og:description" content="WordPressの管理画面に不正ログインされたときに、すぐやることを順番にまとめました。記録と控え、パスワードの変更、知らないユーザーの削除から、裏口の確認、再発を防ぐ設定、専門家に頼む目安まで解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-unauthorized-login.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-013-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-14">
+<meta property="article:section" content="ログイン・アカウント">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止", "description": "WordPressの管理画面に不正ログインされたときに、すぐやることを順番にまとめました。記録と控え、パスワードの変更、知らないユーザーの削除から、裏口の確認、再発を防ぐ設定、専門家に頼む目安まで解説します。", "image": "https://sukizero.com/blog/img/eyecatch-013-v3.webp", "datePublished": "2026-11-14", "dateModified": "2026-11-14", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-unauthorized-login.html", "inLanguage": "ja", "articleSection": "ログイン・アカウント", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "管理画面に入れなくなりました。まず何をすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、ログイン画面の「パスワードをお忘れですか？」から再設定を試してください。メールが届かないときは、管理者メールアドレスを変えられている可能性があります。"}}, {"@type": "Question", "name": "不正ログインされたら、WordPressを入れ直したほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "入れ直しだけでは、データベースやアップロードしたファイルに残った仕掛けは消えません。公式の手引きは、本体のファイルを同じ版の公式のファイルで置き換える方法を示しています。"}}, {"@type": "Question", "name": "ログインの試行回数の制限だけで、不正ログインは防げますか？", "acceptedAnswer": {"@type": "Answer", "text": "回数の制限は、総当たりで次々に試す攻撃には効果があります。ただ、使い回しのパスワードを最初から知られていると、少ない回数で入られてしまうのです。"}}, {"@type": "Question", "name": "不正ログインされたことを、お客さまに知らせる必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "訪問者や会員の個人情報が漏れたおそれがあるなら、本人への通知が必要になる場合があります。報告の対象になる事態では、委員会への報告と本人への通知の両方が義務です。"}}, {"@type": "Question", "name": "不正ログインを防ぐために、日ごろからできることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "本体とプラグインを最新に保ち、使っていないプラグインやユーザーを消しておくことです。バックアップを、サーバーとは別の場所にも定期的に残しておくと立て直しが早くなります。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1><span class="h1-main">WordPressの管理画面に不正ログインされたときの対処</span><span class="h1-sub" data-sep="｜">すぐやる3つと再発防止</span></h1>
+    <p><time datetime="2026-11-14">2026.11.14</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-013-v3.webp" alt="WordPressに不正ログインされたら、記録、締め出し、片付けの順で対処し、再発を防ぐ" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「見覚えのないユーザーがいる」「いつものパスワードで入れない」と、不安になっていませんか？</p>
+<p>管理画面に入られると、ページの書き換えや不正なファイルの設置まで自由にできてしまいます。一方で、最初の対応を落ち着いて進めれば、被害の広がりは抑えられるものです。</p>
+<p>この記事では、<span class="mark-yellow">不正ログインに気づいたときにすぐやること</span>を順番に整理しました。再発を防ぐ設定と、専門家に頼む目安もまとめています。</p>
+<p>内容は、WordPressの公式の手引きなどを2026年11月14日に確かめたものです。運営者が自社サイトと取引先のサイトで対応した経験も入れました。</p>
+
+<h2 id="s1">WordPressに不正ログインされたかを確かめるサイン</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-unauthorized-login-fig1.webp" alt="WordPressに不正ログインされたかを確かめるサインを、知らないユーザー、身に覚えのない変更、ログインできない、の3つに分けて示した図" width="1200" height="800"><figcaption>管理画面のふだんと違う変化に、早めに気づくことが大切です</figcaption></figure>
+<p>WordPressへの不正ログインは、持ち主に気づかれないよう静かに行われることが多くあります。入った側は、見つからないまま長く使い続けたいからです。</p>
+<p><span class="mark-yellow">管理画面のふだんと違う小さな変化</span>を見逃さないことが、最初の一歩になります。確かめたいサインを、3つに分けました。サーバーの記録で分かることもありますが、まずは管理画面で確かめられる点から見ていきます。</p>
+
+<h3>知らないユーザーや権限の変更</h3>
+<p>まず、管理画面の「ユーザー」の一覧を開いてください。見覚えのない名前や、最近作られた管理者がいないかを確かめます。</p>
+<p>攻撃する側は、後で戻ってくるための入り口として、別のユーザーを足すことがあるのです。<span class="mark-yellow">権限が編集者から管理者に変わっている</span>ことにも注意してください。</p>
+<p>運営者の自社サイトでも、心当たりのない編集者のアカウントが、2つも見つかりました。どちらも、投稿を管理者に引き継いでから削除しています。</p>
+
+<h3>身に覚えのない投稿・プラグイン・設定</h3>
+<p>次に、投稿と固定ページ、プラグインの一覧を見直します。入れた覚えのないプラグインや、更新日が最近になっている古いページは怪しいサインです。</p>
+<p>検索結果から来たときだけ、別のサイトに飛ばされる例もあります。<span class="mark-yellow">自分で開いたときは普通に見える</span>ので、気づくのが遅れがちです。スマホや別の回線から開いて確かめる方法もあります。</p>
+<p>改ざんの見分け方は、<a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a>にまとめました。</p>
+
+<h3>ログインできない・管理者のメールが変わった</h3>
+<p>いつものパスワードで入れなくなったときは、パスワードを変えられた可能性があります。設定の「管理者メールアドレス」が別のものに変わっていないかも確かめてください。</p>
+<p>メールアドレスを変えられると、パスワードの再設定のメールも相手に届いてしまいます。<span class="mark-yellow">自分で入れないときは、サーバー側から確かめる</span>のが次の手です。</p>
+<p>WordPressの公式の手引きは、データベースから直接パスワードを直す方法も紹介しています。手順は難しくないものの、間違えるとサイトが動かなくなるので注意してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ My site was hacked｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s2">WordPressに不正ログインされたらすぐやる3つのこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-unauthorized-login-fig2.webp" alt="WordPressに不正ログインされたらすぐやる3つのことを、記録して控えを取る、パスワードを変えて締め出す、知らないユーザーと合鍵を消す、の順に並べた図" width="1200" height="800"><figcaption>記録、締め出し、片付けの順に進めます</figcaption></figure>
+<p>不正ログインに気づいたら、慌てて手当たりしだいに消す前に、順番を決めて動きます。WordPressの公式の手引きも、落ち着いて記録を取ることから始めるよう勧める内容です。</p>
+<p><span class="mark-yellow">記録、締め出し、片付けの順</span>で進めると、手戻りが少なくなります。それぞれの中身を確かめてください。どの作業も、終わった時刻と内容を記録に足していくと後で役立ちます。</p>
+
+<h3>① 今の状態を記録して控えを取る</h3>
+<p>まず、気づいた日時と、おかしいと感じた点をメモに残します。最近入れたプラグインや、変えた設定も一緒に書き出してください。</p>
+<p>そのうえで、今の状態のままファイルとデータベースの控えを取ります。<span class="mark-yellow">おかしい状態のままでも、先に控えを残す</span>のが公式の手引きの順番です。控えはサーバーの中だけでなく、自分のパソコンにも残しておきましょう。</p>
+<p>原因を調べるときや、専門家に頼むときの手がかりになります。片付けで消してしまった証拠は、あとから取り戻せないからです。</p>
+
+<h3>② すべてのパスワードを変えて締め出す</h3>
+<p>次に、WordPressのすべてのユーザーのパスワードを変えます。サーバーの管理画面、FTP、データベースのパスワードも対象です。</p>
+<p>プロフィール画面には、ほかの場所のログインをまとめて切るボタンもあります。さらに、wp-config.phpの<span class="mark-red"><strong>秘密鍵を新しくすれば、全員のログインをまとめて切れる</strong></span>のです。</p>
+<p>公式の手引きは、きれいにしたあとにもう一度パスワードを変えるよう勧めています。その間は、サイトを一時的にメンテナンス表示にしておくのも1つの手です。</p>
+
+<h3>③ 知らないユーザーと合鍵を消す</h3>
+<p>最後に、見覚えのないユーザーを消します。消すときは、そのユーザーの投稿を自分のアカウントに引き継ぐ設定を選んでください。</p>
+<p>あわせて、各ユーザーのプロフィールにあるアプリケーションパスワードも確かめます。<span class="mark-yellow">外部から投稿するための合鍵</span>なので、使っていないものはすべて取り消してください。</p>
+<p>運営者の自社サイトの点検でも、使わなくなったアプリケーションパスワードが残っていました。作った人も用途も分からないものは、迷わず取り消して問題ありません。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ My site was hacked｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s3">WordPressの不正ログインのあとに確かめる場所</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-unauthorized-login-fig3.webp" alt="WordPressの不正ログインのあとに確かめる場所を、プラグインとファイル、サーバーとメール、自分のパソコンと検索エンジン、の3つに分けた図" width="1200" height="800"><figcaption>締め出したあとは、残された裏口を探します</figcaption></figure>
+<p>パスワードを変えて締め出しても、それで終わりではありません。入られている間に、後から戻るための仕掛けを残されていることがあるからです。</p>
+<p><span class="mark-red"><strong>見える場所を直しても、裏口が残っていれば同じことがくり返されます</strong></span>。確かめたい場所を、3つに分けました。見た目が元に戻っていても、中に残った仕掛けが動き続ける例もあります。1つずつ順に確かめてください。</p>
+
+<h3>追加されたプラグインと書き換えられたファイル</h3>
+<p>公式の手引きは、重点的に確かめるファイルを挙げています。.htaccess、index.php、header.php、functions.phpなどです。</p>
+<p>本体のファイルは、同じ版の公式のファイルで置き換える方法が示されています。<span class="mark-yellow">見慣れない名前のPHPファイル</span>が増えていないかも、サーバーのファイル一覧で確かめてください。</p>
+<p>自分で判断できないファイルは、消す前に控えを取っておきましょう。入れた覚えのないプラグインは、停止してから中身を確かめてください。</p>
+
+<h3>サーバーやFTP・メールのアカウント</h3>
+<p>WordPressの外にある入り口も見直します。サーバーの管理画面で、知らないFTPのアカウントが増えていないかを確かめてください。</p>
+<p>勝手に作られたメールアドレスから、迷惑メールが送られることもあるのです。<span class="mark-yellow">サーバー会社にも連絡し、ほかに異常がないか</span>を聞いておきましょう。</p>
+<p>公式の手引きも、サーバー会社に相談する手順を入れています。メール送信用のIPアドレスが迷惑メールの一覧に載っていないかも、一緒に聞くと安心です。</p>
+
+<h3>自分のパソコンと検索エンジンの警告</h3>
+<p>パスワードが盗まれた原因が、自分のパソコンにあることもあります。ウイルス対策ソフトで、管理画面を開くパソコンを一通り検査してください。</p>
+<p>あわせて、検索エンジンに危険なサイトとして登録されていないかも確かめます。<span class="mark-yellow">Search Consoleのセキュリティの項目</span>に、警告が出ていないかを見るのが手軽です。警告が出ていたら、片付けたあとに審査をお願いする手続きが必要になります。Bingにも同じような管理ツールがあるので、あわせて登録しておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ My site was hacked｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s4">WordPressの不正ログインを防ぐ設定</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-unauthorized-login-fig4.webp" alt="WordPressの不正ログインを防ぐ設定を、鍵を増やす二段階認証、入り口を狭くするアクセス制限、権限を絞る管理者の見直し、の3つで示した図" width="1200" height="800"><figcaption>鍵を増やし、入り口を狭くし、権限を絞ります</figcaption></figure>
+<p>片付けが済んだら、同じ入られ方をしないための設定に移ります。不正ログインは、パスワードを機械で次々に試す総当たりや、使い回しから起こることが少なくありません。</p>
+<p><span class="mark-yellow">入り口を狭くし、鍵を増やし、権限を絞る</span>の3つで考えてください。どれも、一度設定すれば効き続けるものです。反対に、片付けだけで終えると、同じ手口でまた入られるおそれが残ります。</p>
+
+<h3>二段階認証と強いパスワード</h3>
+<p>公式の手引きは、推測されにくいパスワードと、二段階認証を足すことを勧めています。二段階認証は、パスワードに加えてスマホのアプリなどに出る数字を入れる仕組みです。</p>
+<p>WordPressの本体には入っていないので、プラグインで足すことになります。<span class="mark-yellow">パスワードを盗まれても、それだけでは入れない</span>状態にできるのが利点です。</p>
+<p>ほかのサービスと同じパスワードを使い回すことは避けてください。管理者だけでなく、すべてのユーザーに設定すると効果が上がります。</p>
+
+<h3>サーバー側でログイン画面への入り口を絞る</h3>
+<p>レンタルサーバーの設定で、ログイン画面に入れる相手を絞るのも有効です。エックスサーバーには、国外からの管理画面へのアクセスを止める設定があります。</p>
+<p>2026年6月には、登録したIPアドレスからだけ管理画面に入れる機能も加わりました。<span class="mark-yellow">決まった場所からしか更新しない</span>なら、試す価値は大きいはずです。</p>
+<p>ログインの試行回数を制限するプラグインを入れる方法もあります。ただし、出先から更新することがあるなら、許可する場所を先に登録しておきましょう。</p>
+
+<h3>管理者を減らし、ファイル編集を止める</h3>
+<p>管理者の権限を持つユーザーは、必要な人だけに絞ります。記事を書くだけの人は、編集者や投稿者の権限で足りるはずです。</p>
+<p>公式の手引きは、wp-config.phpでファイル編集を止める設定も紹介しています。<span class="mark-yellow">管理画面からプログラムを書き換えられなくなる</span>ので、入られたときの被害が小さくなるのです。</p>
+<p>ログイン名を外から読めないようにする対策も、あわせて進めてください。<a href="wordpress-username-exposure.html">WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方</a>も参考になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜Developer.WordPress.org</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=18691" target="_blank" rel="noopener noreferrer nofollow">WordPress管理画面へのアクセス元を限定できる「IPアドレス制限」機能追加のお知らせ｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s5">WordPressの不正ログインで専門家や窓口に頼るべきとき</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-unauthorized-login-fig5.webp" alt="WordPressの不正ログインで専門家や窓口に頼るべきときを、改ざんや不審なファイル、個人情報が漏れたおそれ、原因が分からない、の3つの場面で示した図" width="1200" height="800"><figcaption>3つの場面では、自分だけで抱え込まないでください</figcaption></figure>
+<p>不正ログインは、自分で片付けられることもあれば、専門家に任せたほうがよいこともあります。判断を誤ると、気づかないうちに被害が広がってしまうのです。</p>
+<p><span class="mark-yellow">自分だけで抱え込まない目安</span>を、3つの場面で確かめてください。迷ったときは、早めに相談したほうが結果として手間も費用も小さく済みます。相談先は、サーバー会社、制作会社、セキュリティの専門家などです。</p>
+
+<h3>改ざんや不審なファイルが見つかった</h3>
+<p>ページの書き換えや、見慣れないPHPファイルが見つかったときは、専門家に頼む時期です。裏口が1つでも残っていると、片付けてもすぐに戻られてしまいます。</p>
+<p><span class="mark-yellow">どこから入られたかを突き止めないと、同じ穴がふさがらない</span>からです。公式の手引きも、攻撃の経路を調べて同じ手口を防ぐことを手順に入れています。</p>
+<p>復旧の流れは、<a href="website-tampering-recovery.html">ホームページ改ざんの復旧手順｜発見から再発防止まで</a>にまとめました。復旧と並行して、検索エンジンへの再審査の手続きも進めてください。</p>
+
+<h3>個人情報が漏れたおそれがある</h3>
+<p>お問い合わせの中身や会員の情報を見られたかもしれないなら、話は別です。<span class="mark-red"><strong>個人情報が漏れたおそれがあれば、国への報告が必要になる場合があります</strong></span>。</p>
+<p>対象は、要配慮個人情報や1,000人を超える漏えい、不正の目的による漏えいなど4つの場合です。報告は、事態を知ってから概ね3〜5日以内に行うよう求められています。</p>
+<p>不正アクセスの場合は、警察やIPAへの連絡も促されているのです。迷ったら、早めに委員会の案内を確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ppc.go.jp/news/kaiseihou_feature/roueitouhoukoku_gimuka/" target="_blank" rel="noopener noreferrer nofollow">漏えい等報告・本人への通知の義務化について｜個人情報保護委員会</a></li>
+<li>参考：<a href="https://www.ppc.go.jp/files/pdf/260902quarter-report_roueihoukoku.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年度第1四半期における漏えい等報告の処理状況｜個人情報保護委員会</a></li>
+</ul>
+
+<h3>原因が分からない、何度も入られる</h3>
+<p>パスワードを変えても、また同じように入られるときは、原因が別の場所にある可能性があります。使っているプラグインの弱点や、サーバーの設定が入り口になっていることもあるのです。</p>
+<p><span class="mark-yellow">同じことが2回起きたら、自分で片付けるのをやめる</span>くらいの気持ちでいてください。このサイトの詳細診断では、管理画面のユーザーと権限、サーバーの設定まで確かめています。</p>
+<p>診断の違いは、<a href="website-security-diagnosis.html">ホームページのセキュリティ診断とは？無料と有料の違いと選び方</a>で紹介しました。</p>
+
+<div class="art-cta"><strong>入られやすい弱点を、まず無料で確かめる</strong><p>URLを入れるだけで、ログイン名の丸見えや古いプログラムなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressの不正ログインに関するよくある質問</h2>
+
+<h3>管理画面に入れなくなりました。まず何をすればいいですか？</h3>
+<p>まず、ログイン画面の「パスワードをお忘れですか？」から再設定を試してください。メールが届かないときは、管理者メールアドレスを変えられている可能性があります。</p>
+<p>その場合は、サーバーの管理画面からデータベースに入り、パスワードを直すのが次の手です。操作に自信がなければ、サーバー会社や制作会社に相談してください。</p>
+
+<h3>不正ログインされたら、WordPressを入れ直したほうがいいですか？</h3>
+<p>入れ直しだけでは、データベースやアップロードしたファイルに残った仕掛けは消えません。公式の手引きは、本体のファイルを同じ版の公式のファイルで置き換える方法を示しています。</p>
+<p>管理画面の再インストールの機能は使わないよう書かれている点に注意してください。テーマやプラグインも、公式の配布元から入れ直すのが安全です。</p>
+
+<h3>ログインの試行回数の制限だけで、不正ログインは防げますか？</h3>
+<p>回数の制限は、総当たりで次々に試す攻撃には効果があります。ただ、使い回しのパスワードを最初から知られていると、少ない回数で入られてしまうのです。</p>
+<p>二段階認証や、管理画面に入れる場所を絞る設定と組み合わせてください。サーバー側で制限をかけられる場合もあります。どれか1つに頼らず、重ねて守るのが基本です。</p>
+
+<h3>不正ログインされたことを、お客さまに知らせる必要はありますか？</h3>
+<p>訪問者や会員の個人情報が漏れたおそれがあるなら、本人への通知が必要になる場合があります。報告の対象になる事態では、委員会への報告と本人への通知の両方が義務です。</p>
+<p>対象かどうか迷うときは、委員会の案内や専門家に確かめてください。個人情報が関わらない書き換えだけでも、お知らせを出すと信頼を保ちやすくなります。</p>
+
+<h3>不正ログインを防ぐために、日ごろからできることはありますか？</h3>
+<p>本体とプラグインを最新に保ち、使っていないプラグインやユーザーを消しておくことです。バックアップを、サーバーとは別の場所にも定期的に残しておくと立て直しが早くなります。</p>
+<p>月に1度は、ユーザーの一覧とアプリケーションパスワードを見直してください。ログインを知らせるプラグインを入れると、不審な入り方に早く気づけます。外からの点検なら、このサイトの無料簡易診断が手軽です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressの不正ログインに気づいたら、慌てて消す前に、今の状態を記録して控えを取ります。次に、すべてのパスワードを変え、知らないユーザーと合鍵を取り消してください。</p>
+<p><span class="mark-yellow">片付けたあとに、裏口と自分のパソコンも確かめる</span>ことが大切です。二段階認証や入り口の制限で、同じ入られ方をしない形に整えましょう。</p>
+<p>改ざんや個人情報の漏えいのおそれがあれば、専門家や窓口に早めに相談してください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">不正ログインのサイン</a></li><li><a href="#s2">すぐやる3つのこと</a></li><li><a href="#s3">あとに確かめる場所</a></li><li><a href="#s4">不正ログインを防ぐ設定</a></li><li><a href="#s5">専門家に頼るべきとき</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
