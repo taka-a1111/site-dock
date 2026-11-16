@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方｜スキゼロ</title>
+<meta name="description" content="使っていないWordPressのプラグインを削除すべきかを、停止との違いと4つの判断基準から解説します。消す前に確かめること、管理画面での安全な消し方、削除したあとに見る点もまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-plugin-delete.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方">
+<meta property="og:description" content="使っていないWordPressのプラグインを削除すべきかを、停止との違いと4つの判断基準から解説します。消す前に確かめること、管理画面での安全な消し方、削除したあとに見る点もまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-plugin-delete.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-016-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-17">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方", "description": "使っていないWordPressのプラグインを削除すべきかを、停止との違いと4つの判断基準から解説します。消す前に確かめること、管理画面での安全な消し方、削除したあとに見る点もまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-016-v3.webp", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-plugin-delete.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "停止しているだけのプラグインでも、危険はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "停止していても、ファイルはサーバーに残っています。作りによっては、外から直接ファイルを呼び出されるおそれがあるのです。止めた日から更新も届かなくなります。"}}, {"@type": "Question", "name": "削除したプラグインは、元に戻せますか？", "acceptedAnswer": {"@type": "Answer", "text": "公式の配布ページにあるものなら、もう一度入れ直せます。ただし、消すときに設定まで消えるプラグインでは、設定は戻りません。"}}, {"@type": "Question", "name": "いくつまでならプラグインを入れても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "安全な数が決まっているわけではありません。数よりも、1つずつの手入れが行き届いているかが大切です。"}}, {"@type": "Question", "name": "プラグインを削除すると、サイトが軽くなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "停止中のプラグインは、ふつうはページの表示の処理に加わりません。そのため、消しても表示の速さが大きく変わらないことが多いのです。"}}, {"@type": "Question", "name": "どれを消してよいか自分で判断できないときは？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、使い道が分からないものを停止して、数日様子を見る方法があります。困ることがなければ、削除の候補にしてよいでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressの使っていないプラグインは削除すべき？</span><span class="h1-sub" data-sep="">判断の基準と安全な消し方</span></h1>
+    <p><time datetime="2026-11-17">2026.11.17</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-016-v3.webp" alt="使っていないWordPressのプラグインは、4つの基準で見きわめ、停止・確認・削除の順に安全に消す" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「使っていないプラグインは止めてあるけれど、消したほうがいいの？消したらサイトが壊れない？」と迷っていませんか？</p>
+<p>WordPressの管理画面には、昔入れたまま止まっているプラグインが並びがちです。止めてあるだけで安心してしまい、何年もそのままになっていることもあります。</p>
+<p>この記事では、<span class="mark-yellow">使っていないプラグインを削除してよいかの判断基準</span>と、安全な消し方をまとめました。停止と削除の違いから、消したあとに見る点まで順に紹介します。</p>
+<p>運営者が自社サイトを点検したときに見つけた例も入れました。作業の前に一度通して読んでおけば、迷わずに進められるでしょう。</p>
+
+<h2 id="s1">WordPressの使っていないプラグインは削除すべきか</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-plugin-delete-fig1.webp" alt="WordPressのプラグインを停止した状態ではファイルがサーバーに残り、削除するとファイルごと消える違いを、左右に並べて比べた図" width="1200" height="800"><figcaption>停止はスイッチを切るだけで、ファイルはサーバーに残ります</figcaption></figure>
+<p>結論から言うと、この先も使う予定のないプラグインは削除するのが基本です。WordPressの公式の手引きも、使っていないプラグインは消すよう案内しています。</p>
+<p>止めただけでは、プラグインのファイルはサーバーに残ったままになるでしょう。<span class="mark-yellow">使わない部品は、置いておくほど手入れの手間が増える</span>のです。まずは、停止と削除で何が違うのかを押さえておきましょう。</p>
+
+<h3>停止と削除の違い</h3>
+<p>プラグインの「停止」は、働きを止めるスイッチを切る操作です。ファイルや設定はそのまま残り、「有効化」を押せばすぐに元へ戻せます。</p>
+<p>一方の「削除」は、プラグインのファイルをサーバーから消す操作です。WordPressの仕組みでは、<span class="mark-yellow">停止しているプラグインだけが削除できる</span>ようになっています。使っているものをいきなり消せない作りなので、まず停止し、次に削除という2段階で進めてください。どちらの操作も、管理画面の「プラグイン」の一覧から行えるでしょう。</p>
+
+<h3>停止していてもファイルは残る</h3>
+<p>停止したプラグインは、画面の上では何もしていないように見えます。しかし、ファイルはサーバーの決まった場所に置かれたままです。</p>
+<p>ファイルの中には、URLを指定すれば外から直接呼び出せるものもあります。作りによっては、<span class="mark-red"><strong>停止中でも弱点をねらわれるおそれがある</strong></span>のです。止めたプラグインは更新の通知を見落としやすく、古い版のまま残りがちな点も困ります。使わないと決めたものは、ファイルごと消しておくほうが安心でしょう。</p>
+
+<h3>公式の手引きも削除をすすめている</h3>
+<p>WordPressの公式の守りの手引きには、使っていないプラグインは消すように書かれています。あわせて、プラグインを常に最新に保つことも求めているのです。</p>
+<p>見つかる弱点の多くは、本体ではなくプラグインにあります。Patchstackの報告では、<span class="mark-yellow">2025年に見つかった弱点の91%がプラグイン</span>でした。数が多いほど、こうした弱点に当たる機会も増えます。入れているプラグインを必要なものだけに絞ることは、手軽で効き目のある守りです。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/plugins-screen/" target="_blank" rel="noopener noreferrer nofollow">Plugins screen｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜Developer.WordPress.org</a></li>
+<li>参考：<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener noreferrer nofollow">State of WordPress Security in 2026｜Patchstack</a></li>
+</ul>
+
+<h2 id="s2">WordPressのプラグインを削除してよいか決める4つの基準</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-plugin-delete-fig2.webp" alt="WordPressのプラグインを削除してよいか決める4つの基準として、使っていない期間、同じ役割の重なり、配布や更新の停止、ほかの部品からの必要の有無を、縦のチェックリストで並べた図" width="1200" height="800"><figcaption>4つのうち当てはまるものが多いほど、削除の候補になります</figcaption></figure>
+<p>消してよいかは、使い道と状態の両方から決めます。迷ったときは、次の4つの基準に当てはめてみてください。</p>
+<p>1つでも強く当てはまれば、削除の候補として考えてよいでしょう。<span class="mark-yellow">「なんとなく残している」ものから順に見直す</span>のがおすすめです。判断に迷うものは、すぐに消さずに停止したまま様子を見る方法もあります。基準を決めておくと、次の点検のときも迷わずに済むのです。</p>
+
+<h3>① しばらく使っていない</h3>
+<p>最初に見るのは、そのプラグインを最近使ったかどうかです。キャンペーンのために入れたものや、試しに入れたものは、役目を終えていることが多くあります。</p>
+<p>停止したまま数か月たっているなら、なくても困らない証拠でしょう。<span class="mark-yellow">止めてから何も困っていないものは、削除の第一候補</span>です。いつ止めたか分からないときは、サイトの担当者や制作会社に聞いてみてください。使い道が誰にも分からないものも、同じく見直しの対象になります。</p>
+
+<h3>② 同じ役割のものがほかにある</h3>
+<p>次に、同じ役割のプラグインが2つ以上入っていないかを見ます。乗り換えたあと、古いほうを止めたまま残している例はよく見かけるのです。</p>
+<p>バックアップやキャッシュ、サイトマップを作る機能は、重なりやすいので注意しましょう。<span class="mark-yellow">役割が重なるものは、使っているほうだけを残す</span>と管理が楽になります。両方を有効にしていると、動きがぶつかって不具合のもとになることもあるのです。今の役割を担っているほうを確かめてから、もう一方を外してください。</p>
+
+<h3>③ 配布や更新が止まっている</h3>
+<p>3つ目は、配布や更新が続いているかどうかです。公式のプラグインのページに赤い表示が出ていれば、配布が止まった印になります。</p>
+<p>閉鎖の理由には、弱点が見つかったことも含まれるのです。最新の3つの版で試されていないという黄色い表示も、手入れが止まった目安になるでしょう。運営者の自社サイトにも、2022年に配布が止まったサイトマップのプラグインが残っていました。<span class="mark-yellow">使っているなら、同じ働きの別のものへ置き換える</span>ことを考えてください。</p>
+
+<h3>④ ほかの部品から必要とされていない</h3>
+<p>最後に、ほかのプラグインやテーマから必要とされていないかを確かめます。追加の機能が、土台となるプラグインを前提に作られている場合があるからです。</p>
+<p>WordPress 6.5からは、必要とされるプラグインの停止と削除のリンクが押せなくなりました。一覧に「必要とされている」と出ていれば、それを使う側を先に片付けます。<span class="mark-yellow">押せないリンクは、ほかの部品が使っている合図</span>なのです。テーマが前提にしているものは一覧に出ないため、テーマの説明書も見ておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/plugins/wordpress-org/alerts-and-warnings/" target="_blank" rel="noopener noreferrer nofollow">Alerts and Warnings｜Plugin Handbook</a></li>
+<li>参考：<a href="https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/" target="_blank" rel="noopener noreferrer nofollow">Introducing Plugin Dependencies in WordPress 6.5｜Make WordPress Core</a></li>
+</ul>
+
+<h2 id="s3">WordPressのプラグインを削除する前に確かめること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-plugin-delete-fig3.webp" alt="WordPressのプラグインを削除する前に確かめる、バックアップを取る、使われている場所を探す、設定やデータの扱いを確かめる、の3つをカードで並べた図" width="1200" height="800"><figcaption>消す前の3つの確認で、思わぬ表示の崩れを防げます</figcaption></figure>
+<p>削除は、ファイルを消すので元に戻すには入れ直しが要ります。消す前に、次の3つを確かめておきましょう。</p>
+<p>どれも数分でできる作業です。<span class="mark-yellow">確かめてから消せば、表示の崩れに慌てずに済む</span>でしょう。特に、長く運営しているサイトほど、思わぬ場所で古い機能が使われていることがあります。作業の日時と消したプラグインの名前も、メモに残しておいてください。</p>
+
+<h3>バックアップを取っておく</h3>
+<p>最初に、サイト全体のバックアップを取ります。サーバーの自動バックアップがあれば、戻せる日付を確かめておくだけでも構いません。</p>
+<p>プラグインの中には、消すときに自分の設定や表をデータベースから消すものがあります。<span class="mark-red"><strong>入れ直しても、消えた設定までは戻らない</strong></span>ことがあるのです。フォームの受信の記録や、細かく作り込んだ設定を持つものは特に注意してください。作業の直前の控えがあれば、万一のときも元の状態へすぐに戻せます。</p>
+
+<h3>使われている場所を探す</h3>
+<p>次に、そのプラグインがページのどこかで使われていないかを探します。ショートコードやブロック、ウィジェットとして埋め込まれていることがあるからです。</p>
+<p>止めた時点で、埋め込んだ場所に記号のような文字が出ることがあります。<span class="mark-yellow">停止したあとに主なページを開いて確かめる</span>と見つけやすいでしょう。お問い合わせフォームや表、スライダーなどは、見た目で気づきやすい部分です。テーマのファイルに直接書き込まれた呼び出しは、制作会社に確かめてもらってください。</p>
+
+<h3>設定やデータの扱いを確かめる</h3>
+<p>最後に、削除したときに設定やデータがどうなるかを確かめます。消すときにデータまで片付けるかどうかは、プラグインの作りしだいです。</p>
+<p>WordPressの開発者向けの手引きでも、データを消す処理は各プラグインが用意するとしています。<span class="mark-yellow">あとで使うデータは、消す前に書き出しておく</span>と安心です。問い合わせの記録などは、書き出しの機能があれば先に保存しておきましょう。設定画面に「削除時にデータも消す」といった項目がある場合は、その選び方も見ておくとよいでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/" target="_blank" rel="noopener noreferrer nofollow">Uninstall Methods｜Plugin Handbook</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_restore.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからのデータ復元｜エックスサーバー マニュアル</a></li>
+</ul>
+
+<h2 id="s4">WordPressのプラグインを削除する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-plugin-delete-fig4.webp" alt="WordPressのプラグインを削除する手順として、プラグインの一覧で停止する、主なページで表示を確かめる、削除を押して確認の表示で消す、の3つの段階を番号つきで示した図" width="1200" height="800"><figcaption>停止、確認、削除の順に、1つずつ進めます</figcaption></figure>
+<p>削除の作業は、管理画面の「プラグイン」の一覧から行います。停止、確認、削除の順で進めれば、途中で異変に気づけるのです。</p>
+<p>複数を消すときも、<span class="mark-yellow">1つずつ停止と確認をくり返す</span>のが安全でしょう。まとめて消すと、不具合が出たときにどれが原因か分からなくなります。管理画面に入れないときのやり方も、あわせて紹介しましょう。作業はアクセスの少ない時間帯に行うと、訪問者への影響を抑えられるでしょう。</p>
+
+<h3>プラグインを停止する</h3>
+<p>管理画面の「プラグイン」を開き、消したいプラグインの「停止」を押します。一覧の上の絞り込みで「停止中」を選ぶと、止まっているものだけが出るので便利です。</p>
+<p>すでに停止しているプラグインは、この手順を飛ばして構いません。WordPressは、最近停止したものを「最近停止した」の欄に7日間表示します。<span class="mark-yellow">止めた日を覚えておくと、不具合の原因を追いやすい</span>のです。止めたら、すぐに次の確認へ進みましょう。作業の前後で一覧の画面を控えておくと、さらに安心できます。</p>
+
+<h3>表示と動きを確かめる</h3>
+<p>停止したら、トップページと主なページを開いて表示を確かめます。お問い合わせフォームがあれば、テストの送信もしておくと安心です。</p>
+<p>表示が崩れたり、エラーが出たりしたら、いったん「有効化」で元に戻してください。<span class="mark-yellow">問題がなければ、数日そのまま様子を見てもよい</span>でしょう。すぐに消さず、停止のまま1週間ほど置くと、見落としていた使い道にも気づけます。管理画面の操作や保存も、ふだんどおりにできるかを試しておきましょう。</p>
+
+<h3>削除を押して確認の表示で消す</h3>
+<p>停止中のプラグインの下にある「削除」を押すと、本当に消すかを確かめる表示が出ます。プラグインの名前に間違いがないかを見てから、先へ進んでください。</p>
+<p>確かめの表示で「OK」を選ぶと、ファイルの削除が始まるのです。<span class="mark-red"><strong>この確かめの表示が、取り消せる最後の場面</strong></span>になります。消したあとは一覧から外れたことを確かめ、表示ももう一度見ておきましょう。消したプラグインの名前と日付は、作業の記録に残しておくと後で役立つはずです。</p>
+
+<h3>管理画面に入れないときの消し方</h3>
+<p>プラグインのせいで管理画面に入れないときは、サーバーの側から止めます。FTPやサーバーのファイル管理の画面で、プラグインのフォルダの名前を変える方法です。</p>
+<p>フォルダの場所は、WordPressの中の「wp-content/plugins」になります。<span class="mark-yellow">名前を変えれば、そのプラグインは停止の扱いになる</span>のです。入れるようになったら、名前を戻して管理画面から改めて停止と削除をしましょう。サーバーのファイルを直接さわる作業なので、先にバックアップを取ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/plugins-screen/" target="_blank" rel="noopener noreferrer nofollow">Plugins screen｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://it.wordpress.org/support/article/managing-plugins/" target="_blank" rel="noopener noreferrer nofollow">Managing Plugins｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s5">WordPressのプラグインを削除したあとに見ること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-plugin-delete-fig5.webp" alt="WordPressのプラグインを削除したあとに、表示とフォームを確かめる、残った記号や設定を片付ける、入れる数を増やさない習慣をつける、の流れを左から右への矢印で示した図" width="1200" height="800"><figcaption>削除のあとの見直しまでを、ひと続きの作業にします</figcaption></figure>
+<p>プラグインを削除したら、それで終わりではありません。消したあとのサイトの状態を見て、残ったものを片付けます。</p>
+<p>同じことをくり返さないための習慣も大切です。<span class="mark-yellow">消したあとの確認と、増やさない工夫をセットにする</span>と、サイトを身軽に保てます。定期的に見直す日を決めておくと、気づいたときには数十個に増えていた、ということを防げるでしょう。</p>
+
+<h3>表示とフォームをもう一度確かめる</h3>
+<p>削除したあとも、主なページとフォームの動きを確かめます。停止のときに問題がなくても、削除で設定が消えて変わることがあるからです。</p>
+<p>スマホの表示や、検索、会員のページなども、使っているなら開いてみてください。<span class="mark-yellow">確かめたページと結果を、作業の記録に残す</span>と安心できます。あとで不具合に気づいたとき、いつの作業が原因かを振り返りやすくなるのです。問題が見つかったら、バックアップから戻すか、プラグインを入れ直してください。</p>
+
+<h3>残った記号や設定を片付ける</h3>
+<p>プラグインを消しても、ページに埋め込んだショートコードは文字として残ります。記事やウィジェットに見覚えのない記号が出ていたら、消しておきましょう。</p>
+<p>データベースに設定が残る作りのプラグインもあります。<span class="mark-yellow">残った設定は、ふつうは表示に影響しない</span>ので、慌てて消す必要はありません。どうしても片付けたいときは、データベースを直接さわる前に、必ずバックアップを取ってください。不安があれば、制作会社や詳しい人に頼むほうが安全です。</p>
+
+<h3>入れる数を増やさない習慣をつける</h3>
+<p>新しいプラグインを入れる前に、本当に必要か、ほかの方法で済まないかを考えます。試すときは、試したあとに消すところまでを1つの作業にしましょう。</p>
+<p>運営者が自社サイトを点検したときも、PHP 8で止まる2020年の版のプラグインが見つかりました。<span class="mark-yellow">年に数回は、入っているプラグインを一覧で見直す</span>のがおすすめです。更新が続いているかもあわせて確かめれば、古い部品の見落としを防げます。更新の進め方は次の記事で紹介しました。</p>
+<p><a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a></p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜Developer.WordPress.org</a></li>
+<li>参考：<a href="https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/" target="_blank" rel="noopener noreferrer nofollow">Uninstall Methods｜Plugin Handbook</a></li>
+</ul>
+
+<div class="art-cta"><strong>残っている古いプラグインを、外から無料で確かめる</strong><p>URLを入れるだけで、危ない追加機能や古いプログラムなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのプラグインの削除に関するよくある質問</h2>
+
+<h3>停止しているだけのプラグインでも、危険はありますか？</h3>
+<p>停止していても、ファイルはサーバーに残っています。作りによっては、外から直接ファイルを呼び出されるおそれがあるのです。止めた日から更新も届かなくなります。</p>
+<p>使う予定がなければ、削除しておくほうが安心でしょう。弱点が見つかったときの対処は、次の記事で詳しく紹介しています。</p>
+<p><a href="wordpress-plugin-vulnerability.html">WordPressのプラグインに脆弱性が見つかったときの対処法</a></p>
+
+<h3>削除したプラグインは、元に戻せますか？</h3>
+<p>公式の配布ページにあるものなら、もう一度入れ直せます。ただし、消すときに設定まで消えるプラグインでは、設定は戻りません。</p>
+<p>有料のプラグインは、入れ直しにライセンスの情報が要ることもあるのです。戻せる状態にしておきたいときは、削除の前にバックアップを取っておいてください。控えがあれば、設定ごと元の状態へ戻せます。</p>
+
+<h3>いくつまでならプラグインを入れても大丈夫ですか？</h3>
+<p>安全な数が決まっているわけではありません。数よりも、1つずつの手入れが行き届いているかが大切です。</p>
+<p>更新が続いているものを、必要な分だけ入れるようにしましょう。数が多いほど、更新や確かめの手間は増えていくものです。入れる前に、本当に要るかを一度考えてみてください。使わないものを減らしておけば、毎回の点検もずっと楽になるでしょう。</p>
+
+<h3>プラグインを削除すると、サイトが軽くなりますか？</h3>
+<p>停止中のプラグインは、ふつうはページの表示の処理に加わりません。そのため、消しても表示の速さが大きく変わらないことが多いのです。</p>
+<p>削除のねらいは、速さよりも、弱点のもとと手入れの手間を減らすことにあります。表示が重いときは、有効になっているものの見直しを先に考えてください。速さを測る道具で、前後を比べておくと判断しやすくなります。</p>
+
+<h3>どれを消してよいか自分で判断できないときは？</h3>
+<p>まずは、使い道が分からないものを停止して、数日様子を見る方法があります。困ることがなければ、削除の候補にしてよいでしょう。</p>
+<p>制作会社に任せたサイトなら、一覧を送ってどれが必要かを聞くのが確実です。外から古いプラグインが見えていないかを、点検で確かめてもらうのもよい方法になります。点検の結果は、次に何を消すかを決める材料にもなるのです。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>使っていないWordPressのプラグインは、止めておくだけでなく削除するのが基本です。停止ではファイルが残り、古い版のまま弱点のもとになりかねません。</p>
+<p>消す前に、<span class="mark-yellow">バックアップと、使われている場所の確認を済ませる</span>ことが大切です。停止、確認、削除の順に1つずつ進め、消したあとも表示とフォームを見てください。</p>
+<p>年に数回は入っているプラグインを見直し、必要なものだけを最新の版で使いましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">削除すべきか</a></li><li><a href="#s2">削除してよいか決める4つの基準</a></li><li><a href="#s3">削除する前に確かめること</a></li><li><a href="#s4">削除する手順</a></li><li><a href="#s5">削除したあとに見ること</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
