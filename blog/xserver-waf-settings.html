@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方｜スキゼロ</title>
+<meta name="description" content="エックスサーバーのWAF設定のやり方を、6つの項目の意味から反映の待ち時間、オンにしたあとの確かめ方まで解説します。保存や送信が止まる誤検知の切り分け方と、あわせて見直したい守りも紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/xserver-waf-settings.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方">
+<meta property="og:description" content="エックスサーバーのWAF設定のやり方を、6つの項目の意味から反映の待ち時間、オンにしたあとの確かめ方まで解説します。保存や送信が止まる誤検知の切り分け方と、あわせて見直したい守りも紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/xserver-waf-settings.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-015-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-16">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方", "description": "エックスサーバーのWAF設定のやり方を、6つの項目の意味から反映の待ち時間、オンにしたあとの確かめ方まで解説します。保存や送信が止まる誤検知の切り分け方と、あわせて見直したい守りも紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-015-v3.webp", "datePublished": "2026-11-16", "dateModified": "2026-11-16", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/xserver-waf-settings.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "エックスサーバーのWAFは、最初からオンになっていますか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトによって状態が違うため、サーバーパネルの「WAF設定」で確かめてください。ドメインごとに、項目ごとのオンとオフが表示されます。"}}, {"@type": "Question", "name": "WAFをオンにすると、サイトの表示は遅くなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "WAFはアクセスの中身を調べる仕組みです。運営者の作業では、ふつうの閲覧で体感できるほど遅くなった例は見ていません。"}}, {"@type": "Question", "name": "WAFで止められたアクセスは、どうなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "止められたアクセスはサイトのプログラムに届かず、エラーの画面が返ります。そのアクセスでは、サイトのプログラムは動きません。"}}, {"@type": "Question", "name": "WAFをオンにすれば、セキュリティのプラグインはいりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "WAFとプラグインは、守る場所が違います。WAFはサーバーの入口で攻撃の型を見る仕組みです。"}}, {"@type": "Question", "name": "エックスサーバー以外のサーバーにも、WAFはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "多くのレンタルサーバーが、同じような機能を用意しています。ただ、名前や項目の分け方、反映までの時間はサーバーごとに違うのです。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">エックスサーバーのWAF設定のやり方と注意点</span><span class="h1-sub" data-sep="｜">6つの項目と誤検知の直し方</span></h1>
+    <p><time datetime="2026-11-16">2026.11.16</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-015-v3.webp" alt="エックスサーバーのWAFは6つの項目をオンにし、反映後にフォームの送信と保存を試して、止まったら1つずつ切り分ける" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「エックスサーバーのWAFはオンにしたほうがいいの？オンにしてサイトが動かなくなったらどうしよう」と迷っていませんか？</p>
+<p>WAFは、サーバーの入口で怪しいアクセスを止める仕組みです。エックスサーバーでは無料で使え、画面で項目を選ぶだけで設定できます。</p>
+<p>この記事では、<span class="mark-yellow">エックスサーバーのWAF設定のやり方と、オンにしたあとの注意点</span>をまとめました。6つの項目の意味から、保存や送信が止まったときの直し方まで紹介します。</p>
+<p>運営者が実際にサイトでWAFをオンにしたときの確かめ方も入れました。作業の前に一度通して読んでおくと安心です。</p>
+
+<h2 id="s1">エックスサーバーのWAF設定とは</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-waf-settings-fig1.webp" alt="エックスサーバーのWAFが、サイトに届くアクセスのうち攻撃の文字列を含むものを入口で止め、ふつうのアクセスだけを通す流れを示した図" width="1200" height="800"><figcaption>WAFは、サイトの手前で怪しいアクセスを止める見張り役です</figcaption></figure>
+<p>エックスサーバーのWAF設定は、サイトの弱点をねらう攻撃をサーバーの入口で止める機能です。WAFは「ウェブ・アプリケーション・ファイアウォール」を略した呼び名になります。</p>
+<p>WordPressのようなプログラムを、外からの攻撃から守る仕組みです。届いたアクセスの中身を見て、攻撃によく使われる文字列があれば止めます。<span class="mark-yellow">追加の料金はかからず、全プランで使える</span>のも助かる点です。まずは、できることと限界を押さえておきましょう。</p>
+
+<h3>WAFが止めるアクセス</h3>
+<p>WAFが見ているのは、サイトに届くアクセスの中身です。フォームの入力欄やURLの末尾に、スクリプトや命令文がまぎれ込んでいないかを調べます。</p>
+<p>当てはまるアクセスは、サイトのプログラムに届く前に止められるのです。止めたアクセスには、エラーの画面が返ります。<span class="mark-yellow">弱点が残っていても、攻撃が届きにくくなる</span>のが利点でしょう。ふつうに記事を読むだけの訪問者には、影響がありません。訪問者が何かを設定する必要もないので、運営者の側だけで導入を決められます。</p>
+
+<h3>全プランで無料で使える</h3>
+<p>エックスサーバーのWAF設定は、2018年7月に全プランの標準機能として始まりました。エックスサーバービジネスでも同じように使えます。</p>
+<p>サーバーパネルの「セキュリティ」の欄にある「WAF設定」から、ドメインごとに設定してください。<span class="mark-yellow">守りたい項目だけを選んで組み合わせられる</span>のも特長です。サイトの作りに合わせて調整しましょう。申し込みの手続きはいらず、思い立ったその日に始められます。料金が増える心配もないので、まだオフのサイトがあれば先に見直してください。</p>
+
+<h3>WAFだけでは守りきれない</h3>
+<p>エックスサーバーは、WAFが防御を保証するものではないと案内しています。<span class="mark-red"><strong>プログラムの弱点は、プログラムの更新で直すのが基本</strong></span>です。</p>
+<p>WAFは決まった型の攻撃を止めるもので、型に当てはまらない攻撃はすり抜けます。盗まれたパスワードでの正規のログインも止められません。WordPressの本体とプラグインの更新、パスワードの管理と重ねて使ってください。WAFは、ほかの対策が間に合わないあいだの時間をかせぐ守りです。そう考えておくと、役割を取り違えずに済むでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_waf.php" target="_blank" rel="noopener noreferrer nofollow">WAF設定｜エックスサーバー マニュアル</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=4601" target="_blank" rel="noopener noreferrer nofollow">Webサイトのセキュリティを強化する「WAF設定」機能提供開始のお知らせ｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s2">エックスサーバーのWAF設定で選べる6つの項目</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-waf-settings-fig2.webp" alt="エックスサーバーのWAF設定で選べるXSS対策、SQL対策、ファイル対策、メール対策、コマンド対策、PHP対策の6つの項目と、それぞれが止める攻撃を6枚のカードで並べた図" width="1200" height="800"><figcaption>6つの項目は、止める攻撃の種類ごとに分かれています</figcaption></figure>
+<p>エックスサーバーのWAF設定には、6つの項目があります。項目ごとに、止める攻撃の種類と、守る対象のプログラムが分かれているのです。</p>
+<p>WordPressのサイトなら、<span class="mark-yellow">基本は6つともオンにして様子を見る</span>とよいでしょう。それぞれの意味を知っておくと、何かが止まったときに原因の見当がつけやすくなります。項目の名前は、エックスサーバーのマニュアルの表記に合わせました。</p>
+
+<h3>① XSS対策</h3>
+<p>XSS対策は、JavaScriptなどのスクリプトのタグが埋め込まれたアクセスを止める項目です。クロスサイトスクリプティングと呼ばれる攻撃への備えになります。</p>
+<p>この攻撃を受けると、訪問者のログイン状態を盗まれることがあるのです。偽のサイトへ誘導される被害も起こります。<span class="mark-yellow">掲示板やコメント欄のある作りでは特に大切</span>な項目でしょう。入力された内容をそのまま画面に出すプログラムが、主にねらわれます。広告のタグを貼るときに止まりやすいのも、この項目です。</p>
+
+<h3>② SQL対策</h3>
+<p>SQL対策は、データベースへの命令文に当たる文字列が入ったアクセスを止めます。SQLインジェクションと呼ばれる攻撃への備えです。</p>
+<p>入力欄に命令文を送り込まれると、データベースの中身を抜き取られるおそれがあります。書き換えや破壊につながることもあるのです。<span class="mark-yellow">会員の情報を持つサイトほど被害が大きくなる</span>攻撃と言えます。WordPressも記事や設定をデータベースに入れているため、オンにしておきましょう。お問い合わせの内容を保存するプラグインを使っている場合も、同じく守りの対象です。</p>
+
+<h3>③ ファイル対策</h3>
+<p>ファイル対策は、サーバーの設定ファイルの名前が入ったアクセスを止める項目です。.htaccessや.htpasswdといったファイルが対象になります。</p>
+<p>これらを書き換えられると、パスワードで守ったページに入られるおそれがあるのです。サイトの動きを乗っ取られることもあります。<span class="mark-yellow">画像を送れる掲示板やファイルを扱う機能</span>が主な標的でしょう。ふだんの更新作業でこの名前を送ることはまれなので、止まる心配はあまりありません。迷ったら、オンのままにしておいてください。</p>
+
+<h3>④ メール対策</h3>
+<p>メール対策は、宛先やCCといったメールの見出しに関わる文字列が入ったアクセスを止めます。お問い合わせフォームを使った迷惑メールの大量送信への備えです。</p>
+<p>フォームを踏み台にされると、知らない相手に大量のメールが送られます。<span class="mark-yellow">自分のサーバーが迷惑メールの送り主にされる</span>おそれがあるのです。そうなると、ふつうのメールまで届きにくくなりかねません。メールを送る機能を持つサイトなら、オンにしたうえでフォームの送信を必ず試してください。</p>
+
+<h3>⑤ コマンド対策</h3>
+<p>コマンド対策は、サーバーへの命令に使う言葉が入ったアクセスを止める項目です。kill、ping、lsといった命令の名前が対象になります。</p>
+<p>プログラムを通じて命令を実行されると、サーバーの情報をのぞかれるおそれがあるのです。ほかのサイトを攻撃する踏み台にされる例もあります。<span class="mark-yellow">命令を実行する機能を持つプログラムが標的</span>です。ふつうの文章でも英単語として出ることがあり、まれに誤って止める原因になります。止まったときに疑う候補として覚えておきましょう。</p>
+
+<h3>⑥ PHP対策</h3>
+<p>PHP対策は、PHPの関数のうち、弱点につながりやすいものを使ったアクセスを止めます。ログイン状態の管理やファイルの操作に関わる関数が対象です。</p>
+<p>悪用されると、管理者の権限を乗っ取られるおそれがあります。不正なファイルを置かれて、サーバーごと奪われることもあるのです。<span class="mark-yellow">WordPressを含むPHPのプログラム全般を守る</span>項目なので、外さないでおきましょう。PHPのコードを管理画面から保存すると、止まることがあります。止まったときは、この項目を一時的に外して試すのが近道です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_waf.php" target="_blank" rel="noopener noreferrer nofollow">WAF設定｜エックスサーバー マニュアル</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/img/download/wp2-xserver-feature-guide.pdf?date=20260918" target="_blank" rel="noopener noreferrer nofollow">エックスサーバー 機能紹介資料（2026年9月）</a></li>
+</ul>
+
+<h2 id="s3">エックスサーバーでWAFを設定するやり方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-waf-settings-fig3.webp" alt="エックスサーバーでWAFを設定する流れとして、控えを取る、サーバーパネルで6つの項目をオンにする、反映を待つ、フォームの送信と管理画面の保存を試す、の4つの段階を番号つきで示した図" width="1200" height="800"><figcaption>オンにしたあとの確かめまでが、設定の作業です</figcaption></figure>
+<p>エックスサーバーでWAFを設定するやり方は、3つの段階に分かれます。控えを取る、項目をオンにする、反映を待って動きを確かめる、の順です。</p>
+<p>画面の操作は数分で終わりますが、<span class="mark-yellow">オンにしたあとの確かめを省かない</span>ことが大切になります。運営者がサイトでWAFをオンにしたときも、同じ順で進めました。急ぎの更新作業がない日を選ぶと、落ち着いて試せます。</p>
+
+<h3>設定の前に控えを取る</h3>
+<p>WAFの設定はいつでも元に戻せるため、サイトのファイルが消える作業ではありません。ただ、ほかの対策とまとめて進めるなら、先にバックアップを取っておくと安心です。</p>
+<p>あわせて、<span class="mark-yellow">今のWAFの状態を画面で控えておきましょう</span>。どの項目がもともとオンだったかが分かれば、戻すときに迷いません。お問い合わせフォームや会員登録など、あとで試す機能も書き出しておきます。試す順番まで決めておけば、確かめ漏れを防げるでしょう。自分のメールアドレスで受け取れるフォームを1つ選んでおくと、送信の確認が楽です。</p>
+
+<h3>サーバーパネルで項目をオンにする</h3>
+<p>サーバーパネルにログインし、「セキュリティ」の欄の「WAF設定」を開きます。最初に「設定前に必ずお読みください」という注意が出るので、目を通して閉じてください。</p>
+<p>画面には、ドメインごとに6つの項目とオンとオフのスイッチが並んでいます。ドメインが多いときは、右上の「ドメインを絞り込む」で選ぶと探しやすいでしょう。オフの項目のスイッチを1つずつオンに切り替えてください。<span class="mark-yellow">ドメインごとの設定なので、サイトの数だけ繰り返します</span>。どのドメインまで済ませたかを控えに書き込むと、抜けを防げるのです。</p>
+
+<h3>反映を待って動きを確かめる</h3>
+<p>設定はすぐには効かず、反映まで時間がかかります。マニュアルの案内では、新しいサーバーパネルで最大30分ほどです。</p>
+<p>旧パネルでは、最大1時間ほどかかると書かれています。反映したら、お問い合わせフォームから試しに1通送り、届くかを見てください。<span class="mark-yellow">管理画面で記事や設定を保存できるかも試します</span>。運営者が対応したサイトでも、反映を待ってからフォームの送信と保存を試しました。どちらも問題なく通ったことを確かめて、作業を終えています。</p>
+
+<h2 id="s4">エックスサーバーのWAF設定で気をつけたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-waf-settings-fig4.webp" alt="エックスサーバーのWAFで保存や送信がエラーになったときに、項目を1つずつオフにして原因を探し、作業後にオンへ戻すまでの判断の流れを示したフローチャート" width="1200" height="800"><figcaption>止まったら、全部ではなく1つずつ切り分けます</figcaption></figure>
+<p>エックスサーバーのWAF設定で気をつけたいのは、正しい操作まで止めてしまう誤検知です。設定画面の注意書きにも、サイトの動きに影響が出ることがあると書かれています。攻撃と似た文字列を、ふつうの作業で送ることがあるためで、防ぎきることはできません。</p>
+<p>誤検知は珍しいことではなく、どのサーバーのWAFでも起こりえます。<span class="mark-red"><strong>WAFを全部オフにしたまま放置しない</strong></span>ことが何より大切です。止まった作業だけを、短い時間で通す工夫をしましょう。</p>
+
+<h3>保存や送信が止まる誤検知</h3>
+<p>止まりやすいのは、スクリプトのタグやPHPのコードを管理画面から保存する作業です。広告や計測のタグを貼る設定、テーマのファイルの編集などが当てはまります。</p>
+<p>止まると、保存ボタンを押したところでエラーの画面が出るのです。<span class="mark-yellow">攻撃と同じ形の文字列を送っているため</span>に起こります。運営者もほかのサーバーで、計測のタグを含む設定の保存がWAFで止まった経験をしました。サイトが壊れたわけではないので、慌てずに切り分けてください。</p>
+
+<h3>項目を1つずつオフにして切り分ける</h3>
+<p>止まったときは、全部をオフにする前に、関係しそうな項目から1つずつ外して試します。タグならXSS対策、PHPのコードならPHP対策が、まず疑う候補です。</p>
+<p>外すたびに反映を待ち、同じ操作をもう一度試してください。<span class="mark-yellow">原因の項目が分かれば、残りはオンのまま守れます</span>。どうしても通らないときは、サーバーのファイルマネージャで直接ファイルを直す方法もあるでしょう。反映を待つ時間がかかるので、作業に余裕のある時間帯に進めるのがおすすめです。</p>
+
+<h3>作業が終わったらオンに戻す</h3>
+<p>一時的にオフにした項目は、作業が終わったらすぐにオンへ戻します。戻し忘れると、守りの穴が開いたままになってしまうのです。</p>
+<p><span class="mark-yellow">オフにした日時と項目をメモに残しておく</span>と、戻し忘れを防げます。何度も同じ作業で止まるなら、その作業のときだけ外す運用に決めておきましょう。反映には時間がかかるので、戻したあとも念のため画面で状態を確かめてください。オンに戻したら、止まっていた作業がもう一度止まらないかも見ておくと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_waf.php" target="_blank" rel="noopener noreferrer nofollow">WAF設定｜エックスサーバー マニュアル</a></li>
+<li>参考：<a href="https://ja.wordpress.org/support/topic/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%80%81%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E3%81%BF%E3%81%AE403%E3%82%A8%E3%83%A9%E3%83%BC/" target="_blank" rel="noopener noreferrer nofollow">メニュー、ウィジェットのみの403エラー｜WordPress日本語フォーラム</a></li>
+</ul>
+
+<h2 id="s5">エックスサーバーのWAF設定とあわせて見直したい守り</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/xserver-waf-settings-fig5.webp" alt="エックスサーバーのWAFを入口の守りとし、WordPressセキュリティ設定、本体とプラグインの更新、外からの点検を重ねて、サイトを何層にも守る考え方を示した図" width="1200" height="800"><figcaption>WAFは守りの1枚目で、ほかの対策と重ねて使います</figcaption></figure>
+<p>エックスサーバーのWAF設定をオンにしたら、ほかの守りもあわせて見直しましょう。WAFは入口の見張りで、弱点そのものは消えないからです。</p>
+<p>エックスサーバーには、WordPress向けのセキュリティ設定も用意されています。<span class="mark-yellow">いくつもの守りを重ねると、1つが破られても被害を抑えやすい</span>のです。順番に確かめていきましょう。</p>
+
+<h3>WordPressセキュリティ設定を確かめる</h3>
+<p>サーバーパネルの「WordPressセキュリティ設定」では、ログインの試行回数を制限できます。国外からのアクセス制限も選べ、こちらは初期状態でオンです。</p>
+<p>一方、管理画面に入れる場所を絞る「IPアドレス制限」は初期状態でオフになっています。<span class="mark-yellow">固定の回線から作業するなら、オンにすると効果的</span>です。不正ログインへの備えは、次の記事にまとめました。</p>
+<p><a href="wordpress-unauthorized-login.html">WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止</a></p>
+
+<h3>本体とプラグインを最新に保つ</h3>
+<p>WAFが止められない攻撃に備えるには、弱点そのものを直すしかありません。WordPressの本体、テーマ、プラグインを最新の版に保ちましょう。</p>
+<p>サーバーのPHPも、修正が届く版で動かしておく必要があります。<span class="mark-yellow">古い版のままでは、WAFの外から入られる</span>おそれがあるのです。使っていないプラグインは、更新を待つより消してしまうほうが確実でしょう。PHPの上げ方は、<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>で紹介しました。</p>
+
+<h3>外から弱点を確かめる</h3>
+<p>設定を整えたら、外から見て弱点が残っていないかを確かめます。ログイン名が見えていないか、古いプログラムが残っていないかが目安です。</p>
+<p>自分では気づきにくいところなので、<span class="mark-yellow">定期的に外から点検する習慣</span>をつけておきましょう。点検の結果は、次に何を直すかを決める材料にもなります。WAFをオンにした日と点検の日をそろえて記録しておくと、効果を振り返りやすくなるのです。点検の選び方は、<a href="website-security-diagnosis.html">ホームページのセキュリティ診断とは？無料と有料の違いと選び方</a>で解説しています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/img/download/wp2-xserver-feature-guide.pdf?date=20260918" target="_blank" rel="noopener noreferrer nofollow">エックスサーバー 機能紹介資料（2026年9月）</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜Developer.WordPress.org</a></li>
+</ul>
+
+<div class="art-cta"><strong>WAFの外に残った弱点を、無料で確かめる</strong><p>URLを入れるだけで、古いプログラムやログイン名の丸見えなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">エックスサーバーのWAF設定に関するよくある質問</h2>
+
+<h3>エックスサーバーのWAFは、最初からオンになっていますか？</h3>
+<p>サイトによって状態が違うため、サーバーパネルの「WAF設定」で確かめてください。ドメインごとに、項目ごとのオンとオフが表示されます。</p>
+<p>運営者のサーバーでも、最初からあるドメインは6つともオフのままでした。前の制作会社や担当者がオフにしたまま、ということもあるのです。引き継いだサイトは、一度画面で状態を見ておくと安心できます。オフの項目があれば、その理由を前の担当者に聞いておきましょう。</p>
+
+<h3>WAFをオンにすると、サイトの表示は遅くなりますか？</h3>
+<p>WAFはアクセスの中身を調べる仕組みです。運営者の作業では、ふつうの閲覧で体感できるほど遅くなった例は見ていません。</p>
+<p>表示の速さよりも、表示の崩れやエラーが出ないかを先に確かめてください。気になる場合は、オンにする前とあとで同じページの表示の速さを測って比べてみましょう。数字で比べれば、思い込みで判断せずに済みます。</p>
+
+<h3>WAFで止められたアクセスは、どうなりますか？</h3>
+<p>止められたアクセスはサイトのプログラムに届かず、エラーの画面が返ります。そのアクセスでは、サイトのプログラムは動きません。</p>
+<p>自分の操作が止められたときも、同じようにエラーの画面が出るのです。保存や送信のあとに急にエラーが出たら、WAFの誤検知を疑ってください。直前に貼った文字列があれば、それが手がかりになります。</p>
+
+<h3>WAFをオンにすれば、セキュリティのプラグインはいりませんか？</h3>
+<p>WAFとプラグインは、守る場所が違います。WAFはサーバーの入口で攻撃の型を見る仕組みです。</p>
+<p>プラグインはWordPressの中で、ログインや変更を見張ります。ログインの通知や二段階認証などは、WAFでは代わりになりません。役割を分けて、足りないところを補う形で選ぶとよいでしょう。入れすぎると管理画面が重くなるため、目的を決めて選んでください。</p>
+
+<h3>エックスサーバー以外のサーバーにも、WAFはありますか？</h3>
+<p>多くのレンタルサーバーが、同じような機能を用意しています。ただ、名前や項目の分け方、反映までの時間はサーバーごとに違うのです。</p>
+<p>使っているサーバーのマニュアルで、場所と設定の方法を確かめてください。誤検知のときに項目を1つずつ外して切り分ける考え方は、どのサーバーでも使えます。反映までの時間も、あわせて確かめておきましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>エックスサーバーのWAF設定は、サーバーパネルから無料で使える入口の守りです。WordPressのサイトなら、6つの項目をオンにして様子を見るのが基本になります。</p>
+<p>オンにしたら、<span class="mark-yellow">反映を待ってフォームの送信と管理画面の保存を試しましょう</span>。止まったときは項目を1つずつ外して原因を探し、作業が終わったらオンに戻してください。</p>
+<p>WAFだけに頼らず、本体とプラグインの更新や外からの点検と重ねて、サイトを守りましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">WAF設定とは</a></li><li><a href="#s2">選べる6つの項目</a></li><li><a href="#s3">設定するやり方</a></li><li><a href="#s4">気をつけたいこと</a></li><li><a href="#s5">あわせて見直したい守り</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
