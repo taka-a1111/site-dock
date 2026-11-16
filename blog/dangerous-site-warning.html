@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>「このサイトは危険です」と警告が出たときの対処｜原因の確かめ方と解除までの流れ｜スキゼロ</title>
+<meta name="description" content="自分のホームページに「このサイトは危険です」と警告が出たときの対処を解説します。警告が出る仕組み、まず確かめる3つの場所、原因を取り除いて審査をリクエストするまでの流れ、再発を防ぐ備えをまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/dangerous-site-warning.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「このサイトは危険です」と警告が出たときの対処｜原因の確かめ方と解除までの流れ">
+<meta property="og:description" content="自分のホームページに「このサイトは危険です」と警告が出たときの対処を解説します。警告が出る仕組み、まず確かめる3つの場所、原因を取り除いて審査をリクエストするまでの流れ、再発を防ぐ備えをまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/dangerous-site-warning.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-018-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-19">
+<meta property="article:section" content="改ざん・被害対応">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "「このサイトは危険です」と警告が出たときの対処｜原因の確かめ方と解除までの流れ", "description": "自分のホームページに「このサイトは危険です」と警告が出たときの対処を解説します。警告が出る仕組み、まず確かめる3つの場所、原因を取り除いて審査をリクエストするまでの流れ、再発を防ぐ備えをまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-018-v3.webp", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/dangerous-site-warning.html", "inLanguage": "ja", "articleSection": "改ざん・被害対応", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "自分のパソコンだけで警告が出ている場合もありますか？", "acceptedAnswer": {"@type": "Answer", "text": "パソコンに入った不正なソフトや、ブラウザの拡張機能が警告や広告を出すこともあります。別のパソコンやスマホから開いて、同じ警告が出るかを確かめてください。"}}, {"@type": "Question", "name": "警告画面の先へ進んで、自分のサイトを確かめてもいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "警告画面から先へ進むことはできますが、危ないプログラムを開いてしまうおそれがあります。中身を確かめるときは、サーバーのファイルの一覧や管理画面から見るほうが安全です。"}}, {"@type": "Question", "name": "審査をリクエストしてから、どのくらいで警告が消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "Googleのヘルプでは、審査には数日から数週間かかるとされています。審査が通っても、表示から警告が消えるまでには少し時間がかかるのです。"}}, {"@type": "Question", "name": "警告が出ている間、サイトは閉じておくべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "ハッキングが疑われるなら、原因を取り除くまでは止めておくのが安全です。止めずにいると、訪問者に危ないページを見せ続けることになります。"}}, {"@type": "Question", "name": "自分で直すのが難しいときは、どこに頼めばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、サイトを作った制作会社や、保守を頼んでいる会社に相談してください。サーバー会社に、ファイルの復元を頼める場合もあります。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "「このサイトは危険です」と警告が出たときの対処｜原因の確かめ方と解除までの流れ"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
+    <h1><span class="h1-main">「このサイトは危険です」と警告が出たときの対処</span><span class="h1-sub" data-sep="｜">原因の確かめ方と解除までの流れ</span></h1>
+    <p><time datetime="2026-11-19">2026.11.19</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-018-v3.webp" alt="「このサイトは危険です」と警告が出たら、Search Consoleで原因を確かめ、取り除いて入口をふさぎ、審査をリクエストして解除してもらう" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「自分の会社のホームページを開いたら、赤い画面で『危険なサイト』と出た。お客さまにも見えているの？」と青ざめていませんか？</p>
+<p>この警告は、サイトにだまし取りの仕掛けや危ないプログラムが見つかったときに出るものです。放っておくと、訪問者がサイトに入れないだけでなく、検索の結果にも影響します。</p>
+<p>この記事では、<span class="mark-yellow">「このサイトは危険です」と警告が出たときの対処</span>を順番にまとめました。警告が出る仕組みから、原因の確かめ方、警告を外してもらうまでの流れを紹介します。</p>
+<p>Googleの公式の案内をもとに、運営者の点検の経験も添えました。慌てて消す前に、まずは全体の流れをつかんでください。</p>
+
+<h2 id="s1">「このサイトは危険です」と警告が出る仕組み</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/dangerous-site-warning-fig1.webp" alt="「このサイトは危険です」という警告が、ブラウザの赤い警告画面と、検索結果のラベルの2か所に出ることと、鍵マークの「保護されていない通信」とは別物であることを左右に並べた図" width="1200" height="800"><figcaption>警告は、ブラウザの画面と検索の結果の2か所に出ます</figcaption></figure>
+<p>「このサイトは危険です」という警告は、Googleなどがサイトに危ない中身を見つけたときに出します。訪問者を守るための仕組みで、サイトの持ち主が気づく前に出ることも少なくありません。</p>
+<p>警告の出方は大きく2つあります。<span class="mark-yellow">ブラウザの警告画面と、検索の結果のラベル</span>です。似た言葉の警告とも区別して、どの種類が出ているかを先に押さえましょう。</p>
+
+<h3>ブラウザに出る赤い警告画面</h3>
+<p>Chromeでは、サイトを開こうとすると赤い画面に「危険なサイト」と出ることがあります。だまし取りのページ、危ないプログラム、望まないソフトなどが見つかったときの表示です。</p>
+<p>Chromeのヘルプでは、こうしたサイトには行かないよう利用者にすすめています。<span class="mark-red"><strong>訪問者のほとんどは、この画面で引き返してしまう</strong></span>でしょう。お問い合わせや注文が急に止まったら、この画面が出ていないかを疑ってください。自分のパソコンだけでなく、スマホからも開いて確かめると安心です。</p>
+
+<h3>検索の結果に付くラベル</h3>
+<p>Googleの検索の結果に、サイト名と一緒に注意の文が出ることもあります。「このサイトは第三者によってハッキングされている可能性があります」といった文です。</p>
+<p>Googleのヘルプによると、ラベルが付いている間は検索の順位にも影響が出ることがあります。<span class="mark-yellow">検索から来るお客さまが減るおそれがある</span>のです。自社名で検索して、結果にラベルが付いていないかを見ておきましょう。ラベルは、問題を直して審査を受けるまで消えません。</p>
+
+<h3>「保護されていない通信」とは別物</h3>
+<p>よく似た警告に、アドレス欄に出る「保護されていない通信」があります。こちらは、通信が暗号化されていないことを知らせる表示です。</p>
+<p>サイトに危ない中身が見つかったという意味ではありません。<span class="mark-yellow">赤い全面の警告画面とは、原因も直し方も違う</span>ので注意してください。アドレス欄の表示だけなら、SSL証明書の設定を見直すことになります。鍵マークの横の表示を見れば、どちらの警告かを見分けられるでしょう。詳しくは次の記事で紹介しました。</p>
+<p><a href="not-secure-warning.html">「保護されていない通信」と表示される原因と直し方</a></p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/chrome/answer/99020?hl=en" target="_blank" rel="noopener noreferrer nofollow">Manage warnings about unsafe sites｜Google Chrome Help</a></li>
+<li>参考：<a href="https://support.google.com/webmasters/answer/6347750?hl=ja" target="_blank" rel="noopener noreferrer nofollow">Google 検索でサイトが危険とラベル付けされるのはなぜですか？｜Search Console ヘルプ</a></li>
+</ul>
+
+<h2 id="s2">「このサイトは危険です」と出たときにまず確かめる3つ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/dangerous-site-warning-fig2.webp" alt="「このサイトは危険です」と出たときにまず確かめる、Search Consoleのセキュリティの問題、見覚えのないページやファイル、外から読み込んでいる広告や部品の3つを、虫めがねのアイコンと番号つきで並べた図" width="1200" height="800"><figcaption>原因の手がかりは、この3か所に残っていることが多いです</figcaption></figure>
+<p>警告が出たら、まず原因がどこにあるかを確かめます。いきなりファイルを消すと、手がかりまで消えてしまうからです。</p>
+<p>確かめる場所は、次の3つが基本になります。<span class="mark-yellow">3つを順に見れば、原因の見当がつく</span>ことが多いでしょう。確かめた内容は、日時とあわせてメモに残してください。あとで審査を頼むときに、そのメモが役立ちます。</p>
+
+<h3>① Search Consoleのセキュリティの問題</h3>
+<p>最初に見るのは、GoogleのSearch Consoleにある「セキュリティの問題」の画面です。Googleが見つけた問題の種類と、問題のあるページの例が表示されます。</p>
+<p>種類には、ハッキング、だまし取りのページ、危ないダウンロードなどが含まれるのです。<span class="mark-yellow">どの種類かで、探す場所と直し方が変わる</span>でしょう。Search Consoleに登録していなければ、まず登録してから確かめましょう。登録には、サイトの持ち主であることの確認が要ります。制作会社が登録している場合もあるので、先に聞いてみてください。</p>
+
+<h3>② 見覚えのないページやファイル</h3>
+<p>次に、サイトの中に見覚えのないページやファイルが増えていないかを確かめます。乗っ取られたサイトには、勝手にページやファイルが置かれることが多いからです。</p>
+<p>サーバーのファイルの一覧で、最近の日付のファイルを探しましょう。<span class="mark-yellow">作った覚えのないファイルは、消す前に控えを取る</span>のが大切です。WordPressなら、管理画面のユーザーに知らない名前がないかも見ます。改ざんの見分け方は、次の記事にまとめました。</p>
+<p><a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a></p>
+
+<h3>③ 外から読み込んでいる広告や部品</h3>
+<p>3つ目は、ほかのサイトから読み込んでいる広告や部品です。自分のサイトに問題がなくても、読み込んだ先が原因で警告が出ることがあります。</p>
+<p>Googleは、外部の広告やアプリは信頼できる提供元のものを選ぶよう案内しているのです。<span class="mark-yellow">最近足した広告や計測のタグから順に疑う</span>とよいでしょう。使っていない部品は、この機会に外しておくと安心です。どこから何を読み込んでいるかを、一覧にしておくと次からの点検も楽になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener noreferrer nofollow">セキュリティの問題レポート｜Search Console ヘルプ</a></li>
+<li>参考：<a href="https://developers.google.com/search/docs/monitor-debug/security/prevent-malware" target="_blank" rel="noopener noreferrer nofollow">How To Prevent Malware Infection｜Google Search Central</a></li>
+</ul>
+
+<h2 id="s3">「このサイトは危険です」の警告を解除する流れ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/dangerous-site-warning-fig3.webp" alt="「このサイトは危険です」の警告を解除する流れとして、サイトを止める、原因を取り除く、入口をふさぐ、審査をリクエストする、の4つの段階を左から右への矢印でつないだ図" width="1200" height="800"><figcaption>直してから審査を頼むまでが、解除の作業です</figcaption></figure>
+<p>警告を外してもらうには、原因を取り除き、Googleに審査を頼む必要があります。直すだけでは、警告は自動では消えません。</p>
+<p>Googleのヘルプでは、<span class="mark-yellow">サイトを止め、片付け、守りを固めてから戻す</span>流れをすすめています。次の4つの段階で進めましょう。自分で進めるのが難しければ、早めに制作会社や専門の業者に相談してください。</p>
+
+<h3>サイトを止めて広がりを防ぐ</h3>
+<p>ハッキングが疑われるときは、まずサイトを一時的に止めます。訪問者が危ないページを開いたり、ファイルを落としたりするのを防ぐためです。</p>
+<p>サーバーの管理画面で、メンテナンス中の表示に切り替える方法があります。<span class="mark-yellow">止める前に、今のファイルとデータベースの控えを取る</span>ことも忘れないでください。控えは、原因を調べる手がかりになります。取引先やお客さまには、点検中であることを短く知らせておくとよいでしょう。サーバー会社に連絡して、止め方を聞くこともできます。</p>
+
+<h3>原因を取り除く</h3>
+<p>次に、Search Consoleで示されたページや、見覚えのないファイルを片付けます。きれいだったころのバックアップがあれば、そこから戻すのが早道です。</p>
+<p>ただし、戻したバックアップにも問題が残っていないかを確かめます。<span class="mark-yellow">いつ入り込まれたかが分からないと、汚れた控えに戻すおそれがある</span>のです。改ざんからの戻し方は、次の記事で詳しく紹介しています。戻したあとは、問題のあったページがきれいになったかを必ず開いて確かめてください。</p>
+<p><a href="website-tampering-recovery.html">ホームページ改ざんの復旧手順｜発見から再発防止まで</a></p>
+
+<h3>入られた入口をふさぐ</h3>
+<p>片付けただけでは、同じ入口からまた入られてしまいます。入口をふさいでから、サイトを戻しましょう。</p>
+<p>WordPressの本体、テーマ、プラグインを新しい版に上げ、使っていないものは消します。<span class="mark-yellow">管理画面とサーバーのパスワードもすべて変える</span>のが基本です。知らないユーザーがいれば、消してから作業を続けてください。PHPの版が古いままなら、あわせて見直しておくと守りが固くなります。FTPやデータベースのパスワードも、変えたものを記録しておきましょう。</p>
+
+<h3>審査をリクエストする</h3>
+<p>直し終えたら、Search Consoleの「セキュリティの問題」の画面で審査を頼みます。ボタンの名前は「審査をリクエスト」です。何が問題で、どう直したかを具体的に書いてください。</p>
+<p>Googleによると、審査には数日から数週間かかることがあります。<span class="mark-red"><strong>直す前に審査を頼むと、警告が出る期間がかえって長引く</strong></span>ので注意しましょう。問題が短い間に何度もくり返すと、30日間は審査を頼めなくなる決まりもあります。返事が来るまでは、同じ審査を送り直さないでください。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener noreferrer nofollow">セキュリティの問題レポート｜Search Console ヘルプ</a></li>
+<li>参考：<a href="https://developers.google.com/search/docs/monitor-debug/security/safe-browsing-repeat-offenders?hl=ja" target="_blank" rel="noopener noreferrer nofollow">違反を繰り返すサイトのセーフ ブラウジング ポリシー｜Google 検索セントラル</a></li>
+</ul>
+
+<h2 id="s4">「このサイトは危険です」と表示されないための備え</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/dangerous-site-warning-fig4.webp" alt="「このサイトは危険です」と表示されないための備えとして、Search Consoleで通知を受け取る、本体とプラグインを最新に保つ、外から定期的に点検する、の3つを盾の形のアイコンで重ねた図" width="1200" height="800"><figcaption>早く気づく仕組みと、入られにくい作りを両方そろえます</figcaption></figure>
+<p>警告が出てから慌てないために、ふだんから備えておきましょう。備えは、早く気づく仕組みと、入られにくい作りの2つに分かれます。</p>
+<p>どちらも大きな費用はかかりません。早く気づけるかどうかで、その後の手間が大きく変わります。<span class="mark-yellow">気づくのが早いほど、被害も審査の手間も小さく済む</span>はずです。次の3つを、今日からの習慣にしてください。</p>
+
+<h3>Search Consoleで通知を受け取る</h3>
+<p>Googleは、サイトの持ち主にSearch Consoleへの登録を強くすすめています。ハッキングなどが見つかったとき、メールで知らせてもらえるからです。</p>
+<p>運営者も、自社のサイトをSearch Consoleに登録しています。<span class="mark-yellow">通知を受け取るアドレスが、ふだん見ているものか</span>を確かめておきましょう。前の担当者のアドレスのままでは、知らせが届いても気づけません。制作会社に任せている場合は、通知が誰に届くかを聞いておいてください。</p>
+
+<h3>本体とプラグインを最新に保つ</h3>
+<p>乗っ取りの入口になりやすいのは、古いまま残ったプログラムです。WordPressの本体とテーマ、プラグインは、更新が出たら早めに当てましょう。</p>
+<p>Googleも、使っているソフトとプラグインの一覧を作り、更新を続けるよう案内しています。<span class="mark-yellow">一覧があれば、更新の漏れに気づきやすい</span>のです。使っていないプラグインは、更新を待つより消してしまうほうが確実でしょう。更新の前には、必ずバックアップを取ってください。更新のあとは、表示とフォームが動くかを確かめます。</p>
+
+<h3>外から定期的に点検する</h3>
+<p>自分のサイトは、毎日見ていても変化に気づきにくいものです。外から定期的に点検して、弱点が増えていないかを確かめましょう。</p>
+<p>古いプログラムや、外に見えてはいけないファイルは、外からの点検で見つけられます。<span class="mark-yellow">警告が出る前に弱点をふさぐことが、いちばんの備え</span>です。点検の結果と日付を残しておけば、次に何を直すかも決めやすくなるでしょう。月に1回など、点検の日を決めておくと続けやすくなります。結果は社内で共有しておくと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/6347750?hl=ja" target="_blank" rel="noopener noreferrer nofollow">Google 検索でサイトが危険とラベル付けされるのはなぜですか？｜Search Console ヘルプ</a></li>
+<li>参考：<a href="https://developers.google.com/search/docs/monitor-debug/security/prevent-malware" target="_blank" rel="noopener noreferrer nofollow">How To Prevent Malware Infection｜Google Search Central</a></li>
+</ul>
+
+<div class="art-cta"><strong>警告が出る前に、外から見える弱点を無料で確かめる</strong><p>URLを入れるだけで、古いプログラムや見えてはいけないファイルなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s5">「このサイトは危険です」に関するよくある質問</h2>
+
+<h3>自分のパソコンだけで警告が出ている場合もありますか？</h3>
+<p>パソコンに入った不正なソフトや、ブラウザの拡張機能が警告や広告を出すこともあります。別のパソコンやスマホから開いて、同じ警告が出るかを確かめてください。</p>
+<p>どこから開いても出るなら、サイトの側に原因がある見込みが高いでしょう。Search Consoleの「セキュリティの問題」の画面もあわせて見ておくと確実です。</p>
+
+<h3>警告画面の先へ進んで、自分のサイトを確かめてもいいですか？</h3>
+<p>警告画面から先へ進むことはできますが、危ないプログラムを開いてしまうおそれがあります。中身を確かめるときは、サーバーのファイルの一覧や管理画面から見るほうが安全です。</p>
+<p>ページの見た目を確かめたいときも、ふだん使いのパソコンでは開かないようにしましょう。分からないときは、無理をせずに専門の業者に任せてください。</p>
+
+<h3>審査をリクエストしてから、どのくらいで警告が消えますか？</h3>
+<p>Googleのヘルプでは、審査には数日から数週間かかるとされています。審査が通っても、表示から警告が消えるまでには少し時間がかかるのです。</p>
+<p>結果は、Search Consoleの画面とメールで知らされます。審査を待つ間も、問題が再び起きていないかを見張っておきましょう。1日以上たってから、検索の結果とブラウザの表示を見直すと確かです。</p>
+
+<h3>警告が出ている間、サイトは閉じておくべきですか？</h3>
+<p>ハッキングが疑われるなら、原因を取り除くまでは止めておくのが安全です。止めずにいると、訪問者に危ないページを見せ続けることになります。</p>
+<p>止めている間は、電話やメールなど、ほかの連絡先を案内しておきましょう。取引先には、点検中であることと再開の目安を伝えておくと安心です。前もって知らせておけば、問い合わせが重なるのも防げます。</p>
+
+<h3>自分で直すのが難しいときは、どこに頼めばいいですか？</h3>
+<p>まずは、サイトを作った制作会社や、保守を頼んでいる会社に相談してください。サーバー会社に、ファイルの復元を頼める場合もあります。</p>
+<p>どこにも頼み先がないときは、改ざんの対応を受けている専門の業者を探しましょう。料金と、どこまで直してくれるかを先に確かめてください。頼む前に、何が起きたかと、いつ気づいたかをメモにまとめておくと話が早く進みます。</p>
+
+<h2 id="s6">まとめ</h2>
+<p>「このサイトは危険です」と警告が出たら、まずSearch Consoleで種類を確かめましょう。そのうえで、見覚えのないファイルや外から読み込む部品を順に調べます。</p>
+<p>原因を取り除き、入口をふさいでから、<span class="mark-yellow">「審査をリクエスト」で警告を外してもらう</span>のが解除までの流れです。審査には数日から数週間かかります。</p>
+<p>ふだんから通知と更新、外からの点検をそろえておきましょう。警告が出る前に気づける仕組みが、いちばんの守りになります。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">警告が出る仕組み</a></li><li><a href="#s2">まず確かめる3つ</a></li><li><a href="#s3">警告を解除する流れ</a></li><li><a href="#s4">表示されないための備え</a></li><li><a href="#s5">よくある質問</a></li><li><a href="#s6">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
