@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>さくらのレンタルサーバでPHPのバージョンを変更する手順｜8.3への上げ方と戻し方｜スキゼロ</title>
+<meta name="description" content="さくらのレンタルサーバでPHPのバージョンを変更する手順を、準備から言語バージョン設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では上がらないので、今の版を確かめてください。">
+<link rel="canonical" href="https://sukizero.com/blog/sakura-php-version.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="さくらのレンタルサーバでPHPのバージョンを変更する手順｜8.3への上げ方と戻し方">
+<meta property="og:description" content="さくらのレンタルサーバでPHPのバージョンを変更する手順を、準備から言語バージョン設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では上がらないので、今の版を確かめてください。">
+<meta property="og:url" content="https://sukizero.com/blog/sakura-php-version.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-019-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-20">
+<meta property="article:section" content="PHP・サーバー">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "さくらのレンタルサーバでPHPのバージョンを変更する手順｜8.3への上げ方と戻し方", "description": "さくらのレンタルサーバでPHPのバージョンを変更する手順を、準備から言語バージョン設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では上がらないので、今の版を確かめてください。", "image": "https://sukizero.com/blog/img/eyecatch-019-v3.webp", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/sakura-php-version.html", "inLanguage": "ja", "articleSection": "PHP・サーバー", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えはサーバーコントロールパネルで保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは見る人の少ない時間帯に行い、崩れたらすぐ元の版に戻してください。戻した設定はすぐに反映されるので、止まる時間は短く抑えられるでしょう。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトは、PHP 8.3以上を推奨しています。さくらのレンタルサーバでは、2026年10月時点で選べる最も新しい版が8.3でした。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3が目安です。テーマやプラグインの配布ページで、8.3に対応しているかも先に確かめておきましょう。"}}, {"@type": "Question", "name": "ライトプランでもPHPのバージョンは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "ライトプランでも、言語バージョン設定から版を変えられます。ただし、動かし方はCGIだけで、モジュールは選べません。バックアップ&amp;ステージングも、ライトプランは対象外です。切り替えの前に、FTPなどでファイルを手元に控えておいてください。データベースも、管理画面から書き出して残しておくと安心でしょう。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "言語バージョン設定は、WordPressを使っているかどうかに関係なく使えます。ただし、独自に作られたサイトは、古い書き方のプログラムが新しい版で動かない場合も考えられるでしょう。ionCube Loaderを使うCMSは、版が変わると止まる例があると案内されています。作った会社に、対応する版を確かめてから切り替えましょう。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられます。切り替えの作業そのものを頼みたいときは、対策作業として見積もりを出しますのでご相談ください。バックアップから表示の確認、不具合のときの戻しまでを含めて引き受けています。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "さくらのレンタルサーバでPHPのバージョンを変更する手順｜8.3への上げ方と戻し方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1><span class="h1-main">さくらのレンタルサーバでPHPのバージョンを変更する手順</span><span class="h1-sub" data-sep="｜">8.3への上げ方と戻し方</span></h1>
+    <p><time datetime="2026-11-20">2026.11.20</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-019-v3.webp" alt="さくらのレンタルサーバでPHPのバージョンを変更する手順。言語バージョン設定から数分で切り替えられる" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「さくらのレンタルサーバのPHPを上げたいけれど、サイトが崩れたらどうしよう」と迷っていませんか？</p>
+<p>切り替えそのものは、サーバーコントロールパネルから数分で終わります。ただ、さくらのレンタルサーバは古い版でも自動では上がらないので、自分で動かない限りそのままです。</p>
+<p>この記事では、<span class="mark-yellow">さくらのレンタルサーバでPHPのバージョンを変更する手順</span>を、準備から順に紹介します。うまくいかなかったときの戻し方もまとめました。</p>
+<p>公式マニュアルと、運営者が自社サイトでPHPを上げたときに起きたことをもとに書いています。作業の前に一度通して読んでおくと安心です。</p>
+
+<h2 id="s1">さくらのレンタルサーバでPHPのバージョンを変更する前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/sakura-php-version-fig1.webp" alt="PHPの8.1から8.3までの版ごとに弱点の修正が続く期限を横の帯で並べ、8.1は終了済み、8.2は2026年末で終わり、8.3は2027年末まで続くことを示した図" width="1200" height="800"><figcaption>さくらのレンタルサーバで今選ぶなら、8.3が目安です</figcaption></figure>
+<p>さくらのレンタルサーバでPHPを変更する前に、<span class="mark-yellow">どのバージョンを選べばよいか</span>を決めておきましょう。あわせて、さくらインターネットがPHPの古い版をどう扱っているかも知っておくと迷いません。</p>
+<p>この2つを押さえておくと、なぜ今切り替えるのかがはっきりします。切り替えの手順そのものより先に、順に確かめてください。</p>
+
+<h3>選べる版と、今選ぶならどれか</h3>
+<p>php.netによると、<span class="mark-red"><strong>PHP 8.2の弱点の修正は2026年12月31日で終わります</strong></span>。8.3は2027年12月31日まで続き、WordPress公式も8.3以上を勧めている状況です。</p>
+<p>2026年10月のさくらインターネットのお知らせでは、選べる最も新しい版は8.3でした。今から選ぶなら、8.3にしておくと1年ほどは切り替えずに済みます。サポート終了の意味は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>で紹介しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer nofollow">Requirements｜WordPress.org</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/notification/n-2700/" target="_blank" rel="noopener noreferrer nofollow">【完了】PHPの脆弱性への対応状況について｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>古い版のままでも自動では上がらない</h3>
+<p>さくらインターネットは2023年9月にPHPの提供方針を改めました。サポートが終わった版も、提供を続ける形です。小さな版上げも、自動ではなく利用者が自分で行う形に変わっています。</p>
+<p>つまり、<span class="mark-yellow">何もしなければ契約時の古い版のまま</span>動き続けるのです。公式の案内には、重大な弱点が見つかれば予告なく提供を終える場合があるとも書かれています。何年も前に契約したサーバーほど、今の版を一度きちんと確かめておきたいところです。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2256/" target="_blank" rel="noopener noreferrer nofollow">PHPの提供ポリシーを知りたい｜さくらのサポート情報</a></li>
+</ul>
+
+<h2 id="s2">さくらのレンタルサーバでPHPのバージョンを変更する前の3つの準備</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/sakura-php-version-fig2.webp" alt="さくらのレンタルサーバでPHPのバージョンを変更する前の準備として、今のバージョンを控える、スナップショットを作る、WordPressとテーマとプラグインを最新にする、の3つを番号つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>準備を済ませておくと、戻す手間が小さくなります</figcaption></figure>
+<p>さくらのレンタルサーバでPHPのバージョンを変更する前に、<span class="mark-yellow">3つの準備を済ませておく</span>と安心です。切り替えは数分で終わりますが、準備を飛ばすと戻すときに手間取ります。</p>
+<p>どれもサーバーコントロールパネルとWordPressの管理画面だけでできる作業です。特に、何年も手を入れていないサイトは念入りに確かめてください。</p>
+
+<h3>① 今のPHPのバージョンを控える</h3>
+<p>まず、今のPHPのバージョンを確かめて控えておきましょう。さくらのレンタルサーバでは、「スクリプト設定」の「言語バージョン設定」に今の版が表示されます。WordPressなら、「ツール」の「サイトヘルス」にある「情報」タブでも見られる仕組みです。</p>
+<p><span class="mark-yellow">今の版を控えておけば、戻すときに迷いません</span>。契約した時期によって初めから入っている版が違うので、思っていたより古いこともあります。<a href="wordpress-version-check.html">WordPressのバージョンを確認する方法（管理画面と外からの両方）</a>で紹介しました。</p>
+
+<h3>② バックアップ&amp;ステージングで控えを取る</h3>
+<p>スタンダード以上のプランでは、無料の「バックアップ&amp;ステージング」が使えます。サーバーコントロールパネルの「バックアップ」から開いてください。サーバーとは別の場所に、www配下のファイルをスナップショットとして最大8つまで残せる仕組みです。</p>
+<p>WordPressなら、<span class="mark-yellow">データベースもあわせて控えられます</span>。切り替えの直前に1つ作っておけば、困ったときに戻す先ができるでしょう。ライトプランとお試し期間中は使えないため、FTPなどで手元に控えを取ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2197/" target="_blank" rel="noopener noreferrer nofollow">バックアップ&amp;ステージングを知りたい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>③ WordPressとテーマ、プラグインを最新にする</h3>
+<p>古いテーマやプラグインは、新しいPHPに対応していないことがあります。切り替えの前に、WordPress本体、テーマ、プラグインを最新にしておきましょう。公式マニュアルも、WordPressの最新版はおおむね最新のPHPに対応すると案内しています。</p>
+<p><span class="mark-yellow">何年も更新されていないプラグイン</span>は、この機会に置き換えを考えてください。本体が何年分も古いときは、一気に上げず段階を踏むのが安全です。<a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a>で紹介しました。</p>
+
+<h2 id="s3">さくらのレンタルサーバでPHPのバージョンを変更する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/sakura-php-version-fig3.webp" alt="さくらのレンタルサーバでPHPのバージョンを変更する手順として、ドメインとパスワードでログインする、スクリプト設定の言語バージョン設定を開く、PHPの版を選んで保存する、今のバージョンが変わったかを見る、の4つの段階を左から右へ矢印でつないだ図" width="1200" height="800"><figcaption>「スクリプト設定」の「言語バージョン設定」から切り替えます</figcaption></figure>
+<p>PHPの変更は、<span class="mark-yellow">サーバーコントロールパネルの言語バージョン設定</span>から行います。公式マニュアルの手順に沿って、画面の名前もそのまま載せました。</p>
+<p>画面の配置は変わることがあるので、見つからないときは公式マニュアルの最新の画面で確かめてください。作業は、サイトを見る人が少ない時間帯に行うと安心です。手順は大きく分けて4つあります。</p>
+
+<h3>ドメインとパスワードでログインする</h3>
+<p>サーバーコントロールパネルには、初期ドメインか追加したドメインと、そのパスワードでログインします。メールアドレスとメールのパスワードで入ると、メールの設定しか表示されない仕組みです。</p>
+<p><span class="mark-yellow">PHPの設定項目が見当たらないときは、入り方を見直してください</span>。初期ドメインは「○○.sakura.ne.jp」の形で、契約時のメールに書かれています。パスワードが分からないときは、無理に試さず再設定の手順を踏みましょう。</p>
+
+<h3>言語バージョン設定で版を選んで保存する</h3>
+<p>左のメニューの「スクリプト設定」から「言語バージョン設定」を開きます。PHPのバージョンの欄で、変えたい版を選んで「保存する」を押してください。</p>
+<p>画面に表示される今のバージョンが、選んだ版に変われば切り替えは完了です。<span class="mark-red"><strong>保存した時点ですぐに新しい版で動き始めます</strong></span>。そのため、保存したらすぐにサイトの表示の確かめに移りましょう。一度に大きく上げるのが不安なら、間の版を1つずつ試して確かめる方法もあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2241/" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンを変更したい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>CGIとモジュールのどちらで動かすか</h3>
+<p>さくらのレンタルサーバのPHPには、CGIとモジュールの2つの動かし方があります。CGIは全プランで使え、モジュールはスタンダード以上のプランでPHP 7以上なら選べる仕組みです。</p>
+<p>モジュールで動かすときは、版を選ぶときに<span class="mark-yellow">「モジュール」にチェックを入れます</span>。迷ったら、今の動かし方を変えずに版だけを上げるのが無難でしょう。版と動かし方を一度に変えると、不具合が出たときにどちらが原因か分かりにくくなります。</p>
+
+<h2 id="s4">さくらのレンタルサーバでPHPのバージョンを変更したあとの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/sakura-php-version-fig4.webp" alt="さくらのレンタルサーバでPHPのバージョンを変更したあとに確かめることとして、サイトヘルスの版、表側と管理画面の表示、お問い合わせフォームの送信、の3つをカードに並べた図" width="1200" height="800"><figcaption>版、表示、送信の3つを確かめれば一安心です</figcaption></figure>
+<p>さくらのレンタルサーバでPHPのバージョンを変更したら、<span class="mark-yellow">その場でサイトの動きを確かめましょう</span>。公式マニュアルも、変更のあとは表示や投稿などの動作を確かめるよう案内しています。</p>
+<p>確かめる順番を決めておけば、見落としを減らせるでしょう。崩れに気づくのが早いほど、戻す判断もしやすくなります。確かめる項目は、版、表示、送信の3つです。</p>
+
+<h3>サイトヘルスと表示を確かめる</h3>
+<p>WordPressの「ツール」の「サイトヘルス」で、「情報」タブのサーバーの欄を開きます。PHPの版が選んだものに変わっていれば、反映は済んでいるはずです。</p>
+<p>続けて、トップページと主なページ、管理画面を開いて崩れがないかを見てください。運営者は自社サイトでPHPを上げたとき、<span class="mark-yellow">前後で全ページの表示を比べて</span>確かめました。スマホでも、主なページを開いておくと安心です。英語のエラー文や真っ白な画面が出たら、次の章の手順に進みましょう。</p>
+
+<h3>フォームとメールの送信を確かめる</h3>
+<p>見た目が変わらなくても、お問い合わせフォームが動かなくなっていることがあります。フォームのプラグインは、PHPの機能を多く使うためです。</p>
+<p>切り替えのあとに、<span class="mark-yellow">自分あてに1通送ってみてください</span>。自動返信のメールと管理者あてのメールが、両方とも届くかを見ておきましょう。予約や決済のプラグインを使っているなら、それも1回ずつ試しておくと安心です。届かないときは、プラグインの版と、エラーの記録を確かめていきます。</p>
+
+<h2 id="s5">さくらのレンタルサーバでPHPのバージョンを変更してうまくいかないとき</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/sakura-php-version-fig5.webp" alt="さくらのレンタルサーバでPHPのバージョンを変更してうまくいかないときの流れとして、表示が崩れたらまず元の版に戻し、原因のプラグインを探し、ステージングで試してから本番を上げ直す、という分かれ道を示したフローチャートの図" width="1200" height="800"><figcaption>まず元の版に戻し、原因は落ち着いて探します</figcaption></figure>
+<p>PHPを変えて表示が崩れても、<span class="mark-yellow">元の版に戻せばすぐに直る</span>ことがほとんどです。慌てずに、戻してから原因を探す順番で進めましょう。</p>
+<p>戻したままにせず、原因を取り除いてから上げ直すところまでが作業です。古い版を使い続ける期間は、できるだけ短くしてください。戻す、探す、試すの順に、3つの手順で進めていきましょう。</p>
+
+<h3>まず元の版に戻す</h3>
+<p>表示が崩れたら、言語バージョン設定で控えておいた元の版を選び直して保存します。公式マニュアルによると、<span class="mark-red"><strong>元の版に戻した設定はすぐに反映される</strong></span>とのことです。</p>
+<p>戻したら、サイトが元どおり表示されるかを確かめましょう。それでも直らないときは、PHPではなくテーマの更新など別の作業が原因のことがあります。切り替えの前に作ったスナップショットから戻す方法も考えてください。戻したあとは、どの画面でどんなエラーが出たかを書き留めておくと、原因探しが早くなります。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2172/" target="_blank" rel="noopener noreferrer nofollow">WordPressのダッシュボードにPHPの更新が必要と表示される場合の対応を知りたい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>原因のプラグインを探して入れ替える</h3>
+<p>よくある原因は、新しいPHPに対応していない古いテーマやプラグインです。運営者の自社サイト（別のサーバー）でも、PHPを8.3に上げたら管理画面にエラーが出ました。原因は、何年も更新していなかったプラグインでした。</p>
+<p>エラー文に出てくるフォルダ名から、<span class="mark-yellow">どのプラグインが止めているか</span>を探せます。更新が止まったプラグインは、同じ働きの別のものに入れ替えるのが確実です。使っていないなら、削除まで済ませておきましょう。</p>
+
+<h3>ステージングで試してから上げ直す</h3>
+<p>原因が分かりにくいときは、ステージングで試してから本番を上げ直す方法があります。さくらのレンタルサーバのステージングは、作るときにPHPの版を選べる仕組みです。</p>
+<p>本番のスナップショットを入れて、<span class="mark-yellow">新しい版で動くかを先に確かめられます</span>。ただし、ステージングは本番と別の環境なので、動きが完全に同じとは限りません。作成から90日で自動的に消えることも覚えておきましょう。試し終えたら、同じ版を本番で選び直してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2167/" target="_blank" rel="noopener noreferrer nofollow">WordPress用のステージングサーバーを作成・削除したい｜さくらのサポート情報</a></li>
+</ul>
+
+<div class="art-cta"><strong>あなたのサイトのPHPは何版ですか</strong><p>URLを入れるだけで、PHPやWordPressの版、ログイン名など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">さくらのレンタルサーバのPHPバージョンに関するよくある質問</h2>
+
+<h3>PHPのバージョンを変えると、サイトは止まりますか？</h3>
+<p>切り替えはサーバーコントロールパネルで保存するだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。切り替えは見る人の少ない時間帯に行い、崩れたらすぐ元の版に戻してください。戻した設定はすぐに反映されるので、止まる時間は短く抑えられるでしょう。</p>
+
+<h3>どのPHPのバージョンを選べばいいですか？</h3>
+<p>WordPressの公式サイトは、PHP 8.3以上を推奨しています。さくらのレンタルサーバでは、2026年10月時点で選べる最も新しい版が8.3でした。8.2は2026年12月31日で弱点の修正が終わるので、今から選ぶなら8.3が目安です。テーマやプラグインの配布ページで、8.3に対応しているかも先に確かめておきましょう。</p>
+
+<h3>ライトプランでもPHPのバージョンは変えられますか？</h3>
+<p>ライトプランでも、言語バージョン設定から版を変えられます。ただし、動かし方はCGIだけで、モジュールは選べません。バックアップ&amp;ステージングも、ライトプランは対象外です。切り替えの前に、FTPなどでファイルを手元に控えておいてください。データベースも、管理画面から書き出して残しておくと安心でしょう。</p>
+
+<h3>WordPress以外のサイトでも、同じ手順で変えられますか？</h3>
+<p>言語バージョン設定は、WordPressを使っているかどうかに関係なく使えます。ただし、独自に作られたサイトは、古い書き方のプログラムが新しい版で動かない場合も考えられるでしょう。ionCube Loaderを使うCMSは、版が変わると止まる例があると案内されています。作った会社に、対応する版を確かめてから切り替えましょう。</p>
+
+<h3>自分で切り替えるのが不安なときはどうすればいいですか？</h3>
+<p>制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられます。切り替えの作業そのものを頼みたいときは、対策作業として見積もりを出しますのでご相談ください。バックアップから表示の確認、不具合のときの戻しまでを含めて引き受けています。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>さくらのレンタルサーバでは、「スクリプト設定」の「言語バージョン設定」からPHPの版を変えられます。切り替えの前に、今の版の控え、スナップショット、プラグインなどの更新を済ませておきましょう。</p>
+<p>切り替えたら、表示とフォームの送信を確かめ、崩れたら元の版に戻してください。古い版は自動では上がらないので、<span class="mark-yellow">年内に8.3へ上げておく</span>ことをおすすめします。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">変更する前に知っておきたいこと</a></li><li><a href="#s2">変更する前の3つの準備</a></li><li><a href="#s3">変更する手順</a></li><li><a href="#s4">変更したあとの確認</a></li><li><a href="#s5">変更してうまくいかないとき</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
