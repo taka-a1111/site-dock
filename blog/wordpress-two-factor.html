@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備｜スキゼロ</title>
+<meta name="description" content="WordPressのログインに2段階認証を設定する方法を、プラグインの選び方から認証アプリでの設定手順、スマホをなくしたときの戻し方まで順に解説します。本体には機能がないため、締め出されない準備と合わせて進めてください。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-two-factor.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備">
+<meta property="og:description" content="WordPressのログインに2段階認証を設定する方法を、プラグインの選び方から認証アプリでの設定手順、スマホをなくしたときの戻し方まで順に解説します。本体には機能がないため、締め出されない準備と合わせて進めてください。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-two-factor.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-020-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-21">
+<meta property="article:section" content="ログイン・アカウント">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備", "description": "WordPressのログインに2段階認証を設定する方法を、プラグインの選び方から認証アプリでの設定手順、スマホをなくしたときの戻し方まで順に解説します。本体には機能がないため、締め出されない準備と合わせて進めてください。", "image": "https://sukizero.com/blog/img/eyecatch-020-v3.webp", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-two-factor.html", "inLanguage": "ja", "articleSection": "ログイン・アカウント", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "2段階認証を設定すると、ログインのたびに手間が増えますか？", "acceptedAnswer": {"@type": "Answer", "text": "ログインのたびに、スマホのアプリを開いて6桁の数字を入れる手間が増えます。かかる時間は10秒ほどです。プラグインによっては、同じ端末なら一定の期間は数字を省ける設定もあります。毎日ログインする人でも、慣れればほとんど気にならない程度でしょう。管理画面に入る回数が多い人ほど、入られる心配が減る効果は大きくなります。数字は30秒ほどで変わるので、切り替わる直前なら次の数字を待ちましょう。"}}, {"@type": "Question", "name": "メールで数字を受け取る方式でもいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "使えますが、ふだん使う方式には認証アプリをおすすめします。メールの方式は、メールのアカウントが乗っ取られると、数字も相手に届いてしまうのが弱点です。サーバーのメールの送信が止まっていると、数字が届かず入れなくなることもあります。メールの方式は、認証アプリの予備として有効にしておく使い方が向いているでしょう。バックアップコードとあわせて用意しておくと、入れなくなる心配はさらに小さくなります。"}}, {"@type": "Question", "name": "編集者や投稿者のユーザーにも設定したほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "記事を公開できる権限のある人には、設定してもらうのが安全です。編集者のアカウントが乗っ取られると、偽の記事や悪いリンクを載せられてしまいます。外部のライターなど、たまにしかログインしない人も対象に含めましょう。パスワードの使い回しが、起きやすいからです。使わなくなったユーザーは、設定するより先に削除しておいてください。権限の一覧を見て、誰に設定してもらうかを先に決めると進めやすくなります。"}}, {"@type": "Question", "name": "2段階認証を入れれば、ほかの対策はしなくていいですか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ、2段階認証が守るのはログインの入口だけです。古いプラグインの弱点を突かれると、ログインしなくてもサイトを書き換えられる場合があります。本体やプラグインの更新、PHPの版の確認、バックアップは別に続けてください。何年も更新していないサイトなら、更新の順番が大切になります。手順は、WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的にです。"}}, {"@type": "Question", "name": "制作会社に任せているサイトでも、自分で設定できますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理者の権限があれば、自分でプラグインを入れて設定できます。ただし、制作会社が保守でログインしている場合は、先に相談してから入れてください。制作会社の担当者も2段階認証が必要になり、作業の段取りが変わるからです。誰が管理者のアカウントを持っているかも、この機会に一覧で確かめておきましょう。今のサイトの状態が分からないときは、スキゼロの無料簡易診断が使えます。ログイン名の見え方など8項目を、外から無料で確かめられる仕組みです。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1><span class="h1-main">WordPressのログインに2段階認証を設定する方法</span><span class="h1-sub" data-sep="｜">プラグイン選びと締め出されない準備</span></h1>
+    <p><time datetime="2026-11-21">2026.11.21</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-020-v3.webp" alt="WordPressのログインに2段階認証を設定する方法。パスワードと認証アプリの数字の2つでログインする" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「WordPressの管理画面、パスワードだけで本当に大丈夫だろうか」と不安になっていませんか？</p>
+<p>パスワードが漏れると、管理画面には誰でも入れてしまいます。2段階認証を足せば、パスワードを知られただけでは入れない形にできるのです。</p>
+<p>この記事では、<span class="mark-yellow">WordPressのログインに2段階認証を設定する方法</span>を順に紹介します。プラグインの選び方と、スマホをなくしたときの備えもまとめました。</p>
+<p>もとにしたのは、WordPress公式の手引きや警察庁の統計です。運営者の自社サイトの点検で分かったことも入れています。設定の前に、一度通して読んでおくと安心でしょう。</p>
+
+<h2 id="s1">WordPressの2段階認証とは？パスワードだけのログインとの違い</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-two-factor-fig1.webp" alt="パスワードだけのログインでは漏れたパスワードで誰でも入れるのに対し、2段階認証ではスマホの認証アプリに出る数字がないと入れないことを、左右に並べて比べた図" width="1200" height="800"><figcaption>パスワードが漏れても、スマホの数字がなければ入れません</figcaption></figure>
+<p>2段階認証は、パスワードに加えて、手元のスマホに出る数字などを入れてログインする仕組みです。<span class="mark-yellow">パスワードを知られただけでは入れない</span>形になります。</p>
+<p>まずは仕組みと、なぜパスワードだけでは足りないのかを押さえましょう。WordPress本体で設定できるのかも確かめておくと、次の準備で迷いません。先に全体の形をつかんでから、プラグイン選びに進んでください。</p>
+
+<h3>知っているものと持っているものを組み合わせる</h3>
+<p>総務省は、ログインのときに本人を確かめる要素として3つを挙げています。知っているもの、持っているもの、本人の体に関するものの3つです。このうち2つ以上を組み合わせるのが、多要素認証と呼ばれる考え方となります。</p>
+<p>WordPressの2段階認証は、知っているパスワードと、持っているスマホを組み合わせる形です。スマホの認証アプリには、30秒ほどで変わる6桁の数字が表示されます。数字は本人のスマホにしか出ないため、<span class="mark-yellow">パスワードが漏れても入られにくく</span>なるわけです。認証アプリは無料のものが多く、費用もかかりません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/security/end_user/general/01/" target="_blank" rel="noopener noreferrer nofollow">推測できる簡単なパスワードを利用しないようにしよう｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<h3>パスワードだけでは防げない入られ方</h3>
+<p>令和7年に検挙された、他人のIDとパスワードを悪用した不正アクセスは399件でした。<span class="mark-red"><strong>そのうち84件は、パスワードの設定や管理の甘さにつけ込んだもの</strong></span>です。</p>
+<p>次に多かったのは、偽のログイン画面に入力させるフィッシングで、77件ありました。どちらも、パスワードが相手に知られるところから始まります。長く強いパスワードにしても、偽の画面に入力すれば漏れてしまうでしょう。パスワードとは別の確かめ方を足すことが、こうした入られ方への備えです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/bureau/cyber/pdf/R080312_access.pdf" target="_blank" rel="noopener noreferrer nofollow">不正アクセス行為の発生状況及びアクセス制御機能に関する技術の研究開発の状況（令和8年3月12日）｜警察庁</a></li>
+</ul>
+
+<h3>WordPress本体には設定の画面がない</h3>
+<p>WordPressの本体には、2段階認証を設定する画面が入っていません。本体に取り込む話は以前からありましたが、今もプラグインとして別に開発が続いている状態です。</p>
+<p>そのため、2段階認証を使うには、<span class="mark-yellow">対応したプラグインを入れて設定する</span>必要があります。公式の手引きも、ブラウザからのログインには2段階認証を足すよう勧めているのです。サーバー会社の管理画面の設定だけでは、ログインに数字の確認は加わりません。プラグインそのものは、管理画面から数分で入れられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/core/tag/two-factor/" target="_blank" rel="noopener noreferrer nofollow">two-factor｜Make WordPress Core</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s2">WordPressの2段階認証に使うプラグインの選び方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-two-factor-fig2.webp" alt="WordPressの2段階認証に使うプラグインとして、2段階認証だけを足すTwo Factorと、守りの機能をまとめたWordfenceを並べ、更新が続いているか、締め出し対策があるか、ほかの機能と重ならないかの3つの選ぶ基準を下に添えた図" width="1200" height="800"><figcaption>2段階認証だけならTwo Factor、守りをまとめるならWordfenceです</figcaption></figure>
+<p>WordPressの2段階認証のプラグインはたくさんありますが、迷ったら2つから選べば十分です。選び方は、<span class="mark-yellow">2段階認証だけを足すか、守りをまとめるか</span>で決まります。</p>
+<p>どちらも無料で使え、認証アプリに出る数字で確かめる方式に対応しているのが共通点です。それぞれの特徴と、選ぶときに見ておきたい点を順に紹介します。すでに守りのプラグインを使っているサイトは、3つ目の点も確かめてください。</p>
+
+<h3>2段階認証だけを足すならTwo Factor</h3>
+<p>Two Factorは、WordPress.orgが公開している2段階認証のプラグインです。有効にしているサイトは10万以上あり、WordPressの開発に関わる人たちが手入れを続けています。</p>
+<p>使える方式は、認証アプリ、メールに届く数字、もしもの時のバックアップコードの3つです。<span class="mark-yellow">ほかの機能を持たず、2段階認証だけを足せる</span>のが長所といえるでしょう。今の版は、WordPress 7.0以上とPHP 7.4以上が前提です。古いサイトは、先に本体の更新から始めてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/plugins/two-factor/" target="_blank" rel="noopener noreferrer nofollow">Two Factor｜WordPress.org</a></li>
+</ul>
+
+<h3>守りの機能をまとめるならWordfence</h3>
+<p>Wordfenceは、ファイアウォールや不正なファイルの検査に加え、2段階認証も持つプラグインです。有効にしているサイトは500万以上あり、無料版でも2段階認証を使えます。</p>
+<p>2段階認証は認証アプリの方式で、XML-RPCという別の入口にも足せる仕組みです。以前のSMSで数字を送る方式は、2026年7月ごろで終わると案内されました。2段階認証だけを切り出した単体版も、2026年8月に配布を終えています。<span class="mark-yellow">これから入れるならWordfence本体の機能</span>を使ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/plugins/wordfence/" target="_blank" rel="noopener noreferrer nofollow">Wordfence Security – Firewall, Malware Scan, and Login Security｜WordPress.org</a></li>
+</ul>
+
+<h3>選ぶときに確かめたい3つの点</h3>
+<p>1つ目は、更新が続いているかどうかです。プラグインの紹介ページで、最終更新日と対応する版を見ておきましょう。</p>
+<p>2つ目は、スマホをなくしたときのバックアップコードがあるかどうかです。3つ目として、すでに使っている守りのプラグインと機能が重ならないかを見ます。<span class="mark-yellow">同じ働きのプラグインを2つ入れない</span>ようにしてください。ログインの画面が二重に変わり、入れなくなる原因になるからです。片付け方は、<a href="wordpress-plugin-delete.html">WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方</a>で紹介しました。</p>
+
+<h2 id="s3">WordPressに2段階認証を設定する4つの手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-two-factor-fig3.webp" alt="WordPressに2段階認証を設定する手順として、バックアップを取り管理者を2人にする、プラグインを入れて有効にする、プロフィールで認証アプリにQRコードを読み込ませる、バックアップコードを保存してログインし直す、の4つの段階を番号つきで左から右へ並べた図" width="1200" height="800"><figcaption>準備から確認まで、4つの手順で進めます</figcaption></figure>
+<p>ここからは、WordPressに2段階認証を設定する手順を、Two Factorを例に紹介します。<span class="mark-yellow">作業は1人あたり10分ほど</span>で終わるのが目安です。</p>
+<p>手順の順番を入れ替えると、設定の途中で締め出される場合があります。準備から確認まで、上から順に進めてください。Wordfenceを使う場合も、大きな流れは同じです。設定は管理者から始め、終わったらほかのユーザーにも広げましょう。</p>
+
+<h3>① バックアップを取り、管理者を2人にしておく</h3>
+<p>設定を始める前に、サーバーの機能などでサイト全体のバックアップを取っておきます。あわせて、管理者の権限を持つユーザーが2人以上いるかを確かめましょう。</p>
+<p>管理者が2人いれば、<span class="mark-yellow">1人が締め出されても、もう1人が外せます</span>。1人で運営しているなら、普段は使わない予備の管理者を作っておくと安心です。予備のユーザー名は推測されにくいものにし、強いパスワードを付けてください。作ったら、そのユーザーにも2段階認証を設定しておくことが大切です。</p>
+
+<h3>② プラグインを入れて有効にする</h3>
+<p>管理画面の「プラグイン」から「新規プラグインを追加」を開き、名前で探してインストールしてください。数十秒ほどで終わります。入れたら「有効化」を押すと、各ユーザーのプロフィールの画面に設定の欄が加わる仕組みです。</p>
+<p>この時点では、まだ誰のログインも変わりません。<span class="mark-yellow">2段階認証は、各ユーザーが自分で有効にする</span>形です。管理者だけでなく、編集者などのユーザーにも設定してもらいましょう。誰が設定を終えたかは、ユーザーの一覧で確かめられます。</p>
+
+<h3>③ 認証アプリにQRコードを読み込ませる</h3>
+<p>スマホに、Google Authenticatorなどの認証アプリを入れます。次に、WordPressの「ユーザー」から「プロフィール」を開いてください。</p>
+<p>2段階認証の設定欄で認証アプリの方式を選ぶと、QRコードが出ます。アプリで読み取り、表示された6桁の数字を入れて確かめましょう。<span class="mark-yellow">ふだん使う方式を認証アプリに決めて</span>、「プロフィールを更新」を押せば完了です。Authyや1Passwordなど、ほかの認証アプリでも同じように使えます。</p>
+
+<h3>④ バックアップコードを保存してログインし直す</h3>
+<p>同じ欄でバックアップコードの方式も有効にし、コードを作ります。コードは1回ずつ使える予備の数字で、スマホが使えないときの入口です。</p>
+<p>コードは印刷するか、パスワードの管理アプリに保存しましょう。<span class="mark-yellow">スマホの中だけに置くと、なくしたときに使えません</span>。最後に、ログアウトしてからログインし直し、数字を求められるかを確かめます。別のブラウザで試すと、うまく動いているかが分かりやすいでしょう。数字を入れて管理画面に戻れたら、設定は終わりです。</p>
+
+<h2 id="s4">WordPressの2段階認証で締め出されないための準備と戻し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-two-factor-fig4.webp" alt="WordPressの2段階認証でスマホをなくしたときの流れとして、バックアップコードがあれば入れる、なければ別の管理者に外してもらう、どちらもなければサーバーでプラグインのフォルダ名を変えて止める、と分かれていくフローチャートの図" width="1200" height="800"><figcaption>バックアップコード、別の管理者、サーバーの順で戻せます</figcaption></figure>
+<p>2段階認証でいちばん困るのは、スマホをなくしたり機種を変えたりして、管理画面に入れなくなることです。<span class="mark-yellow">戻し方を先に知っておけば、慌てずに済み</span>ます。</p>
+<p>戻し方は、手軽なものから順に3つ知っておくと安心です。1つ目が使えれば、ほかの2つは要りません。上から順に試してください。どの方法も、締め出される前の準備があってこそ使えるものです。</p>
+
+<h3>バックアップコードで入る</h3>
+<p>手元に保存したバックアップコードがあれば、ログインの画面で方式を切り替えて入れます。入れたら、新しいスマホの認証アプリで、もう一度QRコードを読み込みましょう。</p>
+<p>使ったコードは、二度と使えません。<span class="mark-yellow">残りが少なくなったら、コードを作り直して</span>保存し直してください。機種を変えるときは、古いスマホがあるうちに読み込み直すのが確実です。認証アプリによっては、新しい機種へ移す機能もあります。移したあとは、ログインし直して数字が通るかを確かめてください。</p>
+
+<h3>別の管理者に外してもらう</h3>
+<p>コードがないときは、ほかの管理者に頼むのが近道です。Two Factorでは、管理者がその人のユーザー編集の画面を開けば外せます。</p>
+<p>外したあとは、本人がもう一度ログインし、新しいスマホで設定し直してください。サーバーでコマンドが使える環境なら、WP-CLIという道具で外す方法も用意されています。<span class="mark-yellow">予備の管理者を作っておく意味</span>は、こうした場面で分かるはずです。頼む相手がいない場合に備えて、次の方法も知っておきましょう。</p>
+
+<h3>どちらもないときはサーバーで止める</h3>
+<p>管理者が自分1人で、コードもない場合は、サーバー側で2段階認証のプラグインを止めます。FTPやサーバーのファイル管理で、プラグインのフォルダの名前を変える方法です。</p>
+<p>名前を変えるとプラグインが止まり、パスワードだけで入れるようになります。<span class="mark-red"><strong>入れたらすぐにフォルダ名を戻し、設定し直してください</strong></span>。止めている間は、2段階認証のない状態に戻っているからです。フォルダは、wp-contentの中のpluginsにあります。作業の前に元の名前を控えておけば、戻すときに迷いません。</p>
+
+<h2 id="s5">WordPressの2段階認証だけでは足りないところ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-two-factor-fig5.webp" alt="WordPressの管理画面を守る仕組みとして、中央の管理画面の入口のまわりに、2段階認証、アプリケーションパスワードの見直し、管理画面のIPアドレス制限、ユーザーの一覧の見直しの4つを配置した放射状の図" width="1200" height="800"><figcaption>2段階認証に、入口の見直しを組み合わせます</figcaption></figure>
+<p>2段階認証は、管理画面へのログインを守る仕組みです。ただし、WordPressにはブラウザからのログイン以外にも入口があります。<span class="mark-yellow">ほかの入口と組み合わせて守る</span>ことが大切です。</p>
+<p>見落としやすいのは、アプリケーションパスワードと、サーバー側の守りの2つでしょう。どちらも、2段階認証を設定したその日に、あわせて見直しておきたいところです。順に見ていきましょう。</p>
+
+<h3>アプリケーションパスワードは別の入口</h3>
+<p>アプリケーションパスワードは、外部のアプリとやりとりするための専用のパスワードです。WordPress 5.6から本体に入り、各ユーザーのプロフィールの画面で作れます。</p>
+<p>これで管理画面には入れませんが、記事の投稿などはできる場合があるのです。Two Factorでは、2段階認証を設定しても、このパスワードはそのまま使えます。運営者の自社サイトの点検でも、<span class="mark-yellow">使わなくなったアプリケーションパスワード</span>が残っていました。使っていないものは、プロフィールの画面で取り消してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>サーバーの守りとユーザーの見直しを組み合わせる</h3>
+<p>エックスサーバーでは、2026年6月に管理画面へ入れるIPアドレスを絞る機能が加わりました。会社の回線だけに絞れば、外からはログインの画面に届きません。</p>
+<p>あわせて、ユーザーの一覧も定期的に見直しましょう。運営者の自社サイトでは、心当たりのない編集者のアカウントが2つ見つかっています。<span class="mark-yellow">知らないユーザーは2段階認証では見つかりません</span>。入られたかもしれないときは、すぐに動く必要があります。手順は、<a href="wordpress-unauthorized-login.html">WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=18691" target="_blank" rel="noopener noreferrer nofollow">WordPress管理画面へのアクセス元を限定できる「IPアドレス制限」機能追加のお知らせ｜エックスサーバー</a></li>
+</ul>
+
+<div class="art-cta"><strong>ログイン名が外から見えていないか確かめませんか</strong><p>URLを入れるだけで、ログイン名の見え方やWordPressの版など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressの2段階認証に関するよくある質問</h2>
+
+<h3>2段階認証を設定すると、ログインのたびに手間が増えますか？</h3>
+<p>ログインのたびに、スマホのアプリを開いて6桁の数字を入れる手間が増えます。かかる時間は10秒ほどです。プラグインによっては、同じ端末なら一定の期間は数字を省ける設定もあります。毎日ログインする人でも、慣れればほとんど気にならない程度でしょう。管理画面に入る回数が多い人ほど、入られる心配が減る効果は大きくなります。数字は30秒ほどで変わるので、切り替わる直前なら次の数字を待ちましょう。</p>
+
+<h3>メールで数字を受け取る方式でもいいですか？</h3>
+<p>使えますが、ふだん使う方式には認証アプリをおすすめします。メールの方式は、メールのアカウントが乗っ取られると、数字も相手に届いてしまうのが弱点です。サーバーのメールの送信が止まっていると、数字が届かず入れなくなることもあります。メールの方式は、認証アプリの予備として有効にしておく使い方が向いているでしょう。バックアップコードとあわせて用意しておくと、入れなくなる心配はさらに小さくなります。</p>
+
+<h3>編集者や投稿者のユーザーにも設定したほうがいいですか？</h3>
+<p>記事を公開できる権限のある人には、設定してもらうのが安全です。編集者のアカウントが乗っ取られると、偽の記事や悪いリンクを載せられてしまいます。外部のライターなど、たまにしかログインしない人も対象に含めましょう。パスワードの使い回しが、起きやすいからです。使わなくなったユーザーは、設定するより先に削除しておいてください。権限の一覧を見て、誰に設定してもらうかを先に決めると進めやすくなります。</p>
+
+<h3>2段階認証を入れれば、ほかの対策はしなくていいですか？</h3>
+<p>いいえ、2段階認証が守るのはログインの入口だけです。古いプラグインの弱点を突かれると、ログインしなくてもサイトを書き換えられる場合があります。本体やプラグインの更新、PHPの版の確認、バックアップは別に続けてください。何年も更新していないサイトなら、更新の順番が大切になります。手順は、<a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a>です。</p>
+
+<h3>制作会社に任せているサイトでも、自分で設定できますか？</h3>
+<p>管理者の権限があれば、自分でプラグインを入れて設定できます。ただし、制作会社が保守でログインしている場合は、先に相談してから入れてください。制作会社の担当者も2段階認証が必要になり、作業の段取りが変わるからです。誰が管理者のアカウントを持っているかも、この機会に一覧で確かめておきましょう。今のサイトの状態が分からないときは、スキゼロの無料簡易診断が使えます。ログイン名の見え方など8項目を、外から無料で確かめられる仕組みです。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressの本体には2段階認証の設定がないため、プラグインで足します。候補は、2段階認証だけを足すTwo Factorと、守りをまとめるWordfenceです。設定の前に、バックアップを取り、管理者を2人にしておきましょう。</p>
+<p>認証アプリで設定したら、バックアップコードをスマホの外に保存してください。アプリケーションパスワードやユーザーの一覧も見直しましょう。<span class="mark-yellow">2段階認証とほかの守りを組み合わせる</span>ことが大切です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">2段階認証とは</a></li><li><a href="#s2">プラグインの選び方</a></li><li><a href="#s3">設定する4つの手順</a></li><li><a href="#s4">締め出されないための準備</a></li><li><a href="#s5">2段階認証だけでは足りないところ</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
