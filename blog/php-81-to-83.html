@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PHP 8.1から8.3へ上げる前に確認すること｜止まりやすい変化と事前チェックの手順｜スキゼロ</title>
+<meta name="description" content="PHP 8.1から8.3へ上げる前に確認することを、サポートの期限、止まりやすい書き方の変化、事前の4つの確認、切り替えの手順の順に解説します。エラーが出たときの戻し方も紹介するので、作業の前に読んでおいてください。">
+<link rel="canonical" href="https://sukizero.com/blog/php-81-to-83.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 8.1から8.3へ上げる前に確認すること｜止まりやすい変化と事前チェックの手順">
+<meta property="og:description" content="PHP 8.1から8.3へ上げる前に確認することを、サポートの期限、止まりやすい書き方の変化、事前の4つの確認、切り替えの手順の順に解説します。エラーが出たときの戻し方も紹介するので、作業の前に読んでおいてください。">
+<meta property="og:url" content="https://sukizero.com/blog/php-81-to-83.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-022-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-23">
+<meta property="article:section" content="PHP・サーバー">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHP 8.1から8.3へ上げる前に確認すること｜止まりやすい変化と事前チェックの手順", "description": "PHP 8.1から8.3へ上げる前に確認することを、サポートの期限、止まりやすい書き方の変化、事前の4つの確認、切り替えの手順の順に解説します。エラーが出たときの戻し方も紹介するので、作業の前に読んでおいてください。", "image": "https://sukizero.com/blog/img/eyecatch-022-v3.webp", "datePublished": "2026-11-23", "dateModified": "2026-11-23", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/php-81-to-83.html", "inLanguage": "ja", "articleSection": "PHP・サーバー", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHP 8.1のままだと、すぐにサイトが見られなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "すぐに見られなくなるわけではありません。サポートが終わっても、PHPはそのまま動き続けます。ただ、新しく見つかった弱点が直らないため、狙われやすい状態が続くのです。サーバー会社が古い版の提供を止めると、自動で切り替わることもあります。思わぬ時期に表示が崩れないよう、自分で計画を立てて上げておきましょう。"}}, {"@type": "Question", "name": "8.2を挟まずに、8.1から8.3へ直接上げても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "多くの場合、直接上げて問題ありません。8.2で入った変化は、8.3にもそのまま含まれています。間に8.2を挟んでも、確かめる中身はほとんど変わらないのです。ただし、古いプラグインが多いサイトでは、警告がまとめて出ることがあります。試し用の場所があるなら、先にそこで8.3を試しておくと安心して進められるでしょう。"}}, {"@type": "Question", "name": "「Deprecated」という文字が画面に出ました。壊れたのですか？", "acceptedAnswer": {"@type": "Answer", "text": "Deprecatedは、推奨されない書き方を使っているという警告です。多くの場合、その機能はそのまま動いています。ただ、画面に警告の文が出ると見た目が崩れるため、そのままにはできません。警告に出る名前から原因のプラグインを探し、更新か入れ替えを考えてください。急ぐときは、いったん前の版に戻してから落ち着いて探しましょう。"}}, {"@type": "Question", "name": "サーバー会社によって、切り替えの手順は違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替える画面の場所や名前は、サーバー会社ごとに違います。ただ、事前に確かめることと、エラーが出たときの戻し方の考え方は同じです。エックスサーバーは、エックスサーバーでPHPのバージョンを上げる手順と事前チェックにまとめました。ConoHa WINGやさくらのレンタルサーバでも、同じ流れで進められます。"}}, {"@type": "Question", "name": "制作会社に頼むときは、何を伝えればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "今の版が8.1で、8.3へ上げたいことをまず伝えます。あわせて、確かめてほしいページの一覧と、作業してよい日時を伝えましょう。エラーが出たときに前の版へ戻してよいかも、先に決めておくと話が早くなります。見積もりを頼むときは、プラグインの入れ替えが要る場合の扱いも聞いておいてください。作業のあとに、どのページを確かめたかの報告をもらうと安心です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "PHP 8.1から8.3へ上げる前に確認すること｜止まりやすい変化と事前チェックの手順"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1><span class="h1-main">PHP 8.1から8.3へ上げる前に確認すること</span><span class="h1-sub" data-sep="｜">止まりやすい変化と事前チェックの手順</span></h1>
+    <p><time datetime="2026-11-23">2026.11.23</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-022-v3.webp" alt="PHP 8.1から8.3へ上げる前に確認すること。対応の確認、バックアップ、1つずつ切り替えて表示を確かめる" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「サーバー会社からPHPを上げるよう案内が来た。8.1のままで大丈夫だろうか」と迷っていませんか？</p>
+<p>PHP 8.1は公式のサポートがすでに終わり、次の8.2も2026年末で終わります。上げるなら、2027年末までサポートが続く8.3が1つの目安です。</p>
+<p>この記事では、<span class="mark-yellow">PHP 8.1から8.3へ上げる前に確認すること</span>を順番にまとめました。止まりやすい書き方の変化と、エラーが出たときの戻し方も紹介します。</p>
+<p>もとにしたのは、PHPの公式マニュアルとWordPressの公式の資料です。運営者が自社サイトでPHPを上げたときに起きたことも入れています。作業の前に、一度通して読んでおくと安心でしょう。</p>
+
+<h2 id="s1">PHP 8.1から8.3への移行が必要な理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-81-to-83-fig1.webp" alt="PHP 8.1から8.3への移行が必要な理由として、8.1は2025年末でサポート終了、8.2は2026年末、8.3は2027年末、8.4は2028年末までサポートが続くことを横向きの帯で並べた図" width="1200" height="800"><figcaption>8.1と8.2は期限が近く、8.3なら2027年末まで使えます</figcaption></figure>
+<p>PHPは版ごとにサポートの期限が決まっていて、期限を過ぎると弱点が見つかっても直されません。<span class="mark-yellow">8.1はすでに期限を過ぎた版</span>です。</p>
+<p>まずは、なぜ8.2ではなく8.3を目安にするのかを押さえましょう。8.4や8.5という新しい版もあるので、どれを選ぶかの考え方もまとめました。期限の数字は、PHPの公式サイトの表で確かめたものです。</p>
+
+<h3>PHP 8.1はサポートが終わっている</h3>
+<p>PHPの公式サイトによると、8.1のサポートは2025年12月31日で終わりました。最後に出た版は8.1.34で、これ以降は新しい弱点が見つかっても直りません。</p>
+<p>サポートが終わっても、サイトはそのまま表示されます。ただし、<span class="mark-red"><strong>見つかった弱点がふさがれないまま残り続ける</strong></span>のが問題です。サーバー会社によっては、古い版の提供を順に止めていきます。止まる直前に慌てないよう、早めに上げる計画を立てておきましょう。詳しくは、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>をご覧ください。</p>
+<ul class="ref">
+<li>参考：<a href="https://php.net/eol.php" target="_blank" rel="noopener noreferrer nofollow">Unsupported Branches｜PHP</a></li>
+</ul>
+
+<h3>8.2を飛ばして8.3へ上げる理由</h3>
+<p>8.1の次は8.2ですが、8.2のセキュリティのサポートは2026年12月31日までです。今から8.2に上げても、すぐにまた上げる作業が待っています。</p>
+<p>8.3のサポートは2027年12月31日まで続くので、<span class="mark-yellow">作業を1回で済ませやすい</span>のが利点です。WordPressも、推奨する最低の版を8.3としています。WordPressの本体は、6.4以上なら8.3に対応している版です。8.2で入った変化も8.3にはそのまま含まれるため、確かめる中身はほとんど変わりません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/" target="_blank" rel="noopener noreferrer nofollow">PHP Compatibility and WordPress Versions｜Make WordPress Core</a></li>
+</ul>
+
+<h3>8.4や8.5を選ぶときの考え方</h3>
+<p>PHPには、8.4と8.5というさらに新しい版もあります。サポートの期限は、8.4が2028年末、8.5が2029年末までです。</p>
+<p>期限だけを見れば、新しい版ほど長く使えます。ただし、<span class="mark-yellow">テーマやプラグインが新しい版に追いついていない</span>こともあるのです。WordPressの本体は、6.9以上なら8.5にも対応しています。古いプラグインを多く使うサイトなら、まず8.3に上げて落ち着いてから先を考える進め方もよいでしょう。どの版でも、確かめる手順は同じです。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/core/2026/05/22/php-support-clarification-2026/" target="_blank" rel="noopener noreferrer nofollow">PHP support clarification, spring 2026 edition｜Make WordPress Core</a></li>
+</ul>
+
+<h2 id="s2">PHP 8.3への移行で止まりやすい3つの変化</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-81-to-83-fig2.webp" alt="PHP 8.3への移行で止まりやすい変化として、宣言していないプロパティの作成、古い書き方の文字列と関数、8.3で推奨されなくなった書き方の3つをカードで並べた図" width="1200" height="800"><figcaption>8.2と8.3で、推奨されなくなった書き方が増えました</figcaption></figure>
+<p>8.1から8.3へ上げると、8.2と8.3で入った変化をまとめて受けることになります。<span class="mark-yellow">多くは「推奨されない」という警告の追加</span>です。</p>
+<p>警告が出ても、すぐに動かなくなるわけではありません。ただ、画面に警告の文が出たり、記録が増え続けたりします。将来の版で使えなくなる書き方なので、テーマやプラグインの作り手が直しているかを確かめておきましょう。</p>
+
+<h3>① 宣言していないプロパティの作成</h3>
+<p>PHP 8.2から、クラスに宣言していないプロパティを後から作る書き方が推奨されなくなりました。古いテーマやプラグインでよく使われていた書き方です。</p>
+<p>残っていると「Creation of dynamic property」の警告が出ます。<span class="mark-yellow">動きはそのままでも、警告の文が出る</span>ため、表示が乱れることがあるのです。直すにはプラグイン側の修正が要るので、新しい版が出ていないかを確かめてください。長く更新されていないプラグインほど、この警告が出やすい傾向があります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/manual/ja/migration82.deprecated.php" target="_blank" rel="noopener noreferrer nofollow">PHP 8.2.x で推奨されなくなる機能｜PHP マニュアル</a></li>
+</ul>
+
+<h3>② 古い書き方の文字列と関数</h3>
+<p>8.2では、文字列の中に「${変数}」の形で値を埋め込む書き方も推奨されなくなりました。文字コードを変える utf8_encode と utf8_decode の2つの関数も同じ扱いです。</p>
+<p>どれも、日本語のサイト向けに作られた古いプラグインで見かけることがあります。<span class="mark-yellow">警告の文に出る関数の名前</span>を手がかりに、どのプラグインが原因かを探せるでしょう。名前で検索すると、作り手が対応を知らせていることもあります。作り手の更新が止まっているなら、同じ機能の別のプラグインへの切り替えを考えてください。</p>
+
+<h3>③ 8.3で推奨されなくなった書き方</h3>
+<p>8.3では、get_class などを引数なしで呼び出す書き方が推奨されなくなりました。数字でない文字列に「++」を使う書き方の一部や、assert_options 関数も同じです。</p>
+<p>8.2までの変化に比べると、ふつうのテーマやプラグインで使われる場面は多くありません。<span class="mark-yellow">古い自作のコードがあるサイトは要注意</span>です。制作会社に作ってもらった独自の機能があるなら、8.3で動くかを先に聞いておきましょう。テーマの functions.php に足した処理も、確かめる対象に入ります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/manual/ja/migration83.deprecated.php" target="_blank" rel="noopener noreferrer nofollow">PHP 8.3.x で推奨されなくなる機能｜PHP マニュアル</a></li>
+</ul>
+
+<h2 id="s3">PHP 8.3へ移行する前に確認する4つのこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-81-to-83-fig3.webp" alt="PHP 8.3へ移行する前に確認することとして、今の版とテーマ・プラグインの対応、WordPress本体の版、バックアップと戻し方、試す場所と確認するページの一覧の4つを縦に並べたチェックリストの図" width="1200" height="800"><figcaption>切り替えの前に、4つを確かめておきます</figcaption></figure>
+<p>切り替えの操作そのものは、サーバーの管理画面で数分あれば終わります。<span class="mark-yellow">差が出るのは、切り替える前の準備</span>です。</p>
+<p>次の4つを先に確かめておけば、エラーが出ても慌てずに戻せます。どれも、サイトを止めずに進められる作業です。確かめた結果は、表にまとめておくと制作会社とも共有しやすくなります。準備にかける時間は、サイトの大きさにもよりますが半日ほどを見ておくとよいでしょう。</p>
+
+<h3>① 今の版とテーマ・プラグインの対応</h3>
+<p>まず、今のPHPの版を確かめます。WordPressなら、管理画面の「ツール」の「サイトヘルス」を開いてください。「情報」の「サーバー」の欄に版が出ています。</p>
+<p>次に、使っているテーマとプラグインの一覧を書き出しましょう。WordPress.orgのプラグインのページには、必要なPHPの版と最終更新日が載っています。<span class="mark-red"><strong>何年も更新されていないプラグインは、8.3で止まる候補</strong></span>です。有料のテーマやプラグインは、作り手のサイトで対応する版を確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/site-health-screen/" target="_blank" rel="noopener noreferrer nofollow">Site Health screen｜WordPress.org</a></li>
+</ul>
+
+<h3>② WordPress本体の版</h3>
+<p>WordPressの公式の対応表では、本体が6.4以上なら8.3に対応しています。それより古い本体のまま8.3に上げると、本体の側で警告やエラーが出ることがあるのです。</p>
+<p>本体が古いときは、<span class="mark-yellow">PHPより先に本体を新しい版にします</span>。ただし、何年も更新していない本体を一気に上げるのは危険です。本体とPHPを交互に少しずつ上げる順番を決めてから進めましょう。新しい本体が今のPHPで動くかも、あわせて対応表で確かめておいてください。</p>
+
+<h3>③ バックアップと戻し方</h3>
+<p>切り替える前に、ファイルとデータベースの両方のバックアップを取ります。サーバー会社の自動バックアップがある場合も、何日分を保存しているかを確かめてください。</p>
+<p>あわせて、<span class="mark-yellow">前の版に戻す操作の画面の場所</span>も見ておきましょう。多くのサーバーでは、切り替えと同じ画面で前の版を選び直せます。戻す手順が分かっていれば、エラーが出ても数分で元に戻せるでしょう。作業はアクセスの少ない時間帯を選ぶと、お客さまへの影響を小さくできます。</p>
+
+<h3>④ 試す場所と確認するページの一覧</h3>
+<p>サーバーによっては、本番と同じ中身の試し用のサイトを作れます。WordPressの公式の手引きも、エラーを調べる作業は試し用の場所で行うよう勧めているのです。</p>
+<p>試し用の場所がなければ、本番で切り替える前に確認するページの一覧を作りましょう。トップ、お問い合わせ、よく見られるページ、管理画面の投稿の画面などです。<span class="mark-yellow">お問い合わせフォームの送信まで試す</span>と、見落としが減ります。一覧があれば、切り替えたあとに同じ順で見て回れるでしょう。</p>
+
+<h2 id="s4">PHP 8.3への移行の手順と確認のしかた</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-81-to-83-fig4.webp" alt="PHP 8.3への移行の手順として、本体とテーマとプラグインを先に更新する、PHPを切り替えて表側と管理画面を確かめる、エラーの記録を見るの3段階を矢印でつないだ流れ図" width="1200" height="800"><figcaption>更新、切り替え、記録の確認の順に進めます</figcaption></figure>
+<p>準備が済んだら、更新、切り替え、確認の順に進めます。<span class="mark-yellow">一度に全部を変えず、1つずつ進める</span>のがこつです。</p>
+<p>何かを変えるたびに表示を見ておけば、エラーが出たときに原因を絞り込みやすくなります。運営者も、自社サイトでPHPを上げたときは前後で全ページを読み込んで比べました。作業の記録を残しておくと、次に上げるときにも役立ちます。</p>
+
+<h3>本体・テーマ・プラグインを先に更新する</h3>
+<p>PHPを切り替える前に、WordPressの本体とテーマ、プラグインを新しい版にします。作り手が8.2や8.3への対応を済ませていれば、更新だけで警告の原因が消えることもあるのです。</p>
+<p>更新したら、いったん今の8.1のまま表示を確かめましょう。<span class="mark-yellow">更新で起きた不具合とPHPの不具合を分ける</span>ためです。使っていないプラグインは、この機会に停止ではなく削除しておくと、確かめる数が減ります。更新後の表示に問題がなければ、次の切り替えに進んでください。</p>
+
+<h3>PHPを切り替えて表側と管理画面を確かめる</h3>
+<p>サーバーの管理画面で、PHPの版を8.3に切り替えます。切り替えたら、作っておいた一覧の順にページを開いて表示を確かめましょう。</p>
+<p>表側だけでなく、管理画面で投稿を開き、下書きを保存できるかも見てください。<span class="mark-yellow">キャッシュが残っていると古い表示が出る</span>ことがあります。キャッシュのプラグインやサーバーのキャッシュを消してから見ると確実です。「サイトヘルス」を開き、PHPの版が8.3になっていることも確かめます。</p>
+
+<h3>エラーの記録を見る</h3>
+<p>画面に出ない警告は、エラーの記録で見つけられます。WordPressでは、wp-config.php で記録の設定を有効にしてください。すると、wp-content の debug.log に記録が残るのです。</p>
+<p>公式の手引きは、画面には出さず記録だけを残す使い方を勧めています。<span class="mark-red"><strong>確かめ終えたら、設定を元に戻して debug.log を消す</strong></span>ことが大切です。ファイルが残ると、外から読めてしまうことがあります。サーバー会社の管理画面でエラーの記録を見られる場合は、そちらも使ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/" target="_blank" rel="noopener noreferrer nofollow">Debugging in WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s5">PHP 8.3への移行でエラーが出たときの戻し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-81-to-83-fig5.webp" alt="PHP 8.3への移行でエラーが出たときの戻し方として、まず前の版に戻して表示を元に戻し、原因のプラグインを1つずつ止めて探し、入れ替えてから上げ直す流れを示した図" width="1200" height="800"><figcaption>先に表示を戻し、原因はあとで落ち着いて探します</figcaption></figure>
+<p>エラーが出たら、原因を探す前に表示を元に戻します。<span class="mark-yellow">お客さまが見る画面を先に守る</span>のが優先です。</p>
+<p>前の版に戻せば、ほとんどの場合は表示が元どおりになります。そのうえで、原因を探して直し、もう一度上げ直しましょう。戻したことと理由は、作業の記録に書き残しておいてください。次に上げるとき、同じところでつまずかずに済みます。</p>
+
+<h3>まず前の版に戻して表示を戻す</h3>
+<p>真っ白な画面やエラーの文が出たら、切り替えと同じ画面で8.1を選び直します。多くのサーバーでは、数分ほどで反映されるはずです。</p>
+<p>戻したら、表示が元どおりになったかを一覧の順に確かめましょう。<span class="mark-yellow">戻しただけではサポートの切れた版のまま</span>なので、ここで終わりにしないことが大切です。前の版に戻しても直らないときは、取っておいたバックアップから戻します。自分で戻すのが難しければ、サーバー会社か制作会社に相談してください。</p>
+
+<h3>原因のプラグインを探して入れ替える</h3>
+<p>よくある原因は、新しいPHPに対応していない古いテーマやプラグインです。運営者の自社サイトでも、PHPを8.3に上げたら管理画面にエラーが出ました。原因は、何年も更新していなかったプラグインです。</p>
+<p>新しい版のプラグインに入れ替えたところ、エラーは出なくなりました。<span class="mark-yellow">プラグインを1つずつ止めて表示を見る</span>と、原因を絞り込めます。原因が分かったら、更新するか、同じ機能の別のプラグインに置き換えましょう。直せたら、もう一度8.3に切り替えて同じ手順で確かめてください。</p>
+
+<div class="art-cta"><strong>あなたのサイトのPHPは外から見えていませんか</strong><p>URLを入れるだけで、PHPやWordPressの版など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">PHP 8.3への移行に関するよくある質問</h2>
+
+<h3>PHP 8.1のままだと、すぐにサイトが見られなくなりますか？</h3>
+<p>すぐに見られなくなるわけではありません。サポートが終わっても、PHPはそのまま動き続けます。ただ、新しく見つかった弱点が直らないため、狙われやすい状態が続くのです。サーバー会社が古い版の提供を止めると、自動で切り替わることもあります。思わぬ時期に表示が崩れないよう、自分で計画を立てて上げておきましょう。</p>
+
+<h3>8.2を挟まずに、8.1から8.3へ直接上げても大丈夫ですか？</h3>
+<p>多くの場合、直接上げて問題ありません。8.2で入った変化は、8.3にもそのまま含まれています。間に8.2を挟んでも、確かめる中身はほとんど変わらないのです。ただし、古いプラグインが多いサイトでは、警告がまとめて出ることがあります。試し用の場所があるなら、先にそこで8.3を試しておくと安心して進められるでしょう。</p>
+
+<h3>「Deprecated」という文字が画面に出ました。壊れたのですか？</h3>
+<p>Deprecatedは、推奨されない書き方を使っているという警告です。多くの場合、その機能はそのまま動いています。ただ、画面に警告の文が出ると見た目が崩れるため、そのままにはできません。警告に出る名前から原因のプラグインを探し、更新か入れ替えを考えてください。急ぐときは、いったん前の版に戻してから落ち着いて探しましょう。</p>
+
+<h3>サーバー会社によって、切り替えの手順は違いますか？</h3>
+<p>切り替える画面の場所や名前は、サーバー会社ごとに違います。ただ、事前に確かめることと、エラーが出たときの戻し方の考え方は同じです。エックスサーバーは、<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>にまとめました。ConoHa WINGやさくらのレンタルサーバでも、同じ流れで進められます。</p>
+
+<h3>制作会社に頼むときは、何を伝えればいいですか？</h3>
+<p>今の版が8.1で、8.3へ上げたいことをまず伝えます。あわせて、確かめてほしいページの一覧と、作業してよい日時を伝えましょう。エラーが出たときに前の版へ戻してよいかも、先に決めておくと話が早くなります。見積もりを頼むときは、プラグインの入れ替えが要る場合の扱いも聞いておいてください。作業のあとに、どのページを確かめたかの報告をもらうと安心です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>PHP 8.1はサポートが終わり、8.2も2026年末で終わります。上げるなら、2027年末までサポートが続く8.3が目安です。</p>
+<p>切り替える前に、プラグインの対応、本体の版、バックアップ、確認するページの一覧をそろえましょう。<span class="mark-yellow">1つずつ変えて、そのたびに表示を確かめる</span>ことが、止めずに上げるいちばんの近道です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">8.3への移行が必要な理由</a></li><li><a href="#s2">止まりやすい3つの変化</a></li><li><a href="#s3">移行前に確認する4つのこと</a></li><li><a href="#s4">移行の手順と確認のしかた</a></li><li><a href="#s5">エラーが出たときの戻し方</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
