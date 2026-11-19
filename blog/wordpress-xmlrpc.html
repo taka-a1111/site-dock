@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方｜スキゼロ</title>
+<meta name="description" content="WordPressのxmlrpc.phpとは何か、止めるべきかの判断のしかたを解説します。狙われる理由、止めてよいかを決める3つのポイント、サーバーやプラグインでの止め方、止めたあとの確かめ方まで順に紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-xmlrpc.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方">
+<meta property="og:description" content="WordPressのxmlrpc.phpとは何か、止めるべきかの判断のしかたを解説します。狙われる理由、止めてよいかを決める3つのポイント、サーバーやプラグインでの止め方、止めたあとの確かめ方まで順に紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-xmlrpc.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-023-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-24">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方", "description": "WordPressのxmlrpc.phpとは何か、止めるべきかの判断のしかたを解説します。狙われる理由、止めてよいかを決める3つのポイント、サーバーやプラグインでの止め方、止めたあとの確かめ方まで順に紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-023-v3.webp", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-xmlrpc.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "xmlrpc.phpのファイルを削除してもいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "ファイルの削除はおすすめしません。WordPressの本体を更新すると、消したファイルが元に戻るからです。気づかないうちに窓口が開き直ってしまうため、守りとしては長続きしません。止めたいときは、サーバーの設定かプラグイン、設定ファイルで接続を止める方法を選んでください。本体のファイルには、手を加えないのが基本です。"}}, {"@type": "Question", "name": "止めると、サイトの表示に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "ふつうのページの表示には影響しません。xmlrpc.phpは外から操作するための窓口で、訪問者がページを見るときには使われないからです。管理画面からの更新も、そのまま続けられます。影響が出るのは、スマホのアプリや外部のツール、連携のプラグインを使っている場合です。止めたあとは、念のため主なページと管理画面を開いて確かめておきましょう。"}}, {"@type": "Question", "name": "REST APIも止めたほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "REST APIは、今のWordPressの管理画面そのものが使っている仕組みです。まとめて止めると、記事の編集画面が動かなくなることがあります。止めるのではなく、ログイン名が見えないようにするなど、必要な部分だけを絞るのが安全でしょう。エックスサーバーには、国外からのREST APIへの接続を止める設定もあります。設定を変えたら、記事の編集と保存ができるかを必ず確かめてください。"}}, {"@type": "Question", "name": "Jetpackを使っています。止めても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "Jetpackは、WordPress.comとつなぐためにXML-RPCを使うことがあります。エックスサーバーの設定は、Jetpackからの接続を制限の対象外にしている作りです。プラグインで完全に止める場合は、Jetpackの機能が動かなくなるおそれがあります。止める前に、Jetpackの案内で必要な接続を確かめてください。迷ったときは、サーバーの設定で国外からの接続だけを止める方法を選ぶとよいでしょう。"}}, {"@type": "Question", "name": "無料の診断で、xmlrpc.phpが開いているかは分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "スキゼロの無料簡易診断は、xmlrpc.phpが開いているかどうかは調べていません。調べるのは、ログイン名の見え方や、WordPressとプラグインの版など、外から見える8項目です。xmlrpc.phpは、記事で紹介したようにブラウザで開くだけで確かめられます。ログイン名が見えていると、この窓口でもパスワードを試されやすくなるのです。あわせて確かめておくと、入口の守りを見直すきっかけになるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">WordPressのxmlrpc.phpとは？</span><span class="h1-sub" data-sep="">止めるべきかの判断と安全な止め方</span></h1>
+    <p><time datetime="2026-11-24">2026.11.24</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-023-v3.webp" alt="WordPressのxmlrpc.phpとは何か。使っているかを確かめてから、安全に止める" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「xmlrpc.phpは止めたほうがいいと聞いた。でも、止めて困ることはないのか」と迷っていませんか？</p>
+<p>xmlrpc.phpは、WordPressを外から操作するための古い窓口です。使っていなければ止めて構いませんが、使っている機能があると動かなくなります。</p>
+<p>この記事では、<span class="mark-yellow">xmlrpc.phpを止めるべきかの判断のしかた</span>と、安全な止め方を順に紹介しましょう。止めたあとの確かめ方もまとめました。</p>
+<p>もとにしたのは、WordPressの公式の資料とエックスサーバーのマニュアルです。運営者の自社サイトで実際に確かめた結果も入れています。設定を変える前に、一度通して読んでおくと安心でしょう。</p>
+
+<h2 id="s1">xmlrpc.phpとは？無効化を考える前に知りたい役割</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-xmlrpc-fig1.webp" alt="xmlrpc.phpの役割として、中央のxmlrpc.phpに、スマホアプリからの投稿、外部の投稿ツール、連携のプラグイン、ピンバックの4つがつながっている様子を示した図" width="1200" height="800"><figcaption>xmlrpc.phpは、外からWordPressを操作するための窓口です</figcaption></figure>
+<p>xmlrpc.phpは、WordPressの本体に最初から入っているファイルです。<span class="mark-yellow">管理画面を開かずに、外から投稿などを行う窓口</span>として働きます。</p>
+<p>止めるかどうかを決める前に、何に使われているかを知っておくことが大切です。使っている機能がなければ止めても困りませんが、知らずに止めると連携が切れます。まずは役割と、今の使われ方を見ていきましょう。</p>
+
+<h3>外からWordPressを操作するための窓口</h3>
+<p>エックスサーバーのマニュアルは、XML-RPCを投稿に使う仕組みと説明しています。スマートフォンのアプリや外部のシステムから、記事や画像を送るための窓口です。</p>
+<p>この窓口は、サイトのアドレスの後ろに「/xmlrpc.php」を付けた場所にあります。<span class="mark-yellow">ユーザー名とパスワードを送れば、外から投稿できる</span>作りです。便利な反面、ログイン画面を通らずにパスワードを試せる入口にもなります。WordPressを入れた時点から、この窓口は開いた状態です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー マニュアル</a></li>
+</ul>
+
+<h3>ピンバックもこの窓口を通る</h3>
+<p>xmlrpc.phpは、ピンバックの受け口でもあります。ピンバックは、ほかのブログからリンクされたことを知らせ合う仕組みです。パスワードがなくても受け付けます。</p>
+<p>WordPressには、XML-RPCの一部を止める「xmlrpc_enabled」があるのです。ただし公式の説明では、<span class="mark-red"><strong>止まるのはパスワードが要る操作だけで、ピンバックは止まらない</strong></span>とされています。止めたつもりでも窓口が開いたままになることがあるので、止め方を選ぶときに気をつけてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/hooks/xmlrpc_enabled/" target="_blank" rel="noopener noreferrer nofollow">xmlrpc_enabled｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>使っていないサイトも多い</h3>
+<p>会社のホームページの多くは、管理画面から記事を書いて更新しています。スマホのアプリや外部のツールから投稿していなければ、この窓口を使う場面はほとんどありません。</p>
+<p>使っていないのに開いたままの窓口は、<span class="mark-yellow">守る手間だけがかかる入口</span>です。ただ、連携のプラグインや制作会社のツールが、知らないうちに使っていることもあります。止める前に、何がつながっているかを確かめておきましょう。確かめ方は、次の判断のポイントで紹介します。</p>
+
+<h2 id="s2">xmlrpc.phpが狙われる理由と無効化を考える場面</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-xmlrpc-fig2.webp" alt="xmlrpc.phpが狙われる理由として、ログイン画面を通らずにパスワードを試せること、2段階認証の外側になりやすいこと、ログイン画面の守りが届きにくいことの3つを並べた図" width="1200" height="800"><figcaption>ログイン画面の守りが届かない、もう1つの入口になります</figcaption></figure>
+<p>xmlrpc.phpは、ログイン画面とは別の入口です。<span class="mark-yellow">ログイン画面だけを守っても、この窓口は開いたまま</span>になります。</p>
+<p>攻撃する側は、守りの薄い入口を探して自動で試してくるでしょう。使っていない窓口なら、止めてしまうのがいちばん手間のかからない守り方です。ここからは、狙われる理由を3つの面から見ていきましょう。</p>
+
+<h3>ログイン画面を通らずにパスワードを試せる</h3>
+<p>xmlrpc.phpには、ユーザー名とパスワードを送って操作する仕組みがあります。そのため、ログイン画面と同じように、パスワードの当てずっぽうの入力に使われることがあるのです。</p>
+<p>ログイン画面に入力の回数の制限をかけていても、<span class="mark-yellow">この窓口には別に制限をかける必要</span>があります。プラグインによっては、ログイン画面だけを守り、この窓口は対象外のこともあるでしょう。使っている守りのプラグインが、XML-RPCも対象にしているかを確かめてください。ログイン名が外から見えていると、狙われやすさはさらに増します。</p>
+
+<h3>2段階認証の外側になりやすい</h3>
+<p>2段階認証のプラグインは、主にブラウザのログイン画面を守ります。Two Factorというプラグインでは、外からの接続に専用のパスワードを使う作りです。</p>
+<p>その専用のパスワードを、アプリケーションパスワードと呼びます。REST APIとXML-RPCで使えるもので、<span class="mark-yellow">使わなくなったものが残ると抜け道になりかねません</span>。運営者の自社サイトでも、使っていないアプリケーションパスワードが残っていました。2段階認証の手順は、次の記事で紹介しています。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a></p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/plugins/two-factor/" target="_blank" rel="noopener noreferrer nofollow">Two Factor｜WordPress.org</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>使っていないなら止めるのが早い</h3>
+<p>窓口を開けたまま守るには、回数の制限やアクセス元の制限を重ねる必要があります。どれも、設定を続けて見直す手間がかかるのです。</p>
+<p>一方で、使っていない窓口を止めれば、その入口からの試し打ちはそもそも届かなくなります。<span class="mark-yellow">使う予定がないなら、止めるのがいちばん確実</span>でしょう。設定にかかる時間も、数分ほどで済みます。反対に、アプリなどで使っている場合は、止めずに守りを足す方法を選んでください。どちらにするかは、次の3つのポイントで決められます。</p>
+
+<h2 id="s3">xmlrpc.phpを無効化してよいかを決める3つのポイント</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-xmlrpc-fig3.webp" alt="xmlrpc.phpを無効化してよいかを決めるフローチャートとして、スマホアプリや外部ツールで投稿しているか、連携のプラグインがあるか、制作会社や外部サービスがつないでいるかを順に確かめ、すべていいえなら止めてよいと示した図" width="1200" height="800"><figcaption>3つとも「いいえ」なら、止めて構いません</figcaption></figure>
+<p>止めてよいかは、この窓口を使っているものがあるかで決まります。<span class="mark-yellow">3つとも当てはまらなければ、止めて構いません</span>。</p>
+<p>1つでも当てはまるときは、すぐに止めずに、使っている相手と相談してください。止める代わりに、アクセス元を国内に絞る方法もあります。迷ったら、まず次の3つを書き出してみましょう。書き出した一覧は、制作会社に相談するときにも役立ちます。</p>
+
+<h3>① スマホアプリや外部のツールで投稿しているか</h3>
+<p>スマホのアプリからブログを書いている人は、この窓口を使っていることがあります。外部の記事作成ツールから、直接WordPressに投稿している場合も同じです。</p>
+<p>社内で更新を担当している人に、管理画面以外から投稿しているかを聞いてみましょう。<span class="mark-yellow">管理画面からしか更新していないなら、まず大丈夫</span>です。使っている場合は、そのアプリやツールの案内で、どの窓口を使うかを確かめてください。新しいものは、REST APIで動いていることもあります。</p>
+
+<h3>② 連携のプラグインが入っているか</h3>
+<p>プラグインの中には、外部のサービスとつなぐためにこの窓口を使うものがあります。エックスサーバーのマニュアルでも、Jetpackの接続は制限の対象外とされているほどです。</p>
+<p>プラグインの一覧を開き、外部のサービスとつながるものがないかを見てください。<span class="mark-yellow">名前に分からないものがあれば、説明のページで確かめます</span>。止める前に、そのプラグインがXML-RPCを使うかどうかを調べておくと安心です。使っていないプラグインなら、この機会に削除してしまいましょう。</p>
+
+<h3>③ 制作会社や外部のサービスがつないでいないか</h3>
+<p>制作会社が保守のために、外から更新の状態を見ていることがあります。バックアップや監視の外部サービスが、この窓口でつないでいることも考えられるでしょう。</p>
+<p>保守を任せているなら、<span class="mark-yellow">止める前に制作会社へ一言伝えておく</span>のが安全です。止めたあとに保守の仕組みが動かなくなると、気づくのが遅れます。契約している外部のサービスがあれば、その案内でXML-RPCを使うかを確かめてください。分からないときは、止める日時を決めて連絡しておけば、何か起きてもすぐ戻せます。</p>
+
+<h2 id="s4">xmlrpc.phpを無効化する方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-xmlrpc-fig4.webp" alt="xmlrpc.phpを無効化する方法として、サーバーの設定で止める、プラグインで止める、設定ファイルで接続を拒否するの3つを、手軽さと止まる範囲で比べた図" width="1200" height="800"><figcaption>手軽さと、止まる範囲で選びます</figcaption></figure>
+<p>止め方は、サーバーの設定、プラグイン、設定ファイルの3つに分かれます。<span class="mark-yellow">手軽なのはサーバーの設定画面</span>です。</p>
+<p>どの方法でも、本体のxmlrpc.phpのファイルそのものは消しません。本体を更新すると、消したファイルが元に戻るからです。作業の前には、念のためバックアップを取っておいてください。自分に合う方法を、次の3つから選びましょう。</p>
+
+<h3>サーバーの設定で止める</h3>
+<p>エックスサーバーには、サーバーパネルに「XML-RPC APIアクセス制限」という設定があります。「WordPressセキュリティ設定」の中の項目です。オンにすると、国外や一部のホスティングサービスからの接続が止まります。</p>
+<p>マニュアルは、ふだんはオンのまま使うことを強く勧めているのです。<span class="mark-yellow">国内の回線からの接続は、ふだんどおり通ります</span>。国外のサーバーから使う場合は、オフにしてプラグインで守るのが公式の案内です。ほかのサーバー会社にも似た設定があるので、管理画面を探してみてください。</p>
+
+<h3>プラグインで止める</h3>
+<p>サーバーに設定がない場合は、XML-RPCを止めるプラグインを使う方法があります。エックスサーバーのマニュアルでも、ピンバックを止めるプラグインを入れる方法が紹介されているのです。</p>
+<p>選ぶときは、<span class="mark-yellow">ピンバックまで止まるかどうか</span>を説明のページで確かめましょう。「xmlrpc_enabled」だけを使うものは、ピンバックが残ります。守りの機能をまとめたプラグインにも、XML-RPCを止める設定が入っていることがあるのです。新しく入れる前に、今のプラグインの設定を見てみてください。</p>
+
+<h3>設定ファイルで接続を拒否する</h3>
+<p>サーバーの設定ファイルで、xmlrpc.phpへの接続をまとめて拒否する方法もあります。WordPressを通る前に止まるので、サーバーへの負担も小さく済むでしょう。</p>
+<p>ただし、<span class="mark-red"><strong>書き方を間違えると、サイト全体が表示されなくなる</strong></span>おそれがあるのです。設定ファイルを触るのに慣れていなければ、サーバーの設定かプラグインを選んでください。触る場合は、元のファイルを控えてから少しずつ直しましょう。制作会社に頼むときは、xmlrpc.phpだけを止めたいと伝えれば話が早く進みます。</p>
+
+<h2 id="s5">xmlrpc.phpを無効化したあとの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-xmlrpc-fig5.webp" alt="xmlrpc.phpを無効化したあとの確認として、使っている機能が動くか、外から開いて止まっているか、ログイン画面とアプリケーションパスワードの見直しの3つを縦に並べたチェックリストの図" width="1200" height="800"><figcaption>止めたら、動く機能と止まった窓口の両方を確かめます</figcaption></figure>
+<p>止めたあとは、困る機能が出ていないかと、本当に止まったかの両方を確かめます。<span class="mark-yellow">止めたつもりで開いたまま</span>の状態を防ぐためです。</p>
+<p>確かめた日と結果は、作業の記録に残しておきましょう。あとで制作会社が設定を変えたときにも、元の状態が分かります。次の2つを、止めた当日に試してください。どちらも、数分あれば終わる確かめ方です。</p>
+
+<h3>使っている機能が動くかを確かめる</h3>
+<p>まず、管理画面から記事の下書きを保存し、表示に問題がないかを見ます。スマホのアプリや外部のツールを使っている人がいれば、投稿できるかを試してもらいましょう。</p>
+<p>連携のプラグインがある場合は、その設定画面で接続が切れていないかを見てください。<span class="mark-yellow">数日たってから気づく不具合もある</span>ので、1週間ほどは様子を見ます。不具合が出たら、いったん設定を戻し、使っている相手と相談しましょう。戻す手順を先に控えておくと、慌てずに済みます。</p>
+
+<h3>外から開いて止まっているかを確かめる</h3>
+<p>ブラウザでサイトのアドレスの後ろに「/xmlrpc.php」を付けて開いてみます。止める前は、「POSTのリクエストだけを受け付ける」という意味の英語の文が出ることが多いです。</p>
+<p>運営者の自社サイトでは、国外の回線から開くと「403 Forbidden」と出ました。接続が止まっていることを、この表示で確かめています。<span class="mark-yellow">国内から開くと、まだ英語の文が出る</span>場合もあるでしょう。これは国外だけを止める設定のためで、故障ではありません。すべてを止めたいときは、プラグインか設定ファイルの方法を選んでください。</p>
+
+<div class="art-cta"><strong>ログイン名が外から見えていないか確かめませんか</strong><p>URLを入れるだけで、ログイン名の見え方やWordPressの版など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">xmlrpc.phpの無効化に関するよくある質問</h2>
+
+<h3>xmlrpc.phpのファイルを削除してもいいですか？</h3>
+<p>ファイルの削除はおすすめしません。WordPressの本体を更新すると、消したファイルが元に戻るからです。気づかないうちに窓口が開き直ってしまうため、守りとしては長続きしません。止めたいときは、サーバーの設定かプラグイン、設定ファイルで接続を止める方法を選んでください。本体のファイルには、手を加えないのが基本です。</p>
+
+<h3>止めると、サイトの表示に影響しますか？</h3>
+<p>ふつうのページの表示には影響しません。xmlrpc.phpは外から操作するための窓口で、訪問者がページを見るときには使われないからです。管理画面からの更新も、そのまま続けられます。影響が出るのは、スマホのアプリや外部のツール、連携のプラグインを使っている場合です。止めたあとは、念のため主なページと管理画面を開いて確かめておきましょう。</p>
+
+<h3>REST APIも止めたほうがいいですか？</h3>
+<p>REST APIは、今のWordPressの管理画面そのものが使っている仕組みです。まとめて止めると、記事の編集画面が動かなくなることがあります。止めるのではなく、ログイン名が見えないようにするなど、必要な部分だけを絞るのが安全でしょう。エックスサーバーには、国外からのREST APIへの接続を止める設定もあります。設定を変えたら、記事の編集と保存ができるかを必ず確かめてください。</p>
+
+<h3>Jetpackを使っています。止めても大丈夫ですか？</h3>
+<p>Jetpackは、WordPress.comとつなぐためにXML-RPCを使うことがあります。エックスサーバーの設定は、Jetpackからの接続を制限の対象外にしている作りです。プラグインで完全に止める場合は、Jetpackの機能が動かなくなるおそれがあります。止める前に、Jetpackの案内で必要な接続を確かめてください。迷ったときは、サーバーの設定で国外からの接続だけを止める方法を選ぶとよいでしょう。</p>
+
+<h3>無料の診断で、xmlrpc.phpが開いているかは分かりますか？</h3>
+<p>スキゼロの無料簡易診断は、xmlrpc.phpが開いているかどうかは調べていません。調べるのは、ログイン名の見え方や、WordPressとプラグインの版など、外から見える8項目です。xmlrpc.phpは、記事で紹介したようにブラウザで開くだけで確かめられます。ログイン名が見えていると、この窓口でもパスワードを試されやすくなるのです。あわせて確かめておくと、入口の守りを見直すきっかけになるでしょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>xmlrpc.phpは、外からWordPressを操作するための古い窓口です。ログイン画面とは別の入口なので、使っていなければ止めて構いません。</p>
+<p>止める前に、アプリや連携のプラグイン、制作会社のツールが使っていないかを確かめましょう。<span class="mark-yellow">止めたら、動く機能と止まった窓口の両方を確かめる</span>ことが大切です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">xmlrpc.phpとは</a></li><li><a href="#s2">狙われる理由</a></li><li><a href="#s3">無効化してよいかを決める3つのポイント</a></li><li><a href="#s4">無効化する方法</a></li><li><a href="#s5">無効化したあとの確認</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
