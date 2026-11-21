@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ロリポップでPHPのバージョンを変更する手順｜8.3以上への上げ方と戻せないときの注意｜スキゼロ</title>
+<meta name="description" content="ロリポップでPHPのバージョンを変更する手順を、準備からPHP設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では切り替わらないので、今の版を確かめてください。">
+<link rel="canonical" href="https://sukizero.com/blog/lolipop-php-version.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ロリポップでPHPのバージョンを変更する手順｜8.3以上への上げ方と戻せないときの注意">
+<meta property="og:description" content="ロリポップでPHPのバージョンを変更する手順を、準備からPHP設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では切り替わらないので、今の版を確かめてください。">
+<meta property="og:url" content="https://sukizero.com/blog/lolipop-php-version.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-025-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-26">
+<meta property="article:section" content="PHP・サーバー">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ロリポップでPHPのバージョンを変更する手順｜8.3以上への上げ方と戻せないときの注意", "description": "ロリポップでPHPのバージョンを変更する手順を、準備からPHP設定での切り替え、変更後の確認、うまくいかないときの戻し方まで順に解説します。古い版は自動では切り替わらないので、今の版を確かめてください。", "image": "https://sukizero.com/blog/img/eyecatch-025-v3.webp", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/lolipop-php-version.html", "inLanguage": "ja", "articleSection": "PHP・サーバー", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPのバージョンを変えると、サイトは止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "切り替えはユーザー専用ページで「変更」を押すだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。反映までに5分から10分ほどかかるので、その間はサイトの様子を見守ってください。崩れたら元の版に戻せば、多くの場合は表示が戻ります。"}}, {"@type": "Question", "name": "どのPHPのバージョンを選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式サイトもロリポップも、PHP 8.3以上を勧めています。ロリポップで2026年11月時点に選べるのは、8.3、8.4、8.5の3つです。8.2は2026年12月31日で弱点の修正が終わるので、今なら8.3か8.4が目安になります。テーマやプラグインの配布ページで、選ぶ版に対応しているかも先に確かめておきましょう。"}}, {"@type": "Question", "name": "エコノミープランでもPHPのバージョンは変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "エコノミープランでも、PHP設定から版を変えられます。動かし方はCGI版で、8.3、8.4、8.5から選ぶ形です。ハイスピードとエンタープライズはLiteSpeed版で、手順は同じPHP設定から行います。プランによって動かし方が違うので、php.iniを使っている場合は設定の効き方も確かめてください。"}}, {"@type": "Question", "name": "WordPress以外のサイトでも、同じ手順で変えられますか？", "acceptedAnswer": {"@type": "Answer", "text": "PHP設定は、WordPressを使っているかどうかに関係なく使えます。ただし、独自に作られたサイトは、古い書き方のプログラムが新しい版で動かない場合も考えられるでしょう。ロリポップのマニュアルも、版を変えたあとにプログラムの修正が要る場合があると案内しています。作った会社に、対応する版を確かめてから切り替えましょう。"}}, {"@type": "Question", "name": "自分で切り替えるのが不安なときはどうすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられます。切り替えの作業そのものを頼みたいときは、対策作業として見積もりを出しますのでご相談ください。控えの取得から表示の確認、不具合のときの戻しまでを含めて引き受けています。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ロリポップでPHPのバージョンを変更する手順｜8.3以上への上げ方と戻せないときの注意"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1><span class="h1-main">ロリポップでPHPのバージョンを変更する手順</span><span class="h1-sub" data-sep="｜">8.3以上への上げ方と戻せないときの注意</span></h1>
+    <p><time datetime="2026-11-26">2026.11.26</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-025-v3.webp" alt="ロリポップでPHPのバージョンを変更する手順。PHP設定で版を選び、反映を待って表示を確かめる" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「ロリポップのPHPを上げるように言われたけれど、どこから変えるのか分からない」と困っていませんか？</p>
+<p>切り替えそのものは、ユーザー専用ページから数分で終わります。ただ、ロリポップでは使っているPHPの版が自動では切り替わりません。自分で変えない限り、古い版のまま動き続けるのです。</p>
+<p>この記事では、<span class="mark-yellow">ロリポップでPHPのバージョンを変更する手順</span>を、準備から順に紹介します。うまくいかなかったときの戻し方と、戻せない場合の注意もまとめました。</p>
+<p>公式マニュアルとお知らせ、運営者が自社サイトでPHPを上げたときに起きたことをもとに書いています。作業の前に一度通して読んでおくと安心です。</p>
+
+<h2 id="s1">ロリポップでPHPのバージョンを変更する前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/lolipop-php-version-fig1.webp" alt="PHPの8.2から8.5までの版ごとに弱点の修正が続く期限を横の帯で並べ、8.2は2026年末で終わり、8.3以降は2027年末より先まで続くことを示した図" width="1200" height="800"><figcaption>ロリポップで今選ぶなら、8.3以上が目安です</figcaption></figure>
+<p>ロリポップでPHPを変更する前に、<span class="mark-yellow">どのバージョンを選べばよいか</span>を決めておきましょう。あわせて、ロリポップが古い版をどう扱っているかも知っておくと迷いません。</p>
+<p>この2つを押さえておくと、なぜ今切り替えるのかがはっきりします。選ぶ版が決まっていれば、画面を開いてから迷う時間も減るはずです。社内で相談するときの説明にも使えるので、画面を開く前に順に確かめてください。</p>
+
+<h3>選べる版と、今選ぶならどれか</h3>
+<p>ロリポップのサーバーの仕様では、どのプランでもPHPの8.3、8.4、8.5が選べる形です。php.netによると、<span class="mark-red"><strong>PHP 8.2の弱点の修正は2026年12月31日で終わります</strong></span>。8.3は2027年末、8.4は2028年末まで修正が続く予定です。</p>
+<p>WordPress公式もロリポップも、PHP 8.3以上での運用を勧めています。今から選ぶなら8.3か8.4にしておくと、しばらくは切り替えずに済むでしょう。サポート終了の意味は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>で紹介しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://lolipop.jp/service/server-spec" target="_blank" rel="noopener noreferrer nofollow">サーバーの仕様｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer nofollow">Requirements｜WordPress.org</a></li>
+</ul>
+
+<h3>古い版は自動で切り替わらない</h3>
+<p>ロリポップは2026年5月のお知らせで、PHPの版が自動では切り替わらないと案内しました。<span class="mark-yellow">何もしなければ、契約したころの版のまま</span>動き続けます。何年も前に作ったサイトほど、古い版が残っている場合があるのです。</p>
+<p>2026年10月にはPHPに重大な弱点が見つかりました。ロリポップは一部のサーバーで表示を止め、修正を当てています。8.1以前の版には独自に修正を当てたものの、応急的な対策だという説明です。今後は修正が出せない場合もあるとして、8.2以降への切り替えを呼びかけました。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/info/news/8130/" target="_blank" rel="noopener noreferrer nofollow">PHP8.5 CGI版及びLiteSpeed版の提供開始のお知らせ｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://lolipop.jp/info/news/8239/" target="_blank" rel="noopener noreferrer nofollow">PHPの脆弱性への対応に伴うメンテナンス完了と経緯のご報告｜ロリポップ！レンタルサーバー</a></li>
+</ul>
+
+<h2 id="s2">ロリポップでPHPのバージョンを変更する前の3つの準備</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/lolipop-php-version-fig2.webp" alt="ロリポップでPHPのバージョンを変更する前の準備として、今のバージョンを控える、ファイルとデータベースの控えを取る、WordPressとテーマとプラグインを最新にする、の3つを番号つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>準備を済ませておくと、戻す手間が小さくなります</figcaption></figure>
+<p>ロリポップでPHPのバージョンを変更する前に、<span class="mark-yellow">3つの準備を済ませておく</span>と安心です。切り替えは数分で終わりますが、準備を飛ばすと戻すときに手間取ります。</p>
+<p>どれもユーザー専用ページとWordPressの管理画面でできる作業です。合わせても30分ほどで終わるので、切り替えの日の前に済ませておくと落ち着いて進められます。特に、何年も手を入れていないサイトは念入りに確かめてください。</p>
+
+<h3>① 今のPHPのバージョンを控える</h3>
+<p>まず、今のPHPのバージョンを確かめて控えておきましょう。ロリポップでは、ユーザー専用ページの「PHP設定」にドメインごとの版が表示されます。WordPressなら、「ツール」の「サイトヘルス」にある「情報」タブでも見られる仕組みです。</p>
+<p><span class="mark-yellow">今の版を控えておけば、戻すときに迷いません</span>。ドメインを複数使っているなら、ドメインごとに書き留めておきましょう。外から確かめる方法も紹介しています。<a href="wordpress-version-check.html">WordPressのバージョンを確認する方法（管理画面と外からの両方）</a>を見てください。</p>
+
+<h3>② ファイルとデータベースの控えを取る</h3>
+<p>ロリポップの公式の解説は、切り替えの前にファイルとデータベースの両方を控えるよう勧めています。バックアップオプションを使っていれば、管理画面から過去7回分の控えを取り出せる仕組みです。</p>
+<p>オプションがなければ、<span class="mark-yellow">ファイルはFTP、データベースはphpMyAdmin</span>で書き出します。切り替えの直前に取っておけば、困ったときに戻す先ができるでしょう。控えを取ったら、ファイルが開けるかも一度見ておくと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/media/php-version-upgrade/" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンアップ前に確認する3つのポイントとは？｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://lolipop.jp/manual/user/backup-order/" target="_blank" rel="noopener noreferrer nofollow">バックアップオプション｜ロリポップ！レンタルサーバー</a></li>
+</ul>
+
+<h3>③ WordPressとテーマ、プラグインを最新にする</h3>
+<p>古いテーマやプラグインは、新しいPHPに対応していないことがあります。切り替えの前に、WordPress本体、テーマ、プラグインの順に最新にしておきましょう。公式マニュアルも、テーマとプラグインが変更後の版に対応しているかを先に確かめるよう案内しています。</p>
+<p><span class="mark-yellow">何年も更新されていないプラグイン</span>は、この機会に置き換えを考えてください。本体が何年分も古いときは、一気に上げず段階を踏むのが安全です。<a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a>で紹介しました。</p>
+
+<h2 id="s3">ロリポップでPHPのバージョンを変更する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/lolipop-php-version-fig3.webp" alt="ロリポップでPHPのバージョンを変更する手順として、ユーザー専用ページにログインする、サーバーの管理・設定のPHP設定を開く、ドメインの版を選んで変更を押す、5分から10分待って反映を確かめる、の4つの段階を左から右へ矢印でつないだ図" width="1200" height="800"><figcaption>「サーバーの管理・設定」の「PHP設定」から切り替えます</figcaption></figure>
+<p>PHPの変更は、<span class="mark-yellow">ユーザー専用ページのPHP設定</span>から行います。公式マニュアルの手順に沿って、画面の名前もそのまま載せました。</p>
+<p>画面の配置は変わることがあるので、見つからないときは公式マニュアルの最新の画面で確かめてください。作業は、サイトを見る人が少ない時間帯に行うと安心です。流れは、ログインから反映の確認までの4段階に分かれます。</p>
+
+<h3>ユーザー専用ページのPHP設定を開く</h3>
+<p>ユーザー専用ページにログインし、左のメニューの「サーバーの管理・設定」から「PHP設定」を開きます。契約しているドメインが一覧で並び、それぞれの今の版が表示される画面です。</p>
+<p>公式マニュアルによると、PHP設定はエコノミーからエンタープライズまでのプランで使えます。<span class="mark-yellow">ドメインごとに違う版を選べる</span>ので、まず変えたいドメインの行を探してください。サイトのアドレスと、一覧のドメイン名が合っているかも見ておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー</a></li>
+</ul>
+
+<h3>ドメインの版を選んで「変更」を押す</h3>
+<p>変えたいドメインの行で、PHPのバージョンを選んで「変更」を押してください。公式マニュアルによると、<span class="mark-red"><strong>反映までに5分から10分ほどかかります</strong></span>。押した直後に表示が変わらなくても、慌てずに待ちましょう。</p>
+<p>すべてのドメインを一度に変える設定もありますが、まとめて変えるのは避けたほうが無難でしょう。ロリポップの解説は1つずつ変えて確かめる方法を勧めています。複数のサイトを同時に崩さないためです。一度に大きく上げるのが不安なら、間の版を1つずつ試して確かめる方法もあります。</p>
+
+<h3>CGI版・モジュール版・LiteSpeed版の違い</h3>
+<p>ロリポップのPHPには、CGI版、モジュール版、LiteSpeed版の3つの動かし方があります。CGI版はエコノミーからスタンダードまで、モジュール版はライトとスタンダードで使える仕組みです。LiteSpeed版は、ハイスピードとエンタープライズで動いています。</p>
+<p>公式の案内によると、<span class="mark-yellow">php.iniで設定を変えられるのはCGI版だけ</span>と書かれていました。php.iniを書き換えているサイトは、版を上げたあとも設定が効いているかを確かめてください。迷ったら、今の動かし方を変えずに版だけを上げるのが無難でしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/manual/hp/cgi/" target="_blank" rel="noopener noreferrer nofollow">CGI、SSI、PHP、SENDMAILについて｜ロリポップ！レンタルサーバー</a></li>
+</ul>
+
+<h2 id="s4">ロリポップでPHPのバージョンを変更したあとの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/lolipop-php-version-fig4.webp" alt="ロリポップでPHPのバージョンを変更したあとに確かめることとして、サイトヘルスの版、表側と管理画面の表示、お問い合わせフォームの送信、データベースへの接続、の4つをカードに並べた図" width="1200" height="800"><figcaption>版、表示、送信、データベースの4つを確かめます</figcaption></figure>
+<p>ロリポップでPHPのバージョンを変更したら、反映を待って<span class="mark-yellow">その場でサイトの動きを確かめましょう</span>。ロリポップのお知らせも、表示や問い合わせフォーム、アップロードの動きを確かめるよう呼びかけています。</p>
+<p>確かめる順番を決めておけば、見落としを減らせるでしょう。崩れに気づくのが早いほど、戻す判断もしやすくなるはずです。</p>
+
+<h3>サイトヘルスと表示、フォームを確かめる</h3>
+<p>WordPressの「ツール」の「サイトヘルス」で、「情報」タブのサーバーの欄を開きます。PHPの版が選んだものに変わっていれば、反映は済んでいるはずです。続けて、トップページと主なページ、管理画面を開いて崩れがないかを見てください。</p>
+<p>運営者は自社サイトでPHPを上げたとき、<span class="mark-yellow">前後で全ページの表示を比べて</span>確かめました。お問い合わせフォームから自分あてに1通送り、自動返信と管理者あてのメールが届くかも見ておきましょう。英語のエラー文や真っ白な画面が出たら、次の章の手順に進みます。</p>
+
+<h3>データベースにつながらないときはパスワード形式を見る</h3>
+<p>PHPを変えたあとに、データベースへつながらないエラーが出ることがあります。公式マニュアルには、その場合の対処も載っていました。データベースのパスワードを「native_password形式」に変える方法です。</p>
+<p>「データベース」の画面で今のパスワードを確かめ、<span class="mark-yellow">同じパスワードで再設定する</span>と形式が変わります。新しいパスワードにしたら、wp-config.phpも同じものに書き換えてください。パスワードの扱いに不安があるときは、無理をせず元の版に戻すのが先です。</p>
+
+<h2 id="s5">ロリポップでPHPのバージョンを変更してうまくいかないとき</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/lolipop-php-version-fig5.webp" alt="ロリポップでPHPのバージョンを変更してうまくいかないときの流れとして、表示が崩れたらまず元の版に戻し、原因のプラグインを探して入れ替え、直らなければサポートに伝える、という分かれ道を示したフローチャートの図" width="1200" height="800"><figcaption>まず元の版に戻し、原因は落ち着いて探します</figcaption></figure>
+<p>PHPを変えて表示が崩れても、<span class="mark-yellow">元の版に戻せば表示は元どおりになる</span>ことがほとんどです。慌てずに、戻してから原因を探す順番で進めましょう。</p>
+<p>戻したままにせず、原因を取り除いてから上げ直すところまでが作業です。古い版を使い続ける期間は、できるだけ短くしてください。戻す、探す、伝えるの順に、3つの手順で進めていきましょう。</p>
+
+<h3>まず元の版に戻す</h3>
+<p>表示が崩れたら、PHP設定で控えておいた元の版を選び直して「変更」を押します。手順は上げるときと同じで、反映まで5分から10分ほど待ってください。戻ったら、どの画面でどんなエラーが出たかを書き留めておきましょう。</p>
+<p>ただし公式マニュアルには、<span class="mark-red"><strong>PHP 7.1未満から上げた場合は元の版に戻せない</strong></span>と書かれています。とても古い版から上げるときは、控えを取ってから進めるのが前提です。戻せないときは、取っておいた控えからファイルとデータベースを戻す方法を考えます。</p>
+
+<h3>原因のプラグインを探して入れ替える</h3>
+<p>よくある原因は、新しいPHPに対応していない古いテーマやプラグインです。運営者の自社サイト（別のサーバー）でも、PHPを8.3に上げたら管理画面にエラーが出ました。原因は、何年も更新していなかったプラグインでした。</p>
+<p>エラー文に出てくるフォルダ名から、<span class="mark-yellow">どのプラグインが止めているか</span>を探せます。更新が止まったプラグインは、同じ働きの別のものに入れ替えるのが確実です。使っていないものなら、この機会に削除まで済ませておきましょう。</p>
+
+<h3>直らないときはサポートに伝える内容をまとめる</h3>
+<p>元の版に戻しても直らないときは、ロリポップのサポートに相談する方法があります。公式マニュアルによると、伝える内容はサイトのURL、エラーの内容、PHPを変えた日時です。</p>
+<p>データベースのパスワードを再設定したなら、<span class="mark-yellow">その日時も一緒に書き添えましょう</span>。何をいつ変えたかが分かると、原因を探す時間が短くなります。作業のたびに、変えた内容と時刻を手元に残しておくと役に立つはずです。エラーの画面は、写しを撮っておくと説明が楽になります。</p>
+
+<div class="art-cta"><strong>あなたのサイトのPHPは何版ですか</strong><p>URLを入れるだけで、PHPやWordPressの版、ログイン名など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">ロリポップのPHPバージョン変更に関するよくある質問</h2>
+
+<h3>PHPのバージョンを変えると、サイトは止まりますか？</h3>
+<p>切り替えはユーザー専用ページで「変更」を押すだけで、サイトを止める操作はいりません。ただし、テーマやプラグインが新しい版に対応していないと、表示が崩れることがあります。反映までに5分から10分ほどかかるので、その間はサイトの様子を見守ってください。崩れたら元の版に戻せば、多くの場合は表示が戻ります。</p>
+
+<h3>どのPHPのバージョンを選べばいいですか？</h3>
+<p>WordPressの公式サイトもロリポップも、PHP 8.3以上を勧めています。ロリポップで2026年11月時点に選べるのは、8.3、8.4、8.5の3つです。8.2は2026年12月31日で弱点の修正が終わるので、今なら8.3か8.4が目安になります。テーマやプラグインの配布ページで、選ぶ版に対応しているかも先に確かめておきましょう。</p>
+
+<h3>エコノミープランでもPHPのバージョンは変えられますか？</h3>
+<p>エコノミープランでも、PHP設定から版を変えられます。動かし方はCGI版で、8.3、8.4、8.5から選ぶ形です。ハイスピードとエンタープライズはLiteSpeed版で、手順は同じPHP設定から行います。プランによって動かし方が違うので、php.iniを使っている場合は設定の効き方も確かめてください。</p>
+
+<h3>WordPress以外のサイトでも、同じ手順で変えられますか？</h3>
+<p>PHP設定は、WordPressを使っているかどうかに関係なく使えます。ただし、独自に作られたサイトは、古い書き方のプログラムが新しい版で動かない場合も考えられるでしょう。ロリポップのマニュアルも、版を変えたあとにプログラムの修正が要る場合があると案内しています。作った会社に、対応する版を確かめてから切り替えましょう。</p>
+
+<h3>自分で切り替えるのが不安なときはどうすればいいですか？</h3>
+<p>制作会社や保守を頼んでいる会社に、今の版と使っているプラグインを伝えて相談するのが確実です。今の状態が分からなければ、スキゼロの無料簡易診断で、PHPの版などを外から確かめられます。切り替えの作業そのものを頼みたいときは、対策作業として見積もりを出しますのでご相談ください。控えの取得から表示の確認、不具合のときの戻しまでを含めて引き受けています。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>ロリポップでは、ユーザー専用ページの「PHP設定」から、ドメインごとにPHPの版を変えられます。切り替えの前に、今の版とファイル、データベースを控え、プラグインなどを更新しておきましょう。</p>
+<p>切り替えたら5分から10分待ち、表示とフォームの送信を確かめてください。古い版は自動では上がらないので、<span class="mark-yellow">年内に8.3以上へ上げておく</span>ことをおすすめします。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">変更する前に知っておきたいこと</a></li><li><a href="#s2">変更する前の3つの準備</a></li><li><a href="#s3">変更する手順</a></li><li><a href="#s4">変更したあとの確認</a></li><li><a href="#s5">変更してうまくいかないとき</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
