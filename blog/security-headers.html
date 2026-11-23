@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意｜スキゼロ</title>
+<meta name="description" content="セキュリティヘッダーとは何か、ホームページに入れたい6つの設定の役割と、入っているかの確かめ方、.htaccessでの入れ方、HSTSやCSPで失敗しないための注意点をまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/security-headers.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意">
+<meta property="og:description" content="セキュリティヘッダーとは何か、ホームページに入れたい6つの設定の役割と、入っているかの確かめ方、.htaccessでの入れ方、HSTSやCSPで失敗しないための注意点をまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/security-headers.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-026-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-27">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意", "description": "セキュリティヘッダーとは何か、ホームページに入れたい6つの設定の役割と、入っているかの確かめ方、.htaccessでの入れ方、HSTSやCSPで失敗しないための注意点をまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-026-v3.webp", "datePublished": "2026-11-27", "dateModified": "2026-11-27", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/security-headers.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "セキュリティヘッダーを入れると、サイトが遅くなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "ヘッダーは数行の文字なので、表示の速さにはほとんど影響しません。ただし、MDNは.htaccessを使うとサーバーの処理が遅くなるとも書いています。サーバー本体の設定を触れる場合は、そちらに書くのが望ましいとされる方法です。レンタルサーバーでは.htaccessに書くのが一般的なので、気にしすぎる必要はありません。"}}, {"@type": "Question", "name": "WordPressのサイトでも入れられますか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressでも、サーバーの.htaccessに書けばほかのサイトと同じように入ります。WordPressが自動で書き込む部分の外に足すのがよいでしょう。その部分は「BEGIN WordPress」の行から始まります。終わりは「END WordPress」の行なので、その外側に書き足してください。プラグインで入れる方法もありますが、何を入れたかを控えておくと後で困りません。"}}, {"@type": "Question", "name": "6つ全部入れないと危ないのですか？", "acceptedAnswer": {"@type": "Answer", "text": "1つ抜けているだけで、すぐに被害が出るわけではありません。ヘッダーは、ほかの対策をすり抜けたときに被害を小さくする、二重の守りのような役割です。PHPやWordPressの更新など、元になる弱点をふさぐ対策の方を先に済ませてください。そのうえで、入れやすいnosniffや埋め込みの制限から足していくのが現実的です。"}}, {"@type": "Question", "name": "スマホから見る人にも効きますか？", "acceptedAnswer": {"@type": "Answer", "text": "スマホのブラウザも、パソコンと同じようにヘッダーの指示に従います。サーバーの側で一度入れておけば、見る人の機器を問わず働くのが利点です。古いブラウザでは対応していない項目もあるので、両方の書き方を入れる例もあります。X-Frame-Optionsとframe-ancestorsを並べるのが一例です。"}}, {"@type": "Question", "name": "入れたあと、何をすればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "入れた直後に、主なページの表示とお問い合わせフォームの送信を確かめてください。そのあと診断ツールで、6つが返っているかを見ておくと安心です。サーバーの引っ越しや設定ファイルの入れ替えで、ヘッダーが消えることもあります。定期的な点検の項目に入れておき、年に数回は確かめる習慣をつけましょう。点検のついでに、PHPやWordPressの版も見ておくと手間が省けます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">セキュリティヘッダーとは？ホームページに入れたい6つの設定</span><span class="h1-sub" data-sep="｜">確かめ方と入れるときの注意</span></h1>
+    <p><time datetime="2026-11-27">2026.11.27</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-026-v3.webp" alt="セキュリティヘッダーとは何か。サーバーからブラウザへ送る守りの指示書きと、入れたい6つの設定" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「診断でセキュリティヘッダーが足りないと出たけれど、何のことか分からない」と戸惑っていませんか？</p>
+<p>セキュリティヘッダーは、ホームページを開いたときにサーバーがブラウザへ送る短い指示書きです。入っていなくても見た目は変わらないので、抜けていても気づきにくいのが難しいところでしょう。</p>
+<p>この記事では、<span class="mark-yellow">ホームページに入れたい6つの設定</span>の役割を、専門用語をできるだけ避けて紹介します。入っているかの確かめ方と、入れるときの注意点もまとめました。</p>
+<p>MDNやOWASP、IPAの公開情報と、運営者が自社サイトで確かめた結果をもとに書いています。制作会社に相談する前の下調べに使ってください。</p>
+
+<h2 id="s1">セキュリティヘッダーとは？ホームページを守る仕組み</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/security-headers-fig1.webp" alt="ホームページを開くと、サーバーがページの中身と一緒にセキュリティヘッダーという指示書きをブラウザへ送り、ブラウザがその指示に従って危ない動きを止める流れを示した図" width="1200" height="800"><figcaption>ページの中身と一緒に、ブラウザへの指示書きが届きます</figcaption></figure>
+<p>セキュリティヘッダーは、<span class="mark-yellow">ブラウザに守り方を伝えるための設定</span>です。サーバーの側で一度入れておけば、訪れた人のブラウザがその指示に従って動きます。</p>
+<p>ページの文章や画像を直す作業とは別の場所にある設定です。そのため、ホームページを作ったときに入れていないと、何年もそのままになりやすい傾向があります。まずは、どんな仕組みで働くのかを押さえておきましょう。</p>
+
+<h3>ブラウザへの指示書きとして働く</h3>
+<p>ホームページを開くと、サーバーはページの中身の前に、いくつかの情報をブラウザへ送ります。この部分をHTTPヘッダーと呼び、その中で守りに関わるものがセキュリティヘッダーです。たとえば「このページをほかのサイトに埋め込ませない」といった指示を書けます。ブラウザは指示を読んで、<span class="mark-yellow">危ない動きを先回りして止めてくれる</span>のです。訪れた人が何かを操作したり、設定を変えたりする必要はありません。サイトの側で入れるだけで、すべての訪問者に効きます。</p>
+
+<h3>入っていなくても表示は変わらない</h3>
+<p>セキュリティヘッダーが1つも入っていなくても、ページはふだんどおりに表示されます。エラーも警告も出ないので、運営する側はまず気づきません。運営者は11月に、自社のWordPressサイトを外から確かめました。<span class="mark-yellow">手を入れていないサイトは1つも返していない</span>状態でした。一方、点検で手を入れた2つのサイトは、6種類のヘッダーを返しています。見た目では判断できない以上、外から確かめる手段を持っておくことが大切です。確かめ方は、このあとの章で紹介します。</p>
+
+<h2 id="s2">ホームページに入れたいセキュリティヘッダー6つ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/security-headers-fig2.webp" alt="ホームページに入れたいセキュリティヘッダーとして、HTTPSへの転送、HSTS、X-Content-Type-Options、X-Frame-Options、CSP、Referrer-Policyの6つを、それぞれ何を防ぐかの短い説明とともにカードで並べた図" width="1200" height="800"><figcaption>6つの設定は、それぞれ防ぐものが違います</figcaption></figure>
+<p>ホームページに入れたいセキュリティヘッダーは、<span class="mark-yellow">まず次の6つを目安にする</span>と分かりやすくなります。スキゼロの無料簡易診断でも、この6つが返っているかを見る形です。</p>
+<p>厳密には、1つ目のHTTPSへの転送はヘッダーそのものではありません。ただ、2つ目のHSTSと組みになって働くので、あわせて確かめておくと安心です。どれも、OWASPやMDNが設定を勧めている項目になります。</p>
+
+<h3>① HTTPからHTTPSへの転送</h3>
+<p>「http://」で始まる住所で開かれたとき、自動で「https://」のページへ移す設定です。転送がないと、暗号化されていない古い住所のまま閲覧されることがあります。入力した内容が途中で読み取られるおそれもあるでしょう。<span class="mark-yellow">古いブックマークや名刺の住所から来た人</span>も、この転送があれば、安全な方へ自動で案内できます。警告の表示とも関わりがあり、<a href="not-secure-warning.html">「保護されていない通信」と表示される原因と直し方</a>で詳しく紹介しました。</p>
+
+<h3>② HSTS（Strict-Transport-Security）</h3>
+<p>HSTSは、「このサイトは今後もHTTPSだけで開く」とブラウザに覚えさせるヘッダーです。覚えておく期間はmax-ageに秒で書き、1年なら31536000になります。MDNによると、<span class="mark-red"><strong>HSTSは一度HTTPSで開いたあとから効く</strong></span>仕組みです。初めての訪問まで守るには、ブラウザに組み込まれる一覧への登録が欠かせません。登録の条件は、期間を1年以上にすることや、サブドメインにも効かせることなど、いくつか決まっています。</p>
+
+<h3>③ X-Content-Type-Options</h3>
+<p>X-Content-Type-Optionsは、ファイルの種類の推測を止めるヘッダーです。値は「nosniff」の1つだけなので、迷う場面はほとんどありません。推測で、本来は実行しないファイルが実行できる扱いに変わるのを防ぐとOWASPは説明しています。<span class="mark-yellow">入れても見た目が変わることはまずない</span>ので、真っ先に入れたい設定です。6つの中では最も手軽な設定で、入れたことによる困りごとも、まず起きないでしょう。</p>
+
+<h3>④ X-Frame-Options（埋め込みの制限）</h3>
+<p>X-Frame-Optionsは、自分のページをほかのサイトの枠の中に表示させない設定です。透明な枠でボタンを重ね、知らないうちに操作させる手口を防ぎます。IPAはこの手口をクリックジャッキングと呼び、根本的な対策にこのヘッダーを挙げました。<span class="mark-yellow">値はDENYかSAMEORIGINのどちらか</span>を選ぶ形です。自分のサイト内で枠を使う場合は、SAMEORIGINにしておきましょう。使わないならDENYで十分です。</p>
+
+<h3>⑤ CSP（Content-Security-Policy）</h3>
+<p>CSPは、ページが読み込んでよいプログラムや画像の出どころを決めるヘッダーです。うまく使えば、改ざんで差し込まれた外部のプログラムを動かしにくくできます。一方で、OWASPは設定が複雑だとして、別に詳しい解説を設けているほどです。<span class="mark-yellow">最初は埋め込みの制限だけを書く</span>など、小さく始めると失敗しにくくなります。埋め込みの制限は、frame-ancestorsという項目で書けるのが便利な点です。X-Frame-Optionsと並べて書くのが一般的でしょう。</p>
+
+<h3>⑥ Referrer-Policy</h3>
+<p>Referrer-Policyは、ほかのサイトへ移るときに、元の住所をどこまで伝えるかを決めます。住所に問い合わせ番号などが含まれていると、移動先にその情報まで伝わる場合があるのです。OWASPが勧める値は「strict-origin-when-cross-origin」になります。<span class="mark-yellow">ほかのサイトにはドメインだけを伝える</span>設定です。今のブラウザは、指定がないときもこの値で動きます。古いブラウザに備える意味で、はっきり書いておくとよいでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer nofollow">HTTP Headers｜OWASP Cheat Sheet Series</a></li>
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security" target="_blank" rel="noopener noreferrer nofollow">Strict-Transport-Security header｜MDN</a></li>
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy" target="_blank" rel="noopener noreferrer nofollow">Referrer-Policy header｜MDN</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/clickjacking.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 - 1.9 クリックジャッキング｜IPA</a></li>
+</ul>
+
+<h2 id="s3">セキュリティヘッダーが入っているかを確かめる方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/security-headers-fig3.webp" alt="セキュリティヘッダーが入っているかを確かめる方法として、ブラウザの開発者ツールで応答のヘッダーを見る方法と、URLを入れるだけの無料の診断ツールを使う方法の2つを左右に並べて比べた図" width="1200" height="800"><figcaption>ブラウザで見るか、無料の診断ツールに任せるかの2通りです</figcaption></figure>
+<p>セキュリティヘッダーが入っているかは、<span class="mark-yellow">ホームページの外から誰でも確かめられます</span>。管理画面に入る必要はないため、制作会社に任せているサイトでも調べられるのが利点です。</p>
+<p>やり方は大きく分けて2通りあります。パソコンのブラウザで直接見る方法と、URLを入れるだけの診断ツールを使う方法です。手軽なのは後者なので、まずは診断ツールで全体を見てから細かく調べると迷いません。</p>
+
+<h3>ブラウザの開発者ツールで見る</h3>
+<p>パソコンのChromeなら、ページを開いて「F12」キーを押すと開発者ツールが開きます。「ネットワーク」のタブを選んでページを読み込み直し、一番上の行を選んでください。「レスポンスヘッダー」の欄に、サーバーが返したヘッダーが並ぶはずです。<span class="mark-yellow">6つの名前がこの欄にあるか</span>を1つずつ見ていけば、抜けている設定が分かります。少し手間はかかるものの、道具を入れずに済む方法です。httpの住所で開いて、httpsへ移るかも見ておきましょう。</p>
+
+<h3>無料の診断ツールを使う</h3>
+<p>MDNは、ヘッダーの設定を点数にして示すHTTP Observatoryを無料で公開しています。誰でもどのサイトでも調べられ、調べた履歴は公開されるという説明です。MDNも、<span class="mark-red"><strong>高い評価でもサイトが安全とは限らない</strong></span>と書いている点に注意してください。スキゼロの無料簡易診断では、6つのうちいくつ返っているかを判定しています。PHPの版など、ほかの7項目も同時に見る仕組みです。診断の種類は<a href="website-security-diagnosis.html">ホームページのセキュリティ診断とは？無料と有料の違いと選び方</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.mozilla.org/en-US/blog/mdn-http-observatory-launch/" target="_blank" rel="noopener noreferrer nofollow">Introducing the MDN HTTP Observatory｜MDN Blog</a></li>
+</ul>
+
+<h2 id="s4">セキュリティヘッダーの入れ方と制作会社への頼み方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/security-headers-fig4.webp" alt="セキュリティヘッダーの入れ方として、.htaccessの控えを取る、設定の行を書き足す、ページの表示とフォームの送信を確かめる、ブラウザでヘッダーが返っているかを見る、の4つの段階を左から右へ矢印でつないだ図" width="1200" height="800"><figcaption>控えを取ってから書き足し、表示とヘッダーを確かめます</figcaption></figure>
+<p>セキュリティヘッダーは、多くの場合<span class="mark-yellow">サーバーの設定ファイルに数行を書き足す</span>だけで入ります。ただ、書き方を誤るとページが開かなくなることもあるので、手順を守って進めましょう。</p>
+<p>自分で入れる場合と、制作会社に頼む場合に分けて紹介します。サーバーの設定ファイルを触ったことがなければ、無理をせず頼む方を選んでください。頼むときに伝える内容が決まっていれば、話は早く進みます。</p>
+
+<h3>.htaccessに書き足す</h3>
+<p>Apacheで動くサーバーでは、.htaccessというファイルにヘッダーの行を書けます。MDNの例は、「Header always set」に続けて名前と値を書く形です。行は「IfModule mod_headers.c」の囲みの中に入れておきます。こうすると、使えない環境では読み飛ばされるのです。<span class="mark-yellow">書き換える前に元のファイルを必ず控え</span>、表示がおかしければすぐ戻してください。.htaccessが使えるかどうかは、サーバー会社のマニュアルで先に確かめておきましょう。</p>
+
+<h3>制作会社に頼むときの伝え方</h3>
+<p>制作会社に頼むときは、入れてほしいヘッダーの名前を並べて伝えると話が早く進みます。「HSTS、nosniff、埋め込みの制限、リファラーの制限を入れてほしい」と書けば十分です。CSPは影響が大きいので、<span class="mark-yellow">埋め込みの制限だけから始めたい</span>と添えておくと安心でしょう。入れたあとに、診断ツールで返っているかを一緒に確かめてもらうと確実です。保守契約に含まれるか、別料金になるかも、あわせて聞いておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Apache_Configuration_htaccess" target="_blank" rel="noopener noreferrer nofollow">Apache Configuration: .htaccess｜MDN</a></li>
+</ul>
+
+<h2 id="s5">セキュリティヘッダーを入れるときの注意点</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/security-headers-fig5.webp" alt="セキュリティヘッダーを入れるときの注意点として、HSTSは取り消しに時間がかかる、CSPは小さく始める、X-XSS-Protectionは入れない、の3つを注意の印つきで縦に並べた図" width="1200" height="800"><figcaption>取り消しにくい設定と、入れなくてよい設定があります</figcaption></figure>
+<p>セキュリティヘッダーは入れれば終わりではなく、<span class="mark-yellow">入れ方を誤ると困る設定もあります</span>。特に、一度入れると簡単には取り消せないものがあるので注意が必要です。</p>
+<p>運営者の自社サイトで入れたときに気をつけた点を、3つにまとめました。どれも、入れる前に知っておけば避けられることです。制作会社に頼む場合も、この3つは共有しておくと行き違いが減ります。</p>
+
+<h3>HSTSは取り消しに時間がかかる</h3>
+<p>HSTSを入れると、訪れた人のブラウザは決めた期間だけHTTPSでしか開かなくなります。MDNも、.htaccessの解説で取り消しがきかない設定だと注意しているほどです。<span class="mark-yellow">証明書が切れると、その間は開けなくなる</span>おそれがあります。最初は短い期間で試し、問題がないのを確かめてから1年に延ばすと安心できるでしょう。証明書の自動更新が動いているかも、先に確かめてください。更新の確かめ方は、次の記事で紹介しています。<a href="ssl-certificate-expiry.html">SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる</a>を参考にしてください。</p>
+
+<h3>CSPは小さく始める</h3>
+<p>CSPで読み込み元を細かく決めると、許していない地図や動画が止まることがあります。アクセス解析のタグが動かなくなる場合もあるでしょう。運営者の自社サイトでは、まず埋め込みの制限を書きました。あわせて、HTTPの読み込みをHTTPSに切り替える指定だけを入れています。<span class="mark-yellow">表示に影響しにくい項目から始めた</span>ので、困る場面はこれまで出ていません。広げるときは1つずつ足し、そのたびに主なページを開いて確かめましょう。</p>
+
+<h3>古いX-XSS-Protectionは入れない</h3>
+<p>昔の解説記事では、X-XSS-Protectionを入れるよう勧めている例が見られます。しかしOWASPは今、このヘッダーを設定しないか、明示的に止めるよう勧めているのです。MDNのHTTP Observatoryも、<span class="mark-yellow">2024年の見直しでこの項目の検査をやめました</span>。代わりにCSPで守る考え方へ移ってきています。古い記事の設定例をそのまま写さず、新しい情報で確かめてから入れてください。迷ったら入れないのが今の考え方です。</p>
+
+<div class="art-cta"><strong>あなたのサイトのセキュリティヘッダーはいくつ入っていますか</strong><p>URLを入れるだけで、6つの設定のうちいくつ返っているかを、PHPの版など8項目と一緒に無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">セキュリティヘッダーに関するよくある質問</h2>
+
+<h3>セキュリティヘッダーを入れると、サイトが遅くなりますか？</h3>
+<p>ヘッダーは数行の文字なので、表示の速さにはほとんど影響しません。ただし、MDNは.htaccessを使うとサーバーの処理が遅くなるとも書いています。サーバー本体の設定を触れる場合は、そちらに書くのが望ましいとされる方法です。レンタルサーバーでは.htaccessに書くのが一般的なので、気にしすぎる必要はありません。</p>
+
+<h3>WordPressのサイトでも入れられますか？</h3>
+<p>WordPressでも、サーバーの.htaccessに書けばほかのサイトと同じように入ります。WordPressが自動で書き込む部分の外に足すのがよいでしょう。その部分は「BEGIN WordPress」の行から始まります。終わりは「END WordPress」の行なので、その外側に書き足してください。プラグインで入れる方法もありますが、何を入れたかを控えておくと後で困りません。</p>
+
+<h3>6つ全部入れないと危ないのですか？</h3>
+<p>1つ抜けているだけで、すぐに被害が出るわけではありません。ヘッダーは、ほかの対策をすり抜けたときに被害を小さくする、二重の守りのような役割です。PHPやWordPressの更新など、元になる弱点をふさぐ対策の方を先に済ませてください。そのうえで、入れやすいnosniffや埋め込みの制限から足していくのが現実的です。</p>
+
+<h3>スマホから見る人にも効きますか？</h3>
+<p>スマホのブラウザも、パソコンと同じようにヘッダーの指示に従います。サーバーの側で一度入れておけば、見る人の機器を問わず働くのが利点です。古いブラウザでは対応していない項目もあるので、両方の書き方を入れる例もあります。X-Frame-Optionsとframe-ancestorsを並べるのが一例です。</p>
+
+<h3>入れたあと、何をすればいいですか？</h3>
+<p>入れた直後に、主なページの表示とお問い合わせフォームの送信を確かめてください。そのあと診断ツールで、6つが返っているかを見ておくと安心です。サーバーの引っ越しや設定ファイルの入れ替えで、ヘッダーが消えることもあります。定期的な点検の項目に入れておき、年に数回は確かめる習慣をつけましょう。点検のついでに、PHPやWordPressの版も見ておくと手間が省けます。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>セキュリティヘッダーは、サーバーからブラウザへ送る守りの指示書きです。入っていなくても見た目は変わらないので、外から確かめないと抜けに気づけません。</p>
+<p>目安は、HTTPSへの転送とHSTS、nosniff、埋め込みの制限の4つです。これにCSPとReferrer-Policyを加えた6つを確かめてください。HSTSとCSPは慎重に、<span class="mark-yellow">控えを取ってから小さく始める</span>ことをおすすめします。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">セキュリティヘッダーとは</a></li><li><a href="#s2">入れたい6つの設定</a></li><li><a href="#s3">入っているかの確かめ方</a></li><li><a href="#s4">入れ方と頼み方</a></li><li><a href="#s5">入れるときの注意点</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
