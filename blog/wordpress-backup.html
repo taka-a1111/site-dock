@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る｜スキゼロ</title>
+<meta name="description" content="WordPressのバックアップの取り方を、守るべきファイルとデータベース、3つの方法、頻度と置き場所の目安から解説します。別の場所に戻す練習のしかたと、戻せない失敗もまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-backup.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る">
+<meta property="og:description" content="WordPressのバックアップの取り方を、守るべきファイルとデータベース、3つの方法、頻度と置き場所の目安から解説します。別の場所に戻す練習のしかたと、戻せない失敗もまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-backup.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-027-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-28">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る", "description": "WordPressのバックアップの取り方を、守るべきファイルとデータベース、3つの方法、頻度と置き場所の目安から解説します。別の場所に戻す練習のしかたと、戻せない失敗もまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-027-v3.webp", "datePublished": "2026-11-28", "dateModified": "2026-11-28", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-backup.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "サーバーの自動バックアップがあれば、自分で取らなくていいですか？", "acceptedAnswer": {"@type": "Answer", "text": "自動バックアップは心強い機能ですが、それだけに頼るのはおすすめしません。保存の日数を過ぎると古い控えは消えますし、サーバーごと被害を受ける場合もあります。自動の控えに加えて、月に1回ほど手動の控えをサーバーの外に置いておきましょう。更新の前に取る1回も忘れずに行ってください。PHPの切り替えの前も同じです。"}}, {"@type": "Question", "name": "バックアップのプラグインは何を選べばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式の配布ページにあり、最近も更新が続いているものを選ぶのが基本です。ファイルとデータベースの両方を取れること、外部のクラウドに送れることも確かめましょう。入れたら一度控えを取り、送り先に届いているかを見てください。使わなくなったプラグインは、停止だけでなく削除しておくと安全です。"}}, {"@type": "Question", "name": "バックアップから戻すのは自分でもできますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバーの自動バックアップからなら、管理画面のボタンで戻せる場合が多いでしょう。エックスサーバーでも、サーバーパネルから日付を選んで戻せる仕組みです。ただし、戻すと今のファイルは上書きされ、控えの日より後に作ったファイルは消えます。不安なときは、制作会社や保守を頼んでいる会社に相談してください。戻す前に、今の状態の控えを取っておくと安心です。"}}, {"@type": "Question", "name": "バックアップは何世代残しておけばいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "WordPressの公式ハンドブックは、新しい控えを3〜5個は残しておくよう勧めています。改ざんは気づくまでに時間がかかることがあるので、1か月ほど前の控えもあると安心です。古い控えは容量を取るので、決まった数を超えたら古い順に消していきましょう。手動の控えには、取った日付をファイル名に入れておくと探しやすくなります。"}}, {"@type": "Question", "name": "制作会社に頼んでいる場合は、何を確かめればいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、誰がどの頻度でバックアップを取っているかを確かめてください。控えがどこに置かれていて、何日分残るのかも聞いておくと安心です。戻す作業が保守契約の範囲に入っているかも大切な確認点になります。確かめ方は、次の記事にまとめました。制作会社に任せたホームページ、保守契約で確認したいこと｜5つの項目と見直しの手順が参考になります。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">WordPressのバックアップの取り方と、戻す練習のしかた</span><span class="h1-sub" data-sep="｜">ファイルとデータベースの両方を守る</span></h1>
+    <p><time datetime="2026-11-28">2026.11.28</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-027-v3.webp" alt="WordPressのバックアップの取り方。ファイルとデータベースを控え、別の場所に戻して練習する" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「バックアップは取っているはずなのに、本当に戻せるのか分からない」と不安に感じていませんか？</p>
+<p>バックアップは、取っただけでは安心できません。いざというときに戻せなければ、改ざんや更新の失敗からサイトを立て直せないからです。</p>
+<p>この記事では、<span class="mark-yellow">WordPressのバックアップの取り方</span>を、守るべきものから順に紹介します。取ったバックアップで戻す練習をするやり方と、よくある失敗もまとめました。</p>
+<p>WordPressの公式ハンドブック、エックスサーバーのマニュアル、IPAの資料をもとにしています。運営者の自社サイトで確かめたこともあわせて書きました。</p>
+
+<h2 id="s1">WordPressのバックアップで守るべき2つのもの</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-backup-fig1.webp" alt="WordPressのバックアップで守るべきものを、テーマやプラグインや画像やwp-config.phpが入ったファイルと、投稿や固定ページや設定が入ったデータベースの2つの箱に分け、両方そろって初めて戻せることを示した図" width="1200" height="800"><figcaption>ファイルとデータベースがそろって、初めて元に戻せます</figcaption></figure>
+<p>WordPressのバックアップは、<span class="mark-yellow">ファイルとデータベースの2つ</span>に分けて考えます。WordPressの公式ハンドブックも、サイトを元どおりに戻すには両方が必要だと書いているほどです。</p>
+<p>片方だけでは、文章が残っても画像が消えることがあります。見た目は戻っても、記事が空になる場合もあるのです。まずは、それぞれに何が入っているかを押さえておきましょう。</p>
+
+<h3>① ファイルに入っているもの</h3>
+<p>ファイルには、テーマやプラグイン、記事に載せた画像などが入っています。データベースにつなぐための設定を書いたwp-config.phpも、ファイルの側です。公式ハンドブックによると、これらはデータベースのバックアップには含まれません。<span class="mark-yellow">画像やテーマを守れるのはファイルの控えだけ</span>なのです。レンタルサーバーでは、公開用のフォルダの中身をまるごと控えるのが基本の形になります。フォルダの一部だけを写すと、戻したときに足りないファイルが出てしまうでしょう。</p>
+
+<h3>② データベースに入っているもの</h3>
+<p>データベースには、投稿や固定ページの文章、コメント、サイトの設定などが入っています。毎日の更新で中身が変わるのは、主にこちらの側です。公式ハンドブックは、<span class="mark-red"><strong>データベースは定期的に、更新の前には必ず控える</strong></span>よう勧めています。お問い合わせの記録をサイトに残すプラグインを使っていれば、その記録もデータベースに入る形です。ファイルと違って画面では見えにくいため、取り忘れが起きやすいでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/backup/" target="_blank" rel="noopener noreferrer nofollow">Backups｜Advanced Administration Handbook｜WordPress.org</a></li>
+</ul>
+
+<h2 id="s2">WordPressのバックアップを取る3つの方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-backup-fig2.webp" alt="WordPressのバックアップを取る方法として、サーバーの自動バックアップ、バックアップのプラグイン、FTPとphpMyAdminを使った手動の3つを並べ、手間と保管場所の違いを比べた図" width="1200" height="800"><figcaption>3つの方法は、手間と保管場所が違います</figcaption></figure>
+<p>WordPressのバックアップを取る方法は、<span class="mark-yellow">大きく分けて3つあります</span>。サーバーの機能に任せる方法、プラグインで取る方法、自分の手で取る方法の3つです。</p>
+<p>どれか1つに絞る必要はありません。手間の少ない方法を土台にして、別の方法で控えを足しておくと安心です。順に、向いている場面と注意点を見ていきましょう。</p>
+
+<h3>① サーバーの自動バックアップを使う</h3>
+<p>多くのレンタルサーバーには、毎日自動でバックアップを取る機能があります。エックスサーバーでは、ファイルとデータベースを過去14日分まで残す仕組みです。ただし、一部の古いサーバーは7日分で、運営者の自社サイトもファイルは7日分でした。<span class="mark-yellow">自分のサーバーの保存日数を一度確かめる</span>ことをおすすめします。改ざんに気づくのが遅れると、きれいな控えがすでに消えていることもあるでしょう。保存の日数は、サーバーパネルの画面で確かめられます。</p>
+
+<h3>② プラグインで取る</h3>
+<p>WordPressには、バックアップを取るためのプラグインが公式の配布ページに複数あります。日時を決めて自動で取り、外部のクラウドに送れるものが多いのが特徴です。取る対象にファイルとデータベースの両方が入っているかも、設定の画面で確かめてください。サーバーの外に控えを置けるので、サーバーそのものの不具合にも備えられます。<span class="mark-yellow">送り先をサーバーの外にしておく</span>のが、プラグインを使う一番の意味です。入れたあとは、本当に控えが届いているかを一度見ておきましょう。</p>
+
+<h3>③ 手動で取る</h3>
+<p>手動で取るときは、ファイルとデータベースを別々に控えます。ファイルは、FTPのソフトで公開用のフォルダをまるごと手元に写すのが基本です。データベースは、phpMyAdminで書き出して保存しましょう。公式ハンドブックでは、「エクスポート」のタブで形式をSQLにして保存する手順が紹介されています。<span class="mark-yellow">プラグインの更新やPHPの切り替えの直前</span>に取る控えに向いた方法です。少し手間はかかりますが、仕組みを知る練習にもなるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/backup/database/" target="_blank" rel="noopener noreferrer nofollow">Backing Up Your Database｜Advanced Administration Handbook｜WordPress.org</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_restore.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからのデータ復元｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s3">WordPressのバックアップを取る頻度と保管場所</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-backup-fig3.webp" alt="WordPressのバックアップの保管の考え方として、データを3つ持ち、2種類の媒体に分け、1つは別の場所に置く3-2-1ルールを、サーバーとクラウドと手元のパソコンの3か所で示した図" width="1200" height="800"><figcaption>3つ持ち、2種類に分け、1つは別の場所に置きます</figcaption></figure>
+<p>WordPressのバックアップは、<span class="mark-yellow">いつ取るかとどこに置くか</span>で役に立つかどうかが決まります。取る間隔が空きすぎると、戻したときに失う更新が増えるからです。</p>
+<p>置き場所も同じくらい大切になります。バックアップがサーバーの中にしかなければ、サーバーごと被害を受けたときに一緒に失われるでしょう。頻度と置き場所の目安を、公式の資料から紹介します。</p>
+
+<h3>取る頻度の目安</h3>
+<p>公式ハンドブックの目安は、更新の少ないサイトなら週に1回、投稿の多いサイトなら毎日です。会社のサイトなら、毎日の自動バックアップに週1回の手動の控えを足す形が現実的でしょう。<span class="mark-yellow">本体やプラグインを更新する前にも1回取る</span>と、失敗したときにすぐ戻せます。新しい控えを3〜5個は手元に残すことも、公式ハンドブックが勧める点です。古い控えから順に入れ替えていけば足ります。控えのファイル名には取った日付を入れておきましょう。</p>
+
+<h3>3-2-1ルールで置き場所を分ける</h3>
+<p>IPAは、重要なデータのバックアップに「3-2-1ルール」を勧めています。データを本体も含めて3つ持ち、2種類の媒体に分け、1つは別の場所に置くという考え方です。WordPressなら、<span class="mark-red"><strong>サーバー、クラウド、手元のパソコンの3か所</strong></span>に分ける形が分かりやすいでしょう。IPAは、バックアップに使う機器をバックアップのときだけつなぐことも勧めています。ふだんからつないだままだと、被害が控えにまで広がるおそれがあるためです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/anshin/measures/everyday.html" target="_blank" rel="noopener noreferrer nofollow">日常における情報セキュリティ対策｜IPA</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/guide/sme/ug65p90000019cbk-att/jouhousecurity6kajou(kaisetsuhen)_r16.pdf" target="_blank" rel="noopener noreferrer nofollow">情報セキュリティ6か条 解説編｜IPA</a></li>
+</ul>
+
+<h2 id="s4">WordPressのバックアップから戻す練習のしかた</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-backup-fig4.webp" alt="WordPressのバックアップから戻す練習の流れとして、練習用の場所を用意する、ファイルを先に戻す、データベースを取り込む、表示と管理画面とフォームを確かめる、の4つの段階を左から右へ矢印でつないだ図" width="1200" height="800"><figcaption>ファイルを先に戻し、データベースを取り込んでから確かめます</figcaption></figure>
+<p>WordPressのバックアップは、<span class="mark-yellow">一度戻してみて初めて使えると分かります</span>。IPAの情報セキュリティ6か条にも、戻せるかを定期的に確かめるという項目があるほどです。</p>
+<p>ただし、練習で本番のサイトに上書きするのは避けてください。本番とは別の場所を用意して、そこへ戻す流れを試しましょう。年に1〜2回、時期を決めて行うと忘れにくくなります。</p>
+
+<h3>本番とは別の場所に戻してみる</h3>
+<p>練習には、本番とは別のサブドメインやフォルダを用意しましょう。データベースも、本番とは別に空のものを1つ作っておきます。公式ハンドブックの順番どおり、先にファイルを戻し、そのあとデータベースを取り込む流れです。<span class="mark-yellow">取り込み先のデータベースは空にしておく</span>のが、phpMyAdminで取り込むときの決まりになります。住所が本番と違うので、wp-config.phpやサイトの住所の設定を書き換える作業も欠かせません。</p>
+
+<h3>戻せたかを確かめる項目</h3>
+<p>戻したサイトが開けたら、トップページと主な記事の表示、画像が出ているかを確かめます。お問い合わせフォームは、送信までは試さず表示だけを見れば十分です。管理画面に入れるかと、プラグインの設定が残っているかも見ておきましょう。<span class="mark-yellow">どの日の控えから戻したかを記録しておく</span>と、本番で使うときに迷いません。かかった時間も書き残しておけば、本当に困ったときの見通しが立ちます。練習が終わったら、練習用の場所とデータベースは消しておくのが安全です。残したままにすると、古いWordPressが外から見える状態になってしまいます。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_db_restore.php" target="_blank" rel="noopener noreferrer nofollow">データベース自動バックアップからの復元｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s5">WordPressのバックアップでよくある失敗</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-backup-fig5.webp" alt="WordPressのバックアップでよくある失敗として、片方しか取っていない、サーバーの中にしか置いていない、戻せるか一度も試していない、の3つを注意の印つきで縦に並べた図" width="1200" height="800"><figcaption>取っているつもりでも、この3つで戻せないことがあります</figcaption></figure>
+<p>WordPressのバックアップは、<span class="mark-yellow">取っているつもりで戻せない</span>という形の失敗が多く見られます。いざ使う段になって気づくので、そのときにはもう手遅れになりがちです。</p>
+<p>取っているつもりのサイトで起こりやすいものを、3つ紹介します。どれも、今日から見直せることばかりです。自分のサイトに当てはまらないか、1つずつ確かめてください。</p>
+
+<h3>ファイルかデータベースの片方しかない</h3>
+<p>プラグインの設定によっては、データベースだけを控えていることがあります。この場合、記事の文章は戻っても、画像やテーマは戻りません。反対に、FTPでファイルだけを写していて、データベースを書き出していない例もあります。<span class="mark-yellow">控えの中身を開いて両方あるかを見る</span>だけで、この失敗は防げるのです。ファイルの束とSQLのファイルの2つがそろっているかを確かめてください。プラグインの設定を変えたあとも、同じように見直しましょう。</p>
+
+<h3>サーバーの中にしか置いていない</h3>
+<p>サーバーの自動バックアップだけに頼っていると、保存の日数を過ぎた控えは消えていきます。エックスサーバーのマニュアルも、自動の控えの完全性は保証しないという立場です。改ざんに2週間以上気づかない場合、<span class="mark-yellow">きれいな状態の控えが1つも残らない</span>こともあるでしょう。月に1回は手動で控えを取り、サーバーの外に置いておくと安心です。古い控えを1つ残しておけば、さかのぼって戻すこともできるでしょう。</p>
+
+<h3>戻せるか一度も試していない</h3>
+<p>バックアップを取り続けていても、戻す手順を知らなければ、困ったときに手が止まります。自動の控えが正しく取れているかは、実際に戻してみるまで分からないのです。公式ハンドブックも、自動の控えに任せきりにせず、時々は手動でも取るよう勧めています。<span class="mark-yellow">年に1回でも戻す練習をしておく</span>と、本番で慌てずに済むでしょう。改ざんされたときの流れは、<a href="website-tampering-recovery.html">ホームページ改ざんの復旧手順｜発見から再発防止まで</a>で紹介しました。</p>
+
+<div class="art-cta"><strong>バックアップの前に、今のサイトの弱点を確かめませんか</strong><p>URLを入れるだけで、PHPやWordPressの版、プラグインなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのバックアップに関するよくある質問</h2>
+
+<h3>サーバーの自動バックアップがあれば、自分で取らなくていいですか？</h3>
+<p>自動バックアップは心強い機能ですが、それだけに頼るのはおすすめしません。保存の日数を過ぎると古い控えは消えますし、サーバーごと被害を受ける場合もあります。自動の控えに加えて、月に1回ほど手動の控えをサーバーの外に置いておきましょう。更新の前に取る1回も忘れずに行ってください。PHPの切り替えの前も同じです。</p>
+
+<h3>バックアップのプラグインは何を選べばいいですか？</h3>
+<p>WordPressの公式の配布ページにあり、最近も更新が続いているものを選ぶのが基本です。ファイルとデータベースの両方を取れること、外部のクラウドに送れることも確かめましょう。入れたら一度控えを取り、送り先に届いているかを見てください。使わなくなったプラグインは、停止だけでなく削除しておくと安全です。</p>
+
+<h3>バックアップから戻すのは自分でもできますか？</h3>
+<p>サーバーの自動バックアップからなら、管理画面のボタンで戻せる場合が多いでしょう。エックスサーバーでも、サーバーパネルから日付を選んで戻せる仕組みです。ただし、戻すと今のファイルは上書きされ、控えの日より後に作ったファイルは消えます。不安なときは、制作会社や保守を頼んでいる会社に相談してください。戻す前に、今の状態の控えを取っておくと安心です。</p>
+
+<h3>バックアップは何世代残しておけばいいですか？</h3>
+<p>WordPressの公式ハンドブックは、新しい控えを3〜5個は残しておくよう勧めています。改ざんは気づくまでに時間がかかることがあるので、1か月ほど前の控えもあると安心です。古い控えは容量を取るので、決まった数を超えたら古い順に消していきましょう。手動の控えには、取った日付をファイル名に入れておくと探しやすくなります。</p>
+
+<h3>制作会社に頼んでいる場合は、何を確かめればいいですか？</h3>
+<p>まず、誰がどの頻度でバックアップを取っているかを確かめてください。控えがどこに置かれていて、何日分残るのかも聞いておくと安心です。戻す作業が保守契約の範囲に入っているかも大切な確認点になります。確かめ方は、次の記事にまとめました。<a href="website-maintenance-contract.html">制作会社に任せたホームページ、保守契約で確認したいこと｜5つの項目と見直しの手順</a>が参考になります。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのバックアップは、ファイルとデータベースの両方を取って初めて役に立ちます。サーバーの自動バックアップに加えて、更新の前と月に1回は手動で控えを取りましょう。</p>
+<p>控えは3-2-1ルールで置き場所を分け、<span class="mark-yellow">年に1回は別の場所に戻して練習する</span>ことをおすすめします。戻せると分かっていれば、いざというときも落ち着いて動けるはずです。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">守るべき2つのもの</a></li><li><a href="#s2">取る3つの方法</a></li><li><a href="#s3">頻度と保管場所</a></li><li><a href="#s4">戻す練習のしかた</a></li><li><a href="#s5">よくある失敗</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
