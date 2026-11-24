@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方｜スキゼロ</title>
+<meta name="description" content="WordPressのreadme.htmlは消すべきかを、今の中身と版の番号の有無、消しても更新で戻る仕組み、先に確かめたい危ないファイル、アクセスを止める手順の順に分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-readme-html.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方">
+<meta property="og:description" content="WordPressのreadme.htmlは消すべきかを、今の中身と版の番号の有無、消しても更新で戻る仕組み、先に確かめたい危ないファイル、アクセスを止める手順の順に分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-readme-html.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-031-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-02">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方", "description": "WordPressのreadme.htmlは消すべきかを、今の中身と版の番号の有無、消しても更新で戻る仕組み、先に確かめたい危ないファイル、アクセスを止める手順の順に分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-031-v3.webp", "datePublished": "2026-12-02", "dateModified": "2026-12-02", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-readme-html.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "license.txtも消したほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "license.txtも、サイトの動作には使われない文書です。扱いはreadme.htmlと同じで、消してもアクセスを止めても問題ありません。中身は著作権と利用の条件で、版の番号は書かれていないファイルです。本体を更新すると戻る点も同じなので、アクセスを止める方法が向いています。readme.htmlと一緒に設定しておくとよいでしょう。"}}, {"@type": "Question", "name": "readme.htmlを消すと、サイトや更新に影響しますか？", "acceptedAnswer": {"@type": "Answer", "text": "表示や管理画面には影響しません。readme.htmlは、サイトを動かすプログラムから読み込まれないファイルだからです。本体の更新についても、4.7からは消していても失敗しないよう直されました。ただし、更新のたびに新しいreadme.htmlが置き直されます。消したつもりでも戻っていることがあるので、更新のあとに確かめてください。"}}, {"@type": "Question", "name": "wp-config-sample.phpは残っていても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "残っていても、大きな問題にはなりません。wp-config-sample.phpは、設定ファイルの雛形だからです。データベースの名前やパスワードの欄には、仮の文字が入っているだけになっています。自社の本物の設定が書かれているのは、wp-config.phpのほうです。守るべきなのは本物のほうなので、読める人を絞る設定を確かめましょう。WordPressの公式は、所有者とサーバーだけが読める権限を勧めています。"}}, {"@type": "Question", "name": "版の番号を隠すプラグインは入れたほうがいいですか？", "acceptedAnswer": {"@type": "Answer", "text": "優先度は高くありません。版の番号は複数の場所から分かるため、隠しきるのは難しいからです。WordPressの公式も、隠すことを主な守りにするのは当てにならないとしています。プラグインを増やすと、そのプラグイン自体の更新という手間も増えるでしょう。まず本体とプラグインを新しく保ち、余力があれば隠す対策を足してください。"}}, {"@type": "Question", "name": "自社のサイトで何が見えているかを、まとめて確かめる方法はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "readme.htmlとファイルの一覧は、スキゼロの無料簡易診断で確かめられます。URLを入れるだけで、ほかの7項目とあわせて判定する仕組みです。控えのファイルや記録のファイルは、名前がサイトごとに違うため外からは探しきれません。サーバーのファイル管理の画面で、見覚えのないファイルがないかを見てください。判断に迷うファイルは、消す前に制作会社へ確かめましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方</span><span class="h1-sub" data-sep="｜">先に確かめたい危ないファイルと止め方</span></h1>
+    <p><time datetime="2026-12-02">2026.12.02</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-031-v3.webp" alt="WordPressのreadme.htmlは消すべきか。公開しなくていいファイルの考え方と、先に確かめたい危ないファイル" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「readme.htmlは消したほうがいい、と言われたが本当なのか」と迷っていませんか？</p>
+<p>readme.htmlは、WordPressに最初から入っている案内のファイルです。版の番号が外から分かるので危ない、という説明をよく見かけます。</p>
+<p>実は、今のreadme.htmlに版の番号は書かれていません。この記事では、<span class="mark-yellow">readme.htmlを消すべきかの判断と、本当に危ないファイル</span>を整理しました。</p>
+<p>WordPressの開発の記録と、IPAやOWASPの資料をもとにしています。公開しなくていいファイルの考え方を、この機会に押さえておきましょう。</p>
+
+<h2 id="s1">WordPressのreadme.htmlとは？入っている場所と中身</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-readme-html-fig1.webp" alt="WordPressのreadme.htmlの中身を、インストールの手順、更新の手順、動作に必要な環境、参考のリンクの4つに分けて示し、版の番号は書かれていないことを添えた図" width="1200" height="800"><figcaption>中身は英語の案内文で、版の番号は書かれていません</figcaption></figure>
+<p>WordPressのreadme.htmlは、<span class="mark-yellow">サイトの動作には使われない案内のファイル</span>です。本体を入れると、一番上のフォルダに自動で置かれます。</p>
+<p>置かれる場所が公開フォルダなので、URLを直接入れれば誰でも開けるのです。自社のドメインのあとに「/readme.html」を付けて、一度開いてみてください。案内文が表示されたら、外から見えている状態です。</p>
+
+<h3>本体に最初から入っている案内のファイル</h3>
+<p>WordPress 7.1.5の一番上のフォルダには、16個のファイルが入っています。そのうち、プログラムではないものはreadme.htmlとlicense.txtの2つだけです。readme.htmlには、インストールや更新の手順、必要な環境、参考のリンクが書かれています。<span class="mark-yellow">サイトを表示するときには読み込まれません</span>。消しても、表示や管理画面が止まることはないでしょう。検索に載らないようにする指定も入っているため、検索結果から見つかることは少ないはずです。</p>
+
+<h3>今のreadme.htmlに版の番号は書かれていない</h3>
+<p>古いreadme.htmlには、版の番号が書かれていました。たとえば4.6.1では、「Version 4.6.1」という表示です。攻撃する側が古い版を探す手がかりになる、というのが消す理由でした。この書き方は、開発の記録によると4.7で大きな番号だけに変わっています。そして<span class="mark-red"><strong>4.8からは、版の番号そのものが消されました</strong></span>。2017年には、3.7から4.7までの古い系統からも削除されています。ただし、必要なPHPの版などは今も書かれたままです。</p>
+<ul class="ref">
+<li>参考：<a href="https://core.trac.wordpress.org/ticket/35554" target="_blank" rel="noopener noreferrer nofollow">#35554 (De-emphasise WordPress Version in the admin)｜WordPress Trac</a></li>
+<li>参考：<a href="https://core.trac.wordpress.org/ticket/42386" target="_blank" rel="noopener noreferrer nofollow">#42386 (Remove version number from readme.html in branches)｜WordPress Trac</a></li>
+</ul>
+
+<h3>日本語版でも中身は英語になった</h3>
+<p>以前の日本語版には、日本語に訳したreadme.htmlが入っていました。公式の案内によると、訳が入っていたのは2022年10月18日までのパッケージです。7.1.5の日本語版と英語版を比べても、readme.htmlは同じ中身になっています。自社のreadme.htmlが日本語で表示されたら、注意してください。<span class="mark-yellow">本体を長く更新していないおそれがあります</span>。更新が止まっているサイトは、readme.htmlよりも本体の古さのほうが大きな問題です。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/readme-html/" target="_blank" rel="noopener noreferrer nofollow">readme.html｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s2">WordPressのreadme.htmlは消すべき？3つの判断材料</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-readme-html-fig2.webp" alt="WordPressのreadme.htmlを消すべきかの判断材料として、消しても版は隠しきれない、消しても更新で戻る、初期のままの目印にはなる、の3つを横に並べたカードの図" width="1200" height="800"><figcaption>急ぎではないが、見えなくして損はない、が結論です</figcaption></figure>
+<p>WordPressのreadme.htmlは、<span class="mark-yellow">消しても消さなくても安全性は大きく変わりません</span>。急いで消す必要はないものの、見えなくしておいて損もないファイルです。</p>
+<p>こう言える理由を、3つの判断材料に分けて紹介します。大事なのは、readme.htmlを消したことで安心しないことです。消す作業より先にやるべきことがあります。</p>
+
+<h3>① 消しても版は隠しきれない</h3>
+<p>WordPressの版は、readme.html以外の場所からも分かります。ページの中に出る「generator」という目印や、RSSの中に版の番号が出る作りだからです。読み込むファイルのURLの末尾に、版の番号が付くこともあります。開発チームの担当者は、公開されたソフトの版を見分けられなくする方法はないと述べました。そのうえで、<span class="mark-red"><strong>版の番号を隠すのではなく、更新する</strong></span>よう勧めています。版の確かめ方は、別の記事で紹介しました。<a href="wordpress-version-check.html">WordPressのバージョンを確認する方法（管理画面と外からの両方）</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/get_the_generator/" target="_blank" rel="noopener noreferrer nofollow">get_the_generator｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://core.trac.wordpress.org/ticket/23394" target="_blank" rel="noopener noreferrer nofollow">#23394 (Remove version from readme.html / Upgrade core doesn't restore the file)｜WordPress Trac</a></li>
+</ul>
+
+<h3>② 消しても更新のたびに戻る</h3>
+<p>readme.htmlは、本体を更新すると新しいものが置き直されます。更新の処理が、新しい版のファイルを丸ごと写す作りになっているからです。日本語のサイトに配られる更新用のファイルにも、readme.htmlは入っています。<span class="mark-yellow">消す方法を選ぶと、更新のたびに消し直す</span>ことになるでしょう。自動更新を有効にしているサイトでは、気づかないうちに戻っています。4.7からは、消したり書き換えを禁じたりしたサイトでも更新が失敗しないよう直されました。</p>
+<ul class="ref">
+<li>参考：<a href="https://core.trac.wordpress.org/ticket/31420" target="_blank" rel="noopener noreferrer nofollow">#31420 (license.txt and readme.html being unwritable shouldn't block a Background Update)｜WordPress Trac</a></li>
+</ul>
+
+<h3>③ 初期のままの目印にはなる</h3>
+<p>それでも、readme.htmlが見えるサイトは、入れたときのままという印象を与えるでしょう。OWASPの検査の手引きも、最初から付いてくる不要なものは公開の前に取り除くよう勧めています。スキゼロの無料簡易診断も、readme.htmlが外から見えるかを確かめる作りです。見えていた場合、この項目は<span class="mark-yellow">A〜Eの5段階で上から2番目のB判定</span>になります。大きな減点にはしていません。手間をかけずに見えなくできるなら、済ませておくとよいでしょう。</p>
+
+<h2 id="s3">WordPressでreadme.htmlより先に確かめたい危ないファイル</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-readme-html-fig3.webp" alt="WordPressでreadme.htmlより先に確かめたい危ないファイルとして、設定ファイルの写しやバックアップ、デバッグの記録、ファイルの一覧が見える状態の3つを、赤い注意の印を付けて縦に並べた図" width="1200" height="800"><figcaption>中身が漏れるファイルのほうが、readme.htmlよりずっと危険です</figcaption></figure>
+<p>WordPressでreadme.htmlより先に確かめたいのは、<span class="mark-yellow">中身が漏れると困るファイル</span>です。readme.htmlなら、見られても案内文が読まれるだけで済むでしょう。</p>
+<p>一方で、パスワードやお客さまの情報が入ったファイルは、見られた時点で被害になります。IPAも、公開すべきでないファイルを公開していないかを点検の最初の項目に挙げました。代表的なものを3つ紹介します。</p>
+
+<h3>設定ファイルの写しとバックアップ</h3>
+<p>一番危ないのは、作業のときに作った写しです。設定ファイルを直す前に、控えを残すことがあるでしょう。「wp-config.php.bak」のような名前のファイルです。名前の末尾が変わると、中身がそのまま表示されることがあります。<span class="mark-yellow">データベースのパスワードまで読まれてしまう</span>のです。データベースを書き出したファイルにも、同じ危険があります。JPCERT/CCは、書き出しファイルが外から読めた事例を報告しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information" target="_blank" rel="noopener noreferrer nofollow">Review Old Backup and Unreferenced Files for Sensitive Information｜OWASP Web Security Testing Guide</a></li>
+<li>参考：<a href="https://blogs.jpcert.or.jp/ja/2017/08/unsecured_databases.html" target="_blank" rel="noopener noreferrer nofollow">インターネット上に公開されてしまったデータベースのダンプファイル(2017-08-08)｜JPCERT/CC Eyes</a></li>
+</ul>
+
+<h3>デバッグの記録</h3>
+<p>不具合を調べるための記録のファイルも、置きっぱなしにされがちです。WordPressで記録を有効にすると、「debug.log」というファイルが作られます。置かれるのは、「wp-content」というフォルダの中です。<span class="mark-yellow">公開フォルダの中なので、外から読めることがあります</span>。公開中のサイトで使うことは、WordPressの公式も勧めていません。制作会社が調査のあとに止め忘れることもあるでしょう。調べ終わったら、機能を止めてファイルも消してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/" target="_blank" rel="noopener noreferrer nofollow">Debugging in WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>ファイルの一覧が見える状態</h3>
+<p>フォルダのURLを開いたときに、中のファイルの一覧が表示されるサイトがあります。サーバーの設定で、一覧の表示が有効になっている状態です。IPAの診断の仕様は、一覧が見えるだけなら危険度を低としています。ただし、<span class="mark-yellow">重要な情報が含まれていれば危険度は高</span>という扱いです。一覧が見えると、控えや記録のファイルを探す手間が省けてしまいます。スキゼロの診断でも、画像のフォルダの一覧が見える場合はD判定にしました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017319.pdf" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 別冊「ウェブ健康診断仕様」｜IPA</a></li>
+</ul>
+
+<h2 id="s4">WordPressのreadme.htmlなど不要なファイルを見えなくする手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-readme-html-fig4.webp" alt="WordPressのreadme.htmlなど不要なファイルを見えなくする手順を、外から見えるかを確かめる、消すか止めるかを選ぶ、設定を足す、もう一度開いて確かめる、の4段階でつないだ流れ図" width="1200" height="800"><figcaption>確かめる、選ぶ、設定する、もう一度確かめるの順です</figcaption></figure>
+<p>WordPressのreadme.htmlを見えなくする方法は2つあります。<span class="mark-yellow">ファイルを消すか、アクセスを止めるか</span>です。どちらも、作業の前後に外から開いて確かめます。</p>
+<p>サーバーの設定を触る作業なので、不安があれば制作会社に頼んでください。自分で進める場合は、変更の前に今の設定を控えておくのが基本です。エックスサーバーを例に、流れを紹介します。</p>
+
+<h3>外から見えるかを確かめる</h3>
+<p>まず、ブラウザで自社のドメインに「/readme.html」を付けて開きます。案内文が出たら、見えている状態です。「ページが見つかりません」や「アクセスできません」と出れば、すでに対策されています。<span class="mark-yellow">同じ要領で「/license.txt」も確かめましょう</span>。こちらは著作権と利用の条件が書かれた文書で、版の番号は入っていません。あわせて、過去に作った控えのファイルが残っていないかも、サーバーの中で探してください。</p>
+
+<h3>消すか、アクセスを止めるかを選ぶ</h3>
+<p>消す場合は、サーバーのファイル管理の画面などからreadme.htmlを削除します。ただ、本体の更新のたびに戻る点が手間でしょう。アクセスを止める場合は、「.htaccess」という設定ファイルに3行を足します。<span class="mark-yellow">一度書けば、更新でファイルが戻っても見えません</span>。書き方の見本は、WordPressの公式の資料にあります。見本のファイル名を「readme.html」に置き換えて使ってください。書き損じるとサイト全体がエラーになるため、不安なら制作会社に頼みましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>エックスサーバーで設定を足す</h3>
+<p>エックスサーバーでは、サーバーパネルの「.htaccess編集」から書き足せます。今の内容を先にメモ帳などへ写し、元に戻せるようにしておきましょう。エックスサーバーのマニュアルは、<span class="mark-yellow">心当たりがない記述でも不用意に消さない</span>よう注意しています。書き足す場所は、ファイルの一番上が安全です。WordPressが自動で書き換える範囲の中に書くと、あとで消えることがあります。保存したら、サイトが普段どおり表示されるかをすぐに確かめてください。「/readme.html」を開き直し、見えなくなったことも確かめます。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_htaccess.php" target="_blank" rel="noopener noreferrer nofollow">.htaccess編集｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s5">WordPressのreadme.htmlを機に見直したい公開フォルダの決まり</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-readme-html-fig5.webp" alt="WordPressのreadme.htmlを機に見直したい公開フォルダの決まりとして、公開しないものは置かない、作業の写しを残さない、外から定期的に確かめる、の3つを並べたチェックリストの図" width="1200" height="800"><figcaption>置かない、残さない、確かめるの3つを決まりにします</figcaption></figure>
+<p>WordPressのreadme.htmlの話は、<span class="mark-yellow">公開フォルダに何を置くかを見直すよい機会</span>です。1つのファイルを消すより、置き方の決まりを作るほうが長く効きます。</p>
+<p>決まりは難しいものではありません。社内と制作会社で同じ内容を共有しておけば、担当者が替わっても守れます。IPAの資料をもとに、3つにまとめました。紙1枚に書いて残しておくと安心です。</p>
+
+<h3>公開しないものは公開フォルダに置かない</h3>
+<p>IPAは、公開を想定していないファイルを公開用のフォルダに置かないよう呼びかけています。ページからリンクしていなくても、URLを直接入れれば読めてしまうからです。<span class="mark-yellow">リンクがないから見つからない、は通用しません</span>。見積書や名簿のようなファイルを、受け渡しのために一時的に置くのも避けましょう。置く必要があるときは、パスワードをかけ、用が済んだらすぐに消します。検索エンジンに記録が残ることがある点にも注意してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/about.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方｜IPA</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA</a></li>
+</ul>
+
+<h3>作業の写しをその場に残さない</h3>
+<p>ファイルを直す前に、同じフォルダに写しを作る人は多いでしょう。その写しが、消し忘れのまま何年も残ります。JPCERT/CCが調べた事例でも、<span class="mark-yellow">サーバーの移行のときの消し忘れ</span>が原因に挙がりました。控えのつもりで置いたままにした、という理由も報告されています。写しは自分のパソコンに取り、サーバーの上には残さないのが安全です。制作会社に作業を頼むときも、終わったあとに不要なファイルを消したかを確かめてください。</p>
+
+<h3>外から定期的に確かめる</h3>
+<p>決まりを作っても、時間がたつと不要なファイルは増えていきます。月に一度、外から見える状態になっていないかを確かめましょう。本体の更新のあとは、readme.htmlが戻っていないかも見てください。スキゼロの無料簡易診断は、<span class="mark-yellow">readme.htmlとファイルの一覧を外から確かめます</span>。控えのファイルのように名前が決まっていないものは、自動では見つけきれません。サーバーの中を人の目で見る点検と、組み合わせてください。</p>
+
+<div class="art-cta"><strong>readme.htmlやファイルの一覧が見えていないか、確かめませんか</strong><p>URLを入れるだけで、不要なファイルの見え方やWordPress本体の版など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのreadme.htmlに関するよくある質問</h2>
+
+<h3>license.txtも消したほうがいいですか？</h3>
+<p>license.txtも、サイトの動作には使われない文書です。扱いはreadme.htmlと同じで、消してもアクセスを止めても問題ありません。中身は著作権と利用の条件で、版の番号は書かれていないファイルです。本体を更新すると戻る点も同じなので、アクセスを止める方法が向いています。readme.htmlと一緒に設定しておくとよいでしょう。</p>
+
+<h3>readme.htmlを消すと、サイトや更新に影響しますか？</h3>
+<p>表示や管理画面には影響しません。readme.htmlは、サイトを動かすプログラムから読み込まれないファイルだからです。本体の更新についても、4.7からは消していても失敗しないよう直されました。ただし、更新のたびに新しいreadme.htmlが置き直されます。消したつもりでも戻っていることがあるので、更新のあとに確かめてください。</p>
+
+<h3>wp-config-sample.phpは残っていても大丈夫ですか？</h3>
+<p>残っていても、大きな問題にはなりません。wp-config-sample.phpは、設定ファイルの雛形だからです。データベースの名前やパスワードの欄には、仮の文字が入っているだけになっています。自社の本物の設定が書かれているのは、wp-config.phpのほうです。守るべきなのは本物のほうなので、読める人を絞る設定を確かめましょう。WordPressの公式は、所有者とサーバーだけが読める権限を勧めています。</p>
+
+<h3>版の番号を隠すプラグインは入れたほうがいいですか？</h3>
+<p>優先度は高くありません。版の番号は複数の場所から分かるため、隠しきるのは難しいからです。WordPressの公式も、隠すことを主な守りにするのは当てにならないとしています。プラグインを増やすと、そのプラグイン自体の更新という手間も増えるでしょう。まず本体とプラグインを新しく保ち、余力があれば隠す対策を足してください。</p>
+
+<h3>自社のサイトで何が見えているかを、まとめて確かめる方法はありますか？</h3>
+<p>readme.htmlとファイルの一覧は、スキゼロの無料簡易診断で確かめられます。URLを入れるだけで、ほかの7項目とあわせて判定する仕組みです。控えのファイルや記録のファイルは、名前がサイトごとに違うため外からは探しきれません。サーバーのファイル管理の画面で、見覚えのないファイルがないかを見てください。判断に迷うファイルは、消す前に制作会社へ確かめましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのreadme.htmlに、今は版の番号が書かれていません。急いで消す必要はないでしょう。消しても更新で戻るため、見えなくするならアクセスを止める方法が向いています。</p>
+<p>先に確かめたいのは、設定ファイルの写しや記録のファイルなど、中身が漏れると困るものです。<span class="mark-yellow">公開フォルダに余計なものを置かない決まり</span>を作り、月に一度は外から確かめましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">readme.htmlとは</a></li><li><a href="#s2">消すべきかの判断材料</a></li><li><a href="#s3">先に確かめたい危ないファイル</a></li><li><a href="#s4">見えなくする手順</a></li><li><a href="#s5">公開フォルダの決まり</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
