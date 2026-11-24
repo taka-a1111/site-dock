@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>お問い合わせフォームがスパムに使われるのを防ぐ方法｜自動返信の悪用と5つの対策｜スキゼロ</title>
+<meta name="description" content="お問い合わせフォームがスパムに使われるのを防ぐ方法を、自動返信が悪用される仕組み、5つの対策、Contact Form 7での設定の手順、入れたあとの確かめ方の順に分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/contact-form-spam.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="お問い合わせフォームがスパムに使われるのを防ぐ方法｜自動返信の悪用と5つの対策">
+<meta property="og:description" content="お問い合わせフォームがスパムに使われるのを防ぐ方法を、自動返信が悪用される仕組み、5つの対策、Contact Form 7での設定の手順、入れたあとの確かめ方の順に分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/contact-form-spam.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-030-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-01">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "お問い合わせフォームがスパムに使われるのを防ぐ方法｜自動返信の悪用と5つの対策", "description": "お問い合わせフォームがスパムに使われるのを防ぐ方法を、自動返信が悪用される仕組み、5つの対策、Contact Form 7での設定の手順、入れたあとの確かめ方の順に分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-030-v3.webp", "datePublished": "2026-12-01", "dateModified": "2026-12-01", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/contact-form-spam.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "スパムが1日に数件届くだけでも、対策は必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "届く件数よりも、自動返信が付いているかどうかで判断してください。自動返信があるフォームは、今は数件でも、ある日まとめて悪用されるおそれがあります。IPAの事例では、10万件以上の不正なメールが送られました。自動返信がないフォームなら、急ぐ必要は下がります。それでも、ボットを見分ける仕組みは入れておくと安心です。"}}, {"@type": "Question", "name": "reCAPTCHAとTurnstileは、どちらを選べばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "どちらも、プログラムによる送信を見分ける点は同じです。Contact Form 7の公式サイトは、特に理由がなければTurnstileを勧めています。reCAPTCHAの無料の範囲は、組織ごとに月1万回の判定までです。小さな会社のフォームなら、どちらの無料の範囲にも収まることが多いでしょう。すでに片方を使っていて問題がなければ、無理に替える必要はありません。"}}, {"@type": "Question", "name": "自動返信を止めると、お客さまが不安になりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "送信後の画面をていねいに作れば、不安は減らせます。受け付けたこと、返信までの目安、急ぎのときの電話番号を画面に出してください。エックスサーバーも、止めると受付完了のメールが届かなくなる点を注意書きにしています。どうしても残したい場合は、入力内容を載せない短い定型文にしましょう。ボットを見分ける仕組みと組み合わせるのが前提です。"}}, {"@type": "Question", "name": "営業の売り込みの投稿も、同じ対策で止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "人が手で入力している営業の投稿は、ボットの判定では止まりません。フォームの上に、営業目的の送信はお断りと書いておく方法があります。件数が多い相手は、禁止する言葉の一覧に会社名やアドレスを入れてください。それでも続く場合は、問い合わせの種類を選ぶ欄を作り、営業用の窓口を分けるとよいでしょう。本物の問い合わせを落とさないことを優先します。"}}, {"@type": "Question", "name": "フォームを自分で確かめる時間がありません。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、サーバー会社や制作会社に、自動返信の有無とスパム対策の状況を聞いてみてください。保守契約がある場合は、フォームの点検が含まれているかも確かめましょう。サイト全体の弱点は、スキゼロの無料簡易診断で外から確かめられます。WordPress本体やプラグインの版など、8項目を判定する仕組みです。古い版が見つかったら、フォームの対策とあわせて更新を進めます。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "お問い合わせフォームがスパムに使われるのを防ぐ方法｜自動返信の悪用と5つの対策"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">お問い合わせフォームがスパムに使われるのを防ぐ方法</span><span class="h1-sub" data-sep="｜">自動返信の悪用と5つの対策</span></h1>
+    <p><time datetime="2026-12-01">2026.12.01</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-030-v3.webp" alt="お問い合わせフォームがスパムに使われるのを防ぐ方法。自動返信の悪用と5つの対策" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「お問い合わせフォームから、英語の営業文や意味の分からない投稿が毎日届く」と困っていませんか？</p>
+<p>迷惑な投稿が届くだけなら、被害はまだ軽いほうでしょう。フォームの作りによっては、自社のサイトが迷惑メールの踏み台にされるのです。</p>
+<p>この記事では、<span class="mark-yellow">お問い合わせフォームがスパムに使われるのを防ぐ方法</span>を紹介します。悪用の仕組み、5つの対策、設定の手順、確かめ方の順にまとめました。</p>
+<p>IPAとサーバー各社の注意喚起、フォームの公式の説明をもとにしています。自社のフォームに当てはまる点がないか、読みながら確かめてください。</p>
+
+<h2 id="s1">お問い合わせフォームのスパムとは？対策の前に知りたい被害の形</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/contact-form-spam-fig1.webp" alt="お問い合わせフォームのスパムの被害を、自社に迷惑な投稿が届く形と、自動返信を悪用されて他人へ迷惑メールを送らされる形の2つに分けて、左右に並べて比べた図" width="1200" height="800"><figcaption>届く被害と、送らされる被害の2つがあります</figcaption></figure>
+<p>お問い合わせフォームのスパムには、<span class="mark-yellow">届く被害と送らされる被害の2つ</span>があります。対策を選ぶ前に、自社のフォームでどちらが起きているかを見分けましょう。</p>
+<p>どちらも、人ではなくプログラムが自動で送ってくるものが大半です。エックスサーバーも、不正なアクセスの大半はロボットによるものと説明しています。会社の規模や知名度は関係がありません。</p>
+
+<h3>自社に届くスパム</h3>
+<p>一つ目は、フォームを通じて自社に届く迷惑な投稿です。海外からの英語の宣伝、怪しいURLの入った文、同じ内容の繰り返しなどが届きます。件数が増えると、本物の問い合わせがその中に埋もれてしまうでしょう。<span class="mark-yellow">返信の遅れや見落としが、機会の損失につながります</span>。本文のURLを開いてしまう危険も見逃せません。届いた投稿のURLは、開かずに削除するのが基本です。こちらは不便ではあるものの、被害は自社の中にとどまります。</p>
+
+<h3>他人に送らされるスパム</h3>
+<p>二つ目は、自社のフォームが迷惑メールの送信に使われる形です。送信した人に控えのメールを返す、自動返信の機能が狙われます。攻撃者は、メールアドレスの欄に他人のアドレスを入れて送信するのです。すると、<span class="mark-yellow">自社の名前で、無関係な人へメールが届きます</span>。受け取った人から見れば、送り主は自社のサーバーです。気づかないうちに、迷惑メールを送る側になってしまいます。こちらは社外に被害が出るため、急いで対策する必要があるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_malicious_mailform.php" target="_blank" rel="noopener noreferrer nofollow">メールフォームを悪用した不正アクセスについて｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s2">お問い合わせフォームの自動返信を悪用するスパムと対策が要る理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/contact-form-spam-fig2.webp" alt="お問い合わせフォームの自動返信がスパムに悪用される流れを、攻撃者が他人のアドレスを入力する、フォームが自動返信を送る、無関係な人に迷惑メールが届く、自社のメールが止められる、の順に矢印でつないだ図" width="1200" height="800"><figcaption>他人のアドレスを入れるだけで、自動返信が迷惑メールになります</figcaption></figure>
+<p>お問い合わせフォームの自動返信の悪用は、<span class="mark-yellow">サーバー各社が注意を呼びかけている手口</span>です。エックスサーバーは、2025年1月ごろから事例が急増したと知らせました。ロリポップも、同じ年の3月に注意喚起を出しています。</p>
+<p>自動返信を付けたまま何年も見直していないフォームは、一度確かめてください。仕組みを知っておくと、どこを直せばよいかが分かります。</p>
+
+<h3>他人のアドレスを入れて自動返信を送らせる</h3>
+<p>手口はとても単純なものです。IPAが2020年に紹介した事例では、氏名の欄に不正なサイトのURLが入力されていました。メールアドレスの欄には、不特定多数のアドレスが入れられています。フォームは氏名をそのまま自動返信に載せる作りだったため、URL入りのメールが送られました。<span class="mark-red"><strong>不正なメールは10万件以上にのぼった</strong></span>と報告されています。特別な弱点を突かれたわけではなく、フォームの機能がそのまま使われた点が厄介です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/todokede/crack-virus/ug65p9000000nnpa-att/000084707.pdf" target="_blank" rel="noopener noreferrer nofollow">コンピュータウイルス・不正アクセスの届出事例［2020年上半期（1月～6月）］｜IPA</a></li>
+</ul>
+
+<h3>放置すると自社のメールが届かなくなる</h3>
+<p>被害は、迷惑をかけた相手だけでは終わりません。IPAの事例では、メールサーバーが公開のブロックリストに登録されました。その結果、<span class="mark-yellow">正規の業務メールの送信にまで支障が出た</span>のです。相手の組織によっては、メールが届かなくなりました。契約しているサーバー会社から制限を受けることもあるでしょう。ロリポップは、不正な利用を検知した場合にフォームの非表示やアカウントの停止を行うとしています。さくらインターネットも、検知したフォームを非公開にする対応を案内しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/info/news/7949/" target="_blank" rel="noopener noreferrer nofollow">【注意喚起】お問い合わせフォームの自動返信を悪用したスパム配信にご注意ください｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2912/" target="_blank" rel="noopener noreferrer nofollow">コメントスパム（フォーム悪用）が確認された場合の対応と復旧手順｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>自作のフォームは書き換えにも注意</h3>
+<p>フォームを自社や制作会社が独自に作っている場合は、もう一つ注意点があります。入力された内容がメールの宛先や件名の部分に入り込む、メールヘッダ・インジェクションという弱点です。IPAは、<span class="mark-yellow">迷惑メールの送信に悪用されるおそれがある</span>と説明しています。対策として、宛先や件名を固定の値にし、入力は本文にだけ出す作りが挙げられました。言語に用意されたメール送信の仕組みを使うことも勧めています。古い独自のフォームは、制作会社に確かめてもらいましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/mail-header.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 - 1.8 メールヘッダ・インジェクション｜IPA</a></li>
+</ul>
+
+<h2 id="s3">お問い合わせフォームのスパム対策5つ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/contact-form-spam-fig3.webp" alt="お問い合わせフォームのスパム対策として、自動返信を見直す、ボットを見分ける仕組みを入れる、スパムの判定を足す、プログラムを新しく保つ、送信元と回数を絞る、の5つを番号つきで縦に並べた一覧の図" width="1200" height="800"><figcaption>1つで防ぎきるのではなく、5つを重ねて守ります</figcaption></figure>
+<p>お問い合わせフォームのスパム対策は、<span class="mark-yellow">1つで防ぎきるものではありません</span>。いくつかを重ねて、送りにくく、送られても広がらない形にします。</p>
+<p>効果が大きく、すぐできるものから順に並べました。順番は、手を付けやすさと効果の大きさで決めています。全部を一度にやる必要はありません。上から順に、自社のフォームでできるものを進めてください。</p>
+
+<h3>① 自動返信を見直す</h3>
+<p>一番確実なのは、自動返信そのものを止めることです。ロリポップは、対策の一つ目に自動返信の無効化を挙げています。ただ、控えのメールが届かないと不安に思うお客さまもいるでしょう。残す場合は、<span class="mark-red"><strong>入力された文字を自動返信に載せない</strong></span>形に変えてください。IPAも、投稿者が入力した文字列を含めない対策を挙げています。運営者のサービスでも、受付のメールに申込者の自由な書き込みは入れていません。好きな文面を他人に送らせることを防ぐためです。</p>
+
+<h3>② ボットを見分ける仕組みを入れる</h3>
+<p>次に、プログラムによる送信を見分ける仕組みを入れます。代表はGoogleのreCAPTCHAと、CloudflareのTurnstileです。どちらも、利用者に画像を選ばせずに裏側で判定する使い方ができます。エックスサーバーは、<span class="mark-yellow">対策の最優先にreCAPTCHA v3を挙げました</span>。無料で使える範囲には違いがあります。reCAPTCHAは、1つの組織につき月1万回の判定までが無料です。Turnstileは、無料のプランでも判定の回数に上限がありません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/news_detail.php?view_id=15079" target="_blank" rel="noopener noreferrer nofollow">【注意喚起】問い合わせフォームの自動返信機能を悪用したスパムメール送信と対策について｜エックスサーバー</a></li>
+<li>参考：<a href="https://developers.cloudflare.com/turnstile/plans/" target="_blank" rel="noopener noreferrer nofollow">Cloudflare Turnstile plans｜Cloudflare Turnstile docs</a></li>
+<li>参考：<a href="https://docs.cloud.google.com/recaptcha/docs/billing-information" target="_blank" rel="noopener noreferrer nofollow">Billing information｜Google Cloud Documentation</a></li>
+</ul>
+
+<h3>③ スパムの判定を足す</h3>
+<p>ボットの判定をすり抜けた投稿は、内容で見分けましょう。WordPressには、Akismetというスパム判定のサービスがあります。<span class="mark-yellow">無料で使えるのは、個人の非商用のサイトだけ</span>です。会社のサイトでは、有料のプランを選ぶ必要があります。Contact Form 7で使うときは、項目に専用の指定を足す決まりです。費用をかけずに始めるなら、禁止する言葉の一覧を使ってください。「設定」の「ディスカッション」にある、許可されないキーワードの欄です。Contact Form 7は、この一覧に当てはまる投稿をスパムとして扱います。</p>
+<ul class="ref">
+<li>参考：<a href="https://akismet.com/pricing/" target="_blank" rel="noopener noreferrer nofollow">Pricing｜Akismet</a></li>
+<li>参考：<a href="https://contactform7.com/faq/i-get-spam-messages-through-my-contact-forms-how-can-i-stop-them/" target="_blank" rel="noopener noreferrer nofollow">I get spam messages through my contact forms. How can I stop them?｜Contact Form 7</a></li>
+</ul>
+
+<h3>④ プログラムを新しく保つ</h3>
+<p>フォームのプラグインや本体が古いままだと、新しい守りの機能が使えません。たとえばContact Form 7は、6.1からTurnstileとの連携に対応しました。<span class="mark-yellow">エックスサーバーも、最新版への更新を対策に入れています</span>。2026年11月時点の最新版は6.2.6です。動かすには、WordPress 7.1以上とPHP 8.3以上が必要になりました。サーバーのPHPが古いと、フォームの更新も止まります。PHPの期限は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/plugins/contact-form-7/" target="_blank" rel="noopener noreferrer nofollow">Contact Form 7｜WordPress.org</a></li>
+</ul>
+
+<h3>⑤ 送信元と回数を絞る</h3>
+<p>日本のお客さまだけが相手なら、海外からの送信を絞る方法もあります。ロリポップは、海外のIPアドレスからのアクセスを制限することを対策に挙げました。やり方はサーバーごとに違うので、サーバー会社の案内を確かめてください。同じ相手からの連続した送信を止める仕組みも役に立ちます。運営者のサービスでは、<span class="mark-yellow">同じメールアドレスからの受付を1日3回まで</span>にしました。同じドメインについての受付も、1日5回までです。上限があれば、踏み台にされても被害は小さく済みます。</p>
+
+<h2 id="s4">Contact Form 7のお問い合わせフォームでスパム対策を設定する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/contact-form-spam-fig4.webp" alt="Contact Form 7のお問い合わせフォームでスパム対策を設定する手順を、最新版に更新する、Turnstileのキーを発行する、インテグレーションの画面にキーを入れる、メール(2)の設定を見直す、の4段階でつないだ流れ図" width="1200" height="800"><figcaption>更新、キーの発行、連携、自動返信の見直しの順に進めます</figcaption></figure>
+<p>Contact Form 7は、1,000万以上のサイトで使われているプラグインです。<span class="mark-yellow">スパム対策の機能は、設定の画面から追加できます</span>。公式サイトが勧めているのは、Turnstileという仕組みです。</p>
+<p>reCAPTCHAを使う理由がなければ、こちらを選ぶよう案内しています。作業の前に、プラグインが6.1以上になっているかを確かめてください。</p>
+
+<h3>Turnstileのキーを発行して入れる</h3>
+<p>まず、Cloudflareの管理画面でTurnstileのウィジェットを作ります。作ると、サイトキーとシークレットキーの2つが発行される仕組みです。モードは、公式が勧める「Managed」を選んでください。次に、WordPressの管理画面で「お問い合わせ」の「インテグレーション」を開きます。Turnstileの欄からセットアップに進み、2つのキーを貼り付けて保存しましょう。<span class="mark-yellow">これだけで、すべてのフォームに判定が付きます</span>。フォームの中にタグを書き足す必要はありません。</p>
+<ul class="ref">
+<li>参考：<a href="https://contactform7.com/turnstile-integration/" target="_blank" rel="noopener noreferrer nofollow">Cloudflare Turnstile integration｜Contact Form 7</a></li>
+</ul>
+
+<h3>「メール (2)」の設定を見直す</h3>
+<p>自動返信は、Contact Form 7では「メール (2)」という名前です。フォームの編集画面の「メール」のタブにあります。止める場合は、「メール (2) を使用」のチェックを外して保存してください。エックスサーバーのマニュアルも、この手順を案内しています。ただし、<span class="mark-yellow">受付完了のメールが届かなくなる点に注意</span>が必要です。送信後の画面に、受け付けたことと返信の目安を書いておきましょう。残す場合は、本文にお客さまの入力をそのまま載せない形に直します。</p>
+
+<h3>設定の警告が出ていないかを見る</h3>
+<p>Contact Form 7には、危ない設定を知らせる機能があります。宛先の欄に入力されたアドレスを使う設定は、守りが足りないと警告の対象です。公式サイトは、こうした設定ではスパム対策の機能を有効にするよう強く勧めています。同時に、<span class="mark-yellow">対策を入れても危険をなくしきれない</span>とも書きました。警告が出ているフォームは、放置せずに設定を見直してください。意味が分からない警告は、制作会社にそのまま見せて相談するのが早道です。</p>
+<ul class="ref">
+<li>参考：<a href="https://contactform7.com/configuration-errors/unsafe-email-without-protection/" target="_blank" rel="noopener noreferrer nofollow">Unsafe email config is used without sufficient protection.｜Contact Form 7</a></li>
+</ul>
+
+<h2 id="s5">お問い合わせフォームのスパム対策のあとに確かめること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/contact-form-spam-fig5.webp" alt="お問い合わせフォームのスパム対策のあとに確かめることとして、テスト送信が届くか、本物の問い合わせが落ちていないか、サーバー会社の知らせを受け取れるか、の3つを並べたチェックリストの図" width="1200" height="800"><figcaption>入れたあとの確認までが対策です</figcaption></figure>
+<p>お問い合わせフォームのスパム対策は、<span class="mark-yellow">入れたあとの確認までが1セット</span>です。守りを強くしすぎると、本物のお客さまの問い合わせまで止めてしまいます。</p>
+<p>確かめることは多くありません。設定を変えた日のうちに、3つの点を見ておきましょう。月に一度の点検にも入れておくと安心です。担当者が替わっても続けられるよう、手順をメモに残してください。</p>
+
+<h3>自分でテスト送信する</h3>
+<p>設定を変えたら、自分でフォームから送信してみます。会社に通知のメールが届くか、控えのメールの文面はどうかを見てください。迷惑メールのフォルダに入っていないかも、あわせて見ておきます。スマートフォンと、社外の回線からも試しておくと確実です。<span class="mark-yellow">届かないフォームは、スパムより大きな損失になります</span>。ほかのプラグインとの組み合わせで、送信できなくなることもあるでしょう。月に一度、決まった日にテスト送信する習慣を付けてください。</p>
+
+<h3>本物の問い合わせが落ちていないかを見る</h3>
+<p>スパムの判定が、本物の問い合わせを止めてしまうこともあります。reCAPTCHA v3は、送信ごとに0.0から1.0の点数を付ける仕組みです。点数が低いと、人が送ったものでも止められてしまいます。禁止する言葉の一覧も、<span class="mark-yellow">当てはまった投稿はスパムとして扱う</span>作りです。言葉を足しすぎると、普通の問い合わせまで消えてしまうでしょう。お問い合わせが急に減ったときは、判定が厳しすぎないかを疑ってください。電話番号を併記しておくと、取りこぼしを減らせます。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/recaptcha/docs/v3" target="_blank" rel="noopener noreferrer nofollow">reCAPTCHA v3｜Google for Developers</a></li>
+</ul>
+
+<h3>サーバー会社の知らせを受け取れるようにする</h3>
+<p>悪用が起きると、サーバー会社から知らせが届くことがあります。登録のメールアドレスが退職者のものだと、誰も気づけません。サーバーの管理画面で、<span class="mark-yellow">連絡先が今の担当者になっているか</span>を確かめてください。送信数の上限に達して、メールが止まることで気づく場合もあります。エックスサーバーの上限の目安は、1時間に1,500通、1日に1万5,000通です。迷惑メールの配信があれば、この範囲でも制限すると書かれています。いつもと違う量の送信がないか、月に一度は見ておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_mail_spec.php" target="_blank" rel="noopener noreferrer nofollow">メール仕様一覧｜エックスサーバー</a></li>
+</ul>
+
+<div class="art-cta"><strong>フォームのあるサイトの弱点を、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やプラグインの版、なりすましメールへの備えなど8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">お問い合わせフォームのスパム対策に関するよくある質問</h2>
+
+<h3>スパムが1日に数件届くだけでも、対策は必要ですか？</h3>
+<p>届く件数よりも、自動返信が付いているかどうかで判断してください。自動返信があるフォームは、今は数件でも、ある日まとめて悪用されるおそれがあります。IPAの事例では、10万件以上の不正なメールが送られました。自動返信がないフォームなら、急ぐ必要は下がります。それでも、ボットを見分ける仕組みは入れておくと安心です。</p>
+
+<h3>reCAPTCHAとTurnstileは、どちらを選べばよいですか？</h3>
+<p>どちらも、プログラムによる送信を見分ける点は同じです。Contact Form 7の公式サイトは、特に理由がなければTurnstileを勧めています。reCAPTCHAの無料の範囲は、組織ごとに月1万回の判定までです。小さな会社のフォームなら、どちらの無料の範囲にも収まることが多いでしょう。すでに片方を使っていて問題がなければ、無理に替える必要はありません。</p>
+
+<h3>自動返信を止めると、お客さまが不安になりませんか？</h3>
+<p>送信後の画面をていねいに作れば、不安は減らせます。受け付けたこと、返信までの目安、急ぎのときの電話番号を画面に出してください。エックスサーバーも、止めると受付完了のメールが届かなくなる点を注意書きにしています。どうしても残したい場合は、入力内容を載せない短い定型文にしましょう。ボットを見分ける仕組みと組み合わせるのが前提です。</p>
+
+<h3>営業の売り込みの投稿も、同じ対策で止まりますか？</h3>
+<p>人が手で入力している営業の投稿は、ボットの判定では止まりません。フォームの上に、営業目的の送信はお断りと書いておく方法があります。件数が多い相手は、禁止する言葉の一覧に会社名やアドレスを入れてください。それでも続く場合は、問い合わせの種類を選ぶ欄を作り、営業用の窓口を分けるとよいでしょう。本物の問い合わせを落とさないことを優先します。</p>
+
+<h3>フォームを自分で確かめる時間がありません。どうすればよいですか？</h3>
+<p>まず、サーバー会社や制作会社に、自動返信の有無とスパム対策の状況を聞いてみてください。保守契約がある場合は、フォームの点検が含まれているかも確かめましょう。サイト全体の弱点は、スキゼロの無料簡易診断で外から確かめられます。WordPress本体やプラグインの版など、8項目を判定する仕組みです。古い版が見つかったら、フォームの対策とあわせて更新を進めます。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>お問い合わせフォームのスパムには、自社に届くものと、他人へ送らされるものがあります。急いで対策したいのは、自動返信を悪用される後者です。</p>
+<p>自動返信を見直し、ボットを見分ける仕組みを入れ、プログラムを新しく保ちましょう。<span class="mark-yellow">入れたあとにテスト送信で確かめる</span>ところまでが対策です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">スパムの被害の形</a></li><li><a href="#s2">自動返信の悪用</a></li><li><a href="#s3">スパム対策5つ</a></li><li><a href="#s4">Contact Form 7での設定</a></li><li><a href="#s5">対策のあとの確認</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
