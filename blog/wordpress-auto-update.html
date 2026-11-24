@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方｜スキゼロ</title>
+<meta name="description" content="WordPressの自動更新を有効にすべきかを、既定で動く範囲、良い点と注意点、サイトの役割に合わせた任せる範囲の決め方、設定の手順の順に、公式の情報をもとに分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-auto-update.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方">
+<meta property="og:description" content="WordPressの自動更新を有効にすべきかを、既定で動く範囲、良い点と注意点、サイトの役割に合わせた任せる範囲の決め方、設定の手順の順に、公式の情報をもとに分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-auto-update.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-029-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-30">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方", "description": "WordPressの自動更新を有効にすべきかを、既定で動く範囲、良い点と注意点、サイトの役割に合わせた任せる範囲の決め方、設定の手順の順に、公式の情報をもとに分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-029-v3.webp", "datePublished": "2026-11-30", "dateModified": "2026-11-30", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-auto-update.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "自動更新で大きな更新が入ると、サイトが壊れませんか？", "acceptedAnswer": {"@type": "Answer", "text": "壊れる可能性はゼロではありません。古いテーマやプラグインが新しい版に対応していないと、エラーが出ることがあります。心配なときは、本体は小さな更新だけを自動にし、大きな更新は手動で進めてください。切り替えは、「更新」の画面のリンクから行えます。ただし、手動にするなら更新を忘れない仕組みが必要です。新しい版が出てから数週間以内に上げる、と決めておくとよいでしょう。"}}, {"@type": "Question", "name": "自動更新を有効にしたのに、更新されていないのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "理由はいくつか考えられます。アクセスが少なくて確認が遅れている場合が1つ目です。ファイルを書き換える権限がない場合と、設定ファイルで止められている場合もあります。「ツール」の「サイトヘルス」に警告が出ていないかを見てください。新しいPHPが必要な更新は、サーバーのPHPが古いと入りません。原因が分からないときは、サーバー会社か制作会社に相談しましょう。"}}, {"@type": "Question", "name": "自動更新のメールが多くて困ります。止めてもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "メールは、更新が入ったことを知る数少ない手がかりです。止めてしまうと、失敗に気づけなくなります。件数が多いときは、専用のフォルダに振り分けて、失敗の知らせだけ目に入るようにしましょう。成功と失敗で件名が違うので、振り分けの条件に使えます。使っていないプラグインを減らすと、メールの数そのものも減るはずです。"}}, {"@type": "Question", "name": "制作会社に保守を頼んでいる場合も、自動更新は必要ですか？", "acceptedAnswer": {"@type": "Answer", "text": "保守契約の中身によります。更新の作業が契約に入っていて、弱点が出たときにすぐ動いてもらえるなら、手動でも問題ありません。月に一度まとめて更新する契約なら、間が空く分だけ危険が残ります。本体の小さな更新だけは自動にしておけないかを、制作会社に相談してみてください。勝手に設定を変えると検証の段取りが崩れるので、先に一声かけるのが安全です。"}}, {"@type": "Question", "name": "自動更新を有効にすれば、ほかの対策はいりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "自動更新は土台であって、すべてではありません。開発が止まったプラグインや、弱いパスワードは自動更新では直らないからです。バックアップ、ログインの守り、使わないプラグインの整理もあわせて進めましょう。今の版が外からどう見えているかは、スキゼロの無料簡易診断で確かめられます。URLを入れるだけで、8項目を判定する仕組みです。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressの自動更新は有効にすべき？良い点と注意点</span><span class="h1-sub" data-sep="｜">任せる範囲の決め方と確かめ方</span></h1>
+    <p><time datetime="2026-11-30">2026.11.30</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-029-v3.webp" alt="WordPressの自動更新は有効にすべきか。良い点と注意点、任せる範囲の決め方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「WordPressの自動更新は、有効にして本当に大丈夫なのか」と迷っていませんか？</p>
+<p>自動更新は、弱点をふさぐ更新を人の手を待たずに入れてくれる仕組みです。一方で、更新のあとに表示が崩れたり、止まっているのに気づかなかったりする場面もあります。</p>
+<p>この記事では、<span class="mark-yellow">WordPressの自動更新の良い点と注意点</span>を整理しました。既定で動く範囲、任せる範囲の決め方、設定の手順まで順番に紹介します。</p>
+<p>内容は、WordPressの公式ドキュメントと2026年の注意喚起をもとにしました。自社のサイトでどこまで任せるかを決める材料にしてください。</p>
+
+<h2 id="s1">WordPressの自動更新とは？既定で動く範囲</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-auto-update-fig1.webp" alt="WordPressの自動更新が既定で動く範囲を、本体の小さな更新、本体の大きな更新、プラグインとテーマ、翻訳の4つの行に分けて、自動か手動かを示した一覧表の図" width="1200" height="800"><figcaption>何も設定しなくても、小さな更新と翻訳は自動で入ります</figcaption></figure>
+<p>WordPressの自動更新は、<span class="mark-yellow">更新の種類ごとに既定の動きが違います</span>。何が自動で、何が手動なのかを先に知っておきましょう。</p>
+<p>WordPressは1日に2回、新しい版が出ていないかを自分で確かめます。見つかった更新のうち、自動の対象になっているものだけが入る作りです。2026年11月時点の最新版は7.1.5で、11月18日に公開されました。</p>
+
+<h3>本体は小さな更新と大きな更新で扱いが違う</h3>
+<p>WordPress本体の更新には2種類あります。7.1.4から7.1.5のような小さな更新は、不具合や弱点を直すためのものです。こちらは既定で自動になっています。7.1から7.2のような大きな更新は、機能の追加を含むものです。公式の説明では、<span class="mark-yellow">5.6以降に新しく入れたサイトは大きな更新も自動</span>とされています。それより前からあるサイトは、管理者が切り替えない限り小さな更新だけが自動です。翻訳のファイルは、どちらのサイトでも自動で入ります。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/upgrade/upgrading/" target="_blank" rel="noopener noreferrer nofollow">Upgrading WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>プラグインとテーマは既定でオフ</h3>
+<p>プラグインとテーマの自動更新は、WordPress 5.5から管理画面で切り替えられます。既定ではオフなので、<span class="mark-yellow">自分で有効にしない限り手動のまま</span>です。何も設定していないサイトでは、プラグインの更新は人が押すまで入りません。例外もあります。重大な弱点があるプラグインには、WordPress.orgが更新を配ることがあるのです。ただし対象はごく一部なので、当てにはできないでしょう。サーバー会社の簡単インストールで入れたサイトは、初期の設定を一度確かめておいてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/plugins-themes-auto-updates/" target="_blank" rel="noopener noreferrer nofollow">Plugin and themes auto-updates｜WordPress.org Documentation</a></li>
+</ul>
+
+<h2 id="s2">WordPressの自動更新を有効にする良い点3つ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-auto-update-fig2.webp" alt="WordPressの自動更新を有効にする良い点として、弱点をふさぐまでが早い、更新の忘れが減る、サポートのある版に居続けられる、の3つを横に並べたカードの図" width="1200" height="800"><figcaption>早さ、忘れにくさ、新しい版に居続けられることが利点です</figcaption></figure>
+<p>WordPressの自動更新を有効にする一番の理由は、<span class="mark-yellow">攻撃が始まるまでの時間が短くなった</span>ことです。人が気づいてから更新するのでは、間に合わない場面が増えました。</p>
+<p>小さな会社では、ホームページの担当がほかの仕事と兼ねていることが多いでしょう。毎日管理画面を開けない会社ほど、自動更新の利点は大きくなります。良い点を3つに分けて見ていきましょう。</p>
+
+<h3>① 弱点をふさぐまでの時間が短くなる</h3>
+<p>Patchstackの報告書によると、2025年に見つかった弱点は1万1,334件でした。影響の大きい弱点のおよそ半分は、24時間以内に攻撃に使われています。2026年7月には、WordPress本体にも重大な弱点が見つかりました。修正版の7.0.2が出てから約90分で、攻撃の試みが観測されたのです。<span class="mark-red"><strong>早いものは公開から数時間で攻撃が始まる</strong></span>のが今の状況といえます。自動更新なら、担当者が休んでいる夜や週末でも修正が入るでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener noreferrer nofollow">State of WordPress Security in 2026｜Patchstack</a></li>
+<li>参考：<a href="https://patchstack.com/articles/ninety-minutes-watching-attackers-weaponize-the-wordpress-core-rce/" target="_blank" rel="noopener noreferrer nofollow">Ninety minutes: watching attackers weaponize the WordPress core RCE｜Patchstack</a></li>
+</ul>
+
+<h3>② 更新の手間と忘れが減る</h3>
+<p>更新の通知に気づいても、忙しいと後回しになりがちです。プラグインの数が多いサイトほど、更新の知らせは頻繁に届くでしょう。自動更新を有効にすると、<span class="mark-yellow">押し忘れで古い版が残ることが減ります</span>。更新が入ると、管理者のメールアドレスに結果が届く仕組みです。成功したものと失敗したものが分かるので、届いたメールは読み流さないでください。メールが届かないサイトは、管理者のアドレスが古いままになっていないかを確かめましょう。</p>
+
+<h3>③ サポートのある版に居続けられる</h3>
+<p>WordPressが正式にサポートしているのは、最新の版だけです。古い版にも好意で修正が配られていますが、いつまで続くかは約束されていません。実際に、4.1から4.6への修正の配布は2025年7月で終わりました。<span class="mark-yellow">大きな更新も自動なら、古い版に取り残されません</span>。何年も更新せずに差が開くと、一気に上げるのは難しいでしょう。そうなったときの進め方は、別の記事で紹介しています。<a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a>を見てください。</p>
+
+<h2 id="s3">WordPressの自動更新の注意点3つ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-auto-update-fig3.webp" alt="WordPressの自動更新の注意点として、更新後に表示や機能が崩れることがある、動いていないことに気づきにくい、更新が届かないプラグインは守れない、の3つを縦に並べた注意の一覧の図" width="1200" height="800"><figcaption>崩れ、止まり、届かない更新の3つに気をつけます</figcaption></figure>
+<p>WordPressの自動更新は、<span class="mark-yellow">有効にしたら終わりという仕組みではありません</span>。任せきりにすると、困ったときに気づくのが遅れます。有効にする前に、起こりうることを知っておいてください。</p>
+<p>注意点は、更新のあとの崩れ、自動更新そのものの停止、更新が届かないプラグインの3つです。どれも、知っていれば備えられます。順に確かめていきましょう。</p>
+
+<h3>① 更新のあとに表示や機能が崩れることがある</h3>
+<p>更新で一番心配なのは、サイトが壊れることでしょう。WordPress 6.6には、失敗した更新を元に戻す仕組みが入りました。プラグインの自動更新で致命的なエラーが出ると、前の版に戻ります。ただし、確かめるのはトップページでエラーが出ないかだけです。<span class="mark-yellow">表示の崩れやフォームの不具合は見つけられません</span>。予約や決済のように止まると困る機能は、更新のあとに人の目で確かめてください。それでもエラーが残ったときは、管理者に復旧用のリンクがメールで届きます。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/core/2024/04/19/merge-proposal-rollback-auto-update/" target="_blank" rel="noopener noreferrer nofollow">Merge Proposal: Rollback Auto-Update｜Make WordPress Core</a></li>
+</ul>
+
+<h3>② 動いていないことに気づきにくい</h3>
+<p>自動更新は、有効にしていても動いていないことがあります。更新の確認は、サイトにアクセスがあったときに動く予約の仕組みに頼っているからです。アクセスが少ないサイトでは、確認が遅れるでしょう。ファイルを書き換える権限がない場合や、開発用の「.git」フォルダがある場合も止まります。IPAは2026年7月の注意喚起で、<span class="mark-red"><strong>自動更新が無効だったり失敗していたりする場合がある</strong></span>と伝えました。月に一度は、管理画面で今の版を確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20260722.html" target="_blank" rel="noopener noreferrer nofollow">WordPressの脆弱性対策について(CVE-2026-60137、CVE-2026-63030：wp2shell)｜IPA</a></li>
+</ul>
+
+<h3>③ 更新が届かないプラグインは守れない</h3>
+<p>自動更新が入れてくれるのは、開発者が出した修正だけです。Patchstackの報告書では、弱点の46%は公表の時点で修正版が出ていませんでした。開発が止まったプラグインには、いつまで待っても更新が届きません。運営者の自社サイトの点検でも、<span class="mark-yellow">配布が止まったプラグインが残っていました</span>。自動更新を有効にしていても、こうしたプラグインは古いままです。消すかどうかの判断の基準は、<a href="wordpress-plugin-delete.html">WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方</a>にまとめました。</p>
+
+<h2 id="s4">WordPressの自動更新を任せる範囲の決め方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-auto-update-fig4.webp" alt="WordPressの自動更新を任せる範囲を、会社案内が中心のサイトは本体もプラグインも自動、予約や決済のあるサイトは小さな更新だけ自動で残りは確かめてから手動、と左右に並べて比べた図" width="1200" height="800"><figcaption>小さな更新は止めず、残りはサイトの役割で決めます</figcaption></figure>
+<p>WordPressの自動更新は、<span class="mark-yellow">全部か無しかで決める必要はありません</span>。更新の種類とサイトの役割に合わせて、任せる範囲を分けるのが現実的です。</p>
+<p>判断の軸は2つあります。止まったときの困り具合と、更新のあとに確かめる人がいるかどうかです。この2つで、自社のサイトがどちらに近いかを考えてみましょう。迷ったら、守りを優先して自動を多めにしておくと安心です。</p>
+
+<h3>小さな更新は止めない</h3>
+<p>本体の小さな更新は、どのサイトでも自動のままにしておきましょう。弱点の修正が中心で、機能の変更が少ない更新だからです。WordPressの公式も、自動更新を止めないよう強く勧めています。2026年7月の7.0.2では、<span class="mark-yellow">影響のある版に強制の更新が配られました</span>。それほど急ぐ修正が、小さな更新には含まれているのです。設定ファイルですべての自動更新を止めているサイトは、止めた理由を確かめて見直してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release/" target="_blank" rel="noopener noreferrer nofollow">WordPress 7.0.2 Release｜WordPress.org</a></li>
+</ul>
+
+<h3>大きな更新とプラグインはサイトの役割で決める</h3>
+<p>会社案内が中心のサイトなら、大きな更新もプラグインも自動にしてよいでしょう。止まっても影響が小さく、古いまま残る危険のほうが大きいからです。予約、決済、会員の機能があるサイトは、少し慎重に考えます。<span class="mark-yellow">売上に関わるプラグインは手動で更新する</span>と決めておくと安全です。その場合は、更新を確かめる曜日と担当を決めてください。たとえば月曜の朝に見る、と具体的に決めるのがこつです。手動にしたまま誰も見ない状態が、一番危ない形になります。</p>
+
+<h3>自動にする前に戻せる備えを確かめる</h3>
+<p>WordPressの公式ドキュメントは、自動更新を有効にする前の準備を勧めています。うまくいかないときに、前の状態へ戻せるようにしておくことです。エックスサーバーは、自動バックアップを14日分保持しています。一部の古いサーバーでは7日分です。<span class="mark-yellow">どこに何日分の控えがあるかを先に確かめましょう</span>。サーバーによっては、バックアップが申し込みの要る追加機能になっています。戻す手順も、一度は試しておくと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_restore.php" target="_blank" rel="noopener noreferrer nofollow">自動バックアップからのデータ復元｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s5">WordPressの自動更新を設定する手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-auto-update-fig5.webp" alt="WordPressの自動更新を設定する手順を、更新の画面で本体の設定を見る、プラグインの一覧で有効化する、テーマを1つずつ切り替える、動いているかを確かめる、の4つの段階で左から右へつないだ流れ図" width="1200" height="800"><figcaption>本体、プラグイン、テーマ、動作の確認の順に進めます</figcaption></figure>
+<p>WordPressの自動更新の設定は、<span class="mark-yellow">管理画面だけで切り替えられます</span>。特別なプラグインは必要ありません。作業そのものは数分で終わるでしょう。</p>
+<p>設定を変える前に、任せる範囲と控えの有無を決めておきましょう。作業は管理者の権限でログインして進めます。制作会社に管理を任せている場合は、どの設定になっているかを先に聞いておくと安心です。</p>
+
+<h3>本体の設定は「更新」の画面で確かめる</h3>
+<p>管理画面の「ダッシュボード」から「更新」を開きます。画面の上のほうに、今の自動更新の状態が文章で表示されているはずです。小さな更新だけが自動のサイトには、切り替えのリンクが出ます。文言は「すべての新しいバージョンに対する自動更新を有効にします」という内容です。<span class="mark-yellow">これを押すと、大きな更新も自動になります</span>。設定ファイルに書かれた指定は、この画面の設定より優先される決まりです。制作会社が設定ファイルで固定していないかも、あわせて確かめておきましょう。</p>
+
+<h3>プラグインとテーマは1つずつ選ぶ</h3>
+<p>プラグインは、「プラグイン」の一覧にある「自動更新」の列で切り替えます。「自動更新を有効化」を押すと、そのプラグインだけが対象になる仕組みです。<span class="mark-yellow">全部を一度に有効にせず、1つずつ選べます</span>。まとめて切り替えたいときは、チェックを入れて一括操作を使ってください。テーマは、テーマの詳細の画面で1つずつ切り替えます。使っていないテーマやプラグインは、自動更新を考える前に削除しておくと管理が楽になるでしょう。</p>
+
+<h3>動いているかを確かめる</h3>
+<p>設定のあとは、実際に動いているかを確かめます。「ツール」の「サイトヘルス」を開き、予約の仕組みや更新に関する警告が出ていないかを見てください。更新が入ると、管理者のアドレスにメールが届きます。<span class="mark-yellow">新しい版が出たのにメールが来ないときは要注意</span>です。エックスサーバーやロリポップも、2026年のお知らせで確認を呼びかけました。自動更新が有効な場合でも、更新が完了しているかを管理画面で見るよう案内しています。</p>
+
+<div class="art-cta"><strong>更新が止まっていないか、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やPHPの版、プラグインの状態など8項目を無料で判定します。登録はいりません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressの自動更新に関するよくある質問</h2>
+
+<h3>自動更新で大きな更新が入ると、サイトが壊れませんか？</h3>
+<p>壊れる可能性はゼロではありません。古いテーマやプラグインが新しい版に対応していないと、エラーが出ることがあります。心配なときは、本体は小さな更新だけを自動にし、大きな更新は手動で進めてください。切り替えは、「更新」の画面のリンクから行えます。ただし、手動にするなら更新を忘れない仕組みが必要です。新しい版が出てから数週間以内に上げる、と決めておくとよいでしょう。</p>
+
+<h3>自動更新を有効にしたのに、更新されていないのはなぜですか？</h3>
+<p>理由はいくつか考えられます。アクセスが少なくて確認が遅れている場合が1つ目です。ファイルを書き換える権限がない場合と、設定ファイルで止められている場合もあります。「ツール」の「サイトヘルス」に警告が出ていないかを見てください。新しいPHPが必要な更新は、サーバーのPHPが古いと入りません。原因が分からないときは、サーバー会社か制作会社に相談しましょう。</p>
+
+<h3>自動更新のメールが多くて困ります。止めてもよいですか？</h3>
+<p>メールは、更新が入ったことを知る数少ない手がかりです。止めてしまうと、失敗に気づけなくなります。件数が多いときは、専用のフォルダに振り分けて、失敗の知らせだけ目に入るようにしましょう。成功と失敗で件名が違うので、振り分けの条件に使えます。使っていないプラグインを減らすと、メールの数そのものも減るはずです。</p>
+
+<h3>制作会社に保守を頼んでいる場合も、自動更新は必要ですか？</h3>
+<p>保守契約の中身によります。更新の作業が契約に入っていて、弱点が出たときにすぐ動いてもらえるなら、手動でも問題ありません。月に一度まとめて更新する契約なら、間が空く分だけ危険が残ります。本体の小さな更新だけは自動にしておけないかを、制作会社に相談してみてください。勝手に設定を変えると検証の段取りが崩れるので、先に一声かけるのが安全です。</p>
+
+<h3>自動更新を有効にすれば、ほかの対策はいりませんか？</h3>
+<p>自動更新は土台であって、すべてではありません。開発が止まったプラグインや、弱いパスワードは自動更新では直らないからです。バックアップ、ログインの守り、使わないプラグインの整理もあわせて進めましょう。今の版が外からどう見えているかは、スキゼロの無料簡易診断で確かめられます。URLを入れるだけで、8項目を判定する仕組みです。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressの自動更新は、本体の小さな更新と翻訳が既定で自動です。新しく入れたサイトでは、大きな更新も自動になっています。プラグインとテーマは既定で手動です。攻撃が始まるまでの時間が短くなった今、小さな更新を止める理由はほとんどありません。</p>
+<p>大きな更新とプラグインは、サイトの役割に合わせて任せる範囲を決めましょう。<span class="mark-yellow">有効にしたあとも、動いているかを月に一度確かめる</span>ことが大切です。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">既定で動く範囲</a></li><li><a href="#s2">良い点3つ</a></li><li><a href="#s3">注意点3つ</a></li><li><a href="#s4">任せる範囲の決め方</a></li><li><a href="#s5">設定の手順</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
