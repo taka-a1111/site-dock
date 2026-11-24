@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのテーマが古いと危ない？更新できないときの対処｜原因の見分け方と入れ替えの判断｜スキゼロ</title>
+<meta name="description" content="WordPressのテーマが古いと何が危ないのかを、更新できない4つの原因、更新の前に確かめること、子テーマへの移し方や入れ替えなど原因別の対処、防ぐための管理の順に、公式の情報をもとに分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-theme-update.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのテーマが古いと危ない？更新できないときの対処｜原因の見分け方と入れ替えの判断">
+<meta property="og:description" content="WordPressのテーマが古いと何が危ないのかを、更新できない4つの原因、更新の前に確かめること、子テーマへの移し方や入れ替えなど原因別の対処、防ぐための管理の順に、公式の情報をもとに分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-theme-update.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-034-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-05">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのテーマが古いと危ない？更新できないときの対処｜原因の見分け方と入れ替えの判断", "description": "WordPressのテーマが古いと何が危ないのかを、更新できない4つの原因、更新の前に確かめること、子テーマへの移し方や入れ替えなど原因別の対処、防ぐための管理の順に、公式の情報をもとに分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-034-v3.webp", "datePublished": "2026-12-05", "dateModified": "2026-12-05", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-theme-update.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "テーマの更新ボタンを押したら、デザインが崩れました。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、更新の前に取ったバックアップから元に戻してください。そのうえで、テーマのファイルに直接手が入っていなかったかを確かめましょう。書き換えがあったなら、その部分を子テーマへ移してから、もう一度更新します。バックアップがない場合は、サーバーの自動バックアップから戻せるかを見てください。自分で戻すのが難しいときは、制作会社に早めに相談しましょう。"}}, {"@type": "Question", "name": "テーマを更新しないまま使い続けると、すぐに乗っ取られますか？", "acceptedAnswer": {"@type": "Answer", "text": "すぐに被害が出るとは限りません。ただし、テーマに弱点が見つかっていれば、そこを狙われるおそれがあります。それ以上に困るのは、テーマのせいでPHPや本体の更新まで止まることです。今の版に知られた弱点がないかは、テーマの名前と版で調べられます。期限を決めて、更新か入れ替えのどちらかに進みましょう。目安は、PHPのサポートが終わる前です。"}}, {"@type": "Question", "name": "子テーマは、あとからでも作れますか？", "acceptedAnswer": {"@type": "Answer", "text": "作れます。子テーマは、親のテーマとは別のフォルダに置く小さなテーマです。ただし、親のテーマに直接加えた変更を、子テーマへ移す作業が要ります。どのファイルを変えたかが分からないと、移し漏れが出るおそれがあるでしょう。改造の量が多いときは、作った制作会社に頼むのが確実です。作ったあとは、子テーマを有効にして全ページの表示を確かめてください。"}}, {"@type": "Question", "name": "有料テーマの購入の記録が見つかりません。", "acceptedAnswer": {"@type": "Answer", "text": "まず、販売元に問い合わせて、購入の記録を探してもらいましょう。制作会社が代わりに買っていた場合は、制作会社に確かめるのが近道です。記録が見つからなければ、新しく買い直して最新版を取る方法になります。買い直しの費用と、別のテーマに入れ替える費用を比べて決めてください。今後のために、購入の情報は台帳に残しておきましょう。"}}, {"@type": "Question", "name": "使っていないテーマも更新したほうがよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "使う予定がないなら、更新より削除をおすすめします。止めているテーマも、ファイルはサーバーに残っているからです。ただし、WordPressに付いてくる既定のテーマは1つ残し、最新版にしておきましょう。子テーマを使っているなら、親のテーマも消さずに更新してください。削除の前には、念のためバックアップを取っておくと安心です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのテーマが古いと危ない？更新できないときの対処｜原因の見分け方と入れ替えの判断"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressのテーマが古いと危ない？更新できないときの対処</span><span class="h1-sub" data-sep="｜">原因の見分け方と入れ替えの判断</span></h1>
+    <p><time datetime="2026-12-05">2026.12.05</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-034-v3.webp" alt="WordPressのテーマが古いと危ないのか。更新できないときの対処、原因の見分け方と入れ替えの判断" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「WordPressのテーマに更新の知らせが出ているのに、押すのが怖い」と止まっていませんか？</p>
+<p>テーマは、サイトの見た目と動きを決める部品です。制作会社が手を入れたテーマや、買ってから何年もたつテーマは、更新で崩れないかが心配になるでしょう。</p>
+<p>この記事では、<span class="mark-yellow">テーマが古いままだと何が危ないのか</span>を最初に整理しました。更新できない原因の見分け方と、原因ごとの対処、入れ替えを考える目安まで順に紹介します。</p>
+<p>内容は、WordPressの公式ドキュメントと、運営者の自社サイトでの対応をもとにしました。自社のテーマの名前と版を手元に控えてから読み進めてください。</p>
+
+<h2 id="s1">WordPressのテーマが古いまま更新できないと危ない理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-theme-update-fig1.webp" alt="WordPressのテーマが古いまま更新できないと危ない理由として、テーマの弱点がふさがらない、PHPや本体を上げられなくなる、配布が止まると修正が届かない、の3つを横に並べたカードの図" width="1200" height="800"><figcaption>テーマの古さは、テーマだけでなくサイト全体の更新を止めます</figcaption></figure>
+<p>WordPressのテーマが更新できないままだと、<span class="mark-yellow">テーマの弱点と、土台の古さの両方が残ります</span>。見た目が変わらないので、困っていることに気づきにくいのが難しいところです。</p>
+<p>危ない理由は、大きく分けて2つあります。テーマそのものの弱点と、テーマが足かせになってほかの更新まで止まることです。どちらも、放っておくほど直すのに手間がかかるでしょう。</p>
+
+<h3>テーマにも弱点が見つかり、更新で直される</h3>
+<p>テーマはPHPで書かれたプログラムで、プラグインと同じように弱点が見つかることがあります。弱点の修正は、テーマの新しい版として配られるのがふつうです。<span class="mark-yellow">古い版のままなら、知られた弱点を抱えたまま</span>になります。WordPress.orgでは、安全上の問題は影響の大きい問題として扱われる決まりです。問題が解決するまで、テーマが配布の一覧から外されることもあります。使っていない古いテーマも、ファイルが残っていれば同じように弱点を抱えるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/themes/handbook/review/theme-suspension/" target="_blank" rel="noopener noreferrer nofollow">Theme suspension｜Make WordPress Themes</a></li>
+</ul>
+
+<h3>テーマが古いと、PHPや本体を上げられなくなる</h3>
+<p>古いテーマは、新しいPHPやWordPress本体に対応していないことがあります。そのため、テーマが止まるのを恐れて、土台の更新まで先送りになりがちです。<span class="mark-red"><strong>テーマ1つのせいで、サイト全体が古いまま残る</strong></span>形になります。php.netによると、PHP 8.2の修正は2026年12月31日で終わる予定です。運営者の自社サイトでも、古い有料テーマ用のプラグインがPHP 8でエラーを起こしました。管理画面が開かなくなり、新しい版に入れ替えてからPHPを切り替えています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+</ul>
+
+<h2 id="s2">WordPressのテーマが更新できない4つの原因</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-theme-update-fig2.webp" alt="WordPressのテーマが更新できない4つの原因を、テーマを直接書き換えている、配布や開発が止まっている、有料テーマの更新を受け取れない、PHPの版が合わない、の4段に分けて縦に並べた一覧の図" width="1200" height="800"><figcaption>原因によって、取るべき対処が変わります</figcaption></figure>
+<p>WordPressのテーマが更新できないとき、<span class="mark-yellow">原因はおおむね4つに分けられます</span>。原因が違えば対処も違うので、先に自社がどれに当たるかを見極めましょう。</p>
+<p>1つのサイトで、いくつかの原因が重なっていることも珍しくありません。当てはまるものに、すべて印をつけておいてください。印の数が多いほど、作業の段取りを先に考える必要があります。</p>
+
+<h3>① テーマのファイルを直接書き換えている</h3>
+<p>制作会社が、テーマのファイルに直接手を入れて作ったサイトがあります。この場合、テーマを更新すると、書き換えた部分が新しいファイルで上書きされてしまうのです。公式の説明では、子テーマを使えば変更を失わずに親のテーマを更新できるとされています。<span class="mark-yellow">子テーマを使わずに改造したテーマは、更新で変更が消える</span>のです。デザインの崩れや、独自の機能が動かなくなる形で表れるでしょう。更新が怖いと感じる理由の多くは、この形です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/themes/advanced-topics/child-themes/" target="_blank" rel="noopener noreferrer nofollow">Child Themes｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>② テーマの配布や開発が止まっている</h3>
+<p>作者が開発をやめたテーマには、新しい版そのものが出ません。更新の知らせが出ないので、更新できないことにも気づきにくいでしょう。WordPress.orgの配布ページで、最終更新の日付を見てください。<span class="mark-yellow">何年も更新がないテーマは、修正が届かない前提で考える</span>必要があります。WordPress.orgでは、問題のあるテーマが一覧から外されることもあるのです。有料テーマなら、販売元のサイトで今も売られているか、更新の記録があるかを確かめます。</p>
+
+<h3>③ 有料テーマの更新を受け取れていない</h3>
+<p>有料テーマの多くは、WordPress.orgではなく販売元から更新を配っています。管理画面に知らせが出る仕組みは、テーマごとに違うのがふつうです。購入した会員のページから、新しい版を自分で取ってくる形のものもあります。<span class="mark-yellow">購入したときのアカウントが分からず、更新が止まる</span>ことがよくあるのです。制作会社が自分の名義で買っていた場合は、自社では取れないこともあるでしょう。購入の記録と、更新を受け取れる期間を確かめてください。</p>
+
+<h3>④ サーバーのPHPの版が合わない</h3>
+<p>テーマには、動くのに必要なPHPとWordPressの版が書かれています。公式の説明では、「Requires PHP」と「Requires at least」がその欄です。新しい版のテーマが求めるPHPより、サーバーのPHPが古い場合があります。WordPressの自動更新の仕組みは、<span class="mark-yellow">PHPが足りないテーマの更新を入れません</span>。逆に、テーマが古すぎて新しいPHPで動かない場合もあるでしょう。どちらの向きで合っていないのかを、まず確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/themes/core-concepts/main-stylesheet/" target="_blank" rel="noopener noreferrer nofollow">Main Stylesheet (style.css)｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/classes/wp_automatic_updater/should_update/" target="_blank" rel="noopener noreferrer nofollow">WP_Automatic_Updater::should_update()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s3">WordPressのテーマが更新できないときに先に確かめること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-theme-update-fig3.webp" alt="WordPressのテーマが更新できないときに先に確かめることを、使っているテーマと親子の関係、書き換えた部分の有無、バックアップと試す場所、の3つをチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>テーマの親子、書き換え、戻せる備えの3つを確かめます</figcaption></figure>
+<p>WordPressのテーマが更新できないときも、<span class="mark-yellow">いきなり更新ボタンを押すのは避けましょう</span>。先に今の状態を知っておくと、崩れたときに戻せます。</p>
+<p>確かめるのは、テーマの親子の関係、書き換えの有無、戻せる備えの3つです。どれも、管理画面とサーバーの管理画面で見られます。急いでいるときほど、この確認を飛ばさないでください。1つずつ見ていきましょう。</p>
+
+<h3>使っているテーマと、親子の関係を見る</h3>
+<p>管理画面の「外観」から「テーマ」を開くと、有効なテーマの名前と版が分かります。テーマの詳細の画面に「子テーマです」という表示があれば、子テーマを使っている形です。<span class="mark-yellow">子テーマがあれば、親のテーマは比較的安全に更新できます</span>。子テーマの中の変更は、親を更新しても残るからです。「ツール」の「サイトヘルス」でも、有効なテーマとその親のテーマは残すよう案内されます。版の番号と更新の知らせの有無も、このときに控えておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/classes/wp_site_health/get_test_theme_version/" target="_blank" rel="noopener noreferrer nofollow">WP_Site_Health::get_test_theme_version()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>テーマを書き換えた部分があるかを聞く</h3>
+<p>子テーマがない場合は、テーマのファイルに手が入っているかを確かめます。いちばん確実なのは、サイトを作った制作会社に聞く方法です。連絡が取れないときは、同じ版のテーマを配布元から取り、ファイルを比べるやり方もあります。<span class="mark-yellow">書き換えがあると分かったら、更新の前に控えを取る</span>ことが欠かせません。どのファイルのどこを変えたかを、日付とあわせて一覧にしておきましょう。あとで子テーマへ移すときの手がかりになります。</p>
+
+<h3>バックアップと、試す場所を用意する</h3>
+<p>更新の前には、ファイルとデータベースの両方のバックアップを取ってください。サーバーの自動バックアップがあっても、作業の直前に自分で取っておくと安心です。できれば、本番と同じ中身の試す場所で先に更新を試しましょう。サーバー会社によっては、管理画面から試す場所を作れる機能があります。<span class="mark-yellow">本番で試すのは、戻し方を決めてから</span>にしましょう。何年も更新していないサイトの進め方も、別の記事にまとめています。<a href="wordpress-not-updated.html">WordPressを何年も更新していないときの安全な更新手順｜一気に上げずに段階的に</a>を見てください。</p>
+
+<h2 id="s4">WordPressのテーマが更新できないときの対処（原因別）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-theme-update-fig4.webp" alt="WordPressのテーマが更新できないときの対処を、直接書き換えているなら子テーマへ移してから更新、有料テーマなら販売元から最新版を取ってZIPで上書き、開発が止まっているならテーマを入れ替え、と原因と対処の2列で示した表の図" width="1200" height="800"><figcaption>原因に合わせて、移す、取り直す、入れ替えるの3つから選びます</figcaption></figure>
+<p>WordPressのテーマが更新できない原因が分かったら、<span class="mark-yellow">原因ごとに3つの対処から選びます</span>。書き換えを移す、新しい版を取り直す、テーマを入れ替えるの3つです。</p>
+<p>PHPの版が合わない場合は、ほかの3つの対処とあわせて進めることになるでしょう。作業の前に、ファイルとデータベースのバックアップが済んでいるかをもう一度確かめてください。</p>
+
+<h3>書き換えがあるなら、子テーマへ移してから更新する</h3>
+<p>直接書き換えたテーマは、変更を子テーマへ移してから更新します。子テーマは、親のテーマを土台にして、変えたい部分だけを持つテーマです。公式の説明では、子テーマの「Template」の欄に、親のテーマのフォルダの名前を正しく書きます。<span class="mark-red"><strong>移す前に更新すると、改造した部分が消えてしまう</strong></span>ので順番を守ってください。見た目の小さな調整なら、管理画面の「追加CSS」に移せることもあります。改造が多い場合は、作った制作会社に頼むのが安全でしょう。</p>
+
+<h3>有料テーマは、販売元から新しい版を取って上書きする</h3>
+<p>有料テーマは、販売元の会員のページから最新版のZIPファイルを取ってきます。WordPress 5.5からは、ZIPファイルを上げてテーマを上書きできるようになりました。「外観」の「テーマ」で新しいテーマを追加し、ZIPを選んで上げる流れです。<span class="mark-yellow">今の版と上げた版を見比べる画面が出る</span>ので、版の番号を確かめてから置き換えましょう。購入の記録が見つからない場合は、販売元に問い合わせてください。買い直しが必要になることもあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/core/2020/07/29/miscellaneous-developer-focused-changes-in-wordpress-5-5/" target="_blank" rel="noopener noreferrer nofollow">Miscellaneous developer-focused changes in WordPress 5.5｜Make WordPress Core</a></li>
+</ul>
+
+<h3>開発が止まっているなら、テーマの入れ替えを考える</h3>
+<p>新しい版が出ないテーマは、いくら待っても更新できません。この場合は、開発が続いている別のテーマへの入れ替えを考えます。入れ替えは見た目が変わるので、作り直しに近い作業になるでしょう。<span class="mark-yellow">PHPのサポートの終わりに合わせて計画する</span>と、作業の目標が決めやすくなります。PHPのサポートが終わる時期は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>にまとめました。入れ替えのあとは、すべてのページの表示を確かめましょう。</p>
+
+<h2 id="s5">WordPressのテーマが更新できない状態を防ぐ管理のしかた</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-theme-update-fig5.webp" alt="WordPressのテーマが更新できない状態を防ぐ管理のしかたを、使わないテーマを消して既定のテーマを1つ残す、自動更新と購入の記録を管理する、改造は子テーマか追加CSSに分ける、の3段階で上から下へつないだ流れ図" width="1200" height="800"><figcaption>テーマを減らし、記録を残し、改造を分けておきます</figcaption></figure>
+<p>WordPressのテーマが更新できない状態は、<span class="mark-yellow">作るときと持ち続けるときの決めごと</span>でかなり防げます。新しく作り直すときにも、そのまま使える考え方です。</p>
+<p>決めごとは、テーマを減らすこと、記録を残すこと、改造を分けることの3つになります。制作会社に頼むときは、最初に伝えておきましょう。担当者が替わっても続けられるよう、文書に残しておくと安心です。</p>
+
+<h3>使わないテーマを消し、既定のテーマを1つ残す</h3>
+<p>使っていないテーマは、サーバーから削除しておきましょう。WordPressのサイトヘルスも、安全のために使っていないテーマの削除を勧めています。ただし、WordPressに付いてくる既定のテーマは1つ残すのが勧めです。<span class="mark-yellow">有効なテーマに不具合が出たとき、既定のテーマが代わりに使われます</span>。子テーマを使っている場合は、親のテーマも消さないでください。テーマを減らすと、更新の手間と確かめる範囲も小さくなります。</p>
+
+<h3>自動更新と、購入の記録を管理する</h3>
+<p>配布ページから入れたテーマは、WordPress 5.5から自動更新を1つずつ有効にできます。「外観」の「テーマ」で、テーマの詳細の画面を開いて切り替えてください。有料テーマは、購入したアカウント、購入日、更新を受け取れる期間を台帳に残しておきます。<span class="mark-yellow">購入は、できるだけ自社の名義とアドレスで行う</span>のが安全です。担当者が替わっても、更新を受け取り続けられるからでしょう。台帳は、サーバーやドメインの情報と同じ場所にまとめましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/plugins-themes-auto-updates/" target="_blank" rel="noopener noreferrer nofollow">Plugin and themes auto-updates｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>改造は子テーマか追加CSSに分ける</h3>
+<p>見た目や機能を変えたいときは、テーマのファイルを直接書き換えないようにしましょう。子テーマか、管理画面の「追加CSS」に分けておけば、親のテーマを更新しても残ります。制作会社に頼むときも、子テーマで作ってもらうよう最初に伝えてください。<span class="mark-yellow">どこに何を書いたかを、引き継ぎの資料に残す</span>ことも大切です。資料があれば、別の会社に頼むときも作業が早く進みます。テーマの更新を怖がらずに済む形を、最初から作っておきましょう。</p>
+
+<div class="art-cta"><strong>テーマやPHPの古さを、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やPHPの版、プラグインなど8項目を無料で判定します。テーマの更新や入れ替えの作業は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのテーマが更新できない問題に関するよくある質問</h2>
+
+<h3>テーマの更新ボタンを押したら、デザインが崩れました。どうすればよいですか？</h3>
+<p>まず、更新の前に取ったバックアップから元に戻してください。そのうえで、テーマのファイルに直接手が入っていなかったかを確かめましょう。書き換えがあったなら、その部分を子テーマへ移してから、もう一度更新します。バックアップがない場合は、サーバーの自動バックアップから戻せるかを見てください。自分で戻すのが難しいときは、制作会社に早めに相談しましょう。</p>
+
+<h3>テーマを更新しないまま使い続けると、すぐに乗っ取られますか？</h3>
+<p>すぐに被害が出るとは限りません。ただし、テーマに弱点が見つかっていれば、そこを狙われるおそれがあります。それ以上に困るのは、テーマのせいでPHPや本体の更新まで止まることです。今の版に知られた弱点がないかは、テーマの名前と版で調べられます。期限を決めて、更新か入れ替えのどちらかに進みましょう。目安は、PHPのサポートが終わる前です。</p>
+
+<h3>子テーマは、あとからでも作れますか？</h3>
+<p>作れます。子テーマは、親のテーマとは別のフォルダに置く小さなテーマです。ただし、親のテーマに直接加えた変更を、子テーマへ移す作業が要ります。どのファイルを変えたかが分からないと、移し漏れが出るおそれがあるでしょう。改造の量が多いときは、作った制作会社に頼むのが確実です。作ったあとは、子テーマを有効にして全ページの表示を確かめてください。</p>
+
+<h3>有料テーマの購入の記録が見つかりません。</h3>
+<p>まず、販売元に問い合わせて、購入の記録を探してもらいましょう。制作会社が代わりに買っていた場合は、制作会社に確かめるのが近道です。記録が見つからなければ、新しく買い直して最新版を取る方法になります。買い直しの費用と、別のテーマに入れ替える費用を比べて決めてください。今後のために、購入の情報は台帳に残しておきましょう。</p>
+
+<h3>使っていないテーマも更新したほうがよいですか？</h3>
+<p>使う予定がないなら、更新より削除をおすすめします。止めているテーマも、ファイルはサーバーに残っているからです。ただし、WordPressに付いてくる既定のテーマは1つ残し、最新版にしておきましょう。子テーマを使っているなら、親のテーマも消さずに更新してください。削除の前には、念のためバックアップを取っておくと安心です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのテーマが更新できないままだと、テーマの弱点が残ります。そのうえ、PHPや本体の更新まで止まりがちです。原因は、直接の書き換え、開発の停止、有料テーマの更新の受け取り、PHPの版の4つに分けられます。</p>
+<p>バックアップを取ってから、<span class="mark-yellow">子テーマへ移す、取り直す、入れ替えるの中から選ぶ</span>のが基本です。使わないテーマを減らし、改造は子テーマに分けておきましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">古いままだと危ない理由</a></li><li><a href="#s2">更新できない4つの原因</a></li><li><a href="#s3">先に確かめること</a></li><li><a href="#s4">原因別の対処</a></li><li><a href="#s5">防ぐ管理のしかた</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
