@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのセキュリティプラグインは必要？｜サーバーの機能との違いと選び方｜スキゼロ</title>
+<meta name="description" content="WordPressのセキュリティプラグインは必要なのかを、できることとできないこと、サーバー側の機能との役割分担、主な6つの比較、選ぶときに見る4つの点、入れすぎと設定の注意の順に、公式の情報をもとに解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-security-plugin.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのセキュリティプラグインは必要？｜サーバーの機能との違いと選び方">
+<meta property="og:description" content="WordPressのセキュリティプラグインは必要なのかを、できることとできないこと、サーバー側の機能との役割分担、主な6つの比較、選ぶときに見る4つの点、入れすぎと設定の注意の順に、公式の情報をもとに解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-security-plugin.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-039-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-10">
+<meta property="article:section" content="WordPress・プラグイン">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのセキュリティプラグインは必要？｜サーバーの機能との違いと選び方", "description": "WordPressのセキュリティプラグインは必要なのかを、できることとできないこと、サーバー側の機能との役割分担、主な6つの比較、選ぶときに見る4つの点、入れすぎと設定の注意の順に、公式の情報をもとに解説します。", "image": "https://sukizero.com/blog/img/eyecatch-039-v3.webp", "datePublished": "2026-12-10", "dateModified": "2026-12-10", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-security-plugin.html", "inLanguage": "ja", "articleSection": "WordPress・プラグイン", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "セキュリティプラグインを入れれば、ほかの対策はいりませんか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ、ほかの対策も必要です。プラグインは守りを厚くする道具で、すべての攻撃を止めるものではありません。配布ページに、すべての攻撃は止められないと書くプラグインもあるのです。本体・テーマ・プラグインの更新と、バックアップは別に続けてください。強いパスワードと、使っていないアカウントの整理も欠かせない基本になります。プラグインは、その土台の上に足すものと考えましょう。"}}, {"@type": "Question", "name": "セキュリティプラグインは、いくつも入れてよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "数に決まりはありませんが、同じ働きを重ねるのは避けてください。ログインページの変更のように、2つで有効にすると不具合が出る機能があります。入れるなら、働きが重ならないように役割を分けましょう。プラグインが増えるほど、更新と確認の手間も増えます。まずは1つで足りるかを考えるのが無難です。すでに複数入っているなら、重なる働きがないかを見直してください。"}}, {"@type": "Question", "name": "無料版だけでも役に立ちますか？", "acceptedAnswer": {"@type": "Answer", "text": "役に立つ場面は多くあります。この記事の表には、配布ページで有料の印がない機能を載せました。ただし、無料版と有料版で届く情報の早さや、検査の範囲が違うことがあります。たとえばWordfence Securityの無料版は、新しいルールが30日遅れで届く決まりです。違いは配布ページと公式サイトで確かめ、必要になったら有料版を考えましょう。"}}, {"@type": "Question", "name": "エックスサーバーを使っています。プラグインは入れなくてもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバーの機能で足りている守りは、重ねて入れなくて構いません。エックスサーバーには、WAFやログイン試行回数制限、国外からの接続の制限があります。一方で、WordPressのログインの2段階認証は、この設定の一覧にはない働きです。こうした働きが欲しいときに、プラグインで足すと考えてください。先に、サーバーパネルで今の設定がオンかどうかを確かめましょう。"}}, {"@type": "Question", "name": "自分で設定するのが不安なときは、どこに相談すればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サイトを作った制作会社か、保守を頼んでいる会社に相談するのが近道です。相談の目安は、ログインできなくなったときや、設定のあとに表示やフォームが崩れたときになります。改ざんや不正なログインの疑いがあるときも、設定を触る前に専門家へ連絡してください。入れる前なら、今のサイトにどの守りが足りないかを見てもらうとよいでしょう。サーバー会社のサポートに、標準の機能を聞くのも有効です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのセキュリティプラグインは必要？｜サーバーの機能との違いと選び方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / WordPress・プラグイン</nav>
+    <h1><span class="h1-main">WordPressのセキュリティプラグインは必要？</span><span class="h1-sub" data-sep="｜">サーバーの機能との違いと選び方</span></h1>
+    <p><time datetime="2026-12-10">2026.12.10</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-039-v3.webp" alt="WordPressのセキュリティプラグインは必要なのか。サーバーの機能との違いと選び方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>WordPressのセキュリティプラグイン、種類が多くて選べずにいませんか？</p>
+<p>入れれば安心なのか、サーバーの機能と何が違うのかも気になるところです。いくつも入れてよいのかも、迷いやすい点でしょう。</p>
+<p>この記事では、<span class="mark-yellow">セキュリティプラグインがしてくれること</span>と、してくれないことを最初に整理しました。サーバー側の機能との役割分担、選ぶときに見る点、入れすぎの注意まで順に紹介します。</p>
+<p>内容は、WordPressの公式ドキュメントと、各プラグインの配布ページをもとにしました。配布ページの数字は、2026年11月25日に確かめたものです。おすすめの順位づけはしていません。</p>
+
+<h2 id="s1">WordPressのセキュリティプラグインは必要？できることとできないこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-security-plugin-fig1.webp" alt="WordPressのセキュリティプラグインができることとして、ログインを守る、あやしい通信を止める、ファイルの変化を調べる、の3つを左に、できないこととして、更新、バックアップ、アカウントの整理、の3つを右に並べた左右比較の図" width="1200" height="800"><figcaption>できることと、できないことを分けて考えます</figcaption></figure>
+<p>WordPressのセキュリティプラグインは、<span class="mark-yellow">守りを厚くする道具で、安全の保証ではありません</span>。入れておけば何もしなくてよい、という道具ではないのです。</p>
+<p>必要かどうかは、サイトにどの守りが足りていないかで決まります。まず、できることとできないことを分けて見ていきましょう。サーバー側の機能で足りている部分があれば、重ねて入れる必要はありません。</p>
+
+<h3>ログイン・通信・ファイルの3つを守る</h3>
+<p>セキュリティプラグインの働きは、大きく3つに分けられます。1つ目は、ログインの失敗の回数を制限したり、2段階認証を足したりするログインの保護です。2つ目は、あやしい通信をサイトの入口で止めるファイアウォールになります。3つ目は、ファイルの書き換えや不正なプログラムを探す検査です。<span class="mark-yellow">プラグインごとに、持っている働きは違います</span>。ログインだけを守るものもあれば、3つとも持つものもあるのです。配布ページの説明で、どの働きがあるかを先に確かめましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/wordfence/" target="_blank" rel="noopener noreferrer nofollow">Wordfence Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>更新とバックアップの代わりにはならない</h3>
+<p>WordPress公式の手引きは、安全対策を「危険をなくすのではなく減らすこと」としています。プラグインの配布ページにも、すべての攻撃を止められるわけではないと書くものがあるのです。<span class="mark-red"><strong>更新とバックアップは、別に続ける必要があります</strong></span>。使っていないアカウントの整理も、プラグイン任せにはできない仕事です。運営者の自社サイト15件の点検では、心当たりのない編集者のアカウントが2つ見つかりました。こうした見落としは、人の目で確かめるしかないでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/all-in-one-wp-security-and-firewall/" target="_blank" rel="noopener noreferrer nofollow">All-In-One Security (AIOS)｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s2">WordPressのセキュリティプラグインとサーバー側の機能の違い</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-security-plugin-fig2.webp" alt="WordPressのセキュリティプラグインとサーバー側の機能の違いを、外からの通信がサーバーのWAFと国外からの接続の制限を通り、次にサイトに入れたプラグインを通って、管理画面に届くまでの流れで示した図" width="1200" height="800"><figcaption>サーバーの機能が手前、プラグインがサイトの中で働きます</figcaption></figure>
+<p>WordPressのセキュリティプラグインとサーバー側の機能は、守る場所が違います。<span class="mark-yellow">役割を分けて、足りない部分を補い合う</span>使い方が基本です。どちらか一方があれば足りる、という関係ではありません。</p>
+<p>サーバー側の機能は、通信がWordPressに届く前に働きます。プラグインは、サイトの中に入れて働かせる道具です。先にサーバーの設定を確かめ、足りない部分をプラグインで補う順番にしましょう。</p>
+
+<h3>サーバーの機能は、WordPressの手前で止める</h3>
+<p>WordPress公式の手引きは、ファイアウォールを働く場所で分けて説明しています。プラグイン、サーバーに置くWAF、サーバーの手前に置く外部のサービスの3つです。エックスサーバーのWAFは、サーバーの段階であやしい通信を検知して拒否します。<span class="mark-yellow">プラグインより手前で止めるのが、サーバーの機能</span>です。ただし公式のマニュアルは、最低限の予防策だとしています。手順は、<a href="xserver-waf-settings.html">エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_waf.php" target="_blank" rel="noopener noreferrer nofollow">WAF設定｜エックスサーバー マニュアル</a></li>
+</ul>
+
+<h3>サーバーの機能で足りている守りを確かめる</h3>
+<p>エックスサーバーには、WAFのほかに「WordPressセキュリティ設定」があります。ログインの失敗が続くと接続を制限する、ログイン試行回数制限がその1つです。国外からの管理画面やREST APIへの接続を制限する設定もあります。運営者の自社サイトを、2026年11月に国外の回線から開いてみました。xmlrpc.phpと/wp-json/は403で、トップページは200でした。<span class="mark-yellow">同じ守りをプラグインで重ねる必要は薄い</span>でしょう。ほかのサーバーでも、公式のマニュアルで標準の機能を確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー マニュアル</a></li>
+</ul>
+
+<h3>プラグインで補うのは、WordPressの中の守り</h3>
+<p>サーバーの機能が届きにくいのは、WordPressの中で起きることです。たとえば、ログインに2段階認証を足す働きは、プラグインが受け持ちます。ログインがあったことをメールで知らせる働きや、ログインの履歴の記録も同じです。ファイルが書き換わったことを知らせる検査も、プラグインの得意な部分になります。<span class="mark-yellow">サーバーにない働きだけを、プラグインで足す</span>と考えましょう。2段階認証の手順は、次の記事で紹介しています。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a>です。</p>
+
+<h2 id="s3">WordPressの主なセキュリティプラグインの比較（2026年11月時点）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-security-plugin-fig3.webp" alt="WordPressの主なセキュリティプラグインを、ファイアウォールや検査まで持つものとしてWordfence Security、All-In-One Security、Kadence Securityの3つ、ログインと管理画面を守るものとしてSiteGuard WP Plugin、CloudSecure WP Security、XO Securityの3つに分けた2枚のカードの図" width="1200" height="800"><figcaption>守る範囲で、大きく2つの形に分けられます</figcaption></figure>
+<p>WordPressのセキュリティプラグインは数が多いので、<span class="mark-yellow">配布ページの数字と説明を並べて比べます</span>。取り上げるのは、WordPress.orgで配布されている6つです。</p>
+<p>表の数字は、2026年11月25日に配布ページで確かめました。並びは有効インストール数の多い順で、おすすめの順ではありません。6つとも配布が続いていて、この1年のうちに更新されています。自社のサイトに足りない働きを持つものを探す材料にしてください。</p>
+<table>
+<tr><th>プラグイン</th><th>有効インストール数</th><th>最終更新日（協定世界時）</th><th>必要なWordPress</th><th>必要なPHP</th><th>配布ページにある主な機能</th></tr>
+<tr><td>Wordfence Security</td><td>500万以上</td><td>2026年11月10日</td><td>4.7以上</td><td>7.0以上</td><td>ファイアウォール、マルウェアの検査、ログイン試行の制限、2段階認証</td></tr>
+<tr><td>All-In-One Security (AIOS)</td><td>100万以上</td><td>2026年11月18日</td><td>5.3以上</td><td>7.4以上</td><td>ログイン試行の制限、2段階認証、ファイアウォール、ファイルの変更の検知</td></tr>
+<tr><td>Kadence Security（以前のSolid Security）</td><td>70万以上</td><td>2026年11月24日</td><td>6.5以上</td><td>7.4以上</td><td>2段階認証、パスワードの決まり、総当たりの防止、ファイルの変更の検知</td></tr>
+<tr><td>SiteGuard WP Plugin</td><td>60万以上</td><td>2026年11月11日</td><td>6.0以上</td><td>記載なし</td><td>ログインページ変更、画像認証、ログインロック、管理ページアクセス制限</td></tr>
+<tr><td>CloudSecure WP Security</td><td>20万以上</td><td>2026年11月13日</td><td>5.3.15以上</td><td>7.1以上</td><td>ログイン無効化、ログインURL変更、2段階認証、シンプルWAF</td></tr>
+<tr><td>XO Security</td><td>3万以上</td><td>2026年7月19日</td><td>6.0以上</td><td>7.2以上</td><td>ログイン試行の制限、CAPTCHA（画像認証）、ログインページの変更、2段階認証</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/wordfence/" target="_blank" rel="noopener noreferrer nofollow">Wordfence Security｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/all-in-one-wp-security-and-firewall/" target="_blank" rel="noopener noreferrer nofollow">All-In-One Security (AIOS)｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/better-wp-security/" target="_blank" rel="noopener noreferrer nofollow">Kadence Security｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/cloudsecure-wp-security/" target="_blank" rel="noopener noreferrer nofollow">CloudSecure WP Security｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/xo-security/" target="_blank" rel="noopener noreferrer nofollow">XO Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>ファイアウォールや検査まで持つもの</h3>
+<p>表の上の3つは、守る範囲が広い作りです。ファイアウォールや、ファイルの変化を調べる検査まで持っています。Kadence Securityは、以前のSolid Securityが名前を変えたものです。<span class="mark-yellow">働きが多いぶん、設定する項目も増えます</span>。Wordfence Securityの検査には、ファイルを配布元のものと比べる働きがあるのです。All-In-One Securityは、ふだんと違うファイルの変更を知らせると説明しています。使う働きを絞って、少しずつ有効にするのが無難でしょう。</p>
+
+<h3>ログインと管理画面を守るもの</h3>
+<p>表の下の3つは、ログインまわりの守りが中心です。配布ページには、ログインの失敗の回数制限、画像認証、ログインページの変更などが並びます。<span class="mark-yellow">ログインの守りを足したいときの候補になる</span>でしょう。2段階認証は、3つのうち2つの配布ページに載っています。CloudSecure WP Securityは、「シンプルWAF」も持つ作りです。XO Securityの最終更新は2026年7月で、6つの中ではいちばん前でした。対応するWordPressの版も、あわせて見ておきましょう。</p>
+
+<h2 id="s4">WordPressのセキュリティプラグインを選ぶときに見る4つの点</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-security-plugin-fig4.webp" alt="WordPressのセキュリティプラグインを選ぶときに見る4つの点を、最終更新日と対応する版、足りない働きを補えるか、サーバーとの相性、無料版と有料版の違い、の順にチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>人気の順ではなく、4つの点で自社に合うかを見ます</figcaption></figure>
+<p>WordPressのセキュリティプラグインを選ぶときは、<span class="mark-yellow">人気より先に、自社に合うかを確かめます</span>。インストール数が多いことは、合うことの証明にはなりません。</p>
+<p>見る点は、更新の状況、足りない働き、サーバーとの相性、無料版の範囲の4つです。どれも、配布ページと開発元の公式サイトで確かめられます。1つずつ見ていきましょう。</p>
+
+<h3>① 最終更新日と、対応する版を見る</h3>
+<p>配布ページには、最終更新日と、必要なWordPressやPHPの版が書かれています。「検証済み最新バージョン」は、開発元が動きを確かめたWordPressの版です。<span class="mark-yellow">長く更新がないものは、弱点の修正も届きません</span>。自社のWordPressとPHPの版が、必要な版を満たしているかも見てください。更新履歴を開くと、どのくらいの間隔で直されているかが分かります。配布が止まったプラグインの扱いは、<a href="wordpress-plugin-delete.html">WordPressの使っていないプラグインは削除すべき？判断の基準と安全な消し方</a>で紹介しました。</p>
+
+<h3>② 足りない働きを補えるかを見る</h3>
+<p>先に、サーバーの機能で足りている守りを書き出します。そのうえで、足りない働きを持つプラグインを探す順番です。ログインの回数制限がサーバーにあるなら、同じ働きのために入れる必要は薄いでしょう。2段階認証やログインの通知が欲しいなら、その働きがあるかを配布ページで確かめます。<span class="mark-yellow">働きの多さではなく、必要な働きで選ぶ</span>のがこつです。使わない働きは、有効にしないままで構いません。働きごとにオンとオフを切り替えられるかも見ておきましょう。</p>
+
+<h3>③ サーバーとの相性と、使えない条件を見る</h3>
+<p>セキュリティプラグインには、動く条件が細かく決まっているものがあるのです。SiteGuard WP Pluginは、マルチサイトに対応していません。CloudSecure WP Securityは、Apacheで動作を確認したとしています。XO Securityは、.htaccessに書き込まない作りだと説明しているのです。<span class="mark-yellow">自社のサーバーの種類と使い方に合うか</span>を確かめてください。分からないときは、サーバー会社か制作会社に聞くのが早いでしょう。入れてから気づくより、先に条件を読むほうが手間は少なく済みます。</p>
+
+<h3>④ 無料版と有料版の違いを見る</h3>
+<p>多くのセキュリティプラグインには、無料版と有料版があります。違いは、公式の説明で確かめましょう。Wordfence Securityの無料版は、新しいルールが30日遅れで届きます。不正なプログラムを見分ける情報も、同じく30日遅れです。All-In-One Securityでは、マルウェアの検査や国ごとの遮断が有料版に入ります。<span class="mark-red"><strong>無料版で何が守られないかを、先に知っておく</strong></span>ことが大切です。料金は変わることがあるので、申し込む前に公式サイトで確かめてください。</p>
+
+<h2 id="s5">WordPressのセキュリティプラグインの入れすぎと設定の注意</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-security-plugin-fig5.webp" alt="WordPressのセキュリティプラグインの入れすぎと設定の注意を、必要な働きだけを1つで使う、2つ使うなら働きを分ける、同じ働きを重ねて有効にする、の3段に分け、緑・淡い緑・赤の色で示した信号型の図" width="1200" height="800"><figcaption>同じ働きを重ねるのが、いちばん避けたい形です</figcaption></figure>
+<p>WordPressのセキュリティプラグインは、<span class="mark-yellow">たくさん入れるほど安全になるわけではありません</span>。同じ働きが重なると、かえって不具合の元になります。</p>
+<p>設定を誤ると、管理者自身がログインできなくなることもあるのです。プラグインである以上、それ自体の更新も欠かせません。入れる前と入れたあとに気をつける点を、3つに分けて紹介します。</p>
+
+<h3>同じ働きを2つのプラグインで重ねない</h3>
+<p>同じ働きを持つプラグインを2つ有効にすると、動きがぶつかることがあります。分かりやすい例が、ログインページのURLを変える機能です。SiteGuard WP Pluginの配布ページは、この機能の併用はできないとしています。両方を使うと、ログインのURLが2つ残ったり、ログインページが開かなくなったりするのです。<span class="mark-red"><strong>同じ働きは、1つのプラグインだけで有効にします</strong></span>。2つ入れる場合は、働きが重ならないようにオンとオフを分けてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>締め出されない準備をしてから有効にする</h3>
+<p>ログインのURLの変更や接続元の制限は、設定を誤ると自分も入れなくなります。有効にする前に、ファイルとデータベースのバックアップを取ってください。Kadence Securityの配布ページも、入れる前のバックアップを強く勧めています。変更したログインのURLは、複数の担当者で控えておきましょう。<span class="mark-yellow">働きは1つずつ有効にして、動きを確かめます</span>。別のブラウザーでログインし直せるかを見てから、次の働きに進む形です。入れなくなったときの戻し方も、配布元の説明で先に読んでおいてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/better-wp-security/" target="_blank" rel="noopener noreferrer nofollow">Kadence Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>セキュリティプラグイン自身も更新し続ける</h3>
+<p>セキュリティプラグインも、プラグインの1つです。Patchstackによると、2025年のWordPress関連の新しい弱点は11,334件でした。その91%は、プラグインにあったとされています。この記事で比べた6つのうち少なくとも4つの更新履歴にも、自身の弱点を直した記録が残っているのです。<span class="mark-yellow">入れたあとも、最新の版に保つことが欠かせません</span>。公表後の動き方は、<a href="wordpress-plugin-vulnerability.html">WordPressのプラグインに脆弱性が見つかったときの対処法</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener noreferrer nofollow">State of WordPress Security in 2026｜Patchstack</a></li>
+</ul>
+
+<div class="art-cta"><strong>プラグインを選ぶ前に、今の状態を外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やプラグイン、セキュリティ設定など8項目を無料で判定します。足りない守りを詳しく知りたい場合は、詳細診断（29,800円・税込）もご利用ください。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのセキュリティプラグインに関するよくある質問</h2>
+
+<h3>セキュリティプラグインを入れれば、ほかの対策はいりませんか？</h3>
+<p>いいえ、ほかの対策も必要です。プラグインは守りを厚くする道具で、すべての攻撃を止めるものではありません。配布ページに、すべての攻撃は止められないと書くプラグインもあるのです。本体・テーマ・プラグインの更新と、バックアップは別に続けてください。強いパスワードと、使っていないアカウントの整理も欠かせない基本になります。プラグインは、その土台の上に足すものと考えましょう。</p>
+
+<h3>セキュリティプラグインは、いくつも入れてよいですか？</h3>
+<p>数に決まりはありませんが、同じ働きを重ねるのは避けてください。ログインページの変更のように、2つで有効にすると不具合が出る機能があります。入れるなら、働きが重ならないように役割を分けましょう。プラグインが増えるほど、更新と確認の手間も増えます。まずは1つで足りるかを考えるのが無難です。すでに複数入っているなら、重なる働きがないかを見直してください。</p>
+
+<h3>無料版だけでも役に立ちますか？</h3>
+<p>役に立つ場面は多くあります。この記事の表には、配布ページで有料の印がない機能を載せました。ただし、無料版と有料版で届く情報の早さや、検査の範囲が違うことがあります。たとえばWordfence Securityの無料版は、新しいルールが30日遅れで届く決まりです。違いは配布ページと公式サイトで確かめ、必要になったら有料版を考えましょう。</p>
+
+<h3>エックスサーバーを使っています。プラグインは入れなくてもよいですか？</h3>
+<p>サーバーの機能で足りている守りは、重ねて入れなくて構いません。エックスサーバーには、WAFやログイン試行回数制限、国外からの接続の制限があります。一方で、WordPressのログインの2段階認証は、この設定の一覧にはない働きです。こうした働きが欲しいときに、プラグインで足すと考えてください。先に、サーバーパネルで今の設定がオンかどうかを確かめましょう。</p>
+
+<h3>自分で設定するのが不安なときは、どこに相談すればよいですか？</h3>
+<p>サイトを作った制作会社か、保守を頼んでいる会社に相談するのが近道です。相談の目安は、ログインできなくなったときや、設定のあとに表示やフォームが崩れたときになります。改ざんや不正なログインの疑いがあるときも、設定を触る前に専門家へ連絡してください。入れる前なら、今のサイトにどの守りが足りないかを見てもらうとよいでしょう。サーバー会社のサポートに、標準の機能を聞くのも有効です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのセキュリティプラグインは、守りを厚くする道具です。ログインの保護、ファイアウォール、検査の3つが主な働きになります。更新やバックアップの代わりにはなりません。サーバー側の機能とは守る場所が違うので、役割を分けて使います。</p>
+<p>選ぶときは、<span class="mark-yellow">サーバーにない働きを、更新が続くもので補う</span>のが基本です。同じ働きを重ねず、入れたあとも最新の版に保ちましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">できること・できないこと</a></li><li><a href="#s2">サーバー側の機能との違い</a></li><li><a href="#s3">主なプラグインの比較</a></li><li><a href="#s4">選ぶときに見る4つの点</a></li><li><a href="#s5">入れすぎと設定の注意</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
