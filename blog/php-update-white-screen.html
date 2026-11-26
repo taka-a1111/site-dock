@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PHPを更新したらサイトが真っ白に｜元に戻す手順と原因の見つけ方｜スキゼロ</title>
+<meta name="description" content="PHPを更新したらサイトが真っ白になったときの対処を解説します。サーバーの管理画面で元の版に戻す手順、メールやエラーの記録から原因を見つける方法、直してから上げ直す進め方、相談の目安を公式情報をもとにまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/php-update-white-screen.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHPを更新したらサイトが真っ白に｜元に戻す手順と原因の見つけ方">
+<meta property="og:description" content="PHPを更新したらサイトが真っ白になったときの対処を解説します。サーバーの管理画面で元の版に戻す手順、メールやエラーの記録から原因を見つける方法、直してから上げ直す進め方、相談の目安を公式情報をもとにまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/php-update-white-screen.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-036-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-07">
+<meta property="article:section" content="PHP・サーバー">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHPを更新したらサイトが真っ白に｜元に戻す手順と原因の見つけ方", "description": "PHPを更新したらサイトが真っ白になったときの対処を解説します。サーバーの管理画面で元の版に戻す手順、メールやエラーの記録から原因を見つける方法、直してから上げ直す進め方、相談の目安を公式情報をもとにまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-036-v3.webp", "datePublished": "2026-12-07", "dateModified": "2026-12-07", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/php-update-white-screen.html", "inLanguage": "ja", "articleSection": "PHP・サーバー", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PHPを元の版に戻すと、記事や画像は消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "消えません。PHPの版を変える操作は、プログラムを動かす土台を切り替えるだけです。記事はデータベースに、画像はサーバーのファイルに残っています。ただし、原因を調べる作業でファイルを触るときは別でしょう。フォルダの名前を変える前には、バックアップを取っておいてください。戻したあとで表示が元どおりかを、いくつかのページで確かめましょう。"}}, {"@type": "Question", "name": "表側は表示されるのに、管理画面だけ真っ白になります。なぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面でだけ動く部品が、エラーを起こしていると考えられます。プラグインには、管理画面の中だけで働くものがあるからです。この場合も、まずPHPを元の版に戻してください。そのうえで、届いたメールやエラーの記録から原因の部品を探します。表側が見えていても、そのままでは記事の更新ができないでしょう。早めに原因を直してから、上げ直す日を決めてください。"}}, {"@type": "Question", "name": "リカバリーモードのメールが届きません。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、迷惑メールのフォルダを見てください。メールは、WordPressに登録した管理者のアドレスに届きます。担当者が替わって、前の人のアドレスのままになっていることもあるでしょう。公式の説明でも、サーバーから直接送られたメールは届かない場合があるとされています。届かないときは、エラーの記録を見る方法に切り替えましょう。復旧のあとで、管理者のアドレスを今の担当者のものに直してください。"}}, {"@type": "Question", "name": "PHPを戻したままで、しばらく使い続けても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "原因を直すまでの応急の手当てとしてなら、やむを得ません。ただし、長く使い続けるのは避けてください。修正が終わったPHPには、新しく見つかった弱点が残るからです。php.netでは、PHP 8.2の修正も2026年12月31日で終わります。戻した版が8.1かそれより前なら、すでに修正は届いていません。原因を直す日と上げ直す日を、先に決めておきましょう。"}}, {"@type": "Question", "name": "制作会社に連絡がつかないときは、どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "PHPの版を戻す操作は、サーバーの管理画面に入れれば自分でできます。ログインの情報が手元にあるかを、まず確かめてください。情報がなければ、契約者としてサーバー会社のサポートに相談しましょう。ロリポップは、表示に問題が出たときの連絡のしかたをマニュアルで案内しています。原因の調査や部品の入れ替えは、別の制作会社や専門家にも頼めるでしょう。頼むときは、エラーの内容と変更した日時を伝えてください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "PHPを更新したらサイトが真っ白に｜元に戻す手順と原因の見つけ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / PHP・サーバー</nav>
+    <h1><span class="h1-main">PHPを更新したらサイトが真っ白に</span><span class="h1-sub" data-sep="｜">元に戻す手順と原因の見つけ方</span></h1>
+    <p><time datetime="2026-12-07">2026.12.07</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-036-v3.webp" alt="PHPを更新したらサイトが真っ白になったときに、元に戻す手順と原因の見つけ方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「サーバーの管理画面でPHPを更新したら、ホームページが真っ白になった」と困っていませんか？</p>
+<p>真っ白な画面や「このサイトで重大なエラーが発生しました」という表示は、あわてる場面です。ただ、記事や画像が消えたわけではありません。多くは、PHPを元の版に戻せば表示が戻るでしょう。</p>
+<p>この記事では、<span class="mark-yellow">まず戻す、原因を見つける、直して上げ直す</span>の順に進め方をまとめました。専門家に相談する目安も紹介します。</p>
+<p>内容は、WordPressとPHPの公式ドキュメントをもとにしました。サーバー会社4社の公式マニュアルも、2026年11月25日に確かめています。サーバーの管理画面に入れる状態で読み進めてください。</p>
+
+<h2 id="s1">PHPの更新でサイトが真っ白になるのはなぜか</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-update-white-screen-fig1.webp" alt="PHPの更新でサイトが真っ白になるしくみを、PHPを新しい版に切り替える、古いプラグインやテーマがエラーで止まる、画面が真っ白か重大なエラーの表示になる、の順に左から右へつないだ流れ図" width="1200" height="800"><figcaption>止まっているのは、新しいPHPに合わない部品です</figcaption></figure>
+<p>PHPの更新でサイトが真っ白になるのは、<span class="mark-yellow">新しいPHPに合わない部品が止まるため</span>です。サイトの中身が消えたわけではありません。</p>
+<p>記事はデータベースに、画像はサーバーのファイルにそのまま残っています。止まっているのは、ページを組み立てるプログラムの一部でしょう。仕組みを知っておくと、落ち着いて戻す作業に入れます。</p>
+
+<h3>新しいPHPで動かない部品がエラーで止まる</h3>
+<p>WordPressは、本体とテーマ、プラグインがPHPで動いています。PHPは版が大きく上がると、古い書き方の一部が使えなくなる仕組みです。古い書き方が残った部品は、新しいPHPの上でエラーを起こして止まります。エックスサーバーの公式の案内も、<span class="mark-yellow">プラグインやテーマが対応していない可能性</span>を挙げていました。最終更新から長くたった部品は、PHP 8に対応していないことがあるとの説明です。原因は、何年も更新していない部品にあることが多いでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/support/faq/service_hp_wp_change_php_not_displayed.php" target="_blank" rel="noopener noreferrer nofollow">PHPバージョンを切り替えてから、サイトが正常に表示されなくなりました。｜エックスサーバー よくある質問</a></li>
+<li>参考：<a href="https://www.php.net/manual/ja/migration80.incompatible.php" target="_blank" rel="noopener noreferrer nofollow">下位互換性のない変更点（PHP 8.0への移行）｜PHP マニュアル</a></li>
+</ul>
+
+<h3>真っ白な画面と「重大なエラー」の表示の違い</h3>
+<p>WordPress 5.2からは、止まるほどのエラーを見つけて知らせる仕組みが入りました。この仕組みが働くと、「このサイトで重大なエラーが発生しました」と表示される形です。公式の説明では、PHPのエラーは何も出ない真っ白な画面として表れることもあるとされています。<span class="mark-yellow">どちらの画面も、エラーで処理が止まった合図</span>です。表示の違いで、対処の順番を変える必要はありません。まず元の版に戻すところから始めましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/recovery-mode/" target="_blank" rel="noopener noreferrer nofollow">Recovery Mode｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/wordpress/common-errors/" target="_blank" rel="noopener noreferrer nofollow">Common WordPress errors｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s2">PHPの更新で真っ白になったら、まず元の版に戻す</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-update-white-screen-fig2.webp" alt="PHPの更新で真っ白になったときに元の版へ戻す画面の名前を、エックスサーバーはPHP Ver.切替、ロリポップはPHP設定、さくらのレンタルサーバは言語バージョン設定、ConoHa WINGはPHP設定、と4枚のカードに分けて示した図" width="1200" height="800"><figcaption>上げたときと同じ画面で、元の版を選び直します</figcaption></figure>
+<p>PHPの更新で真っ白になったら、<span class="mark-yellow">原因探しより先に、表示を戻すこと</span>を考えます。お客さまが見ている本番のサイトだからです。</p>
+<p>戻す操作は、PHPを上げたときと同じ画面で行えます。上げる前の版の番号を覚えていない場合は、1つ前の版から試してください。戻したあとの確かめ方と、戻らないときに見るところも順に紹介します。</p>
+
+<h3>サーバーの管理画面で前の版を選び直す</h3>
+<p>サーバーの管理画面でPHPの設定を開き、上げる前の版を選んで保存します。さくらのレンタルサーバの公式マニュアルは、表示されないときは元に戻せば直せると案内する内容です。<span class="mark-red"><strong>上げたときと同じ画面で、元の版を選び直す</strong></span>だけで済みます。反映までの時間は会社によって違い、ロリポップは5〜10分ほどです。4社の画面の名前は、次の表にまとめました。<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>も見てください。</p>
+<table>
+<thead><tr><th>サーバー</th><th>PHPの版を選ぶ画面</th><th>公式の説明（2026年11月25日時点）</th></tr></thead>
+<tbody>
+<tr><td>エックスサーバー</td><td>サーバーパネルの「PHP Ver.切替」</td><td>表示されないときは、他の版へ変えて表示を確かめる</td></tr>
+<tr><td>ロリポップ</td><td>ユーザー専用ページの「PHP設定」</td><td>反映まで5〜10分ほど。PHP 7.1未満から上げた場合は戻せない</td></tr>
+<tr><td>さくらのレンタルサーバ</td><td>サーバーコントロールパネルの「言語バージョン設定」</td><td>古い版を選び直せば元に戻せる。設定は即時に反映される</td></tr>
+<tr><td>ConoHa WING</td><td>「サイト管理」「サイト設定」「応用設定」の順に開いた「PHP設定」</td><td>プルダウンから版を選んで保存する</td></tr>
+</tbody>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_program_php_ver.php" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンについて｜エックスサーバー マニュアル</a></li>
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー マニュアル</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2241/" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンを変更したい｜さくらのサポート情報</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2172/" target="_blank" rel="noopener noreferrer nofollow">WordPressのダッシュボードにPHPの更新が必要と表示される場合の対応を知りたい｜さくらのサポート情報</a></li>
+<li>参考：<a href="https://support.conoha.jp/w/configphp/" target="_blank" rel="noopener noreferrer nofollow">PHPの設定をする｜ConoHa WINGサポート</a></li>
+</ul>
+
+<h3>表側と管理画面の両方で戻ったかを確かめる</h3>
+<p>版を戻したら、少し待ってからサイトを開き直します。トップページだけでなく、下の階層のページとお問い合わせフォームも見てください。管理画面にログインできるかも、あわせて確かめます。<span class="mark-yellow">表側と管理画面の両方が開けば、ひとまず復旧</span>です。ブラウザに古い画面が残ることがあるので、再読み込みをするか別の端末でも見ましょう。戻した日時と版の番号は、あとで原因を調べるときに使います。忘れないうちにメモへ残してください。</p>
+
+<h3>戻しても真っ白なままのときに見るところ</h3>
+<p>版を戻しても真っ白なままなら、PHPの版のほかにも原因があります。同じ日に、プラグインやテーマを更新していないかを思い出してください。ロリポップでは、<span class="mark-yellow">PHP 7.1未満から上げると元の版に戻せません</span>。この場合は、新しい版のままで原因の部品を止める進め方になります。「データベース接続確立エラー」と出るときは、データベース側の設定が原因でしょう。<a href="lolipop-php-version.html">ロリポップでPHPのバージョンを変更する手順｜8.3以上への上げ方と戻せないときの注意</a>が役立ちます。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー マニュアル</a></li>
+</ul>
+
+<h2 id="s3">PHPの更新で真っ白になった原因を見つける3つの方法</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-update-white-screen-fig3.webp" alt="PHPの更新で真っ白になった原因を見つける3つの方法として、届いたメールとリカバリーモードで確かめる、エラーの記録を見る、プラグインをまとめて止めて1つずつ戻す、を番号つきのステップで上から並べた図" width="1200" height="800"><figcaption>手間の少ない方法から順に試します</figcaption></figure>
+<p>PHPの更新で真っ白になった原因は、<span class="mark-yellow">3つの方法で順番に絞り込めます</span>。手間の少ないものから順に並べました。</p>
+<p>原因を調べるには、もう一度新しい版にしてエラーを出す場面があります。お客さまが少ない時間帯か、本番とは別の試す場所で行いましょう。表示を戻した状態のままでも、届いたメールの確認だけは先に済ませられます。</p>
+
+<h3>① 届いたメールとリカバリーモードで確かめる</h3>
+<p>WordPress 5.2以降は、止まるほどのエラーが出ると管理者あてにメールが届きます。件名は「サイトで技術的な問題が発生しています」です。本文には、原因と見られる部品の名前や専用のリンクが載っています。リンクから入ると、<span class="mark-yellow">問題の部品だけが止まった状態でログインできる</span>のです。この状態をリカバリーモードと呼び、管理画面でどの部品が止められたかを確かめられます。リンクには期限があるので、早めに開いてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/recovery-mode/" target="_blank" rel="noopener noreferrer nofollow">Recovery Mode｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://make.wordpress.org/core/2019/04/16/fatal-error-recovery-mode-in-5-2/" target="_blank" rel="noopener noreferrer nofollow">Fatal Error Recovery Mode in 5.2｜Make WordPress Core</a></li>
+</ul>
+
+<h3>② エラーの記録（ログ）を見る</h3>
+<p>メールが届かないときは、エラーの記録を見てください。wp-config.phpの設定で、wp-content/debug.logに記録が残ります。公式の説明は、公開中のサイトでの利用をすすめていません。<span class="mark-yellow">試す場所で使うか、本番では短い時間にとどめる</span>のが安全でしょう。画面には出さず、ファイルにだけ残す設定にします。記録にpluginsやthemesの下のフォルダ名があれば、原因の手がかりです。エックスサーバーは、サーバーパネルの「エラーログ」でも見られます。調べたあとは、設定を元に戻してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/" target="_blank" rel="noopener noreferrer nofollow">Debugging in WordPress｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_logerror.php" target="_blank" rel="noopener noreferrer nofollow">エラーログ｜エックスサーバー マニュアル</a></li>
+</ul>
+
+<h3>③ プラグインをまとめて止めて1つずつ戻す</h3>
+<p>記録で分からないときは、プラグインを全部止めて確かめます。管理画面に入れるなら、すべて無効にして1つずつ有効に戻してください。入れないときは、FTPでpluginsフォルダの名前を変える方法が公式にあります。<span class="mark-yellow">名前を変えると、プラグインが全部止まる</span>仕組みです。管理画面のプラグインの一覧を開いてから、フォルダの名前を戻しましょう。プラグインは止まったままなので、1つずつ有効にして原因を探します。直らなければ、テーマを既定のものに替えてみてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-troubleshooting/" target="_blank" rel="noopener noreferrer nofollow">FAQ Troubleshooting｜WordPress.org Documentation</a></li>
+</ul>
+
+<h2 id="s4">PHPの更新で真っ白にならないよう、直してから上げ直す手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-update-white-screen-fig4.webp" alt="PHPの更新で真っ白にならないように上げ直す手順を、原因の部品を更新するか入れ替える、試す場所か人の少ない時間に上げ直す、戻したままにせず期限を決める、の3つをチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>戻して終わりにせず、直してからもう一度上げます</figcaption></figure>
+<p>原因が分かったら、PHPの更新で真っ白にならない状態に直してから上げ直します。<span class="mark-yellow">戻して終わりにしないことが大切</span>です。</p>
+<p>古いPHPに戻した状態は、あくまで応急の手当てにすぎません。原因の部品を直し、試す場所で確かめてから、期限を決めてもう一度上げましょう。この順番を守れば、同じ真っ白な画面をくり返さずに済みます。</p>
+
+<h3>原因の部品を更新するか入れ替える</h3>
+<p>原因のプラグインやテーマが分かったら、まず新しい版が出ていないかを見ます。更新で新しいPHPに対応していれば、それで解決です。何年も更新がない部品は、同じ役割の別のものへ入れ替えましょう。運営者の自社サイトでも、PHPを8.3に上げたとき管理画面にエラーが出ました。<span class="mark-yellow">何年も更新されていないプラグインが原因</span>で、入れ替えて解消しています。WordPress本体も、先に最新版へ上げておいてください。入れ替えたあとは、表示と管理画面の動きを確かめましょう。</p>
+
+<h3>試す場所か、人の少ない時間に上げ直す</h3>
+<p>直したあとも、いきなり本番で切り替えないのが安全です。さくらのレンタルサーバやロリポップは、試す場所を作る方法を公式に案内しています。試す場所がなければ、見る人が少ない時間帯を選んでください。<span class="mark-yellow">ファイルとデータベースのバックアップを先に取る</span>ことも欠かせません。切り替えたら、表側と管理画面、フォームの順に確かめましょう。<a href="php-81-to-83.html">PHP 8.1から8.3へ上げる前に確認すること｜止まりやすい変化と事前チェックの手順</a>が役立ちます。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2197/" target="_blank" rel="noopener noreferrer nofollow">バックアップ&amp;ステージングを知りたい｜さくらのサポート情報</a></li>
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー マニュアル</a></li>
+</ul>
+
+<h3>戻したままにせず、期限を決める</h3>
+<p>PHPを戻したまま使い続けるのは、すすめられません。2026年11月時点のphp.netでは、PHP 8.2の修正は2026年12月31日で終わります。PHP 8.1とそれより前の版は、すでに修正が届かない状態です。<span class="mark-red"><strong>修正が終わった版には、見つかった弱点が残り続ける</strong></span>でしょう。さくらのレンタルサーバの公式マニュアルも、古い版を使い続ける危険にふれています。上げ直す日を決め、予定に入れてください。各版の期限は<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>で確かめられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2172/" target="_blank" rel="noopener noreferrer nofollow">WordPressのダッシュボードにPHPの更新が必要と表示される場合の対応を知りたい｜さくらのサポート情報</a></li>
+</ul>
+
+<h2 id="s5">PHPの更新で真っ白になったとき、専門家に相談する目安</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-update-white-screen-fig5.webp" alt="PHPの更新で真っ白になったときに、自分で進めてよい場合と制作会社や専門家に相談したほうがよい場合を、左右に分けて3項目ずつ比べた左右比較の図" width="1200" height="800"><figcaption>戻らない、原因が独自の部品、止められないサイトは相談します</figcaption></figure>
+<p>PHPの更新で真っ白になったときは、<span class="mark-yellow">自分で進める範囲を先に決めておく</span>と安心です。無理に触ると、戻せる状態まで失いかねません。</p>
+<p>版を戻して表示が戻ったなら、あわてて作業を急ぐ必要はなくなります。そのあとの原因探しと上げ直しは、頼む相手を落ち着いて選べるでしょう。自分で進める場合と相談する場合の目安を、順に紹介します。</p>
+
+<h3>自分で進めてよい場合</h3>
+<p>版を戻して表示が戻り、原因の部品も分かっているなら、自分で進められます。メールに部品の名前が書かれていて、更新や入れ替えで済む場合が当てはまるでしょう。プラグインを1つ入れ替える程度なら、手順どおりで済みます。<span class="mark-yellow">バックアップがあり、戻し方も分かっている</span>ことが条件です。作業の前に、今の版と変更した日時を控えてください。少しでも迷ったら、そこで手を止めて相談に切り替えましょう。止める判断も、サイトを守る大事な作業の1つです。</p>
+
+<h3>制作会社や専門家に相談したほうがよい場合</h3>
+<p>次のような場合は、早めに制作会社や専門家へ相談してください。版を戻しても表示が戻らない場合が、まず当てはまります。ロリポップでPHP 7.1未満から上げていて、元の版に戻せない場合も同じです。<span class="mark-yellow">原因がテーマや独自のプログラムにある</span>ときも、直すには知識が要るでしょう。予約や注文を受けるサイトは、止まっている時間がそのまま損になります。管理画面にもサーバーにも入れない場合は、相談が近道です。バックアップがない場合も、自分で触る前に相談しましょう。</p>
+
+<h3>相談するときに伝えること</h3>
+<p>相談するときは、状況を短くまとめて伝えてください。ロリポップの公式マニュアルは、サポートへ伝える情報にURLやエラーの内容を挙げています。<span class="mark-yellow">URL、エラーの内容、変更した日時の3点</span>が基本です。変更の前と後の版の番号も、あわせて伝えましょう。サーバー会社の名前とプランも添えると、話が早いでしょう。画面の写真や届いたメールの本文があると、原因を絞りやすくなります。ログインの情報は、メールの本文に書かず安全な方法で渡してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー マニュアル</a></li>
+</ul>
+
+<div class="art-cta"><strong>PHPやプラグインの古さを、外から確かめませんか</strong><p>URLを入れるだけで、PHPやWordPress本体、プラグインなど8項目を無料で判定します。原因の部品の入れ替えやPHPの上げ直しは、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">PHPの更新で真っ白になる問題に関するよくある質問</h2>
+
+<h3>PHPを元の版に戻すと、記事や画像は消えますか？</h3>
+<p>消えません。PHPの版を変える操作は、プログラムを動かす土台を切り替えるだけです。記事はデータベースに、画像はサーバーのファイルに残っています。ただし、原因を調べる作業でファイルを触るときは別でしょう。フォルダの名前を変える前には、バックアップを取っておいてください。戻したあとで表示が元どおりかを、いくつかのページで確かめましょう。</p>
+
+<h3>表側は表示されるのに、管理画面だけ真っ白になります。なぜですか？</h3>
+<p>管理画面でだけ動く部品が、エラーを起こしていると考えられます。プラグインには、管理画面の中だけで働くものがあるからです。この場合も、まずPHPを元の版に戻してください。そのうえで、届いたメールやエラーの記録から原因の部品を探します。表側が見えていても、そのままでは記事の更新ができないでしょう。早めに原因を直してから、上げ直す日を決めてください。</p>
+
+<h3>リカバリーモードのメールが届きません。どうすればよいですか？</h3>
+<p>まず、迷惑メールのフォルダを見てください。メールは、WordPressに登録した管理者のアドレスに届きます。担当者が替わって、前の人のアドレスのままになっていることもあるでしょう。公式の説明でも、サーバーから直接送られたメールは届かない場合があるとされています。届かないときは、エラーの記録を見る方法に切り替えましょう。復旧のあとで、管理者のアドレスを今の担当者のものに直してください。</p>
+
+<h3>PHPを戻したままで、しばらく使い続けても大丈夫ですか？</h3>
+<p>原因を直すまでの応急の手当てとしてなら、やむを得ません。ただし、長く使い続けるのは避けてください。修正が終わったPHPには、新しく見つかった弱点が残るからです。php.netでは、PHP 8.2の修正も2026年12月31日で終わります。戻した版が8.1かそれより前なら、すでに修正は届いていません。原因を直す日と上げ直す日を、先に決めておきましょう。</p>
+
+<h3>制作会社に連絡がつかないときは、どうすればよいですか？</h3>
+<p>PHPの版を戻す操作は、サーバーの管理画面に入れれば自分でできます。ログインの情報が手元にあるかを、まず確かめてください。情報がなければ、契約者としてサーバー会社のサポートに相談しましょう。ロリポップは、表示に問題が出たときの連絡のしかたをマニュアルで案内しています。原因の調査や部品の入れ替えは、別の制作会社や専門家にも頼めるでしょう。頼むときは、エラーの内容と変更した日時を伝えてください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>PHPの更新でサイトが真っ白になったら、まずサーバーの管理画面で元の版に戻します。記事や画像が消えたわけではないので、落ち着いて進めてください。原因は、届いたメール、エラーの記録、プラグインの停止の順に探せます。</p>
+<p>原因の部品を直したら、<span class="mark-yellow">期限を決めてもう一度上げ直す</span>ことが大切です。戻しても直らないときや迷ったときは、早めに専門家へ相談しましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">真っ白になる理由</a></li><li><a href="#s2">まず元の版に戻す</a></li><li><a href="#s3">原因を見つける3つの方法</a></li><li><a href="#s4">直してから上げ直す手順</a></li><li><a href="#s5">専門家に相談する目安</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
