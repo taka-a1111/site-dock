@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressにスパムページが大量に作られたときの対処｜検索結果から消すまでの手順｜スキゼロ</title>
+<meta name="description" content="WordPressにスパムページが大量に作られたときの対処を、規模の確かめ方、元を断つ4つの作業、検索結果から消す手順、再発を防ぐ備えと相談の目安の順に、GoogleとWordPressの公式の情報をもとに分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-spam-pages.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressにスパムページが大量に作られたときの対処｜検索結果から消すまでの手順">
+<meta property="og:description" content="WordPressにスパムページが大量に作られたときの対処を、規模の確かめ方、元を断つ4つの作業、検索結果から消す手順、再発を防ぐ備えと相談の目安の順に、GoogleとWordPressの公式の情報をもとに分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-spam-pages.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-040-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-11">
+<meta property="article:section" content="改ざん・被害対応">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressにスパムページが大量に作られたときの対処｜検索結果から消すまでの手順", "description": "WordPressにスパムページが大量に作られたときの対処を、規模の確かめ方、元を断つ4つの作業、検索結果から消す手順、再発を防ぐ備えと相談の目安の順に、GoogleとWordPressの公式の情報をもとに分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-040-v3.webp", "datePublished": "2026-12-11", "dateModified": "2026-12-11", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-spam-pages.html", "inLanguage": "ja", "articleSection": "改ざん・被害対応", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "スパムページは、検索結果から何日で消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "日数は決まっていません。Googleは、クロールには数日から数週間かかることがあると説明しています。ページが404か410を返すようになれば、次の巡回のあとに登録から外れる流れです。数が多いと、すべてが外れるまでに時間がかかるでしょう。急ぐページだけ非表示ツールで隠し、残りは「ページ」のレポートで減り方を見てください。"}}, {"@type": "Question", "name": "スパムページを1つずつ手で消せば解決しますか？", "acceptedAnswer": {"@type": "Answer", "text": "見えているページを消すだけでは、解決しないことが多いでしょう。ページを作り続ける仕掛けが残っていると、また作られるからです。ファイルとしては存在せず、仕掛けが表示しているだけのページもあります。先に、所有者、.htaccess、本体やプラグインのファイルを見直してください。そのあとで、ページが消えたかを確かめる順番になります。"}}, {"@type": "Question", "name": "不正なサイトマップをSearch Consoleから削除すれば、ページも消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "それだけでは消えません。ヘルプによると、レポートからサイトマップを削除しても、載っていたURLは登録から外れないのです。サーバーにあるサイトマップのファイルそのものも、削除してください。そのうえで、スパムページが404か410を返す状態にします。知らない所有者が残っていると、また送られるおそれがあるでしょう。所有者の見直しとあわせて進めると安心です。"}}, {"@type": "Question", "name": "バックアップから戻せば、スパムページは消えますか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんされる前のバックアップがあれば、有力な方法です。ただし、この型の改ざんは、気づくまでに時間がたっていることがあります。運営者の自社サイトのサーバーでは、自動バックアップはファイルが7日分でした。データベースは14日分です。気づいたときには、きれいな日のバックアップが残っていないこともあるでしょう。戻せた場合も、入り口をふさぐ作業と検索結果の確認は別に必要になります。"}}, {"@type": "Question", "name": "無料の診断で、スパムページがあるかどうかは分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "スキゼロの無料簡易診断は、スパムページの有無を直接は調べません。調べるのは、WordPress本体やプラグインの版、ユーザー名など外から見える8項目です。改ざんの入り口になりやすい古い部品が残っていないかを知る手がかりになります。スパムページの有無は、site:検索とSearch Consoleで確かめてください。片付けたあとに、入り口が残っていないかを見る目的で使うのがおすすめです。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressにスパムページが大量に作られたときの対処｜検索結果から消すまでの手順"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
+    <h1><span class="h1-main">WordPressにスパムページが大量に作られたときの対処</span><span class="h1-sub" data-sep="｜">検索結果から消すまでの手順</span></h1>
+    <p><time datetime="2026-12-11">2026.12.11</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-040-v3.webp" alt="WordPressにスパムページが大量に作られたときの対処と、検索結果から消すまでの手順" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「会社名で検索したら、身に覚えのない通販のページが自社のドメインで並んでいた」と驚いていませんか？</p>
+<p>知らない日本語や外国語のページが大量に出るのは、サイトの改ざんで起きる症状です。Search Consoleのページ数が急に増えるのも、同じ改ざんのサインでしょう。</p>
+<p>この記事では、<span class="mark-yellow">規模を確かめ、元を断ち、検索結果から消す</span>までを順に紹介します。自分で進めるのが難しいときに、相談する目安もまとめました。</p>
+<p>内容は、GoogleとWordPressの公式の情報を2026年11月に確かめたものです。見えているページだけをあわてて消す前に、進める順番を押さえておきましょう。</p>
+
+<h2 id="s1">WordPressにスパムページが大量に作られる改ざんの特徴</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-spam-pages-fig1.webp" alt="WordPressにスパムページが大量に作られる改ざんの特徴として、知らない日本語のページが検索結果に並ぶ、Search Consoleに知らない所有者が足される、開くと別のサイトへ飛ばされる、の3つを横に並べたカードの図" width="1200" height="800"><figcaption>見えているページの裏に、作り続ける仕掛けが残っています</figcaption></figure>
+<p>WordPressにスパムページが大量に作られる改ざんは、<span class="mark-yellow">ページを消すだけでは終わりません</span>。サイトのどこかに、ページを作り続ける仕掛けが残っているからです。</p>
+<p>Googleは、許可なく置かれたこうしたページを「ハッキングされたコンテンツ」と呼んでいます。改ざんかどうかの見分けに迷うときは、先に別の記事で確かめてください。<a href="website-unwanted-ads.html">ホームページに勝手に変な広告やページが出る原因｜パソコン側かサイトの改ざんかを見分ける方法</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/search/docs/essentials/spam-policies?hl=ja" target="_blank" rel="noopener noreferrer nofollow">Google ウェブ検索のスパムに関するポリシー｜Google 検索セントラル</a></li>
+</ul>
+
+<h3>知らない日本語のページが検索結果に並ぶ</h3>
+<p>Googleが運営するweb.devは、この型を「日本語キーワードによるハッキング」と呼びます。でたらめな名前のフォルダに、自動で作られた日本語のページが置かれるのが特徴です。ページには、偽のブランド品を売る店への広告のリンクが入れられます。<span class="mark-yellow">検索結果に出して、人を集めるのが狙い</span>でしょう。意味の通らない文や外国語のページが作られる型も、別の案内で説明されています。開くと別のサイトへ飛ばされることもあるので、むやみに開かないでください。</p>
+<ul class="ref">
+<li>参考：<a href="https://web.dev/articles/fix-the-japanese-keyword-hack?hl=ja" target="_blank" rel="noopener noreferrer nofollow">日本語キーワードによるハッキングを解決する｜web.dev</a></li>
+<li>参考：<a href="https://web.dev/articles/fix-the-gibberish-hack?hl=ja" target="_blank" rel="noopener noreferrer nofollow">意味不明な内容によるハッキングを解決する｜web.dev</a></li>
+</ul>
+
+<h3>消す前に、記録とバックアップを取る</h3>
+<p>片付けを始める前に、今の状態を残しておきます。web.devの案内も、消す前にファイルの控えをサーバーの外へ取るよう勧めているのです。WordPressの場合は、データベースの控えもあわせて取ってください。<span class="mark-red"><strong>控えがないまま消すと、あとで元に戻せません</strong></span>。検索結果の画面と、見つけた日時も記録しておきましょう。記録から復旧までの全体の流れは、<a href="website-tampering-recovery.html">ホームページ改ざんの復旧手順｜発見から再発防止まで</a>にまとめました。</p>
+
+<h2 id="s2">WordPressのスパムページが大量にあるかを確かめる3つの場所</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-spam-pages-fig2.webp" alt="WordPressのスパムページが大量にあるかを確かめる3つの場所として、site:検索の結果、Search Consoleのページ数とサイトマップ、所有者の一覧とセキュリティの問題、をチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>検索結果、ページ数、所有者の3か所で規模をつかみます</figcaption></figure>
+<p>WordPressのスパムページが大量にあるかは、<span class="mark-yellow">検索とSearch Consoleで確かめます</span>。どのくらいの数が、いつから、どのフォルダにあるのかをつかむのが目的です。</p>
+<p>見つけたURLは、表にして控えておいてください。あとで消えたかを確かめるときの台帳になります。Search Consoleをまだ使っていない場合は、この機会に登録しましょう。</p>
+
+<h3>① site:検索で見覚えのないURLを探す</h3>
+<p>Googleの検索窓に「site:自社のドメイン」と入れて検索します。Googleが登録している自社のページが、一覧で出てくる検索のしかたです。結果を何ページかめくり、<span class="mark-yellow">見覚えのない題名やURLがないか</span>を見てください。Googleで見つからないときは、別の検索エンジンでも同じ検索を試しましょう。検索結果のURLが「ページがありません」と出る場合も、安心はできません。人には消えたように見せ、検索エンジンにだけ中身を出す細工があるからです。</p>
+
+<h3>② Search Consoleのページ数とサイトマップを見る</h3>
+<p>Search Consoleの「ページ」のレポートには、登録されたページの数の推移が出ます。ヘルプは、数が急に増えたり減ったりしたら原因を調べるよう案内しているのです。<span class="mark-yellow">グラフが急に跳ね上がった日が、被害の始まりの目安</span>になります。一覧に出るURLの例は1,000件までなので、全部は見えません。あわせて「サイトマップ」のレポートも開きましょう。送った覚えのないサイトマップがあれば、スパムページを早く登録させるためのものと考えられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/7440203?hl=ja" target="_blank" rel="noopener noreferrer nofollow">ページ インデックス登録レポート｜Search Console ヘルプ</a></li>
+<li>参考：<a href="https://support.google.com/webmasters/answer/7451001?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サイトマップ レポートを使用してサイトマップを管理する｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>③ 所有者の一覧とセキュリティの問題を見る</h3>
+<p>Search Consoleの「設定」から「ユーザーと権限」を開くと、所有者の一覧が出ます。この型の改ざんでは、相手が自分を所有者に足すことが多いとされているのです。<span class="mark-yellow">知らないアドレスが所有者にいないか</span>を見ましょう。ヘルプによると、所有者が足されたときは、確認済みの所有者の全員に知らせが届きます。「セキュリティの問題」のレポートも開いてください。改ざんのほかのサインは、<a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/7281924?hl=ja" target="_blank" rel="noopener noreferrer nofollow">新しい所有者に覚えがない場合｜Search Console ヘルプ</a></li>
+</ul>
+
+<h2 id="s3">WordPressに大量のスパムページを作る元を断つ4つの作業</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-spam-pages-fig3.webp" alt="WordPressに大量のスパムページを作る元を断つ4つの作業を、知らない所有者と確認用のファイルを消す、.htaccessをきれいな版に置き換える、本体とテーマとプラグインを入れ直す、不正なサイトマップと不審なファイルを消す、の順に番号つきで並べたステップの図" width="1200" height="800"><figcaption>見えているページより先に、作り続ける仕掛けを取り除きます</figcaption></figure>
+<p>WordPressに大量のスパムページを作る元は、<span class="mark-yellow">見えているページより先に取り除きます</span>。順番は、web.devの案内に沿って4つに分けました。</p>
+<p>作業の前に、サーバー会社にも改ざんを知らせておきましょう。同じサーバーのほかの利用者に影響がないかを、確かめてもらえるからです。ファイルを触る作業に不安があるときは、無理をせず制作会社に任せてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://web.dev/articles/build-a-support-team?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サポートチームの構築｜web.dev</a></li>
+</ul>
+
+<h3>① 知らない所有者と確認用のファイルを消す</h3>
+<p>知らない所有者は、「ユーザーと権限」の画面で権限を削除します。ただし、確認用のファイルなどで所有者になった相手は、消してもまた戻れるのです。同じ画面の「未使用の所有権トークン」で、残っている確認の手段を見てください。<span class="mark-yellow">サーバーに残る確認用のHTMLファイルも消す</span>必要があります。見当たらないときは、.htaccessが確認用のファイルを見せかけている場合もあるでしょう。ヘルプは、これだけでは一時しのぎだとも書いています。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/7687615?hl=ja" target="_blank" rel="noopener noreferrer nofollow">所有者、ユーザー、権限の管理｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>② .htaccessをきれいな版に置き換える</h3>
+<p>.htaccessは、サーバーの動きを決める設定ファイルです。WordPressの公式の手引きは、改ざんで書き換えられやすいファイルとして挙げています。web.devは、<span class="mark-yellow">自分で設定を足していなければ新しい内容に置き換える</span>よう勧めているのです。WordPressの標準の内容は、公式のドキュメントに載っています。セキュリティのプラグインが設定を書き込んでいることもあるでしょう。元のファイルの控えを取ってから置き換えてください。フォルダごとに置かれていないかも、あわせて探します。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/server/web-server/httpd/" target="_blank" rel="noopener noreferrer nofollow">Apache HTTPD / .htaccess｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>③ 本体・テーマ・プラグインを入れ直す</h3>
+<p>WordPressの本体とテーマ、プラグインは、公式の配布元から取ったもので入れ直しましょう。元からあるファイルに、不正な中身が残らなくなります。WordPressの公式の手引きは、今と同じ版を使うよう注意しているのです。管理画面の再インストールではなく、FTPなどでの置き換えを勧めています。対象は「wp-admin」と「wp-includes」のフォルダです。<span class="mark-yellow">上書きだけでは、足された不正なファイルが残る</span>と説明されています。テーマに手を入れているサイトは、先に控えを取ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ My site was hacked｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>④ 不正なサイトマップと不審なファイルを消す</h3>
+<p>次に、サイトマップのファイルを開いて中身を見ます。覚えのないサイトマップで、スパムページのURLしか載っていないものは削除しましょう。不審なファイルは、更新日とサイズで並べ替えると探しやすくなります。web.devは、気づいた時期から数か月以内に変わったファイルを見るよう案内しているのです。<span class="mark-yellow">読めない文字が長く続くPHPファイルは要注意</span>でしょう。index.phpなど、狙われやすいファイルも挙げられています。判断に迷うファイルは、消す前に詳しい人に見てもらってください。</p>
+
+<h2 id="s4">WordPressの大量のスパムページを検索結果から消す手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-spam-pages-fig4.webp" alt="WordPressの大量のスパムページを検索結果から消す手順を、消したページが404か410を返すのを確かめる、急ぐページは非表示ツールで約6か月隠す、Googleの巡回を数日から数週間待つ、の順に矢印でつないだ流れ図" width="1200" height="800"><figcaption>ページを消し、急ぐものだけ隠し、Googleの巡回を待ちます</figcaption></figure>
+<p>WordPressの大量のスパムページは、元を断ったあとで検索結果から消していきましょう。<span class="mark-yellow">消えるまでには、ある程度の時間がかかります</span>。Googleがそのページをもう一度見にきて、なくなったと分かる必要があるからです。</p>
+<p>手順は、消えたことの確認、急ぐものを隠す、巡回を待つ、の3つに分かれます。「セキュリティの問題」に表示がある場合は、直したあとに審査の依頼も必要です。審査と警告の外し方は、別の記事にまとめました。<a href="dangerous-site-warning.html">「このサイトは危険です」と警告が出たときの対処｜原因の確かめ方と解除までの流れ</a>を見てください。</p>
+
+<h3>消したページが404か410を返すかを確かめる</h3>
+<p>控えておいたスパムページのURLを、Search ConsoleのURL検査ツールに入れます。「公開URLをテスト」を押すと、Googleから見た今の状態が分かるのです。人にだけ「見つかりません」と見せる細工が残っていないかも、確かめられます。Googleの説明では、登録済みのURLが404や410を返すと、検索の登録から外されるのです。404と410は、同じように扱われます。<span class="mark-red"><strong>巡回を断るrobots.txtで隠す方法は使わないでください</strong></span>。ヘルプも、隠す手段に使わないよう書いています。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/crawling/docs/troubleshooting/http-status-codes?hl=ja" target="_blank" rel="noopener noreferrer nofollow">HTTP ステータス コードが Google のクローラーに及ぼす影響｜Google for Developers</a></li>
+<li>参考：<a href="https://support.google.com/webmasters/answer/9012289?hl=ja" target="_blank" rel="noopener noreferrer nofollow">URL 検査ツール｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>急ぐページは非表示ツールで一時的に隠す</h3>
+<p>すぐに隠したいページには、Search Consoleの非表示ツールが使えます。以前から「削除ツール」と呼ばれてきた機能です。ヘルプによると、申請したURLを約6か月のあいだ検索結果から隠せます。同じ文字で始まるURLを、まとめて申請することも可能です。<span class="mark-yellow">隠せるのは一時的で、ページを消す代わりにはなりません</span>。ページが残っていると、期間が過ぎたあとにまた出てくるのです。申請の処理には、通常は長くて1日ほどかかると書かれています。サイト全体を隠す申請は、勧められていません。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9689846?hl=ja" target="_blank" rel="noopener noreferrer nofollow">非表示ツールとセーフサーチ レポートツール｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>再クロールには数日から数週間かかる</h3>
+<p>ページを消したあとは、Googleがもう一度見にくるのを待ちます。Googleの説明では、クロールには数日から数週間かかることがあるのです。Googleには、URLを1件ずつ見直してもらう申請の仕組みもあります。ただし、頼める数には上限があり、何度頼んでも早くはなりません。<span class="mark-yellow">大量のURLを1件ずつ申請する必要はない</span>でしょう。404を返すページは、巡回のときに自然に検索結果から外れていくからです。「ページ」のレポートで、登録の数が減っていくかを週に1回ほど見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=ja" target="_blank" rel="noopener noreferrer nofollow">URL の再クロールを Google にリクエストする｜Google 検索セントラル</a></li>
+</ul>
+
+<h2 id="s5">WordPressにスパムページが大量に戻るのを防ぐ備えと相談の目安</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-spam-pages-fig5.webp" alt="WordPressにスパムページが大量に戻るのを防ぐ備えと相談の目安を、左に自分で進めるパスワードの変更と更新とアカウントの整理、右に相談するファイルを見分けられない場合とまた作られる場合と管理画面に入れない場合、と左右に分けて比べた図" width="1200" height="800"><figcaption>入り口をふさぐ作業と、頼る先の両方を決めておきます</figcaption></figure>
+<p>WordPressにスパムページが大量に戻るのを防ぐには、<span class="mark-yellow">入られた入り口をふさぐ作業が欠かせません</span>。ファイルをきれいにしても、入り口が開いたままなら同じことが起きるからです。</p>
+<p>入り口が分からないときは、考えられる場所をひととおり見直しましょう。パスワード、古い部品、使っていないアカウントの3つが中心になります。自分の手に余ると感じたら、早めに相談することも大切です。</p>
+
+<h3>パスワードを変え、使わないアカウントを消す</h3>
+<p>WordPressの公式の手引きは、入り口になるすべてのパスワードを変えるよう勧めています。管理画面、FTP、サーバーの管理画面、データベースの4つです。片付けが終わったあとに、もう一度変えることも勧められています。<span class="mark-yellow">ユーザーの一覧も、1人ずつ見直してください</span>。運営者の自社サイトでも、15件の点検で心当たりのない編集者のアカウントが2つ見つかりました。使っていないアプリケーションパスワードも残っていたのです。ログインには、2段階認証を足しておくと安心でしょう。</p>
+
+<h3>本体とプラグインを更新し、使わないものを消す</h3>
+<p>きれいにしたあとは、本体とテーマ、プラグインを最新の版に上げます。WordPressの公式の手引きも、古い版ほど狙われやすいとして更新を勧めているのです。使っていないプラグインは、止めるだけでなく削除しましょう。<span class="mark-yellow">管理画面からファイルを編集する機能も止められます</span>。公式のドキュメントにある設定で、wp-config.phpに1行を足す方法です。そのうえで、月に1回はsite:検索とSearch Consoleの数を見てください。早く気づければ、片付けるページの数も少なくて済みます。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>自分で難しいと感じたら相談する目安</h3>
+<p>web.devは、自分で直すにはコードを読む力やサーバーの知識が要るとしています。<span class="mark-yellow">次のどれかに当てはまれば、相談を考えましょう</span>。不審なファイルの見分けがつかない場合や、消してもページがまた作られる場合です。管理画面やサーバーに入れない場合も当てはまります。まず、制作会社や保守を頼んでいる会社、サーバー会社に連絡してください。IPAの企業組織向けサイバーセキュリティ相談窓口でも、応急処置の助言を受けられます。相談はメールで受け付けており、調査そのものは行わない窓口です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/support/soudan.html" target="_blank" rel="noopener noreferrer nofollow">サイバーセキュリティ 相談・届出窓口一覧｜IPA</a></li>
+</ul>
+
+<div class="art-cta"><strong>改ざんの入り口になる古い部品がないか、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やプラグインの版、ユーザー名の見え方など8項目を無料で判定します。入り口をふさぐ設定や更新の作業は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressにスパムページが大量に作られたときに関するよくある質問</h2>
+
+<h3>スパムページは、検索結果から何日で消えますか？</h3>
+<p>日数は決まっていません。Googleは、クロールには数日から数週間かかることがあると説明しています。ページが404か410を返すようになれば、次の巡回のあとに登録から外れる流れです。数が多いと、すべてが外れるまでに時間がかかるでしょう。急ぐページだけ非表示ツールで隠し、残りは「ページ」のレポートで減り方を見てください。</p>
+
+<h3>スパムページを1つずつ手で消せば解決しますか？</h3>
+<p>見えているページを消すだけでは、解決しないことが多いでしょう。ページを作り続ける仕掛けが残っていると、また作られるからです。ファイルとしては存在せず、仕掛けが表示しているだけのページもあります。先に、所有者、.htaccess、本体やプラグインのファイルを見直してください。そのあとで、ページが消えたかを確かめる順番になります。</p>
+
+<h3>不正なサイトマップをSearch Consoleから削除すれば、ページも消えますか？</h3>
+<p>それだけでは消えません。ヘルプによると、レポートからサイトマップを削除しても、載っていたURLは登録から外れないのです。サーバーにあるサイトマップのファイルそのものも、削除してください。そのうえで、スパムページが404か410を返す状態にします。知らない所有者が残っていると、また送られるおそれがあるでしょう。所有者の見直しとあわせて進めると安心です。</p>
+
+<h3>バックアップから戻せば、スパムページは消えますか？</h3>
+<p>改ざんされる前のバックアップがあれば、有力な方法です。ただし、この型の改ざんは、気づくまでに時間がたっていることがあります。運営者の自社サイトのサーバーでは、自動バックアップはファイルが7日分でした。データベースは14日分です。気づいたときには、きれいな日のバックアップが残っていないこともあるでしょう。戻せた場合も、入り口をふさぐ作業と検索結果の確認は別に必要になります。</p>
+
+<h3>無料の診断で、スパムページがあるかどうかは分かりますか？</h3>
+<p>スキゼロの無料簡易診断は、スパムページの有無を直接は調べません。調べるのは、WordPress本体やプラグインの版、ユーザー名など外から見える8項目です。改ざんの入り口になりやすい古い部品が残っていないかを知る手がかりになります。スパムページの有無は、site:検索とSearch Consoleで確かめてください。片付けたあとに、入り口が残っていないかを見る目的で使うのがおすすめです。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressにスパムページが大量に作られたら、確かめる、元を断つ、消すの順に進めます。site:検索とSearch Consoleで数と所有者を見て、控えを取ってから片付けましょう。</p>
+<p><span class="mark-yellow">消したページが404か410を返すことを確かめ</span>、あとはGoogleの巡回を待ちます。入り口をふさぐ作業まで済ませ、手に余るときは早めに相談してください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">改ざんの特徴</a></li><li><a href="#s2">確かめる3つの場所</a></li><li><a href="#s3">元を断つ4つの作業</a></li><li><a href="#s4">検索結果から消す手順</a></li><li><a href="#s5">防ぐ備えと相談の目安</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
