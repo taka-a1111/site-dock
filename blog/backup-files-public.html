@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>バックアップファイルを公開フォルダに置く危険｜見つけ方と消し方、安全な置き場所｜スキゼロ</title>
+<meta name="description" content="バックアップファイルを公開フォルダに置く危険を、漏れる情報、残りやすい4つの場面、探し方、消し方と安全な置き場所、消せないときの止め方、防ぐ決まりの順に、公式の情報をもとに分かりやすく解説します。">
+<link rel="canonical" href="https://sukizero.com/blog/backup-files-public.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="バックアップファイルを公開フォルダに置く危険｜見つけ方と消し方、安全な置き場所">
+<meta property="og:description" content="バックアップファイルを公開フォルダに置く危険を、漏れる情報、残りやすい4つの場面、探し方、消し方と安全な置き場所、消せないときの止め方、防ぐ決まりの順に、公式の情報をもとに分かりやすく解説します。">
+<meta property="og:url" content="https://sukizero.com/blog/backup-files-public.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-037-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-08">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "バックアップファイルを公開フォルダに置く危険｜見つけ方と消し方、安全な置き場所", "description": "バックアップファイルを公開フォルダに置く危険を、漏れる情報、残りやすい4つの場面、探し方、消し方と安全な置き場所、消せないときの止め方、防ぐ決まりの順に、公式の情報をもとに分かりやすく解説します。", "image": "https://sukizero.com/blog/img/eyecatch-037-v3.webp", "datePublished": "2026-12-08", "dateModified": "2026-12-08", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/backup-files-public.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "wp-config.phpの本体は、公開フォルダにあっても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "本体は、開いてもプログラムとして動くだけで、中身は表示されないのがふつうです。そのうえで、WordPressの公式の資料は守りを足す方法を2つ紹介しています。1つは、.htaccessでこのファイルへのアクセスを断つ書き方です。もう1つは、WordPressを入れたフォルダの1つ上へ移す方法になります。危ないのは本体より、末尾を変えて作った写しのほうです。写しが残っていないかを先に確かめてください。"}}, {"@type": "Question", "name": "ファイル名を複雑にしておけば、置いたままでも安全ですか？", "acceptedAnswer": {"@type": "Answer", "text": "おすすめしません。IPAの資料は、リンクがなくても外から直接指定すれば閲覧されると説明しています。フォルダの中身の一覧が見える設定になっていれば、名前を工夫しても意味がないでしょう。IPAの診断の仕様でも、一覧の中のバックアップファイルは報告の対象です。名前で隠すのではなく、公開フォルダに置かない形にしてください。どうしても置くなら、パスワードをかけて短い期間で消しましょう。"}}, {"@type": "Question", "name": "消したのに、検索結果にファイルが残っています。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "IPAは、非公開にしただけでは検索エンジンに記録が残ることがあると注意しています。その場合は、検索エンジンの運営会社に削除を頼む流れです。Googleなら、Search Consoleの「非表示ツール」から申し込めます。2026年11月時点のヘルプによると、非表示になる期間は約6か月です。非表示は一時的なものなので、元のファイルの削除を先に済ませてください。使うには、サイトの所有者として登録している必要があります。"}}, {"@type": "Question", "name": "サーバーの自動バックアップがあれば、自分の写しは要りませんか？", "acceptedAnswer": {"@type": "Answer", "text": "少なくとも、公開フォルダの中に自分の写しを置く必要はありません。運営者の自社サイトは、エックスサーバーで動かしています。自動バックアップは、ファイルが7日分、データベースが14日分でした。それより古い状態を残したいときは、手元のパソコンやクラウドに置きましょう。自動の控えの日数は、サーバー会社や契約によって違います。自社の契約で何日分あるかを、管理画面で確かめてください。"}}, {"@type": "Question", "name": "自分で探すのが難しいときは、どこに頼めばよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは、サイトを作った制作会社に頼むのが近道です。見てほしい場所と拡張子を伝えると、話が早く進みます。作業のあとに、何を消して何を残したかの一覧をもらってください。制作会社と連絡がつかないときは、サーバーに詳しい別の会社や専門家に相談しましょう。写しが外から読めていた場合や、個人情報が入っていた場合は急ぎます。パスワードの変更と記録の確認まで、あわせて頼むと安心です。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "バックアップファイルを公開フォルダに置く危険｜見つけ方と消し方、安全な置き場所"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">バックアップファイルを公開フォルダに置く危険</span><span class="h1-sub" data-sep="｜">見つけ方と消し方、安全な置き場所</span></h1>
+    <p><time datetime="2026-12-08">2026.12.08</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-037-v3.webp" alt="バックアップファイルを公開フォルダに置く危険と、見つけ方、消し方、安全な置き場所" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>サイトの移転や改修のときに作ったzipや写しを、サーバーに置いたままにしていませんか？</p>
+<p>作業のために作ったバックアップファイルは、終わったあとも公開フォルダに残りがちです。置き場所を誤ると、パスワードやお客さまの情報が外から読める状態になります。</p>
+<p>この記事は、<span class="mark-yellow">バックアップファイルの置き場所の誤りに絞って</span>まとめました。何が漏れるのか、どこに残りやすいのか、探し方と片付け方、防ぐ決まりの順に紹介します。</p>
+<p>もとにしたのは、IPAやOWASP、WordPressの公式の資料です。運営者の自社サイトでの点検で分かったことも加えました。サーバーの管理画面に入れるようにしてから読み進めてください。</p>
+
+<h2 id="s1">バックアップファイルを公開フォルダに置くと危険な理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/backup-files-public-fig1.webp" alt="バックアップファイルを公開フォルダに置くと危険な理由として、設定ファイルの写しは中身がそのまま表示される、データベースの書き出しには個人情報が入っている、リンクがなくてもURLを直接入れれば開ける、の3つを横に並べたカードの図" width="1200" height="800"><figcaption>写しは、元のファイルと同じ中身を持ったまま外から読めます</figcaption></figure>
+<p>バックアップファイルを公開フォルダに置くと、<span class="mark-yellow">中身をだれでも取り出せる状態になります</span>。公開フォルダとは、URLで開けるファイルを置く場所のことです。</p>
+<p>IPAは、重要な情報を入れたファイルを、インターネットから届かない場所に保管するよう求めています。不要なファイルは削除する必要がある、という立場です。危険な理由を3つに分けて見ていきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA</a></li>
+</ul>
+
+<h3>設定ファイルの写しは、中身がそのまま表示される</h3>
+<p>設定ファイルの「wp-config.php」には、データベースのパスワードが書かれています。元のファイルは、開いてもプログラムとして動くだけで、中身は表示されません。ところが、名前の末尾を「.bak」や「.old」に変えた写しは扱いが変わるのです。<span class="mark-red"><strong>写しは、ただの文字として中身が表示される</strong></span>ことがあります。OWASPの検査の手引きも、末尾を変えた写しから元のプログラムが読まれる例を挙げました。データベースに入るための情報が、そのまま外へ出る形になるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/apis/wp-config-php/" target="_blank" rel="noopener noreferrer nofollow">wp-config.php｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information" target="_blank" rel="noopener noreferrer nofollow">Review Old Backup and Unreferenced Files for Sensitive Information｜OWASP Web Security Testing Guide</a></li>
+</ul>
+
+<h3>データベースの書き出しには、個人情報が入っている</h3>
+<p>データベースを書き出したファイルは、「.sql」や「.gz」といった名前になります。公式ハンドブックによると、データベースにはすべての投稿とコメントが入っているのです。利用者ごとのログイン名、メールアドレス、パスワードも保存されます。パスワードは元が分からない形に変えてありますが、漏れてよい情報ではありません。<span class="mark-yellow">書き出しファイル1つで、サイトの中身が丸ごと渡る</span>と考えてください。問い合わせを保存するプラグインを使っていれば、送った人の個人情報も含まれるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/backup/" target="_blank" rel="noopener noreferrer nofollow">Backups｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_insert_user/" target="_blank" rel="noopener noreferrer nofollow">wp_insert_user()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="noopener noreferrer nofollow">Flamingo｜WordPress.org</a></li>
+</ul>
+
+<h3>リンクがなくても、URLを直接入れれば開ける</h3>
+<p>「どこからもリンクしていないから見つからない」と考える人は多いでしょう。IPAの資料は、この考えをはっきり否定しています。公開用のフォルダにあるファイルは、リンクがなくても外から直接指定すれば閲覧されるという説明です。写しや書き出しのファイルには、だれもが付けそうな名前が使われます。OWASPの手引きにも、ありがちな名前を順に試して探す検査の方法が載りました。<span class="mark-yellow">隠したつもりのファイルほど、機械的に探される</span>と考えてください。検査に使える方法は、悪意のある相手にも使えるからです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/about.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方｜IPA</a></li>
+<li>参考：<a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information" target="_blank" rel="noopener noreferrer nofollow">Review Old Backup and Unreferenced Files for Sensitive Information｜OWASP Web Security Testing Guide</a></li>
+</ul>
+
+<h2 id="s2">危険なバックアップファイルが公開フォルダに残る4つの場面</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/backup-files-public-fig2.webp" alt="危険なバックアップファイルが公開フォルダに残る4つの場面を、中央に置いた公開フォルダのまわりに、サイトを移転したとき、改修の前に写しを取ったとき、プラグインがサーバーの中に保存したとき、古いサイトを複製して残したとき、の4つを配置した放射状の図" width="1200" height="800"><figcaption>どの場面も、作業のあとの片付け忘れから始まります</figcaption></figure>
+<p>危険なバックアップファイルが公開フォルダに残るのは、<span class="mark-yellow">多くが作業のあとの片付け忘れ</span>です。攻撃を受けて置かれたものとは限りません。</p>
+<p>JPCERT/CCは2017年、国内の多くのサイトで書き出しファイルが外から読めたと報告しました。管理者に聞くと、移行のあとの消し忘れや、控えとして置いていたという答えだったそうです。残りやすい場面を4つ紹介します。</p>
+<ul class="ref">
+<li>参考：<a href="https://blogs.jpcert.or.jp/ja/2017/08/unsecured_databases.html" target="_blank" rel="noopener noreferrer nofollow">インターネット上に公開されてしまったデータベースのダンプファイル(2017-08-08)｜JPCERT/CC Eyes</a></li>
+</ul>
+
+<h3>① サイトを移転したときのzipと書き出し</h3>
+<p>サーバーを移すときは、ファイル一式とデータベースの書き出しを用意します。エックスサーバーのマニュアルでも、移転元で2つのバックアップを取る流れです。このとき、ファイルをまとめたzipを公開フォルダの中で作ることがあります。新しいサーバーへ運ぶために、書き出しのファイルを一時的に置く人もいるでしょう。<span class="mark-yellow">移転が終わると、置いたこと自体を忘れてしまう</span>のです。古いサーバーを解約せずに残しているなら、そちらも見てください。同じファイルが、古いほうにだけ残っていることがあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_install_transfer_wordpress.php" target="_blank" rel="noopener noreferrer nofollow">WordPressの移転について｜エックスサーバー</a></li>
+</ul>
+
+<h3>② 改修の前に取った設定ファイルの写し</h3>
+<p>ファイルを直す前に、同じフォルダへ写しを作る習慣は広く見られます。「wp-config.php.bak」や「functions.php.old」のような名前です。日付を足した名前や、「コピー」と付いた名前もあるでしょう。OWASPの手引きは、本番のサーバーの上で直接ファイルを直すやり方を危ない習慣に挙げています。<span class="mark-yellow">編集ソフトが自動で写しを残すこともある</span>ためです。作業した本人も気づかないまま、写しだけが増えていきます。制作会社に改修を頼んだあとにも、同じことが起こるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information" target="_blank" rel="noopener noreferrer nofollow">Review Old Backup and Unreferenced Files for Sensitive Information｜OWASP Web Security Testing Guide</a></li>
+</ul>
+
+<h3>③ バックアップ用のプラグインの保存フォルダ</h3>
+<p>バックアップ用のプラグインには、保存先をサーバーの中にできるものがあります。保存のフォルダは、公開フォルダの中の「wp-content」に作られることが多いでしょう。エックスサーバーのマニュアルにも、このフォルダにあるプラグインのバックアップへの言及があります。2026年11月時点の配布ページには、保存のフォルダを外から守ると書くプラグインもありました。ただ、<span class="mark-yellow">守りが効いているかは設定とサーバーしだい</span>です。使わなくなったプラグインの保存フォルダが残っていないかも見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_install_transfer_wp.php" target="_blank" rel="noopener noreferrer nofollow">WordPress簡単移行｜エックスサーバー</a></li>
+<li>参考：<a href="https://wordpress.org/plugins/backwpup/" target="_blank" rel="noopener noreferrer nofollow">BackWPup｜WordPress.org</a></li>
+</ul>
+
+<h3>④ 試すために複製した古いサイト</h3>
+<p>作り直しの前に、今のサイトを別のフォルダへ丸ごと写して残すことがあります。「old」や「test」といった名前のフォルダです。中には、設定ファイルも古いプログラムもそのまま入っています。IPAは、不要になったページやサイトを公開したままにしないよう呼びかけました。弱点が見つかっても、直されないまま残るからです。<span class="mark-yellow">使わなくなった複製は、フォルダごと片付ける</span>のが安全でしょう。運営者の自社サイト15件の点検でも、使っていないアプリケーションパスワードが残っていました。不要なものは、思うより長く残ります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA</a></li>
+</ul>
+
+<h2 id="s3">公開フォルダに危険なバックアップファイルがないかの探し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/backup-files-public-fig3.webp" alt="公開フォルダに危険なバックアップファイルがないかの探し方を、サーバーの中を拡張子と更新日時で見る、公開フォルダの直下とwp-contentと古いサイトのフォルダを順に見る、見つけた名前を自分のサイトのURLに付けて外から開く、の3つをチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>中から探し、見つけたものを外から確かめます</figcaption></figure>
+<p>公開フォルダに危険なバックアップファイルがないかは、<span class="mark-yellow">サーバーの中から探すのが近道です</span>。外から名前を当てて探す方法では、見落としが残ります。</p>
+<p>OWASPの手引きも、公開されるフォルダの中のファイルを実際に調べる方法を挙げました。写しは決まった付け方の名前になりやすいので、探しやすいという説明です。確かめる相手は、自分で管理しているサイトだけにしてください。3つの作業を順に紹介します。</p>
+<ul class="ref">
+<li>参考：<a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information" target="_blank" rel="noopener noreferrer nofollow">Review Old Backup and Unreferenced Files for Sensitive Information｜OWASP Web Security Testing Guide</a></li>
+</ul>
+
+<h3>拡張子と更新日時を手がかりに見る</h3>
+<p>サーバーのファイル管理の画面を開き、公開フォルダの中を見ていきます。エックスサーバーなら、ファイルマネージャで名前、更新日時、サイズを一覧できるでしょう。手がかりになる拡張子は、「.zip」「.gz」「.sql」「.bak」「.old」などです。名前の末尾に「~」が付いたものも、編集ソフトが残した写しにあたります。<span class="mark-yellow">サイズが大きく、日付が古いファイルは要注意</span>です。サイト全体やデータベースをまとめたものであることがあります。見つけたら、名前と場所を一覧に書き出してください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_tool_file.php" target="_blank" rel="noopener noreferrer nofollow">ファイルマネージャ｜エックスサーバー</a></li>
+</ul>
+
+<h3>残りやすい3つの場所を順に見る</h3>
+<p>すべてのフォルダを開くのは大変なので、残りやすい場所から見ます。1つ目は、公開フォルダの直下です。エックスサーバーでは「public_html」というフォルダがこれにあたります。JPCERT/CCが確かめた事例でも、書き出しのファイルはこの直下に置かれていました。2つ目は「wp-content」の中で、プラグインの保存フォルダがある場所です。3つ目は、古いサイトを写したフォルダになります。<span class="mark-yellow">設定ファイルと同じ階層は、特に念入りに見て</span>ください。写しは、元のファイルのすぐ隣に作られるからです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_folder.php" target="_blank" rel="noopener noreferrer nofollow">初期フォルダについて｜エックスサーバー</a></li>
+</ul>
+
+<h3>見つけたファイルを、自分のサイトだけ外から確かめる</h3>
+<p>見つけたファイルが外から読めるかは、ブラウザで確かめられます。自社のドメインのあとに、フォルダとファイルの名前を付けて開くだけです。ダウンロードが始まったり、中身の文字が表示されたりすれば、外から読める状態になっています。「アクセスできません」と出れば、何かの守りが効いているのでしょう。ただし、<span class="mark-red"><strong>守りが効いていても、置いたままにはしない</strong></span>でください。設定が変わったとたんに、読めるようになることがあります。この確かめは、自分が管理するサイト以外には行わないでください。</p>
+
+<h2 id="s4">公開フォルダの危険なバックアップファイルの消し方と安全な置き場所</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/backup-files-public-fig4.webp" alt="公開フォルダで見つけた危険なバックアップファイルの片付け方を、まだ要るかを判断し、要らなければ消す、要るなら手元に取ってから消して公開フォルダの外に置く、すぐ消せないときはアクセスを止める、と分かれ道で示したフローチャートの図" width="1200" height="800"><figcaption>基本は消すこと。残すなら、公開フォルダの外へ移します</figcaption></figure>
+<p>公開フォルダの危険なバックアップファイルは、<span class="mark-yellow">消すのが基本で、隠すのは次の手</span>です。IPAも、不要なファイルは削除する必要があるとしています。</p>
+<p>迷うのは、消してよいか分からないファイルでしょう。その場合も、公開フォルダの中に置き続ける理由にはなりません。手元に取る、外へ移す、アクセスを止めるの順に考えてください。制作会社が置いたファイルなら、消す前に一言確かめると安心です。</p>
+
+<h3>手元に取ってから、サーバーの上の写しを消す</h3>
+<p>要るかどうか迷うファイルは、先に自分のパソコンへダウンロードします。エックスサーバーのファイルマネージャには、ダウンロードと削除の両方の機能があるのです。手元に取れたことを確かめてから、サーバーの上のファイルを消してください。<span class="mark-yellow">消したあとは、同じURLを開いて確かめます</span>。「見つかりません」と出れば完了です。手元に取ったファイルにも、パスワードや個人情報が入っています。置き場所を決め、要らなくなったら手元からも消しましょう。</p>
+
+<h3>残すなら、公開フォルダの外かサーバーの外に置く</h3>
+<p>残す場所は、公開フォルダの外にします。エックスサーバーでは、「public_html」の中がURLで開ける範囲です。同じ階層に保管用のフォルダを作れば、URLでは届かない場所になります。WordPressの公式ハンドブックは、控えを別々の場所に分けて持つよう勧めました。サーバー、クラウド、手元のパソコンの3か所が例です。<span class="mark-yellow">公開フォルダの中は、保管場所に数えない</span>でください。取り方と戻す練習は、次の記事にまとめました。<a href="wordpress-backup.html">WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る</a>。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_install_transfer_wordpress.php" target="_blank" rel="noopener noreferrer nofollow">WordPressの移転について｜エックスサーバー</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/backup/" target="_blank" rel="noopener noreferrer nofollow">Backups｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>すぐ消せないときは、アクセスを止める</h3>
+<p>すぐに消せないときは、外から開けないようにします。1つは、「.htaccess」という設定ファイルでアクセスを断つ方法です。書き方の見本は、WordPressの公式の資料にあります。もう1つは、フォルダごとパスワードをかける方法でしょう。エックスサーバーなら、「アクセス制限」の画面で設定できます。<span class="mark-yellow">止めるのは、消すまでのつなぎ</span>と考えてください。書き足す手順は<a href="wordpress-readme-html.html">WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方</a>で紹介しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_limit.php" target="_blank" rel="noopener noreferrer nofollow">アクセス制限｜エックスサーバー</a></li>
+</ul>
+
+<h2 id="s5">バックアップファイルの公開に気づいたあとの対応と、危険を防ぐ決まり</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/backup-files-public-fig5.webp" alt="バックアップファイルの公開に気づいたあとの対応と危険を防ぐ決まりを、1 パスワードと鍵を変えて記録を確かめる、2 個人情報が入っていたら報告が要るかを確かめる、3 写しを残さない決まりと月に一度の点検を続ける、の3段階で左から右へ並べた番号つきステップの図" width="1200" height="800"><figcaption>漏れた前提で手を打ち、同じことを起こさない形にします</figcaption></figure>
+<p>バックアップファイルの公開に気づいたら、<span class="mark-yellow">消して終わりにしないことが大切です</span>。読める状態だった間に、だれかが取っていったおそれがあります。</p>
+<p>片付けたあとは、漏れた前提での手当てと、同じことを防ぐ決まりの2つに進みましょう。決まりは、社内と制作会社で同じものを共有してください。危険を小さくするための作業を、3つに分けて紹介します。</p>
+
+<h3>外から読めていたら、パスワードと鍵を変える</h3>
+<p>設定ファイルの写しが外から読めていたなら、データベースのパスワードを変えます。変えたあとは、wp-config.phpの中の値も同じものに直してください。同じファイルにある認証用の鍵も、取り替えておくと安心です。公式の資料によると、鍵を変えると全員がログインし直す形になります。書き出しが読めていた場合は、管理者のパスワードも変えましょう。<span class="mark-red"><strong>読めていた期間は、漏れたものとして扱う</strong></span>のが安全です。サーバーのアクセスの記録で、そのファイルが開かれたかも確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/apis/wp-config-php/" target="_blank" rel="noopener noreferrer nofollow">wp-config.php｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>個人情報が入っていたら、報告が要るかを確かめる</h3>
+<p>個人情報が入っていた場合は、法律の上の手続きが関わります。個人情報保護委員会は、漏れたおそれがある段階も報告の対象に含めました。設定の誤りで個人データが閲覧できる状態になり、本人が1,000人を超える場合が例の1つです。<span class="mark-yellow">消したから報告しなくてよい、とは限りません</span>。何人分の、どんな項目が入っていたかを先に書き出してください。判断に迷うときは、制作会社や専門家に早めに相談しましょう。動き方は<a href="personal-data-leak-response.html">ホームページから個人情報が漏れたら？会社がすべきこと｜報告が必要な4つの場合と最初の動き方</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ppc.go.jp/personalinfo/legal/leakAction/" target="_blank" rel="noopener noreferrer nofollow">漏えい等の対応とお役立ち資料｜個人情報保護委員会</a></li>
+</ul>
+
+<h3>写しを残さない決まりと、月に一度の点検</h3>
+<p>再発を防ぐ決まりは、3つで足ります。1つ目は、公開フォルダの中で写しを作らないことです。写しは手元のパソコンに取り、サーバーの上には残しません。2つ目は、移転や改修が終わった日に、置いたファイルを消したか確かめることです。制作会社に頼む作業でも、完了の報告に片付けの確認を入れてもらいましょう。3つ目は、月に一度の点検になります。<span class="mark-yellow">拡張子と日付で探す作業を、点検の表に足して</span>ください。外からの診断は、名前の決まっていない写しまでは見つけきれません。</p>
+
+<div class="art-cta"><strong>見えてはいけないファイルが外から見えていないか、確かめませんか</strong><p>URLを入れるだけで、不要なファイルの見え方など8項目を無料で判定します。登録はいりません。片付けや設定の作業は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">バックアップファイルの公開の危険に関するよくある質問</h2>
+
+<h3>wp-config.phpの本体は、公開フォルダにあっても大丈夫ですか？</h3>
+<p>本体は、開いてもプログラムとして動くだけで、中身は表示されないのがふつうです。そのうえで、WordPressの公式の資料は守りを足す方法を2つ紹介しています。1つは、.htaccessでこのファイルへのアクセスを断つ書き方です。もう1つは、WordPressを入れたフォルダの1つ上へ移す方法になります。危ないのは本体より、末尾を変えて作った写しのほうです。写しが残っていないかを先に確かめてください。</p>
+
+<h3>ファイル名を複雑にしておけば、置いたままでも安全ですか？</h3>
+<p>おすすめしません。IPAの資料は、リンクがなくても外から直接指定すれば閲覧されると説明しています。フォルダの中身の一覧が見える設定になっていれば、名前を工夫しても意味がないでしょう。IPAの診断の仕様でも、一覧の中のバックアップファイルは報告の対象です。名前で隠すのではなく、公開フォルダに置かない形にしてください。どうしても置くなら、パスワードをかけて短い期間で消しましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017319.pdf" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 別冊「ウェブ健康診断仕様」｜IPA</a></li>
+</ul>
+
+<h3>消したのに、検索結果にファイルが残っています。どうすればよいですか？</h3>
+<p>IPAは、非公開にしただけでは検索エンジンに記録が残ることがあると注意しています。その場合は、検索エンジンの運営会社に削除を頼む流れです。Googleなら、Search Consoleの「非表示ツール」から申し込めます。2026年11月時点のヘルプによると、非表示になる期間は約6か月です。非表示は一時的なものなので、元のファイルの削除を先に済ませてください。使うには、サイトの所有者として登録している必要があります。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9689846?hl=ja" target="_blank" rel="noopener noreferrer nofollow">非表示ツールとセーフサーチ レポートツール｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>サーバーの自動バックアップがあれば、自分の写しは要りませんか？</h3>
+<p>少なくとも、公開フォルダの中に自分の写しを置く必要はありません。運営者の自社サイトは、エックスサーバーで動かしています。自動バックアップは、ファイルが7日分、データベースが14日分でした。それより古い状態を残したいときは、手元のパソコンやクラウドに置きましょう。自動の控えの日数は、サーバー会社や契約によって違います。自社の契約で何日分あるかを、管理画面で確かめてください。</p>
+
+<h3>自分で探すのが難しいときは、どこに頼めばよいですか？</h3>
+<p>まずは、サイトを作った制作会社に頼むのが近道です。見てほしい場所と拡張子を伝えると、話が早く進みます。作業のあとに、何を消して何を残したかの一覧をもらってください。制作会社と連絡がつかないときは、サーバーに詳しい別の会社や専門家に相談しましょう。写しが外から読めていた場合や、個人情報が入っていた場合は急ぎます。パスワードの変更と記録の確認まで、あわせて頼むと安心です。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>バックアップファイルを公開フォルダに置くと、設定ファイルの中身やデータベースの情報が外から読めます。原因の多くは、移転や改修のあとの片付け忘れです。リンクがなくても、URLを直接入れれば開けてしまいます。</p>
+<p><span class="mark-yellow">中から探し、手元に取って消し、外に置く</span>のが基本です。読めていたと分かったら、パスワードを変えて記録を確かめましょう。作業のあとと月に一度の点検を、決まりにしてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">公開フォルダに置くと危険な理由</a></li><li><a href="#s2">残りやすい4つの場面</a></li><li><a href="#s3">残っていないかの探し方</a></li><li><a href="#s4">消し方と安全な置き場所</a></li><li><a href="#s5">気づいたあとの対応と決まり</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
