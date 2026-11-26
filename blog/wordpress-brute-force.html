@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのブルートフォース対策｜総当たり攻撃からログイン画面を守る3つの手順と確かめ方｜スキゼロ</title>
+<meta name="description" content="WordPressのブルートフォース対策を、パスワードとアカウントの整理、ログイン試行回数の制限、ログイン画面に届く通信を減らす設定の3つの手順で解説します。エックスサーバーなどの設定と、効いているかの確かめ方も紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-brute-force.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのブルートフォース対策｜総当たり攻撃からログイン画面を守る3つの手順と確かめ方">
+<meta property="og:description" content="WordPressのブルートフォース対策を、パスワードとアカウントの整理、ログイン試行回数の制限、ログイン画面に届く通信を減らす設定の3つの手順で解説します。エックスサーバーなどの設定と、効いているかの確かめ方も紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-brute-force.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-035-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-06">
+<meta property="article:section" content="ログイン・アカウント">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのブルートフォース対策｜総当たり攻撃からログイン画面を守る3つの手順と確かめ方", "description": "WordPressのブルートフォース対策を、パスワードとアカウントの整理、ログイン試行回数の制限、ログイン画面に届く通信を減らす設定の3つの手順で解説します。エックスサーバーなどの設定と、効いているかの確かめ方も紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-035-v3.webp", "datePublished": "2026-12-06", "dateModified": "2026-12-06", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-brute-force.html", "inLanguage": "ja", "articleSection": "ログイン・アカウント", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ログイン失敗の通知が大量に届きます。乗っ取られたのでしょうか？", "acceptedAnswer": {"@type": "Answer", "text": "失敗の通知だけなら、乗っ取られたとは限りません。失敗は、その試行では入れなかったという記録だからです。まず、成功したログインに心当たりがあるかを確かめましょう。知らないユーザーや、覚えのない投稿がないかも見てください。どれもなければ、この記事の3つの手順を順に進めます。心当たりのない成功があれば、すぐにパスワードを替えて専門家に相談しましょう。"}}, {"@type": "Question", "name": "国外からのアクセスを止めれば、ほかの対策は要りませんか？", "acceptedAnswer": {"@type": "Answer", "text": "それだけでは足りません。国外からの制限は、国内を経由した試行までは止められないからです。WordPressの公式ドキュメントも、国ごとの遮断を自分で持ち続けることには注意を促しています。正しい利用者まで止めてしまい、手入れも難しいという理由でした。サーバー会社の機能は有効のまま使い、パスワードと回数制限を重ねてください。守りを1枚に頼らないことが大切です。"}}, {"@type": "Question", "name": "ログインURLを変えれば、総当たり攻撃は止まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "試行の数は減ることがありますが、それだけでは止まりません。WordPressの公式ドキュメントは、雑音を減らせる手段として紹介しています。同時に、唯一の守りにしてはいけないとも書かれているのです。変えたURLが知られれば、同じように試されるからでしょう。変える場合も、強いパスワードと回数制限を先に整えてください。新しいURLを忘れて入れなくなる失敗にも気をつけましょう。"}}, {"@type": "Question", "name": "自分がログイン制限にかかって入れません。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバーの機能で制限された場合は、サーバーの管理画面から対処します。エックスサーバーでは、制限から24時間後に自動で解除される決まりです。急ぐときは、サーバーパネルでログイン試行回数制限設定を一時的に切ってください。ログインできたら、設定を有効に戻すのを忘れないようにしましょう。プラグインで制限された場合の解除のしかたは、プラグインごとに違います。入れる前に、配布元の説明で解除の方法を確かめておくと安心です。"}}, {"@type": "Question", "name": "ログイン画面に画像認証を入れる意味はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "入れる意味はあるでしょう。WordPressの公式ドキュメントは、自動の試行を遅らせる手段として挙げています。機械には手間のかかる確認を、ログインの前に1つ足す考え方です。SiteGuard WP PluginとXO Securityは、この機能を備えています。ただし、人が入力する手間も少し増える点には注意してください。パスワードと回数制限を整えたうえで、足すかどうかを決めましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのブルートフォース対策｜総当たり攻撃からログイン画面を守る3つの手順と確かめ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1><span class="h1-main">WordPressのブルートフォース対策</span><span class="h1-sub" data-sep="｜">総当たり攻撃からログイン画面を守る3つの手順と確かめ方</span></h1>
+    <p><time datetime="2026-12-06">2026.12.06</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-035-v3.webp" alt="WordPressのブルートフォース対策。総当たり攻撃からログイン画面を守る3つの手順と確かめ方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「ログインに失敗しました」という通知が次々に届き、不安になっていませんか？</p>
+<p>WordPressのログイン画面は、自動の総当たり攻撃の的になりやすい場所です。知らせが多いと怖くなりますが、打てる手は決まっているので落ち着いてください。</p>
+<p>この記事では、<span class="mark-yellow">総当たりを受けにくくする守りを3つの手順</span>にまとめました。パスワード、試行回数の制限、届く通信を減らす設定の順に重ねていきます。</p>
+<p>内容は、WordPressの公式ドキュメントとサーバー会社のマニュアルで確かめました。サーバーの管理画面に入れる状態にしてから読み進めてください。</p>
+
+<h2 id="s1">WordPressへのブルートフォース攻撃とは？対策の前に知りたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-brute-force-fig1.webp" alt="WordPressへのブルートフォース攻撃と対策の前に知りたいことを、攻撃は自動で行われる、失敗の通知はまだ入られていない記録、本体は回数で止めない、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>通知の数より、守りが重なっているかを見ます</figcaption></figure>
+<p>ブルートフォース攻撃は、ユーザー名とパスワードの組み合わせを当たるまで試す攻撃です。WordPressの公式ドキュメントも、<span class="mark-yellow">ログインがある仕組みはどれも狙われる</span>と説明しています。</p>
+<p>WordPressは使う人が多いぶん、的になりやすいだけです。対策の前に、通知の受け止め方と本体の仕組みを押さえておきましょう。この2つが分かると、手順の意味がつかみやすくなります。</p>
+
+<h3>ログインの失敗が大量に届くのは珍しくない</h3>
+<p>総当たりの試行は、人の手ではなく自動の仕組みで行われます。公式ドキュメントによると、多くの機器から分散して届くことが多い攻撃です。失敗に終わっても、通信が多いとサイトが重くなることがあります。<span class="mark-yellow">失敗の通知は、まだ入られていない記録</span>でもあるのです。ただし、成功したログインに心当たりがなければ話は別でしょう。その場合の動き方は、別の記事にまとめました。<a href="wordpress-unauthorized-login.html">WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>WordPress本体は失敗の回数で止めない</h3>
+<p>WordPressを入れただけの状態では、失敗の回数に歯止めがかかりません。公式ドキュメントは、回数の制限をサーバーやCDN、プラグインで行うものとして書いています。本体が自分で止めるという説明はありません。回数制限のプラグインの配布ページには、既定では試行の回数に上限がないとあります。<span class="mark-red"><strong>守りを足さなければ、何度でも試せる状態</strong></span>が続くのです。2段階認証も本体には入っておらず、プラグインなどで足す形になります。だからこそ、次の章からの手順を順に重ねてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/limit-login-attempts-reloaded/" target="_blank" rel="noopener noreferrer nofollow">Limit Login Attempts Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s2">WordPressのブルートフォース対策の手順1：パスワードとアカウントを固める</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-brute-force-fig2.webp" alt="WordPressのブルートフォース対策の手順1として、長く複雑で使い回さないパスワード、adminを使わず管理者の数をしぼること、2段階認証と連携用パスワードの整理をチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>費用をかけずに、今日のうちに終えられます</figcaption></figure>
+<p>WordPressのブルートフォース対策は、<span class="mark-yellow">当たりにくいパスワードにすることが土台</span>です。総当たりは当たるまで試す攻撃なので、当たるまでの道のりを長くします。</p>
+<p>公式ドキュメントも、守りの一覧の最初に強く使い回さないパスワードを挙げました。あわせて、狙われるアカウントそのものを減らしておきましょう。費用がかからず、今日のうちに終えられる手順です。</p>
+
+<h3>長く、複雑で、使い回さないパスワードに替える</h3>
+<p>IPAは、パスワードを「できるだけ長く」「複雑で」「使い回さない」ものにするよう勧めています。警察庁などの公表では、2025年に検挙された他人のIDやパスワードを使う手口は399件でした。そのうち、パスワードの設定や管理の甘さにつけ込んだものが84件で最多です。<span class="mark-yellow">名前や会社名、辞書にある単語は避けましょう</span>。WordPressでは、パスワードを替える画面に強さの目安が表示されます。管理者の全員が、目安を見ながら新しいものに替えてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/anshin/attention/2025/mgdayori20250828.html" target="_blank" rel="noopener noreferrer nofollow">インターネットサービスへの不正ログインによる被害が増加中（2025年8月28日）｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.soumu.go.jp/menu_news/s-news/01cyber01_02000001_00276.html" target="_blank" rel="noopener noreferrer nofollow">不正アクセス行為の発生状況及びアクセス制御機能に関する技術の研究開発の状況（令和8年3月12日）｜総務省</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>推測されやすいユーザー名と余分な管理者を減らす</h3>
+<p>公式ドキュメントは、「admin」というユーザー名を使わないよう勧めています。真っ先に試される名前だからです。管理者の数をしぼり、ふだんの作業は権限の小さいアカウントで行うことも勧められています。<span class="mark-yellow">使っていないアカウントは、的を増やすだけ</span>です。運営者の自社サイト15件の点検でも、心当たりのない編集者のアカウントが2つ見つかりました。ユーザー名が外から見える経路は、別の記事で扱っています。<a href="wordpress-username-exposure.html">WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方</a>を見てください。</p>
+
+<h3>2段階認証を足し、連携用のパスワードを見直す</h3>
+<p>パスワードが当てられても入れないよう、2段階認証を足します。公式ドキュメントは、すべての管理者に設定するよう勧めました。設定の手順と締め出されない準備は、次の記事にまとめています。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a>です。外部のアプリとつなぐ「アプリケーションパスワード」も見直しましょう。<span class="mark-yellow">使っていないものは、取り消しておくと安心</span>です。運営者の自社サイトの点検でも、使っていないものが残っていました。</p>
+
+<h2 id="s3">WordPressのブルートフォース対策の手順2：ログイン試行回数を制限する</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-brute-force-fig3.webp" alt="WordPressのブルートフォース対策の手順2として、サーバーの機能で試行回数を制限する方法と、プラグインで制限する方法を左右に並べ、サーバーの機能を先に確かめることを示した比較の図" width="1200" height="800"><figcaption>先にサーバーの機能を確かめ、なければプラグインで足します</figcaption></figure>
+<p>WordPressのブルートフォース対策の2つ目は、<span class="mark-yellow">失敗が続いた相手を一定の時間止める</span>ことです。試せる回数が減れば、当たるまでにかかる時間は大きく延びるでしょう。</p>
+<p>止める場所は、サーバー側とプラグインの2通りがあります。公式ドキュメントは、できるだけサーバー側で止めるよう勧めました。プラグインはWordPressの中で動くので、攻撃が多いとサーバーの力を使うからです。</p>
+
+<h3>エックスサーバーはログイン試行回数制限設定を見る</h3>
+<p>エックスサーバーには「ログイン試行回数制限設定」があります。短時間に連続してログインの失敗があると、アクセスを制限する機能です。マニュアルによると、初期状態で「ON(有効)」になっています。制限は、<span class="mark-yellow">かかってから24時間後に解除される</span>仕組みです。サーバーパネルの「WordPressセキュリティ設定」を開き、ドメインごとに確かめてください。何回の失敗で制限されるかは、マニュアルに書かれていません。なお、2026年11月時点の内容です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー</a></li>
+</ul>
+
+<h3>ConoHa WINGなど、ほかのサーバーの機能を確かめる</h3>
+<p>ConoHa WINGにも、同じ種類の「ログイン制限」があります。短時間に何度もログインの操作があると、自動で制限する機能です。コントロールパネルの「サイト管理」から「サイトセキュリティ」を開いてください。「WordPressセキュリティ」の「ログイン制限」で「管理画面ログイン」を「ON」にします。<span class="mark-yellow">契約中のサーバーのマニュアルを先に見る</span>のが近道でしょう。ロリポップとさくらのレンタルサーバでは、国外からの制限を公式マニュアルで確かめられました。回数の制限がないサーバーでは、プラグインで足します。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.conoha.jp/w/wpsecurity/" target="_blank" rel="noopener noreferrer nofollow">WordPressのセキュリティの設定をする｜ConoHa WINGサポート</a></li>
+</ul>
+
+<h3>サーバーに機能がなければプラグインで足す</h3>
+<p>サーバーに回数制限がないときは、プラグインを1つ入れます。失敗が続いたIPアドレスを、一定の時間ログインできなくする仕組みです。候補の3つを、WordPress.orgの配布ページの情報で表にしました。表は2026年11月25日に確かめた内容です。<span class="mark-red"><strong>同じ働きのプラグインを重ねて入れない</strong></span>でください。SiteGuard WP Pluginの配布ページにも注意書きがあります。ログインページの変更は、ほかのプラグインと併用できないという内容です。入れる前に、最終更新の日付と対応する版を自分でも確かめましょう。</p>
+<table>
+<tr><th>プラグイン</th><th>有効インストール数</th><th>最終更新</th><th>必要な版</th></tr>
+<tr><td>Limit Login Attempts Reloaded（今の表示名は Limit Login Attempts Security）</td><td>100万以上</td><td>2026年11月24日</td><td>WordPress 5.4以上</td></tr>
+<tr><td>SiteGuard WP Plugin</td><td>60万以上</td><td>2026年11月11日</td><td>WordPress 6.0以上</td></tr>
+<tr><td>XO Security</td><td>3万以上</td><td>2026年7月19日</td><td>WordPress 6.0以上、PHP 7.2以上</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/xo-security/" target="_blank" rel="noopener noreferrer nofollow">XO Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s4">WordPressのブルートフォース対策の手順3：ログイン画面に届く通信を減らす</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-brute-force-fig4.webp" alt="WordPressのブルートフォース対策の手順3として、国外からのアクセス制限、IPアドレスでの制限、使わない入口を閉じる、の3段階でログイン画面に届く通信を上から下へ減らしていく流れ図" width="1200" height="800"><figcaption>ログイン画面に届く前に、通信をふるい落とします</figcaption></figure>
+<p>WordPressのブルートフォース対策の3つ目は、<span class="mark-yellow">ログイン画面に届く前に通信を止める</span>ことです。届く数が減れば、試される回数もサーバーの負担も小さくなります。</p>
+<p>公式ドキュメントは、サーバーに届く前に止める方法の利点を挙げました。制限をかける場所は、ログインの入口だけにしぼるのが勧めです。国内の主なレンタルサーバーには、そのための機能が用意されています。</p>
+
+<h3>国外からのアクセス制限を有効のまま使う</h3>
+<p>エックスサーバーの「国外アクセス制限設定」は、初期状態で有効です。管理画面やログイン画面、xmlrpc.phpなどへの国外からの接続を制限します。マニュアルも、<span class="mark-yellow">通常は有効のまま使うよう強く勧めて</span>いるのです。ConoHa WINGの「海外アクセス制限」も、既定で全項目が「ON」になっています。ロリポップの「海外アタックガード」と、さくらの「国外IPアドレスフィルター」も同じ種類です。海外から管理画面を使うときは、制限に当たります。切る前に、許可するIPアドレスを登録できないかを確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://lolipop.jp/manual/user/attack-guard/" target="_blank" rel="noopener noreferrer nofollow">海外アタックガードの設定・解除方法｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2234/" target="_blank" rel="noopener noreferrer nofollow">国外IPアドレスをフィルター設定したい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>接続元が決まっているならIPアドレスでしぼる</h3>
+<p>管理画面を使う場所が会社だけなら、接続元でしぼる方法があります。エックスサーバーの「IPアドレス制限設定」は、登録したIPアドレス以外を止める機能です。対象は、管理画面のフォルダとログイン画面の2つになります。初期状態は「OFF(無効)」で、ホワイトリストを登録した場合だけ有効にできる仕組みです。<span class="mark-yellow">会社の回線のIPアドレスが固定かを先に確かめ</span>ましょう。固定でない回線では、自分が入れなくなるおそれがあります。有効にすると国外アクセス制限より優先される点にも注意してください。</p>
+
+<h3>使わない入口を閉じ、ログインURLの変更は補助にする</h3>
+<p>ログインを試せる入口は、ログイン画面だけではありません。公式ドキュメントは、xmlrpc.phpも総当たりの的になりやすいと説明しています。使っていないなら、止めておくのが勧めです。判断のしかたは、別の記事にまとめました。<a href="wordpress-xmlrpc.html">WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方</a>を見てください。ログインURLの変更について、公式は雑音を減らせるとしています。ただし、<span class="mark-yellow">それだけを唯一の守りにしない</span>よう書かれているのです。</p>
+
+<h2 id="s5">WordPressのブルートフォース対策が効いているかの確かめ方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-brute-force-fig5.webp" alt="WordPressのブルートフォース対策が効いているかの確かめ方を、サーバーの設定画面で有効かを見る、ログイン失敗の記録と通知を見る、外からの見え方を確かめる、の3つの番号つきステップで左から右へ並べた図" width="1200" height="800"><figcaption>設定の画面、記録、外からの見え方の3つで確かめます</figcaption></figure>
+<p>WordPressのブルートフォース対策は、<span class="mark-yellow">設定したあとに効いているかを確かめて</span>完了です。設定を入れたつもりでも、ドメインごとに状態が違うことがあります。</p>
+<p>確かめる面は、設定の画面、記録、外からの見え方の3つです。月に1度など、時期を決めて見直すと続けやすいでしょう。担当者が替わるときにも、同じ3つを引き継いでください。</p>
+
+<h3>サーバーの設定画面で有効になっているかを見る</h3>
+<p>最初に、サーバーの管理画面で制限が有効かを見ます。エックスサーバーなら、「WordPressセキュリティ設定」に項目が並んでいるはずです。設定はドメインごとなので、持っているドメインをすべて確かめましょう。<span class="mark-red"><strong>わざと失敗を繰り返して試すのは避けて</strong></span>ください。エックスサーバーの場合、自分が制限にかかると解除まで24時間かかるからです。急ぐ場合は、設定を一時的に「OFF」にする方法が公式に案内されています。作業が済んだら、「ON」に戻すのを忘れないでください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/support/faq/service_hp_wp_access_denied.php" target="_blank" rel="noopener noreferrer nofollow">「WordPress管理画面へのアクセスが拒否されました」と表示されました。｜エックスサーバー</a></li>
+</ul>
+
+<h3>ログイン失敗の記録と通知を見る</h3>
+<p>次に、ログインの記録を確かめましょう。公式ドキュメントも、ログから総当たりの試みが分かると説明しています。回数制限のプラグインには、失敗の記録や締め出しの通知を出すものがあるのです。たとえばXO Securityは、ログインの記録を残せます。見る点は2つです。成功したログインに心当たりがあるかと、失敗の数が減ったかを見ます。<span class="mark-yellow">失敗の数より、成功の記録に目を向け</span>ましょう。心当たりのない成功があれば、すぐにパスワードを替えてください。</p>
+
+<h3>外からの見え方を確かめ、難しければ相談する</h3>
+<p>最後に、外からどう見えるかを確かめます。運営者の自社サイトは、エックスサーバーで動かしているものです。2026年11月に国外の回線から開くと、xmlrpc.phpと/wp-json/は403でした。トップページは200のままです。<span class="mark-yellow">入口だけが閉じ、ページは見える状態</span>が目安になるでしょう。スキゼロの無料簡易診断は、ユーザー名の見え方など8項目を外から判定します。知らない管理者がいる、サイトが重い状態が続くといった場合は別です。早めに制作会社や専門家へ相談してください。</p>
+
+<div class="art-cta"><strong>ログインまわりの守りを、外から確かめませんか</strong><p>URLを入れるだけで、ユーザー名の見え方やセキュリティ設定など8項目を無料で判定します。ログインの制限やアカウントの整理は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのブルートフォース対策に関するよくある質問</h2>
+
+<h3>ログイン失敗の通知が大量に届きます。乗っ取られたのでしょうか？</h3>
+<p>失敗の通知だけなら、乗っ取られたとは限りません。失敗は、その試行では入れなかったという記録だからです。まず、成功したログインに心当たりがあるかを確かめましょう。知らないユーザーや、覚えのない投稿がないかも見てください。どれもなければ、この記事の3つの手順を順に進めます。心当たりのない成功があれば、すぐにパスワードを替えて専門家に相談しましょう。</p>
+
+<h3>国外からのアクセスを止めれば、ほかの対策は要りませんか？</h3>
+<p>それだけでは足りません。国外からの制限は、国内を経由した試行までは止められないからです。WordPressの公式ドキュメントも、国ごとの遮断を自分で持ち続けることには注意を促しています。正しい利用者まで止めてしまい、手入れも難しいという理由でした。サーバー会社の機能は有効のまま使い、パスワードと回数制限を重ねてください。守りを1枚に頼らないことが大切です。</p>
+
+<h3>ログインURLを変えれば、総当たり攻撃は止まりますか？</h3>
+<p>試行の数は減ることがありますが、それだけでは止まりません。WordPressの公式ドキュメントは、雑音を減らせる手段として紹介しています。同時に、唯一の守りにしてはいけないとも書かれているのです。変えたURLが知られれば、同じように試されるからでしょう。変える場合も、強いパスワードと回数制限を先に整えてください。新しいURLを忘れて入れなくなる失敗にも気をつけましょう。</p>
+
+<h3>自分がログイン制限にかかって入れません。どうすればよいですか？</h3>
+<p>サーバーの機能で制限された場合は、サーバーの管理画面から対処します。エックスサーバーでは、制限から24時間後に自動で解除される決まりです。急ぐときは、サーバーパネルでログイン試行回数制限設定を一時的に切ってください。ログインできたら、設定を有効に戻すのを忘れないようにしましょう。プラグインで制限された場合の解除のしかたは、プラグインごとに違います。入れる前に、配布元の説明で解除の方法を確かめておくと安心です。</p>
+
+<h3>ログイン画面に画像認証を入れる意味はありますか？</h3>
+<p>入れる意味はあるでしょう。WordPressの公式ドキュメントは、自動の試行を遅らせる手段として挙げています。機械には手間のかかる確認を、ログインの前に1つ足す考え方です。SiteGuard WP PluginとXO Securityは、この機能を備えています。ただし、人が入力する手間も少し増える点には注意してください。パスワードと回数制限を整えたうえで、足すかどうかを決めましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressへの総当たり攻撃は、自動で広く行われています。失敗の通知が多くても、守りが重なっていれば慌てる必要はありません。本体は回数で止めないので、守りは自分で足します。</p>
+<p>手順は、<span class="mark-yellow">パスワード、回数制限、届く通信を減らす</span>の3つです。設定のあとは、設定画面と記録、外からの見え方で効き目を確かめましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">対策の前に知りたいこと</a></li><li><a href="#s2">手順1 パスワードとアカウント</a></li><li><a href="#s3">手順2 試行回数の制限</a></li><li><a href="#s4">手順3 届く通信を減らす</a></li><li><a href="#s5">効いているかの確かめ方</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
