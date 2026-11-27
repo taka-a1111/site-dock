@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>サイバー攻撃の種類をやさしく解説｜会社のホームページが狙われる5つの入口と守り方｜スキゼロ</title>
+<meta name="description" content="サイバー攻撃の種類を、会社のホームページへの5つの入口に分けて解説します。総当たり、脆弱性の悪用、SQLインジェクション、DDoS、フィッシングなどで何が起きるかと主な守りを、公的な資料をもとにまとめました。">
+<link rel="canonical" href="https://sukizero.com/blog/cyber-attack-types.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="サイバー攻撃の種類をやさしく解説｜会社のホームページが狙われる5つの入口と守り方">
+<meta property="og:description" content="サイバー攻撃の種類を、会社のホームページへの5つの入口に分けて解説します。総当たり、脆弱性の悪用、SQLインジェクション、DDoS、フィッシングなどで何が起きるかと主な守りを、公的な資料をもとにまとめました。">
+<meta property="og:url" content="https://sukizero.com/blog/cyber-attack-types.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-045-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-16">
+<meta property="article:section" content="攻撃の基礎知識">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "サイバー攻撃の種類をやさしく解説｜会社のホームページが狙われる5つの入口と守り方", "description": "サイバー攻撃の種類を、会社のホームページへの5つの入口に分けて解説します。総当たり、脆弱性の悪用、SQLインジェクション、DDoS、フィッシングなどで何が起きるかと主な守りを、公的な資料をもとにまとめました。", "image": "https://sukizero.com/blog/img/eyecatch-045-v3.webp", "datePublished": "2026-12-16", "dateModified": "2026-12-16", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/cyber-attack-types.html", "inLanguage": "ja", "articleSection": "攻撃の基礎知識", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "個人情報を置いていないホームページでも、攻撃の対象になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "対象になります。盗む情報がなくても、サイトそのものに使い道があるからです。書き換えて、訪れた人をウイルスに感染させる場所として使われます。ほかの組織を攻撃する踏み台にされることもあるでしょう。大量の通信で止める攻撃や、社名をかたるメールも、情報の有無とは関係がありません。会社案内だけのサイトでも、更新とパスワードの管理は続けてください。"}}, {"@type": "Question", "name": "ウイルス対策ソフトを入れていれば、ホームページも守られますか？", "acceptedAnswer": {"@type": "Answer", "text": "守る場所が違うので、それだけでは足りません。ウイルス対策ソフトが守るのは、社内のパソコンです。ホームページはサーバーの上にあり、更新やパスワード、WAFなどの守りが別に要ります。ただし、パソコンの守りも無関係ではありません。キーボードの入力を記録して盗むウイルスがあると、総務省は説明しています。管理画面のパスワードを盗まれないよう、両方を整えてください。"}}, {"@type": "Question", "name": "WordPressを使っていないホームページにも、関係がありますか？", "acceptedAnswer": {"@type": "Answer", "text": "関係があります。IPAは、SQLインジェクションをデータベースを使うサイト全般の問題だと説明しました。クロスサイトスクリプティングは、あらゆるサイトで注意が要るとしています。DDoS攻撃やフィッシングも、サイトの仕組みを問わずに起こるものです。違いが出るのは、古いプログラムの弱点の部分でしょう。使っている仕組みごとに、更新の方法と担当を確かめてください。"}}, {"@type": "Question", "name": "ゼロデイ攻撃や標的型攻撃は、どの種類に入りますか？", "acceptedAnswer": {"@type": "Answer", "text": "ゼロデイ攻撃は、古いプログラムの弱点を突く攻撃の仲間です。IPAは、修正の情報が公表される前の弱点を突く攻撃だと説明しています。更新だけでは間に合わない時期があるため、WAFなどの守りを重ねておきましょう。標的型攻撃は、特定の組織を狙って業務を装ったメールを送る手口です。入口で分けると、人をだます種類に入ります。新しい名前を聞いたときも、どの入口の話かを考えると整理できるでしょう。"}}, {"@type": "Question", "name": "種類が多くて手が回りません。何から始めればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "入口の広い順に、更新とパスワードから始めましょう。WordPressの公式ドキュメントが挙げる2つのよくある攻撃には、この2つで備えられます。次に、サーバーの管理画面でWAFの設定を確かめてください。そのあとで、メールのなりすまし対策と、サイトが止まったときの知らせ方を決めます。今の状態を外から知りたいときは、スキゼロの無料簡易診断も1つの方法です。URLを入れるだけで、8項目を判定します。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "サイバー攻撃の種類をやさしく解説｜会社のホームページが狙われる5つの入口と守り方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 攻撃の基礎知識</nav>
+    <h1><span class="h1-main">サイバー攻撃の種類をやさしく解説</span><span class="h1-sub" data-sep="｜">会社のホームページが狙われる5つの入口と守り方</span></h1>
+    <p><time datetime="2026-12-16">2026.12.16</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-045-v3.webp" alt="サイバー攻撃の種類をやさしく解説。会社のホームページが狙われる5つの入口と守り方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>サイバー攻撃は種類が多すぎて、自社のホームページに何が関係するのか迷っていませんか？</p>
+<p>攻撃の名前はたくさんありますが、会社のホームページに届くものは限られています。名前を全部覚えなくても、どこから入ってくるかを知れば十分です。</p>
+<p>この記事では、<span class="mark-yellow">ホームページへの攻撃を5つの入口に分けて</span>説明します。入口ごとに、何をされるか、何が起きるか、主な守りを短くまとめました。</p>
+<p>内容は、IPA（情報処理推進機構）や警察庁、総務省などの公表資料で確かめています。数字には、いつの時点のものかを添えました。</p>
+
+<h2 id="s1">サイバー攻撃の種類は、ホームページへの入口で分けると分かりやすい</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/cyber-attack-types-fig1.webp" alt="サイバー攻撃の種類を会社のホームページへの入口で分け、中央のホームページのまわりに、ログインを破る、古いプログラムの弱点を突く、入力欄から仕掛ける、大量の通信で止める、会社や人をだます、の5つを放射状に並べた図" width="1200" height="800"><figcaption>攻撃の名前より、どこから入ってくるかで見ます</figcaption></figure>
+<p>サイバー攻撃の種類は、手口の名前ではなく<span class="mark-yellow">どこから入ってくるかで分ける</span>と整理できます。入口が分かれば、ふさぐ場所も決まるからです。</p>
+<p>WordPressの公式ドキュメントも、よくある攻撃を2つに分けています。古いプラグインなどの弱点を突く通信と、パスワードの総当たりです。この2つに、入力欄、大量の通信、人をだます手口を足して見ていきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>会社のホームページへの入口は大きく5つ</h3>
+<p>入口のうち、ログインを破る、古いプログラムの弱点を突く、入力欄から仕掛ける、の3つは仲間です。どれも、サイトの中に入り込むために使われます。総務省も、侵入の手口としてパスワードの総当たりや弱点を調べる攻撃を挙げました。4つ目は、大量の通信でサイトを止める攻撃です。中には入らず、外から開けない状態にします。5つ目は、会社や人をだます手口です。<span class="mark-yellow">サイトの外で会社の名前が使われる</span>点が、ほかと違います。5つを表にまとめました。</p>
+<table>
+<tr><th>入口</th><th>主な攻撃の名前</th><th>ホームページで起きること</th><th>主な守り</th></tr>
+<tr><td>ログインを破る</td><td>総当たり攻撃、リスト型攻撃</td><td>管理画面を乗っ取られる</td><td>長く使い回さないパスワード、2段階認証</td></tr>
+<tr><td>古いプログラムの弱点を突く</td><td>脆弱性を悪用した攻撃</td><td>改ざん、ほかへの攻撃の踏み台</td><td>本体・プラグイン・PHPの更新</td></tr>
+<tr><td>入力欄から仕掛ける</td><td>SQLインジェクション、クロスサイトスクリプティング</td><td>情報の漏えい、偽のページの表示</td><td>プログラムの修正と更新、不正な通信を止める仕組み（WAF）</td></tr>
+<tr><td>大量の通信で止める</td><td>DDoS攻撃</td><td>サイトが開けなくなる</td><td>サーバー会社の対策、止まったときの知らせ方</td></tr>
+<tr><td>会社や人をだます</td><td>フィッシング、なりすましメール</td><td>偽のサイトや偽のメールに社名を使われる</td><td>リンクから入らない、送信ドメイン認証</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/basic/risk/07/" target="_blank" rel="noopener noreferrer nofollow">不正アクセスとは？｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<h3>公的な資料で見る、いま多い攻撃</h3>
+<p>IPAの「情報セキュリティ10大脅威 2026」は、2026年1月に公表されました。組織向けの4位が「システムの脆弱性を悪用した攻撃」です。9位に「DDoS攻撃」、10位に「ビジネスメール詐欺」が入っています。JPCERT/CCが2026年7月から9月に扱った事故や攻撃（インシデント）は8,755件でした。そのうち、<span class="mark-yellow">フィッシングサイトが82.0%を占め</span>ます。Webサイトの改ざんは603件で、前の四半期の181件から増えました。だます手口と改ざんが、数の上でも目立っています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/10threats/10threats2026.html" target="_blank" rel="noopener noreferrer nofollow">情報セキュリティ10大脅威 2026｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.jpcert.or.jp/qr/2026/QR_FY2026-Q2.pdf" target="_blank" rel="noopener noreferrer nofollow">JPCERT/CC 四半期レポート［2026年7月1日～2026年9月30日］｜JPCERT/CC</a></li>
+</ul>
+
+<h3>ランサムウェアなど社内のパソコン側の攻撃との関係</h3>
+<p>10大脅威の1位は「ランサム攻撃による被害」です。データを暗号化して使えなくし、元に戻す対価を求めます。警察庁の2026年上半期の資料では、侵入経路の約5割がVPN機器でした。VPN機器は、社外から社内のネットワークへつなぐための装置です。レンタルサーバーに置いたホームページとは、入口が別だと分かります。ただし、<span class="mark-red"><strong>改ざんされたサイトが感染の入口に使われる</strong></span>手口もIPAは挙げました。社内とホームページは、別々に守ってください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について｜警察庁</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/10threats/10threats2026.html" target="_blank" rel="noopener noreferrer nofollow">情報セキュリティ10大脅威 2026｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/basic/risk/01/" target="_blank" rel="noopener noreferrer nofollow">マルウェア（ウイルス等）とは？｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<h2 id="s2">ログインを破る種類のサイバー攻撃（総当たり・パスワードの使い回し）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/cyber-attack-types-fig2.webp" alt="ログインを破る種類のサイバー攻撃を、パスワードを片っ端から試す総当たり攻撃と、よそで漏れたパスワードを使うリスト型攻撃の左右に分け、それぞれの手口と守りを並べた比較の図" width="1200" height="800"><figcaption>試して当てる手口と、漏れたものを使う手口があります</figcaption></figure>
+<p>ログインを破る種類のサイバー攻撃は、管理画面の<span class="mark-yellow">IDとパスワードを当てて正面から入り</span>ます。入られると、管理者と同じ操作ができる状態です。</p>
+<p>手口は、片っ端から試す方法と、よそで漏れたパスワードを使う方法に分かれます。IPAも、不正ログインの主な要因としてこの2つを挙げました。残る1つの要因はフィッシングで、あとの章で扱います。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/anshin/attention/2025/mgdayori20250828.html" target="_blank" rel="noopener noreferrer nofollow">インターネットサービスへの不正ログインによる被害が増加中（2025年8月28日）｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h3>総当たり攻撃（ブルートフォース）</h3>
+<p>総当たり攻撃は、ユーザー名とパスワードの組み合わせを当たるまで試します。WordPressの公式ドキュメントによると、自動で、多くの機器から分散して行われる攻撃です。失敗に終わっても、通信が多いとサイトが重くなります。よく使われる言葉を集めた辞書で試す手口も、IPAは紹介しました。守りは、<span class="mark-yellow">長いパスワードと試行回数の制限、2段階認証</span>の3つです。2段階認証の設定は、次の記事にまとめています。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>パスワードの使い回しを突く攻撃（リスト型攻撃）</h3>
+<p>リスト型攻撃は、よそのサービスから漏れたIDとパスワードの一覧を使います。一覧を順に入力して、同じ組み合わせで入れるサイトを探す手口です。警察庁も、使い回しの危険を説明しています。1つ盗まれると、同じパスワードのサービスがすべて乗っ取られるという内容でした。<span class="mark-yellow">長く複雑なパスワードでも、使い回せば破られ</span>ます。WordPress、サーバー、ドメインの管理画面で、別々のものにしてください。覚えきれない分は、パスワード管理アプリに任せましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/phishing.html" target="_blank" rel="noopener noreferrer nofollow">フィッシング対策｜警察庁Webサイト</a></li>
+</ul>
+
+<h2 id="s3">古いプログラムの弱点を突く種類のサイバー攻撃（本体・プラグイン・PHP）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/cyber-attack-types-fig3.webp" alt="古いプログラムの弱点を突く種類のサイバー攻撃の流れを、弱点と修正版の公表、攻撃の道具が作られる、更新していないサイトに届く、改ざんや踏み台にされる、の順に上から下へ並べた流れ図" width="1200" height="800"><figcaption>修正版が出たあと、更新していないサイトが狙われます</figcaption></figure>
+<p>古いプログラムの弱点を突くサイバー攻撃は、<span class="mark-yellow">修正版が出たあとの更新の遅れを狙う</span>種類です。IPAの解説書によると、公表された修正の情報をもとに攻撃の道具が作られます。被害が広がりやすい例に、プラグインを含むCMSが挙がりました。CMSはホームページを管理する仕組みで、WordPressもその1つです。</p>
+<p>攻撃する側は、弱点のあるサイトを事前に探して回ります。警察庁が検知した不審なアクセスは、2026年上半期に大きく増えました。1日・1IPアドレス当たり1万3,687件で、前年より50.7%多い数です。大部分は、海外からのアクセスでした。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/10threats/10threats2026.html" target="_blank" rel="noopener noreferrer nofollow">情報セキュリティ10大脅威 2026｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について｜警察庁</a></li>
+</ul>
+
+<h3>WordPress本体とプラグインの弱点</h3>
+<p>セキュリティ企業のPatchstackが、2025年に見つかった弱点を集計しました。WordPressの本体の弱点は6件だけで、残りはプラグインとテーマでした。影響の大きい弱点の約半数は、公表から24時間以内に悪用されています。古い弱点も使われ続けるのです。<span class="mark-yellow">よく狙われた上位10件のうち、2025年の公表は4件だけ</span>でした。守りは、更新を止めないことに尽きます。見つかったときの動き方は、次の記事にまとめました。<a href="wordpress-plugin-vulnerability.html">WordPressのプラグインに脆弱性が見つかったときの対処法</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener noreferrer nofollow">State of WordPress Security in 2026｜Patchstack</a></li>
+</ul>
+
+<h3>土台のプログラム（PHP）とサーバーの弱点</h3>
+<p>WordPressは、PHPという土台のプログラムの上で動いています。PHPの版にはサポートの期限があり、切れた版は修正されません。PHPの公式サイトは、期限切れの版を使う人に早めの更新を勧めています。修正されない弱点にさらされるおそれがあるからです。WordPressの公式ドキュメントも、サーバー側のソフトの弱点に触れました。<span class="mark-yellow">安定した版を使うか、信頼できるサーバー会社を選ぶ</span>よう勧めています。PHPの版は、サーバーの管理画面で確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+</ul>
+
+<h3>入られたあとに起きること（改ざん・踏み台）</h3>
+<p>弱点から入られると、何が起きるのでしょうか？総務省の説明では、ホームページの書き換えや顧客情報の持ち出しが行われます。重要なファイルを消されることもあるのです。最近は、リンクや読み込むファイルの行き先を書き換える例が増えました。訪れた人をウイルスに感染させるためです。さらに、<span class="mark-red"><strong>いつでも入れる裏口（バックドア）を作られ</strong></span>ます。ほかの組織を攻撃する踏み台にもされるのです。だからこそ、更新に加えて、使っていないプラグインの削除も進めてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/basic/risk/07/" target="_blank" rel="noopener noreferrer nofollow">不正アクセスとは？｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<h2 id="s4">入力欄から仕掛ける種類のサイバー攻撃（SQLインジェクション・XSS）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/cyber-attack-types-fig4.webp" alt="入力欄から仕掛ける種類のサイバー攻撃を、データベースへ不正な命令を送るSQLインジェクション、ページに仕掛けを埋め込むクロスサイトスクリプティング、守りはプログラムの修正とWAF、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>フォームや検索窓に、細工した文字が送られます</figcaption></figure>
+<p>入力欄から仕掛けるサイバー攻撃は、<span class="mark-yellow">検索窓やフォームに細工した文字を送る</span>種類です。プログラムの作りに穴があると、送られた文字が命令として働いてしまいます。</p>
+<p>Webアプリの安全に取り組む団体のOWASPは、重大なリスクを10個にまとめました。2025年版では、この種類が「インジェクション」として5番目に入っています。代表は、SQLインジェクションとクロスサイトスクリプティングの2つです。</p>
+<ul class="ref">
+<li>参考：<a href="https://owasp.org/Top10/2025/0x00_2025-Introduction/" target="_blank" rel="noopener noreferrer nofollow">Introduction - OWASP Top 10:2025｜OWASP</a></li>
+</ul>
+
+<h3>SQLインジェクション（データベースへの不正な命令）</h3>
+<p>SQLインジェクションは、データベースへの命令文に不正な文字を混ぜ込む攻撃です。IPAによると、多くのサイトは入力された内容をもとに命令文を組み立てています。組み立て方に問題があると、データベースを不正に使われるのです。起きることは、個人情報の漏えいやページの改ざんになります。<span class="mark-yellow">パスワードなしでログインされる</span>おそれもあるでしょう。データベースを使うサイトなら、運営者や種類を問いません。OWASPは、頻度は低いが影響が大きい弱点だと説明しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sql.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 - 1.1 SQLインジェクション｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h3>クロスサイトスクリプティング（ページへの仕掛けの埋め込み）</h3>
+<p>クロスサイトスクリプティング（XSS）は、ページに不正なプログラムを埋め込む攻撃です。入力された内容を画面に出す処理に問題があると、仕掛けが入り込みます。IPAは、<span class="mark-yellow">影響はサイトを見ている利用者に及ぶ</span>と説明しました。本物のサイトの上に、偽のページが表示されるおそれがあります。ログインの状態を保つ情報を盗まれ、なりすまされることもあるのです。起きやすい場所は、入力の確認画面や検索結果、コメント欄になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/cross-site-scripting.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの作り方 - 1.5 クロスサイト・スクリプティング｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h3>守りはプログラムの修正と更新、そしてWAF</h3>
+<p>根本の守りは、プログラムの作りを直すことです。WordPressの本体やプラグインなら、修正は更新として届きます。自作のフォームや独自のプログラムは、制作会社に対策の状況を確かめてください。総務省は、エラーの内容をそのまま画面に出さないことも挙げました。あわせて、<span class="mark-yellow">不正な通信を手前で止めるWAFも有効</span>だとしています。運営者のサーバーでは、最初からあるドメインのWAFが6項目ともオフでした。手順は<a href="xserver-waf-settings.html">エックスサーバーのWAF設定のやり方と注意点｜6つの項目と誤検知の直し方</a>にあります。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/security/business/admin/05/" target="_blank" rel="noopener noreferrer nofollow">電子メールとWebサイトにおける対策｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<h2 id="s5">通信で止める・人をだます種類のサイバー攻撃（DDoS・フィッシング）</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/cyber-attack-types-fig5.webp" alt="通信で止める・人をだます種類のサイバー攻撃への備えを、サーバー会社の対策を確かめる、止まったときの知らせ方を決める、メールのリンクから入らない、送信ドメイン認証を入れる、など6つの項目で縦に並べたチェックリストの図" width="1200" height="800"><figcaption>サイトの中に入らない攻撃には、別の備えが要ります</figcaption></figure>
+<p>残る2つの入口は、<span class="mark-yellow">サイトの中に入り込まない種類のサイバー攻撃</span>です。DDoS攻撃は外から大量の通信を浴びせ、サイトを開けなくします。</p>
+<p>フィッシングとなりすましメールは、会社の名前を使って人をだます手口です。どちらも、WordPressを更新するだけでは防げません。サーバー会社やメールの設定など、別の備えを足しましょう。</p>
+
+<h3>DDoS攻撃（大量の通信でサイトを止める）</h3>
+<p>DDoS攻撃は、多くの機器から大量のアクセスを繰り返し、サイトを使えなくします。警察庁によると、2026年2月に政府機関や交通機関などで閲覧の障害が相次ぎました。代金を払えば攻撃を請け負うサービスも確認されています。内閣サイバーセキュリティセンターは、2025年2月に注意喚起を出しました。<span class="mark-red"><strong>すべてのDDoS攻撃を未然に防ぐことはできない</strong></span>という前提です。海外からの通信の遮断やWAFの導入が、対策に挙がっています。サーバー会社の対策と、止まったときの知らせ方を確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について｜警察庁</a></li>
+<li>参考：<a href="https://www.cyber.go.jp/pdf/news/press/20250204_ddos.pdf" target="_blank" rel="noopener noreferrer nofollow">DDoS攻撃への対策について（注意喚起）（令和7年2月4日）｜内閣サイバーセキュリティセンター</a></li>
+</ul>
+
+<h3>フィッシング（偽のページへ誘い込む）</h3>
+<p>フィッシングは、実在する組織を装ったメールやSMSで偽のサイトへ誘い込みます。偽のサイトで、IDやパスワード、カード番号を入力させて盗む手口です。警察庁の資料によると、2026年上半期の報告件数は約73万件でした。会社のホームページには、2つの形で関係します。1つは、自社のサイトをまねた偽のサイトを作られる形です。もう1つは、担当者がだまされて管理画面のパスワードを渡す形になります。<span class="mark-yellow">メールのリンクからログイン画面を開かない</span>でください。ブックマークから開く習慣を付けましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について｜警察庁</a></li>
+</ul>
+
+<h3>なりすましメール（会社の名前をかたる）</h3>
+<p>メールは、仕組みの上で送信元の名前やアドレスを簡単に偽れます。警察庁によると、経営者になりすます詐欺は2026年1月から6月で127件でした。被害額は約38億8,000万円です。受け取る側は、送金の依頼をメール以外でも確かめます。自社の名前を使わせない守りは、<span class="mark-yellow">送信元が本物かを確かめる送信ドメイン認証</span>です。SPFやDMARCと呼ばれる設定で、警察庁も導入の検討を勧めています。ほかの守りは、次の記事にまとめました。<a href="website-security-checklist.html">ホームページのセキュリティチェックリスト｜中小企業が自分で確かめる20項目</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/phishing.html" target="_blank" rel="noopener noreferrer nofollow">フィッシング対策｜警察庁Webサイト</a></li>
+<li>参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08_kami_cyber_jousei.pdf" target="_blank" rel="noopener noreferrer nofollow">令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について｜警察庁</a></li>
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/case/business/16/" target="_blank" rel="noopener noreferrer nofollow">事例16 正しい取引先に送金したはずが・・・｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+</ul>
+
+<div class="art-cta"><strong>自社のホームページの入口を、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体やプラグイン、PHP、ログイン名の見え方、なりすましメールの対策など8項目を無料で判定します。読むのは公開されている情報だけで、管理画面やファイルの中は見ません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">サイバー攻撃の種類に関するよくある質問</h2>
+
+<h3>個人情報を置いていないホームページでも、攻撃の対象になりますか？</h3>
+<p>対象になります。盗む情報がなくても、サイトそのものに使い道があるからです。書き換えて、訪れた人をウイルスに感染させる場所として使われます。ほかの組織を攻撃する踏み台にされることもあるでしょう。大量の通信で止める攻撃や、社名をかたるメールも、情報の有無とは関係がありません。会社案内だけのサイトでも、更新とパスワードの管理は続けてください。</p>
+
+<h3>ウイルス対策ソフトを入れていれば、ホームページも守られますか？</h3>
+<p>守る場所が違うので、それだけでは足りません。ウイルス対策ソフトが守るのは、社内のパソコンです。ホームページはサーバーの上にあり、更新やパスワード、WAFなどの守りが別に要ります。ただし、パソコンの守りも無関係ではありません。キーボードの入力を記録して盗むウイルスがあると、総務省は説明しています。管理画面のパスワードを盗まれないよう、両方を整えてください。</p>
+
+<h3>WordPressを使っていないホームページにも、関係がありますか？</h3>
+<p>関係があります。IPAは、SQLインジェクションをデータベースを使うサイト全般の問題だと説明しました。クロスサイトスクリプティングは、あらゆるサイトで注意が要るとしています。DDoS攻撃やフィッシングも、サイトの仕組みを問わずに起こるものです。違いが出るのは、古いプログラムの弱点の部分でしょう。使っている仕組みごとに、更新の方法と担当を確かめてください。</p>
+
+<h3>ゼロデイ攻撃や標的型攻撃は、どの種類に入りますか？</h3>
+<p>ゼロデイ攻撃は、古いプログラムの弱点を突く攻撃の仲間です。IPAは、修正の情報が公表される前の弱点を突く攻撃だと説明しています。更新だけでは間に合わない時期があるため、WAFなどの守りを重ねておきましょう。標的型攻撃は、特定の組織を狙って業務を装ったメールを送る手口です。入口で分けると、人をだます種類に入ります。新しい名前を聞いたときも、どの入口の話かを考えると整理できるでしょう。</p>
+
+<h3>種類が多くて手が回りません。何から始めればよいですか？</h3>
+<p>入口の広い順に、更新とパスワードから始めましょう。WordPressの公式ドキュメントが挙げる2つのよくある攻撃には、この2つで備えられます。次に、サーバーの管理画面でWAFの設定を確かめてください。そのあとで、メールのなりすまし対策と、サイトが止まったときの知らせ方を決めます。今の状態を外から知りたいときは、スキゼロの無料簡易診断も1つの方法です。URLを入れるだけで、8項目を判定します。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>サイバー攻撃の種類は多く見えますが、会社のホームページへの入口は5つに整理できます。ログイン、古いプログラム、入力欄、大量の通信、人をだます手口の5つです。</p>
+<p>守りの中心は、<span class="mark-yellow">更新を止めないことと、パスワードを使い回さないこと</span>になります。WAFやメールの設定、止まったときの知らせ方も、順に整えていきましょう。まずは、自社のサイトの今の状態を確かめるところから始めてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">入口で分けて整理する</a></li><li><a href="#s2">ログインを破る攻撃</a></li><li><a href="#s3">古い弱点を突く攻撃</a></li><li><a href="#s4">入力欄から仕掛ける攻撃</a></li><li><a href="#s5">通信で止める・だます攻撃</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
