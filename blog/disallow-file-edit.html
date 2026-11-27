@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法｜手順と確かめ方｜スキゼロ</title>
+<meta name="description" content="DISALLOW_FILE_EDITとは何かを、管理画面のファイル編集を止める理由、wp-config.phpに1行を足す手順、確かめ方の順に解説します。DISALLOW_FILE_MODSとの違いと、防げないことも紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/disallow-file-edit.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法｜手順と確かめ方">
+<meta property="og:description" content="DISALLOW_FILE_EDITとは何かを、管理画面のファイル編集を止める理由、wp-config.phpに1行を足す手順、確かめ方の順に解説します。DISALLOW_FILE_MODSとの違いと、防げないことも紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/disallow-file-edit.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-044-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-15">
+<meta property="article:section" content="設定・バックアップ">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法｜手順と確かめ方", "description": "DISALLOW_FILE_EDITとは何かを、管理画面のファイル編集を止める理由、wp-config.phpに1行を足す手順、確かめ方の順に解説します。DISALLOW_FILE_MODSとの違いと、防げないことも紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-044-v3.webp", "datePublished": "2026-12-15", "dateModified": "2026-12-15", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/disallow-file-edit.html", "inLanguage": "ja", "articleSection": "設定・バックアップ", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "DISALLOW_FILE_EDITを設定すると、記事の編集やデザインの調整もできなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "できなくなることはありません。この定数で認められなくなるのは、ファイル編集に関する3つの権限だけだからです。投稿や固定ページの編集は、別の権限で動いています。追加CSSも、ファイルエディターとは別の権限で扱われる作りです。ただし、テーマのファイルを直接直す作業は管理画面からできなくなります。その場合は、ファイルマネージャやFTPで作業してください。"}}, {"@type": "Question", "name": "設定を元に戻したいときは、どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "wp-config.phpから、足した1行を消して保存すれば元に戻ります。値の「true」を「false」に書き換えても、エディターは再び使えるようになるでしょう。本体のプログラムが、定数があり、かつ値が真のときだけ止める作りだからです。エディターが要る作業のときだけ外し、済んだら戻す使い方もできます。戻し忘れを防ぐため、外した日と戻した日を記録に残してください。作業の前には、今回と同じように控えを取りましょう。"}}, {"@type": "Question", "name": "制作会社がテーマファイルエディターで作業しています。止めても大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "止める前に、制作会社へ相談してください。黙って止めると、修正の作業が進まなくなるおそれがあります。公式ドキュメントは、手元で編集して試してから反映するほうが安全だと説明しました。エディターの変更は、訪問者が見ている本番にすぐ反映されるからです。FTPやファイルマネージャで作業する形に切り替えられないか、聞いてみましょう。切り替えのあとで、この設定を入れる流れが安心です。"}}, {"@type": "Question", "name": "サーバー会社の管理画面から、この設定を入れられますか？", "acceptedAnswer": {"@type": "Answer", "text": "サーバー会社によって違うので、公式のマニュアルで確かめてください。エックスサーバーの「WordPressセキュリティ設定」には、4つの機能が載っています。2026年11月に確かめた時点では、ファイル編集を止める項目はありませんでした。国外からのアクセス制限や、ログイン試行回数の制限などが中心です。そのため、エックスサーバーではwp-config.phpに自分で1行を足します。ほかの会社でも、項目が見当たらなければ同じ方法になるでしょう。"}}, {"@type": "Question", "name": "テーマファイルエディターが最初からメニューにありません。なぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、すでに止められていないかを疑いましょう。制作会社が、wp-config.phpに定数を書いていることがあります。DISALLOW_FILE_MODSが入っている場合も、エディターは出ません。複数のサイトを束ねるマルチサイトでは、特権管理者だけに表示される作りです。自分のアカウントが、管理者ではなく編集者などの場合もあるでしょう。wp-config.phpを開き、2つの定数が書かれていないかを見てください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法｜手順と確かめ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 設定・バックアップ</nav>
+    <h1><span class="h1-main">DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法</span><span class="h1-sub" data-sep="｜">手順と確かめ方</span></h1>
+    <p><time datetime="2026-12-15">2026.12.15</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-044-v3.webp" alt="DISALLOW_FILE_EDITとは？WordPressの管理画面からのファイル編集を止める方法。手順と確かめ方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>WordPressの管理画面からプログラムを書き換えられると聞いて、不安になっていませんか？</p>
+<p>管理画面には、テーマやプラグインのファイルを直接編集できる画面があります。便利な反面、管理者のアカウントを奪われると悪用されやすい場所です。</p>
+<p>この記事では、<span class="mark-yellow">1行を足してファイル編集の画面を止める方法</span>を説明します。書く場所、書く前の控え、止めたあとの確かめ方まで順に進めましょう。</p>
+<p>内容は、WordPressの公式ドキュメントと本体のプログラムの解説で確かめました。サーバーの管理画面に入れる状態にしてから読み進めてください。</p>
+
+<h2 id="s1">DISALLOW_FILE_EDITとは？止まる機能と止める理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/disallow-file-edit-fig1.webp" alt="DISALLOW_FILE_EDITで止まる機能と止める理由を、2つのファイルエディターが止まる、乗っ取られたときの悪用を減らす、操作の間違いによる事故を減らす、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>止まるのは、管理画面の2つのファイルエディターです</figcaption></figure>
+<p>DISALLOW_FILE_EDITは、<span class="mark-yellow">管理画面のファイル編集の画面を止める設定</span>です。設定ファイルのwp-config.phpに1行足すだけで働きます。開発の記録によると、WordPress 3.0で加わりました。</p>
+<p>公式ドキュメントは、権限の強いアカウントを乗っ取られた場合に備える守りだと説明しています。止めても、記事の投稿やプラグインの更新は今までどおりです。先に、止まる機能と止める理由を押さえましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/wordpress/wp-config/" target="_blank" rel="noopener noreferrer nofollow">Editing wp-config.php｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://core.trac.wordpress.org/ticket/11306" target="_blank" rel="noopener noreferrer nofollow">#11306 (Option to disable theme/plugin editor)｜WordPress Trac</a></li>
+</ul>
+
+<h3>止まるのはテーマとプラグインのファイルエディター</h3>
+<p>WordPressには、ブラウザーからプログラムを書き換えられる画面が2つあります。「テーマファイルエディター」と「プラグインファイルエディター」です。公式ドキュメントによると、従来型のテーマでは「外観」と「プラグイン」の中に並びます。ブロックテーマを使っている場合は、どちらも「ツール」の中に並ぶ形です。初期状態では、<span class="mark-yellow">管理者の権限でログインした人なら誰でも使えます</span>。変更はすぐ本番に反映され、エディターは控えを作りません。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/editing-files/" target="_blank" rel="noopener noreferrer nofollow">ファイルの編集｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/plugins/editor-screen/" target="_blank" rel="noopener noreferrer nofollow">File Editor Screen｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>管理者のアカウントを奪われたときに悪用される</h3>
+<p>止める一番の理由は、管理者のアカウントを奪われたときの被害を減らすことです。公式の手引きは、このエディターを<span class="mark-red"><strong>ログインできた攻撃者が最初に使うことの多い道具</strong></span>と書いています。プログラムを書き換えれば、サーバーの上で好きな処理を動かせるからです。パスワードが漏れただけで、サイトの中身まで握られてしまうでしょう。入られたあとの動き方は、別の記事にまとめました。<a href="wordpress-unauthorized-login.html">WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>操作の間違いでサイトが止まる事故も減らせる</h3>
+<p>理由の2つ目は、事故の予防です。公式ドキュメントは、熱心な利用者が大事なファイルを触ってサイトを壊す例を挙げました。エディターで誤りを入れてサイトが止まると、<span class="mark-yellow">同じエディターでは直せなくなります</span>。IPAの20ヶ条も、サーバーの不要なサービスを止めるよう求めているのです。使わない入口は閉じておく、という考え方は同じでしょう。テーマを直接書き換える危うさは、別の記事にまとめました。<a href="wordpress-theme-update.html">WordPressのテーマが古いと危ない？更新できないときの対処｜原因の見分け方と入れ替えの判断</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/appearance-theme-file-editor-screen/" target="_blank" rel="noopener noreferrer nofollow">Appearance Theme File Editor Screen｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h2 id="s2">DISALLOW_FILE_EDITをwp-config.phpに書く手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/disallow-file-edit-fig2.webp" alt="DISALLOW_FILE_EDITをwp-config.phpに書く手順を、控えを手元に取る、1行を足す、表示を確かめる、の3つの番号つきステップで左から右へ並べた図" width="1200" height="800"><figcaption>控え、追記、確認の順に進めます</figcaption></figure>
+<p>DISALLOW_FILE_EDITの設定は、<span class="mark-yellow">控えを取る、1行を足す、表示を確かめる</span>の順に進めます。wp-config.phpは、WordPressのファイルのいちばん上の階層にある設定ファイルです。</p>
+<p>データベースにつなぐための情報も、このファイルに入っています。書き間違えるとサイトが開かなくなることがあるので、戻せる準備をしてから触りましょう。作業は、アクセスの少ない時間帯を選ぶと安心です。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/editing-wp-config-php/" target="_blank" rel="noopener noreferrer nofollow">wp-config.php の編集｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>先にwp-config.phpの控えを手元に取る</h3>
+<p>エックスサーバーなら、ファイルマネージャで作業できます。マニュアルによると、FTPのIDとパスワードでログインする形です。サイトのデータは、ドメイン名のフォルダの中の「public_html」にあります。wp-config.phpを選び、<span class="mark-yellow">「ダウンロード」で手元に控えを保存して</span>ください。サーバーの上に別名の写しを残すのは避けましょう。理由は、次の記事にまとめました。<a href="wordpress-readme-html.html">WordPressのreadme.htmlは消すべき？公開しなくていいファイルの考え方｜先に確かめたい危ないファイルと止め方</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_tool_file.php" target="_blank" rel="noopener noreferrer nofollow">ファイルマネージャ利用方法｜エックスサーバー</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_folder.php" target="_blank" rel="noopener noreferrer nofollow">初期フォルダについて｜エックスサーバー</a></li>
+</ul>
+
+<h3>1行を足す場所と書き方</h3>
+<p>ファイルマネージャの「編集」でwp-config.phpを開きます。足す行は「define( 'DISALLOW_FILE_EDIT', true );」です。場所は、「編集が必要なのはここまでです」と書かれた行のすぐ上にします。英語のままのファイルでは、「That's all, stop editing!」が目印でしょう。公式の見本も、独自の値はこの行より上に足すよう案内しました。<span class="mark-yellow">記号はすべて半角で、公式の書き方のまま</span>入力してください。パソコンで直す場合、Wordのようなワープロは使いません。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/wp-config-sample-php/" target="_blank" rel="noopener noreferrer nofollow">wp-config-sample.php｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/apis/wp-config-php/" target="_blank" rel="noopener noreferrer nofollow">wp-config.php｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>保存したらすぐ表示を確かめ、だめなら戻す</h3>
+<p>保存したら、すぐにサイトの表側と管理画面を開きます。どちらも今までどおり表示されれば、書き込みは成功です。エラーが出たり画面が真っ白になったりしたら、落ち着いて元に戻しましょう。<span class="mark-yellow">手元の控えをアップロードして上書きすれば</span>、書く前の状態に戻ります。公式ドキュメントは、値を囲む引用符を消していないか見直すよう勧めました。全角の記号やセミコロンの抜けも、あわせて見てください。自分で戻せないときは、サーバー会社か制作会社に相談するのが早道です。</p>
+
+<h2 id="s3">DISALLOW_FILE_EDITを設定したあとの確かめ方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/disallow-file-edit-fig3.webp" alt="DISALLOW_FILE_EDITを設定したあとの確かめ方を、エディターがメニューにない、更新の画面は開ける、プラグインを追加できる、サイトヘルスに指摘がない、プラグインが動く、のチェック欄つきの項目で縦に並べた図" width="1200" height="800"><figcaption>止まったものと、止まっていないものの両方を見ます</figcaption></figure>
+<p>DISALLOW_FILE_EDITを書いたら、<span class="mark-yellow">止まったものと止まっていないものの両方</span>を確かめます。エディターが消えただけで終わりにすると、思わぬ影響を見落とすからです。</p>
+<p>見る点は、メニュー、更新の動き、プラグインの動きの3つになります。どれも管理画面の中で確かめられるので、設定した日のうちに済ませましょう。結果は、作業の記録として日付と一緒に残しておくと安心です。</p>
+
+<h3>2つのエディターがメニューから消えたかを見る</h3>
+<p>管理者のアカウントでログインし、「外観」「プラグイン」「ツール」のメニューを開きます。2つのファイルエディターの項目がなければ、設定は効いている状態です。本体のプログラムは、この定数があるとファイル編集の権限を誰にも認めません。<span class="mark-yellow">メニューは権限のある人にだけ出る作り</span>なので、項目ごと消えます。コードリファレンスで見るかぎり、サイトヘルスの定数の一覧にこの定数は含まれていません。そのため、メニューで確かめるのが早道でしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/map_meta_cap/" target="_blank" rel="noopener noreferrer nofollow">map_meta_cap()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/add_submenu_page/" target="_blank" rel="noopener noreferrer nofollow">add_submenu_page()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/classes/wp_debug_data/get_wp_constants/" target="_blank" rel="noopener noreferrer nofollow">WP_Debug_Data::get_wp_constants()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>更新とインストールが今までどおりできるかを見る</h3>
+<p>次に、止まってはいけない機能を確かめます。DISALLOW_FILE_EDITだけなら、<span class="mark-yellow">更新とインストールの権限は今までどおり</span>です。「ダッシュボード」の「更新」と、プラグインを新しく追加する画面が開けるかを見てください。開けないときは、似た名前のDISALLOW_FILE_MODSが書かれている疑いがあります。「ツール」の「サイトヘルス」も開きましょう。自動更新が無効だという指摘が出ていなければ、問題ありません。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/site-health-screen/" target="_blank" rel="noopener noreferrer nofollow">Site Health screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>プラグインの動きに変わりがないかを見る</h3>
+<p>最後に、プラグインの動きを見ます。公式ドキュメントには、この定数で一部のプラグインが影響を受けるという注意書きがあるのです。プラグインの中で、ファイル編集の権限を確かめている場合に起こります。<span class="mark-yellow">プラグインが動かないときは、この定数が原因の場合がある</span>とも書かれました。設定のあと数日は、フォームの送信や予約など主な機能を試してください。不具合が出たら、足した1行を消して元に戻します。そのうえで、プラグインの開発元に相談しましょう。</p>
+
+<h2 id="s4">DISALLOW_FILE_EDITとDISALLOW_FILE_MODSの違い</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/disallow-file-edit-fig4.webp" alt="DISALLOW_FILE_EDITとDISALLOW_FILE_MODSの違いを、左にエディターだけを止める設定、右に更新とインストールと自動更新まで止める設定として並べた左右比較の図" width="1200" height="800"><figcaption>ふつうは、エディターだけを止める左の設定で足ります</figcaption></figure>
+<p>よく似た名前の設定に、DISALLOW_FILE_MODSがあります。こちらは、<span class="mark-yellow">更新とインストールまで管理画面から止める</span>設定です。</p>
+<p>止まる範囲が広いぶん守りは固くなりますが、日々の更新のやり方が大きく変わります。会社のホームページでは、ふつうDISALLOW_FILE_EDITだけで足りるでしょう。違いを知ったうえで、自社に合うほうを選んでください。</p>
+
+<h3>DISALLOW_FILE_MODSは更新とインストールも止める</h3>
+<p>公式ドキュメントによると、管理画面でのプラグインやテーマの追加と更新が無効になります。エディターも一緒に止まるので、2つを両方書く必要はないという説明です。本体のプログラムでは、<span class="mark-yellow">本体・プラグイン・テーマの更新や削除の権限</span>がまとめて認められなくなります。言語のファイルの追加と更新も、同じ扱いでした。記事に使う画像などのアップロードは、対象から外れています。2つの定数で止まる範囲を、表にまとめました。</p>
+<table>
+<tr><th>定数</th><th>ファイルエディター</th><th>管理画面からの更新と追加</th><th>自動更新</th></tr>
+<tr><td>DISALLOW_FILE_EDIT</td><td>止まる</td><td>変わらない</td><td>変わらない</td></tr>
+<tr><td>DISALLOW_FILE_MODS</td><td>止まる</td><td>止まる</td><td>止まる</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_is_file_mod_allowed/" target="_blank" rel="noopener noreferrer nofollow">wp_is_file_mod_allowed()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>自動更新まで止まる点に注意する</h3>
+<p>見落としやすいのが、自動更新への影響です。本体のプログラムには、ファイルの変更を望まないなら背景での更新を無効にする、という処理があります。この定数を書くと、<span class="mark-red"><strong>弱点を直す小さな更新も自動では入らなくなる</strong></span>のです。サイトヘルスの検査も、自動更新がすべて無効だと指摘する作りになっています。自動更新の考え方は、次の記事にまとめました。<a href="wordpress-auto-update.html">WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/classes/wp_automatic_updater/is_disabled/" target="_blank" rel="noopener noreferrer nofollow">WP_Automatic_Updater::is_disabled()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/classes/wp_site_health_auto_updates/test_wp_automatic_updates_disabled/" target="_blank" rel="noopener noreferrer nofollow">WP_Site_Health_Auto_Updates::test_wp_automatic_updates_disabled()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>ふつうはDISALLOW_FILE_EDITだけで足りる</h3>
+<p>多くの会社は、管理画面の「更新」から本体やプラグインを上げています。その場合は、DISALLOW_FILE_EDITだけにしましょう。更新の道を残したまま、書き換えの画面だけを閉じられるからです。DISALLOW_FILE_MODSが向くのは、<span class="mark-yellow">管理画面を使わずに更新する体制がある</span>サイトでしょう。開発の担当者が、確かめたファイルをサーバーへ送って更新する運用などです。体制がないまま入れると、古い版のまま止まってしまいます。保守を任せている場合は、制作会社と相談して決めてください。</p>
+
+<h2 id="s5">DISALLOW_FILE_EDITで防げないことと重ねる守り</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/disallow-file-edit-fig5.webp" alt="DISALLOW_FILE_EDITで防げないことを補う守りとして、中心に守りの1枚を置き、まわりに強いパスワード、2段階認証、管理者の整理、更新を続ける、バックアップの5つを放射状に並べた図" width="1200" height="800"><figcaption>守りの1枚として、ほかの対策と重ねて使います</figcaption></figure>
+<p>DISALLOW_FILE_EDITは、<span class="mark-yellow">入られたあとの被害を小さくする守りの1枚</span>です。管理画面に入られること自体を防ぐ設定ではありません。</p>
+<p>公式の手引きも、止められるのは一部の攻撃だと断っています。何が残るのかを知っておけば、次に打つ手が決まるでしょう。防げないことを2つ見たうえで、重ねたい守りを紹介します。</p>
+
+<h3>不正なファイルのアップロードまでは止められない</h3>
+<p>公式の手引きは、この設定について<span class="mark-red"><strong>不正なファイルのアップロードまでは防げない</strong></span>と明記しています。管理者のアカウントを奪った相手は、プラグインを追加する画面を使えるからです。本体のプログラムを見ても、追加の権限はこの定数では変わりません。エディターが消えても、別の道からプログラムを入れられるでしょう。だからこそ、管理者のアカウントを奪われない対策が先に立ちます。心当たりのないプラグインが増えていないかも、ときどき見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>サーバー側の入口とプラグインの弱点は別に守る</h3>
+<p>この定数が閉じるのは、管理画面の中の編集画面だけです。FTPやファイルマネージャからは、今までどおりファイルを書き換えられます。<span class="mark-yellow">サーバーのパスワードが漏れた場合には効きません</span>。プラグインやテーマの弱点を突いてファイルを置く攻撃も、エディターを通らないので対象外でしょう。IPAの20ヶ条は、管理者権限のアカウントのパスワードが特に狙われやすいと注意しています。サーバーとWordPressの両方で、推測されにくいものに替えてください。</p>
+
+<h3>アカウントの守りと更新を重ねる</h3>
+<p>重ねたい守りは、強いパスワード、2段階認証、管理者の整理、更新、バックアップの5つです。どれも、入られにくくするか、入られても戻せるようにする対策になります。運営者の自社サイトの点検でも、数年前の外注先のアカウントが2つ残っていました。<span class="mark-yellow">使っていないアカウントは、この機会に消して</span>おきましょう。スキゼロの無料簡易診断は、外から見える8項目を判定するものです。wp-config.phpの中身は外から見えないため、この設定の有無は診断の対象に入りません。</p>
+
+<div class="art-cta"><strong>外から見える守りの抜けを、先に確かめませんか</strong><p>URLを入れるだけで、WordPress本体やプラグイン、ユーザー名の見え方など8項目を無料で判定します。wp-config.phpへの追記など設定の作業は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">DISALLOW_FILE_EDITに関するよくある質問</h2>
+
+<h3>DISALLOW_FILE_EDITを設定すると、記事の編集やデザインの調整もできなくなりますか？</h3>
+<p>できなくなることはありません。この定数で認められなくなるのは、ファイル編集に関する3つの権限だけだからです。投稿や固定ページの編集は、別の権限で動いています。追加CSSも、ファイルエディターとは別の権限で扱われる作りです。ただし、テーマのファイルを直接直す作業は管理画面からできなくなります。その場合は、ファイルマネージャやFTPで作業してください。</p>
+
+<h3>設定を元に戻したいときは、どうすればよいですか？</h3>
+<p>wp-config.phpから、足した1行を消して保存すれば元に戻ります。値の「true」を「false」に書き換えても、エディターは再び使えるようになるでしょう。本体のプログラムが、定数があり、かつ値が真のときだけ止める作りだからです。エディターが要る作業のときだけ外し、済んだら戻す使い方もできます。戻し忘れを防ぐため、外した日と戻した日を記録に残してください。作業の前には、今回と同じように控えを取りましょう。</p>
+
+<h3>制作会社がテーマファイルエディターで作業しています。止めても大丈夫ですか？</h3>
+<p>止める前に、制作会社へ相談してください。黙って止めると、修正の作業が進まなくなるおそれがあります。公式ドキュメントは、手元で編集して試してから反映するほうが安全だと説明しました。エディターの変更は、訪問者が見ている本番にすぐ反映されるからです。FTPやファイルマネージャで作業する形に切り替えられないか、聞いてみましょう。切り替えのあとで、この設定を入れる流れが安心です。</p>
+
+<h3>サーバー会社の管理画面から、この設定を入れられますか？</h3>
+<p>サーバー会社によって違うので、公式のマニュアルで確かめてください。エックスサーバーの「WordPressセキュリティ設定」には、4つの機能が載っています。2026年11月に確かめた時点では、ファイル編集を止める項目はありませんでした。国外からのアクセス制限や、ログイン試行回数の制限などが中心です。そのため、エックスサーバーではwp-config.phpに自分で1行を足します。ほかの会社でも、項目が見当たらなければ同じ方法になるでしょう。</p>
+
+<h3>テーマファイルエディターが最初からメニューにありません。なぜですか？</h3>
+<p>まず、すでに止められていないかを疑いましょう。制作会社が、wp-config.phpに定数を書いていることがあります。DISALLOW_FILE_MODSが入っている場合も、エディターは出ません。複数のサイトを束ねるマルチサイトでは、特権管理者だけに表示される作りです。自分のアカウントが、管理者ではなく編集者などの場合もあるでしょう。wp-config.phpを開き、2つの定数が書かれていないかを見てください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>DISALLOW_FILE_EDITは、管理画面の2つのファイルエディターを止める設定です。管理者のアカウントを奪われたときに、プログラムを書き換えられる道を1つ減らせます。</p>
+<p>手順は、<span class="mark-yellow">控えを取り、1行を足し、表示を確かめる</span>の3段階でした。更新まで止まるDISALLOW_FILE_MODSとは使い分け、アカウントの守りと重ねてください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">止まる機能と止める理由</a></li><li><a href="#s2">wp-config.phpに書く手順</a></li><li><a href="#s3">設定したあとの確かめ方</a></li><li><a href="#s4">DISALLOW_FILE_MODSとの違い</a></li><li><a href="#s5">防げないことと重ねる守り</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
