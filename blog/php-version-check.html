@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PHPのバージョンの確認方法｜サイトの外から確かめる手順と、見えないときの調べ方｜スキゼロ</title>
+<meta name="description" content="PHPのバージョンの確認方法を、サイトの外から見る手順と管理画面の中から見る手順に分けて解説します。外から見えないときの理由と調べ方、確かめた版をサポートの期限と照らす見方、確かめるときの注意も紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/php-version-check.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHPのバージョンの確認方法｜サイトの外から確かめる手順と、見えないときの調べ方">
+<meta property="og:description" content="PHPのバージョンの確認方法を、サイトの外から見る手順と管理画面の中から見る手順に分けて解説します。外から見えないときの理由と調べ方、確かめた版をサポートの期限と照らす見方、確かめるときの注意も紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/php-version-check.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-046-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-17">
+<meta property="article:section" content="診断・チェック">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHPのバージョンの確認方法｜サイトの外から確かめる手順と、見えないときの調べ方", "description": "PHPのバージョンの確認方法を、サイトの外から見る手順と管理画面の中から見る手順に分けて解説します。外から見えないときの理由と調べ方、確かめた版をサポートの期限と照らす見方、確かめるときの注意も紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-046-v3.webp", "datePublished": "2026-12-17", "dateModified": "2026-12-17", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/php-version-check.html", "inLanguage": "ja", "articleSection": "診断・チェック", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "X-Powered-Byの行が見当たりません。PHPを使っていないのでしょうか？", "acceptedAnswer": {"@type": "Answer", "text": "そうとは限りません。版を出さない設定のサイトでは、PHPで動いていてもこの行が出ないからです。PHPの設定「expose_php」は、既定では有効になっています。これをオフにしているサイトや、サーバー会社が初めからオフにしている例があるのです。WordPressはPHPで作られているので、WordPressのサイトならPHPで動いています。管理画面のサイトヘルスか、サーバーの管理画面で版を確かめてください。"}}, {"@type": "Question", "name": "外からバージョンが見えていたら、すぐに隠すべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "隠すより先に、その版がサポートの期限内かを確かめてください。期限が切れた版なら、新しい版へ上げる計画を立てるのが先です。表示を消しても、古い版の弱点そのものは残ります。OWASPも、攻撃する側には技術を見分ける別の手段があるとしました。版を新しくしたうえで表示も消すと、手がかりを減らせるでしょう。表示の消し方はサーバーによって違うので、契約先の案内に従ってください。"}}, {"@type": "Question", "name": "PHPのバージョンは、どのくらいの頻度で確かめればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "少なくとも年に1回は確かめましょう。2026年11月時点で修正が続いている系列の期限は、どれも12月31日です。秋のうちに確かめておけば、年末までに切り替えの準備を進められます。サーバー会社からPHPのお知らせが届いたときも、確かめる合図になるでしょう。担当者が替わるときは、確かめた版と日付を引き継いでください。ドメインが複数ある会社では、一覧にしておくと見落としを減らせます。"}}, {"@type": "Question", "name": "確かめたバージョンが古かったら、次に何をすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "慌てて切り替える前に、準備を済ませてください。バックアップを取り、テーマとプラグインが新しい版に対応しているかを確かめます。WordPressを使っているなら、推奨はPHP 8.3以上です。切り替えはサーバーの管理画面で行いますが、手順はサーバー会社ごとに違います。戻せるかどうかも、作業の前に公式マニュアルで見ておきましょう。自信がないときは、制作会社や専門家に相談してください。"}}, {"@type": "Question", "name": "WordPress以外で作ったサイトでも、同じ方法で確かめられますか？", "acceptedAnswer": {"@type": "Answer", "text": "外からの確認とサーバーの管理画面は、WordPress以外のサイトでも使えます。X-Powered-Byの表示は、WordPressではなくPHPの設定によるものだからです。サイトヘルスはWordPressの画面なので、ほかの仕組みのサイトにはありません。その場合は、サーバーの管理画面で今の版を見てください。制作会社が独自に作ったシステムなら、対応している版を作った会社に尋ねましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "PHPのバージョンの確認方法｜サイトの外から確かめる手順と、見えないときの調べ方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 診断・チェック</nav>
+    <h1><span class="h1-main">PHPのバージョンの確認方法</span><span class="h1-sub" data-sep="｜">サイトの外から確かめる手順と、見えないときの調べ方</span></h1>
+    <p><time datetime="2026-12-17">2026.12.17</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-046-v3.webp" alt="PHPのバージョンの確認方法。サイトの外から確かめる手順と、見えないときの調べ方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「うちのサイトのPHPは、どのバージョンで動いているのだろう？」と気になっていませんか？</p>
+<p>サーバー会社のお知らせで古いPHPの話を見ても、自社の版が分からないと動けません。確かめる方法は、サイトの外から見る方法と、管理画面の中から見る方法の2通りです。</p>
+<p>この記事では、<span class="mark-yellow">外からの確かめ方と、見えないときの調べ方</span>を順にまとめました。確かめたあとに、サポートの期限と照らす見方も紹介します。</p>
+<p>内容は、PHPの公式サイトとWordPress、サーバー会社のマニュアルで確かめました。パソコンのブラウザを開いて、読み進めてください。</p>
+
+<h2 id="s1">PHPのバージョンの確認方法は「外から」と「中から」の2通り</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-version-check-fig1.webp" alt="PHPのバージョンの確認方法を、外から見る方法（応答ヘッダーを読む、ログイン不要、見えないこともある）と中から見る方法（管理画面で見る、ログインが必要、正確に分かる）の左右で比べた図" width="1200" height="800"><figcaption>外からは手軽、中からは正確という違いがあります</figcaption></figure>
+<p>PHPのバージョンの確認方法は、<span class="mark-yellow">外から見る方法と中から見る方法の2通り</span>です。外からは手軽に試せますが、版が見えないこともあります。</p>
+<p>WordPressの公式の説明では、PHPはWordPressを構成する言語の1つです。サーバーの中で動くので、ふだんの画面に版は出てきません。2つの方法の違いを先に知ると、自分に合うほうを選べるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer nofollow">Update PHP｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>外から見るのは、サーバーが応答に添える情報</h3>
+<p>外からの確認は、サーバーが返す応答を見る方法です。ブラウザでページを開くと、サーバーは本文と一緒に「応答ヘッダー」という情報を返します。この中の「X-Powered-By」という行に、PHPの版が書かれていることがあるのです。MDNはこのヘッダーを、<span class="mark-yellow">応答を作ったアプリケーションを示す標準外の項目</span>と説明しています。管理画面に入らずに見られるので、制作会社に任せたサイトでも試せるでしょう。ただし、出さない設定のサイトでは何も分かりません。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Powered-By" target="_blank" rel="noopener noreferrer nofollow">X-Powered-By header｜MDN</a></li>
+</ul>
+
+<h3>中から見るのは、管理画面に出る今の設定</h3>
+<p>中からの確認は、管理画面に表示される今の設定を見る方法です。WordPressなら、「サイトヘルス」という画面に版が出ます。国内の主なレンタルサーバーの管理画面でも、今の版を確かめられるでしょう。どちらも<span class="mark-yellow">ログインできる人だけが見られる正確な情報</span>です。外から見えないサイトでも、中からなら版が分かります。管理画面に入れる方は、中からの確認を先に済ませてください。入れない方は、外から分かる範囲を見てから制作会社に尋ねましょう。</p>
+
+<h2 id="s2">PHPのバージョンを外から確認する方法：開発者ツールと外部の診断</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-version-check-fig2.webp" alt="PHPのバージョンを外から確認する方法を、開発者ツールを開く、ネットワークを選ぶ、ページを読み込み直す、X-Powered-Byの行を読む、の4つの番号つきステップで左から右へ並べた図" width="1200" height="800"><figcaption>開発者ツールなら、道具を足さずに確かめられます</figcaption></figure>
+<p>PHPのバージョンを外から確認する方法は、<span class="mark-yellow">ブラウザの開発者ツールと外部の診断の2つ</span>です。どちらも、管理画面のログイン情報を使いません。</p>
+<p>開発者ツールは、Chromeに初めから入っている道具です。何も足さずに、その場で数分あれば確かめられます。応答ヘッダーを読むのが手間な方は、外部の診断を使うと早いでしょう。</p>
+
+<h3>開発者ツールで応答ヘッダーを開く</h3>
+<p>パソコンのChromeで、確かめたいページを開きます。WindowsではF12キーを押すと、開発者ツールが開く仕組みです。Macでは、CommandとOptionを押しながらIを押してください。次に「ネットワーク（Network）」のタブを選びます。<span class="mark-yellow">開発者ツールは、開いている間の通信だけを記録</span>する道具です。そのため、タブを選んだあとにページを読み込み直しましょう。一覧からページ本体の行を選ぶと、「ヘッダー（Headers）」のタブが開きます。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.chrome.com/docs/devtools/network" target="_blank" rel="noopener noreferrer nofollow">Inspect network activity｜Chrome for Developers</a></li>
+</ul>
+
+<h3>X-Powered-Byの行を読む</h3>
+<p>開いたタブの「レスポンスヘッダー（Response Headers）」が、応答ヘッダーの欄です。その中の「X-Powered-By」の行を探してください。「X-Powered-By: PHP/8.3.37」のように書かれていれば、それが今の版です。PHPの公式マニュアルによると、<span class="mark-yellow">この表示を出す設定は既定で有効</span>になっています。数字は、前の2つ（8.3）が系列を表す仕組みです。同じ欄で見られる守りの設定は、<a href="security-headers.html">セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意</a>で扱いました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/manual/ja/ini.core.php" target="_blank" rel="noopener noreferrer nofollow">コア php.ini ディレクティブに関する説明｜PHP マニュアル</a></li>
+</ul>
+
+<h3>外部の診断で確かめる</h3>
+<p>応答ヘッダーを自分で読むのが難しければ、外部の診断に任せられます。スキゼロの無料簡易診断は、URLを入れるだけで8項目を判定する仕組みです。判定は、AからEで示されます。PHPに当たるのは、「修正が止まった土台のプログラム」という項目です。この診断は、<span class="mark-yellow">外から見える公開情報だけを読んで判定</span>します。管理画面やファイルの中までは見ません。そのため、外に版を出していないサイトでは、中からの確認と組み合わせてください。</p>
+
+<h2 id="s3">PHPのバージョンが外からの確認方法で見えないときの理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-version-check-fig3.webp" alt="PHPのバージョンが外からの確認方法で見えないときの理由を、expose_phpをオフにしている、サーバー会社が初めから出さない設定にしている、見えないことと新しい版であることは別、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>見えないのは設定によるもので、故障ではありません</figcaption></figure>
+<p>PHPのバージョンが外からの確認方法で見えないのは、多くの場合<span class="mark-yellow">版を出さない設定になっているから</span>です。X-Powered-Byの行がなくても、故障ではありません。</p>
+<p>運営者の自社サイト2つを外から試したときも、どちらも版を表示しない設定でした。出さない設定には、自分で切る場合とサーバー側で切ってある場合があります。理由が分かれば、次は中から確かめればよいと判断できるでしょう。</p>
+
+<h3>expose_phpをオフにしている</h3>
+<p>1つ目は、PHPの設定「expose_php」をオフにしている場合です。PHPの公式マニュアルは、この設定の働きを次のように説明しています。PHPがサーバーに入っていることを外に知らせ、版もHTTPヘッダーに含めるという内容です。既定値は、有効を表す「1」になっています。<span class="mark-yellow">オフにすると、攻撃者が使える情報を減らせる</span>という説明です。変更できる場所は「php.iniのみ」とされています。共用サーバーでは、利用者が自由に変えられないこともあるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/manual/ja/security.hiding.php" target="_blank" rel="noopener noreferrer nofollow">PHPの隠蔽｜PHP マニュアル</a></li>
+</ul>
+
+<h3>サーバー会社が初めから出さない設定にしている</h3>
+<p>2つ目は、サーバー会社の側で出さない設定になっている場合です。たとえばエックスサーバーには、「Xアクセラレータ Ver.2」という高速化の機能があります。マニュアルによると、利用中は一部の設定にサーバーの初期値が適用される決まりです。その一覧に<span class="mark-yellow">expose_phpがあり、初期値は「Off」</span>と書かれています。この機能を使っている間は、版が出ない状態になるわけです。ほかのサーバー会社の初期値は、公式マニュアルでは確かめられませんでした。契約先に尋ねるか、開発者ツールで見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_phpini_setting_ignore_item.php" target="_blank" rel="noopener noreferrer nofollow">XアクセラレータVer.2利用時に無効となるphp.ini設定について｜エックスサーバー</a></li>
+</ul>
+
+<h3>見えないことと、新しい版であることは別</h3>
+<p>版が外から見えないこと自体は、悪いことではありません。OWASPは、X-Powered-Byのヘッダーをすべて取り除くよう勧めています。攻撃する側が、弱点を見つけやすくなるからです。ただし、<span class="mark-red"><strong>見えないことと新しい版であることは別</strong></span>だと考えてください。PHPの公式マニュアルも、隠す手段は守りとしては弱いと書いています。隠していても、中の版が古ければ弱点は残ったままでしょう。見えなかったときは、次の章の方法で中から確かめてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer nofollow">HTTP Headers｜OWASP Cheat Sheet Series</a></li>
+</ul>
+
+<h2 id="s4">PHPのバージョンを中から確認する方法：WordPressとサーバーの管理画面</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-version-check-fig4.webp" alt="PHPのバージョンを中から確認する方法を、管理画面に入れるか、WordPressのサイトかの分かれ道で、サイトヘルスで見る、サーバーの管理画面で見る、制作会社に尋ねる、の3つの行き先に分けたフローチャートの図" width="1200" height="800"><figcaption>入れる管理画面によって、見る場所を選びます</figcaption></figure>
+<p>PHPのバージョンを中から確認する方法は、<span class="mark-yellow">WordPressとサーバーの管理画面の2つ</span>です。外から見えなかったサイトでも、この方法なら版が分かります。</p>
+<p>WordPressで作ったサイトなら、サイトヘルスの画面が手軽でしょう。WordPress以外のサイトや、ドメインごとに見たいときはサーバーの管理画面を使います。どちらにも入れないときの頼み方も、あわせて見ていきましょう。</p>
+
+<h3>WordPressのサイトヘルスで見る</h3>
+<p>WordPressの管理画面にログインし、「ツール」から「サイトヘルス」を開きます。「情報」のタブを選び、「サーバー」の欄を開いてください。<span class="mark-yellow">下へ進むと、PHPバージョンの行が見つかり</span>ます。WordPressの公式の案内にある手順なので、迷わず進められるでしょう。この画面は情報を表示するだけで、設定を変える場所ではありません。同じタブには、WordPress本体の版も載っているのです。本体の版は、<a href="wordpress-version-check.html">WordPressのバージョンを確認する方法（管理画面と外からの両方）</a>で扱いました。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/site-health-screen/" target="_blank" rel="noopener noreferrer nofollow">サイトヘルス画面｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/support/update-php/" target="_blank" rel="noopener noreferrer nofollow">Update PHP｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>サーバーの管理画面で見る</h3>
+<p>サーバーの管理画面にも、今のPHPの版が出る画面があります。国内の4社の画面の名前を、公式マニュアルで確かめて表にしました。2026年11月26日時点の内容です。エックスサーバーやロリポップでは、<span class="mark-yellow">版がドメインごとに設定されて</span>います。ドメインが複数あるなら、1つずつ確かめてください。この画面は版を切り替える場所でもあります。見るだけのときは、何も保存せずに閉じましょう。切り替えの手順は、<a href="xserver-php-version.html">エックスサーバーでPHPのバージョンを上げる手順と事前チェック</a>にまとめました。</p>
+<table>
+<tr><th>サーバー</th><th>開く画面</th><th>版が出る場所</th></tr>
+<tr><td>エックスサーバー</td><td>サーバーパネルの「PHP Ver.切替」</td><td>ドメインを選んだ先の「現在のバージョン」</td></tr>
+<tr><td>ConoHa WING</td><td>「サイト管理」→「サイト設定」→「応用設定」→「PHP設定」</td><td>「PHPバージョン」の欄</td></tr>
+<tr><td>ロリポップ</td><td>ユーザー専用ページの「サーバーの管理・設定」→「PHP設定」</td><td>ドメイン別のPHPバージョン</td></tr>
+<tr><td>さくらのレンタルサーバ</td><td>サーバーコントロールパネルの「スクリプト設定」→「言語バージョン設定」</td><td>今選ばれているPHPのバージョン</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_program_php_ver.php" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンについて｜エックスサーバー</a></li>
+<li>参考：<a href="https://support.conoha.jp/w/configphp/" target="_blank" rel="noopener noreferrer nofollow">PHPの設定をする｜ConoHa WINGサポート</a></li>
+<li>参考：<a href="https://lolipop.jp/manual/user/php-setting/" target="_blank" rel="noopener noreferrer nofollow">PHP設定｜ロリポップ！レンタルサーバー</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2241/" target="_blank" rel="noopener noreferrer nofollow">PHPのバージョンを変更したい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>管理画面に入れないときは制作会社に尋ねる</h3>
+<p>ログイン情報が手元にないときは、制作会社や保守の担当者に尋ねてください。聞くことは、<span class="mark-yellow">今のPHPのバージョンと確かめた日付の2つ</span>で足ります。ドメインが複数あるなら、ドメインごとに答えてもらいましょう。返事は、画面の写しと一緒にもらうと記録に残せます。尋ねた結果、誰も管理画面に入れないと分かることもあるでしょう。その場合は、サーバーの契約者が誰かを確かめるところから始めてください。版を知ることは、サイトを誰が管理しているかを知る入口にもなります。</p>
+
+<h2 id="s5">PHPのバージョンの確認方法のあとに見る期限と、確かめるときの注意</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/php-version-check-fig5.webp" alt="PHPのバージョンの確認方法のあとに見るサポートの期限を、8.1以前はサポート終了、8.2と8.3は重大な弱点の修正のみ、8.4から8.6は通常のサポート、の3段の信号の形で示した図" width="1200" height="800"><figcaption>出てきた版を、2026年11月26日時点の期限と照らします</figcaption></figure>
+<p>PHPのバージョンの確認方法が分かったら、<span class="mark-yellow">出てきた版をサポートの期限と照らし</span>ます。版の数字だけでは、急ぐべきかどうかを判断できないからです。</p>
+<p>運営者は2026年10月に、自社のサイト15個を点検しました。そのうち7つが、サポートの終わったPHPのままだったのです。確かめる作業そのものにも、気をつけたい点があります。期限の見方と合わせて、順に見ていきましょう。</p>
+
+<h3>出てきた版をサポート期限の表と照らす</h3>
+<p>出てきた版は、系列ごとに決まった期限と見比べてください。公式サイトによると、公開から2年間は不具合と弱点の両方が直されます。続く2年間は、重大な弱点だけを必要に応じて直す期間です。<span class="mark-yellow">合わせて4年を過ぎた系列には修正が出ず</span>、早めの移行が勧められています。2026年11月26日時点の期限を、公式サイトの表から抜き出しました。8.2は、2026年12月31日が期限です。期限の意味と更新の進め方は、<a href="php-support-end.html">PHPのサポート終了とは？放置の危険と確認・更新の手順｜8.2は2026年末で終了</a>にまとめています。</p>
+<table>
+<tr><th>系列</th><th>セキュリティ修正の期限</th><th>2026年11月26日時点の状態</th></tr>
+<tr><td>8.1以前</td><td>終了（8.1は2025年12月31日まで）</td><td>サポート終了</td></tr>
+<tr><td>8.2</td><td>2026年12月31日</td><td>重大な弱点の修正のみ</td></tr>
+<tr><td>8.3</td><td>2027年12月31日</td><td>重大な弱点の修正のみ</td></tr>
+<tr><td>8.4</td><td>2028年12月31日</td><td>通常のサポート（2026年12月31日まで）</td></tr>
+<tr><td>8.5</td><td>2029年12月31日</td><td>通常のサポート（2027年12月31日まで）</td></tr>
+<tr><td>8.6</td><td>2030年12月31日</td><td>通常のサポート（2028年12月31日まで）</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener noreferrer nofollow">Supported Versions｜PHP</a></li>
+<li>参考：<a href="https://www.php.net/eol.php" target="_blank" rel="noopener noreferrer nofollow">Unsupported Branches｜PHP</a></li>
+</ul>
+
+<h3>phpinfoのファイルを置いたままにしない</h3>
+<p>版を調べる方法として、phpinfoを書いたファイルを置く手順が紹介されることがあります。PHPの公式マニュアルによると、phpinfoはPHPの状態を大量に出力する関数です。版のほか、サーバーの情報やOSの版、パス、設定の値まで含まれます。ファイルの場所を知っていれば、誰でもこの一覧を開けてしまうのです。使った場合は、<span class="mark-red"><strong>確かめ終えたらファイルをすぐに消して</strong></span>ください。IPAも、不要なファイルは削除するよう呼びかけています。版を知るだけなら、サイトヘルスやサーバーの管理画面で足りるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.php.net/manual/ja/function.phpinfo.php" target="_blank" rel="noopener noreferrer nofollow">phpinfo｜PHP マニュアル</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条 〜セキュリティ対策のチェックポイント〜｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h3>調べる相手は自分の会社のサイトにする</h3>
+<p>外からの確認は、どのサイトに対しても技術的にはできてしまいます。けれども、調べる相手は<span class="mark-yellow">自分の会社が管理しているサイトに限り</span>ましょう。他社のサイトを何度も調べると、相手のサーバーに負担をかけます。取引先のサイトが気になるときは、担当者に伝えて本人に確かめてもらってください。自社のサイトでも、短い時間に何十回も読み込み直す必要はありません。応答ヘッダーは、1回の読み込みで確かめられます。スキゼロの結果票の受付も、同じドメインでは1日5回までです。</p>
+
+<div class="art-cta"><strong>PHPのバージョンが外から見えているか、確かめませんか</strong><p>URLを入れるだけで、PHPを含む8項目を無料で判定します。読むのは外から見える公開情報だけで、管理画面やファイルの中は見ません。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">PHPのバージョンの確認方法に関するよくある質問</h2>
+
+<h3>X-Powered-Byの行が見当たりません。PHPを使っていないのでしょうか？</h3>
+<p>そうとは限りません。版を出さない設定のサイトでは、PHPで動いていてもこの行が出ないからです。PHPの設定「expose_php」は、既定では有効になっています。これをオフにしているサイトや、サーバー会社が初めからオフにしている例があるのです。WordPressはPHPで作られているので、WordPressのサイトならPHPで動いています。管理画面のサイトヘルスか、サーバーの管理画面で版を確かめてください。</p>
+
+<h3>外からバージョンが見えていたら、すぐに隠すべきですか？</h3>
+<p>隠すより先に、その版がサポートの期限内かを確かめてください。期限が切れた版なら、新しい版へ上げる計画を立てるのが先です。表示を消しても、古い版の弱点そのものは残ります。OWASPも、攻撃する側には技術を見分ける別の手段があるとしました。版を新しくしたうえで表示も消すと、手がかりを減らせるでしょう。表示の消し方はサーバーによって違うので、契約先の案内に従ってください。</p>
+
+<h3>PHPのバージョンは、どのくらいの頻度で確かめればよいですか？</h3>
+<p>少なくとも年に1回は確かめましょう。2026年11月時点で修正が続いている系列の期限は、どれも12月31日です。秋のうちに確かめておけば、年末までに切り替えの準備を進められます。サーバー会社からPHPのお知らせが届いたときも、確かめる合図になるでしょう。担当者が替わるときは、確かめた版と日付を引き継いでください。ドメインが複数ある会社では、一覧にしておくと見落としを減らせます。</p>
+
+<h3>確かめたバージョンが古かったら、次に何をすればよいですか？</h3>
+<p>慌てて切り替える前に、準備を済ませてください。バックアップを取り、テーマとプラグインが新しい版に対応しているかを確かめます。WordPressを使っているなら、推奨はPHP 8.3以上です。切り替えはサーバーの管理画面で行いますが、手順はサーバー会社ごとに違います。戻せるかどうかも、作業の前に公式マニュアルで見ておきましょう。自信がないときは、制作会社や専門家に相談してください。</p>
+
+<h3>WordPress以外で作ったサイトでも、同じ方法で確かめられますか？</h3>
+<p>外からの確認とサーバーの管理画面は、WordPress以外のサイトでも使えます。X-Powered-Byの表示は、WordPressではなくPHPの設定によるものだからです。サイトヘルスはWordPressの画面なので、ほかの仕組みのサイトにはありません。その場合は、サーバーの管理画面で今の版を見てください。制作会社が独自に作ったシステムなら、対応している版を作った会社に尋ねましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>PHPのバージョンは、外からと中からの2通りで確かめられます。外からは応答ヘッダーのX-Powered-Byを見ますが、出さない設定のサイトでは見えません。見えないこと自体は、悪いことではないのです。</p>
+<p>その場合は、<span class="mark-yellow">サイトヘルスかサーバーの管理画面で確かめ</span>ましょう。出てきた版は、サポートの期限と照らしてください。期限が近い版や切れた版なら、準備をしてから切り替えを進めます。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">外からと中からの2通り</a></li><li><a href="#s2">外から確認する方法</a></li><li><a href="#s3">見えないときの理由</a></li><li><a href="#s4">中から確認する方法</a></li><li><a href="#s5">期限の見方と注意</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
