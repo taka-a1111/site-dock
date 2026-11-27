@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressの管理者アカウントを削除する手順｜退職者や前の制作会社のアカウントを整理する｜スキゼロ</title>
+<meta name="description" content="WordPressの管理者アカウントを削除する手順を、棚卸し、自社の管理者の確保、権限の変更、投稿の引き継ぎの順に解説します。退職者や前の制作会社のアカウント、サーバーやSearch Consoleの見直しも紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-admin-account-cleanup.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressの管理者アカウントを削除する手順｜退職者や前の制作会社のアカウントを整理する">
+<meta property="og:description" content="WordPressの管理者アカウントを削除する手順を、棚卸し、自社の管理者の確保、権限の変更、投稿の引き継ぎの順に解説します。退職者や前の制作会社のアカウント、サーバーやSearch Consoleの見直しも紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-admin-account-cleanup.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-041-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-12">
+<meta property="article:section" content="ログイン・アカウント">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressの管理者アカウントを削除する手順｜退職者や前の制作会社のアカウントを整理する", "description": "WordPressの管理者アカウントを削除する手順を、棚卸し、自社の管理者の確保、権限の変更、投稿の引き継ぎの順に解説します。退職者や前の制作会社のアカウント、サーバーやSearch Consoleの見直しも紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-041-v3.webp", "datePublished": "2026-12-12", "dateModified": "2026-12-12", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-admin-account-cleanup.html", "inLanguage": "ja", "articleSection": "ログイン・アカウント", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "退職者のアカウントは、パスワードを変えるだけではだめですか？", "acceptedAnswer": {"@type": "Answer", "text": "パスワードを変えるだけでは足りません。登録のメールアドレスが本人のものだと、再設定の機能で新しいパスワードを作れるからです。アプリケーションパスワードも、ログイン用のパスワードとは別に残ります。使う予定がないなら、投稿を引き継いで削除してください。すぐに消せない事情があるときは、権限を購読者に下げます。あわせて、メールアドレスを会社のものに変えておきましょう。"}}, {"@type": "Question", "name": "削除したユーザーは、あとから元に戻せますか？", "acceptedAnswer": {"@type": "Answer", "text": "管理画面には、削除を取り消す機能がありません。元に戻すには、削除の前に取ったバックアップが要ります。投稿を別のユーザーに割り当てていれば、記事そのものは残るでしょう。誤って消去を選んだときは、投稿のゴミ箱を確かめてください。初期の設定では、投稿と固定ページはゴミ箱に移る作りです。ただし、画像などのメディアはゴミ箱を通らずに消えます。迷うアカウントは、先に権限を下げて様子を見ましょう。"}}, {"@type": "Question", "name": "複数のユーザーをまとめて削除できますか？", "acceptedAnswer": {"@type": "Answer", "text": "まとめて削除できます。ユーザー一覧でチェックを入れ、一括操作から「削除」を選んでください。WordPress 7.1.5では、確認の画面でユーザーごとに扱いを選びます。消去と割り当てを、1人ずつ決められる形です。数が多いときほど、選び間違いが起きやすくなるでしょう。投稿を持つユーザーは、1人ずつ確かめながら進めるのが勧めです。"}}, {"@type": "Question", "name": "保守を頼んでいる制作会社の管理者アカウントも削除すべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "契約が続いているなら、削除しなくてかまいません。保守の作業に必要なアカウントだからです。ただし、誰が使っているかと、どの権限が要るかは確かめましょう。1つのアカウントを複数の人で使い回している場合は、人ごとに分けてもらうと安心です。総務省のサイトも、長く変更されていない共有のアカウントを原因に挙げています。契約が終わったら、早めに削除か権限の変更を行ってください。"}}, {"@type": "Question", "name": "ユーザー名が「admin」の最初の管理者は、削除してもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "別の管理者アカウントで入れるなら、削除できます。WordPressの公式ドキュメントも、adminというユーザー名を使わないよう勧めているのです。新しい管理者を作り、古いユーザーは権限を下げるか削除する流れが示されています。削除のときは、投稿を新しい管理者に割り当ててください。自分がadminでログインしている間は消せません。新しいアカウントで入り直してから、作業しましょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressの管理者アカウントを削除する手順｜退職者や前の制作会社のアカウントを整理する"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1><span class="h1-main">WordPressの管理者アカウントを削除する手順</span><span class="h1-sub" data-sep="｜">退職者や前の制作会社のアカウントを整理する</span></h1>
+    <p><time datetime="2026-12-12">2026.12.12</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-041-v3.webp" alt="WordPressの管理者アカウントを削除する手順。退職者や前の制作会社のアカウントを整理する" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>退職した担当者や前の制作会社のアカウントが、WordPressに残ったままになっていませんか？</p>
+<p>使われていないアカウントは、持ち主の目が届かない入口です。総務省のサイトも、退職したユーザーのアカウントを不正アクセスの原因に挙げています。</p>
+<p>この記事では、<span class="mark-yellow">棚卸しから権限の変更、削除までの手順</span>を順にまとめました。投稿の引き継ぎと、WordPress以外のアカウントの見直しも扱います。</p>
+<p>画面の名前は、2026年11月時点のWordPress 7.1.5の日本語版で確かめたものです。作業の前に、管理者としてログインできる状態にしておいてください。</p>
+
+<h2 id="s1">WordPressの管理者アカウントを削除する前に知っておきたいこと</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-admin-account-cleanup-fig1.webp" alt="WordPressの管理者アカウントを削除する前に知っておきたいことを、残ったアカウントは入口になる、管理者は何でもできる、扱いは3通りから選ぶ、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>消す前に、危なさと権限の違いを押さえます</figcaption></figure>
+<p>使わなくなったWordPressの管理者アカウントは、削除するか権限を下げるのが基本です。残しておくと、<span class="mark-yellow">持ち主が気づかないまま使われるおそれ</span>があります。</p>
+<p>ただし、いきなり消すと投稿が消えたり、自分が入れなくなったりするのです。先に、残ったアカウントの危なさと権限の違いを押さえましょう。順番を守れば、難しい作業ではありません。</p>
+
+<h3>退職者や前の制作会社のアカウントが危ない理由</h3>
+<p>総務省のサイトは、正規のユーザー情報が攻撃者に渡る原因を挙げています。その中に、退職したユーザーのアカウントとテスト用のアカウントがあるのです。長く変更されていない共有のアカウントも並んでいます。IPAの20ヶ条も、<span class="mark-yellow">最低限必要なものを除いて削除する</span>よう求めました。開発のときに使ったアカウントが残る例にも触れています。使う人がいないアカウントは、パスワードが古いまま放置されがちです。不審なログインがあっても、気づく人がいません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/security/business/admin/10/" target="_blank" rel="noopener noreferrer nofollow">アカウント管理｜総務省 国民のためのサイバーセキュリティサイト</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<h3>管理者は何でもできる権限だと知っておく</h3>
+<p>WordPressには、「権限グループ」という役割の区分があります。公式ドキュメントによると、管理者はサイトの管理機能のすべてを使える役割です。編集者は、ほかの人の分も含めて投稿を公開し、管理できます。投稿者は自分の投稿の公開まで、寄稿者は下書きまでです。購読者は、自分のプロフィールだけを扱えます。<span class="mark-yellow">管理者が1つ破られると、影響はサイト全体に及ぶ</span>のです。公式の手引きも、悪意あるプログラムを入れられるおそれを挙げました。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/roles-and-capabilities/" target="_blank" rel="noopener noreferrer nofollow">Roles and Capabilities｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>削除する・権限を下げる・残すの3通りから選ぶ</h3>
+<p>アカウントの扱いは、削除する、権限を下げる、残すの3通りです。もう使わないと分かっているなら、削除を選びます。迷うものは、いったん権限を下げて様子を見る方法が安全でしょう。総務省のサイトも、不要なアカウントは無効にするか削除するよう勧めています。保守を頼んでいる制作会社のアカウントは、残してかまいません。ただし、<span class="mark-yellow">作業に要る権限だけにしぼる</span>のが勧めです。WordPressの公式ドキュメントも、管理者の数をしぼるよう書いています。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s2">WordPressの管理者アカウントを削除する前の棚卸しと準備</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-admin-account-cleanup-fig2.webp" alt="WordPressの管理者アカウントを削除する前の棚卸しと準備として、ユーザー一覧を開く、持ち主を表に書き出す、自社の管理者を確保する、バックアップを取る、扱いを表に書き込む、連携の有無を確かめる、をチェック欄つきで縦に並べた図" width="1200" height="800"><figcaption>消す前に、表と自社の管理者とバックアップをそろえます</figcaption></figure>
+<p>WordPressの管理者アカウントを削除する前に、<span class="mark-yellow">誰のアカウントかをすべて書き出し</span>ます。持ち主が分からないまま消すと、動いている連携まで止めてしまうからです。</p>
+<p>あわせて、自社の管理者アカウントとバックアップを用意してください。この2つがあれば、作業の途中で困っても立て直せます。準備にかかる手間は、ユーザーの数しだいです。</p>
+
+<h3>ユーザー一覧で、誰のアカウントかを書き出す</h3>
+<p>管理画面の「ユーザー」から「ユーザー一覧」を開きます。並ぶのは、ユーザー名、名前、メール、権限グループ、投稿の数です。一覧の上のリンクを使えば、管理者だけにしぼって見られます。<span class="mark-yellow">名前とメールアドレスから持ち主を特定し</span>、表に書き出しましょう。投稿の数は、削除のときの引き継ぎの判断に使います。運営者の自社サイトの点検では、数年前の外注先の編集者アカウントが2つ残っていました。誰も覚えていないアカウントは、珍しくないのです。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/users-screen/" target="_blank" rel="noopener noreferrer nofollow">Users screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>自社の管理者アカウントを先に確保する</h3>
+<p>ほかの管理者を消す前に、自社の管理者アカウントで入れることを確かめます。制作会社のアカウントしか使ってこなかった場合は、とくに大切です。「ユーザー」の「ユーザーを追加」で、権限グループを管理者にして作ります。メールアドレスは、会社で受け取れるものにしてください。作ったら一度ログアウトし、<span class="mark-red"><strong>新しいアカウントで入れることを確かめて</strong></span>から進めましょう。公式ドキュメントによると、ログイン中の自分自身は削除できません。自分で入った管理者は、最後まで残るわけです。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/users-add-new-screen/" target="_blank" rel="noopener noreferrer nofollow">Users Add New screen｜WordPress.org Documentation</a></li>
+<li>参考：<a href="https://wordpress.org/documentation/article/users-screen/" target="_blank" rel="noopener noreferrer nofollow">Users screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>バックアップを取り、表に扱いを書き込む</h3>
+<p>削除は取り消せない操作なので、先にバックアップを取ります。ファイルとデータベースの両方をそろえてください。次に、書き出した表に「削除」「権限を下げる」「残す」を書き込みましょう。<span class="mark-yellow">連携に使っているアカウントがないか</span>も確かめます。外部のサービスが、特定のユーザーとして投稿していることがあるからです。残す管理者には、2段階認証も足します。手順は次の記事にまとめました。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a>です。</p>
+
+<h2 id="s3">WordPressの管理者アカウントを削除せず、権限を下げて様子を見る手順</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-admin-account-cleanup-fig3.webp" alt="WordPressの管理者アカウントを削除せずに様子を見る手順を、権限グループを購読者に変更、アプリケーションパスワードを取消、すべての場所でログアウト、困る人がいなければ削除、の順に上から下へ並べた流れ図" width="1200" height="800"><figcaption>権限、合鍵、ログイン中の状態の順に片づけます</figcaption></figure>
+<p>持ち主や用途がはっきりしないWordPressの管理者アカウントは、削除の前に権限を下げます。<span class="mark-yellow">購読者まで下げれば、できることはごくわずか</span>です。</p>
+<p>困る人が出たら、権限を戻すだけで済みます。削除と違って、投稿もユーザーの情報もそのまま残るからです。権限のほかに、合鍵にあたる2つの情報も忘れずに片づけましょう。</p>
+
+<h3>権限グループを購読者に変更する</h3>
+<p>ユーザー一覧で、対象のユーザーにチェックを入れます。一覧の上にある「権限グループを変更…」から「購読者」を選んでください。「変更」を押すと、権限が切り替わります。ユーザーの編集画面にある「権限グループ」の欄でも、同じ変更ができるのです。<span class="mark-yellow">購読者が扱えるのは、自分のプロフィールだけ</span>になります。公式ドキュメントも、古いユーザーは権限を下げるか削除するよう勧めました。記事を書き続ける人なら、編集者や投稿者で足りるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>アプリケーションパスワードを取り消す</h3>
+<p>アプリケーションパスワードは、外部のアプリがユーザーの代わりにつなぐための合鍵です。ログイン画面からは入れませんが、REST APIなどで使えます。ユーザーにひもづくので、権限を下げただけでは消えません。ユーザーの編集画面の下のほうに、一覧があります。名前、作成日、最終使用日、最後のIPが並ぶ表です。<span class="mark-yellow">使っていないものは「取消」を押して</span>ください。運営者の自社サイトの点検でも、使わなくなったものが残っていました。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>ログイン中の状態を切り、メールアドレスを見る</h3>
+<p>権限を下げても、相手がログインしたままの端末は残ります。ユーザーの編集画面の「セッション」にある「すべての場所でログアウト」を押してください。ログイン中の端末がなければ、このボタンは出ません。あわせて、登録されたメールアドレスも見ましょう。公式ドキュメントによると、パスワードの再設定の案内は登録のメールに届きます。<span class="mark-yellow">本人のアドレスのままだと、再設定で戻れる</span>わけです。心当たりのない管理者がいたら、不正ログインを疑います。<a href="wordpress-unauthorized-login.html">WordPressの管理画面に不正ログインされたときの対処｜すぐやる3つと再発防止</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/reset-your-password/" target="_blank" rel="noopener noreferrer nofollow">Reset your password｜WordPress.org Documentation</a></li>
+</ul>
+
+<h2 id="s4">WordPressの管理者アカウントを削除する手順と、投稿の引き継ぎ</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-admin-account-cleanup-fig4.webp" alt="WordPressの管理者アカウントを削除するときの投稿の扱いを、すべてのコンテンツを消去する場合と、別のユーザーに割り当てる場合に分け、消去では投稿と画像が消え、割り当てでは記事が残ることを左右に並べた比較の図" width="1200" height="800"><figcaption>迷ったら、別のユーザーへの割り当てを選びます</figcaption></figure>
+<p>WordPressの管理者アカウントの削除は、ユーザー一覧の「削除」から行います。<span class="mark-yellow">大事なのは、投稿をどうするかの選択</span>です。</p>
+<p>選び方を誤ると、公開中の記事や画像が消えることがあります。画面の言葉の意味を、先に知っておきましょう。画面の名前は、2026年11月時点のWordPress 7.1.5のものです。</p>
+
+<h3>ユーザー一覧から削除の画面を開く</h3>
+<p>ユーザー一覧で、対象のユーザー名にマウスを重ねると「削除」が出ます。押すと、「ユーザーを削除」という確認の画面に移る流れです。この時点では、まだ消えていません。複数をまとめて消すときは、チェックを入れて一括操作の「削除」を選びます。ログイン中の自分には、「削除」のリンクが出ない仕組みです。<span class="mark-yellow">投稿などを持たないユーザーには、選択肢が出ません</span>。「このユーザーにはコンテンツがありません」と表示されます。そのまま「削除を実行」を押せば終わりです。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/users-screen/" target="_blank" rel="noopener noreferrer nofollow">Users screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>「消去」と「別のユーザーに割り当て」の違いを知る</h3>
+<p>投稿などを持つユーザーでは、コンテンツの扱いを聞かれます。「すべてのコンテンツを消去します」を選ぶと、そのユーザーの投稿は削除の対象です。公式の資料も、引き継ぎ先を指定しなければ投稿はすべて削除されると説明しています。本体のプログラムを読むと、<span class="mark-red"><strong>その人が上げた画像などのメディアも対象</strong></span>でした。残したいときは、「すべてのコンテンツを別のユーザーに割り当てます」を選びます。続けて、引き継ぐユーザーを指定してください。迷ったら、割り当てを選ぶのが安全でしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_delete_user/" target="_blank" rel="noopener noreferrer nofollow">wp_delete_user()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>削除のあとに表示と通知先を確かめる</h3>
+<p>「削除を実行」を押すと、ユーザーは一覧から消えます。そのユーザーのアプリケーションパスワードも、一緒に消える仕組みです。終わったら、サイトの表示と投稿の一覧を確かめましょう。引き継いだ投稿は、投稿者が引き継ぎ先のユーザーに変わります。次に、「設定」の「一般」にある「管理者メールアドレス」を見てください。<span class="mark-yellow">ユーザーのメールアドレスとは別の設定</span>だからです。制作会社が作ったサイトでは、自社で受け取れるアドレスかを確かめます。公式ドキュメントも、同じ確認を勧めました。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/settings-general-screen/" target="_blank" rel="noopener noreferrer nofollow">Settings General screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h2 id="s5">WordPress以外の管理者アカウントも、削除や変更の対象にする</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-admin-account-cleanup-fig5.webp" alt="WordPress以外に見直す管理者アカウントを、中央のサイトに入れる入口から、WordPress、サーバーパネル、FTP、ドメイン、Search Consoleの5つへ放射状に広げて示した図" width="1200" height="800"><figcaption>サイトに入れる入口を、すべて書き出して見直します</figcaption></figure>
+<p>WordPressの管理者アカウントを削除しても、ほかの入口が残っていれば片づきません。<span class="mark-yellow">サーバーやFTPから入れば、ファイルを書き換えられる</span>からです。</p>
+<p>退職者や前の制作会社が知っている入口を、すべて書き出してください。主な対象は、サーバーパネル、FTP、ドメイン、Search Consoleです。パスワードを知る人がいなくなった状態を目指しましょう。</p>
+
+<h3>サーバーパネルとFTPのパスワードを変える</h3>
+<p>サーバーの管理画面のパスワードを前の担当者が知っているなら、変えておきます。エックスサーバーでは、サーバーパネルのパスワードがメインのFTPアカウントと共通です。再設定すると、FTPの側も一緒に変わるとマニュアルにあります。追加したFTPアカウントは、サーバーパネルの「FTPアカウント設定」で確かめてください。旧サーバーパネルでは、「サブFTPアカウント設定」という名前です。<span class="mark-yellow">心当たりのないFTPアカウントがないか</span>を見ましょう。どれも2026年11月時点のマニュアルの内容です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_order_reissue.php" target="_blank" rel="noopener noreferrer nofollow">各種パスワードの再設定｜エックスサーバー</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_ftp_add.php" target="_blank" rel="noopener noreferrer nofollow">FTPアカウントの追加｜エックスサーバー</a></li>
+</ul>
+
+<h3>Search Consoleの所有者とユーザーを見直す</h3>
+<p>Search Consoleでは、「設定」の「ユーザーと権限」で一覧を見られます。この画面は、プロパティの所有者にだけ表示されるものです。外したい相手は、横のメニューから「権限の削除」を選びます。注意が要るのは、確認済みの所有者でしょう。Googleのヘルプによると、<span class="mark-red"><strong>確認用のトークンが残ると所有権を取り戻せる</strong></span>のです。確認に使ったHTMLファイルやHTMLタグを、サイトから消してください。残っているものは、「未使用の所有権トークン」で確かめられます。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/7687615?hl=ja" target="_blank" rel="noopener noreferrer nofollow">所有者、ユーザー、権限の管理｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>ドメインの名義を確かめ、見直しの決まりを作る</h3>
+<p>ドメインは、管理会社のアカウントと契約の名義を確かめます。制作会社の名義のままだと、自社では手続きを進められません。確かめる項目は、別の記事にまとめました。<a href="website-maintenance-contract.html">制作会社に任せたホームページ、保守契約で確認したいこと｜5つの項目と見直しの手順</a>です。最後に、見直しの決まりを作りましょう。総務省のサイトは、<span class="mark-yellow">不要なアカウントがないか定期的に確かめる</span>よう勧めています。退職や契約の終了のたびに、表を見直してください。</p>
+
+<div class="art-cta"><strong>ログイン名が外から見えていないか、確かめませんか</strong><p>URLを入れるだけで、ログイン名の見え方など8項目を無料で判定します。無料簡易診断が見るのは、外から見える範囲だけです。アカウントの整理などの作業は、対策作業（14,800円から・税込）でお受けしています。より詳しく調べたいときは、詳細診断（29,800円・税込）もご利用ください。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressの管理者アカウントの削除に関するよくある質問</h2>
+
+<h3>退職者のアカウントは、パスワードを変えるだけではだめですか？</h3>
+<p>パスワードを変えるだけでは足りません。登録のメールアドレスが本人のものだと、再設定の機能で新しいパスワードを作れるからです。アプリケーションパスワードも、ログイン用のパスワードとは別に残ります。使う予定がないなら、投稿を引き継いで削除してください。すぐに消せない事情があるときは、権限を購読者に下げます。あわせて、メールアドレスを会社のものに変えておきましょう。</p>
+
+<h3>削除したユーザーは、あとから元に戻せますか？</h3>
+<p>管理画面には、削除を取り消す機能がありません。元に戻すには、削除の前に取ったバックアップが要ります。投稿を別のユーザーに割り当てていれば、記事そのものは残るでしょう。誤って消去を選んだときは、投稿のゴミ箱を確かめてください。初期の設定では、投稿と固定ページはゴミ箱に移る作りです。ただし、画像などのメディアはゴミ箱を通らずに消えます。迷うアカウントは、先に権限を下げて様子を見ましょう。</p>
+
+<h3>複数のユーザーをまとめて削除できますか？</h3>
+<p>まとめて削除できます。ユーザー一覧でチェックを入れ、一括操作から「削除」を選んでください。WordPress 7.1.5では、確認の画面でユーザーごとに扱いを選びます。消去と割り当てを、1人ずつ決められる形です。数が多いときほど、選び間違いが起きやすくなるでしょう。投稿を持つユーザーは、1人ずつ確かめながら進めるのが勧めです。</p>
+
+<h3>保守を頼んでいる制作会社の管理者アカウントも削除すべきですか？</h3>
+<p>契約が続いているなら、削除しなくてかまいません。保守の作業に必要なアカウントだからです。ただし、誰が使っているかと、どの権限が要るかは確かめましょう。1つのアカウントを複数の人で使い回している場合は、人ごとに分けてもらうと安心です。総務省のサイトも、長く変更されていない共有のアカウントを原因に挙げています。契約が終わったら、早めに削除か権限の変更を行ってください。</p>
+
+<h3>ユーザー名が「admin」の最初の管理者は、削除してもよいですか？</h3>
+<p>別の管理者アカウントで入れるなら、削除できます。WordPressの公式ドキュメントも、adminというユーザー名を使わないよう勧めているのです。新しい管理者を作り、古いユーザーは権限を下げるか削除する流れが示されています。削除のときは、投稿を新しい管理者に割り当ててください。自分がadminでログインしている間は消せません。新しいアカウントで入り直してから、作業しましょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>使わなくなったWordPressの管理者アカウントは、持ち主の目が届かない入口になります。退職や契約の終了のたびに、ユーザーの一覧を見直してください。</p>
+<p>手順は、<span class="mark-yellow">棚卸し、自社の管理者の確保、権限の変更、削除</span>の順です。削除のときは、投稿を別のユーザーに割り当てましょう。サーバーやSearch Consoleなど、WordPress以外の入口も忘れずに見直します。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">削除の前に知っておきたいこと</a></li><li><a href="#s2">棚卸しと準備</a></li><li><a href="#s3">権限を下げて様子を見る</a></li><li><a href="#s4">削除の手順と投稿の引き継ぎ</a></li><li><a href="#s5">WordPress以外のアカウント</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
