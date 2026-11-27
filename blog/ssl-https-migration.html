@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ホームページのSSL化のやり方｜httpsになっていないサイトのリスクと切り替え手順｜スキゼロ</title>
+<meta name="description" content="ホームページのSSL化のやり方を、httpのままのリスク、準備、証明書の設定、WordPressのアドレスの変更、httpsへの転送、切り替え後の確認の順に解説します。2026年10月からのChromeの変更にも触れています。">
+<link rel="canonical" href="https://sukizero.com/blog/ssl-https-migration.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ホームページのSSL化のやり方｜httpsになっていないサイトのリスクと切り替え手順">
+<meta property="og:description" content="ホームページのSSL化のやり方を、httpのままのリスク、準備、証明書の設定、WordPressのアドレスの変更、httpsへの転送、切り替え後の確認の順に解説します。2026年10月からのChromeの変更にも触れています。">
+<meta property="og:url" content="https://sukizero.com/blog/ssl-https-migration.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-043-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-14">
+<meta property="article:section" content="SSL・ドメイン・メール">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "ホームページのSSL化のやり方｜httpsになっていないサイトのリスクと切り替え手順", "description": "ホームページのSSL化のやり方を、httpのままのリスク、準備、証明書の設定、WordPressのアドレスの変更、httpsへの転送、切り替え後の確認の順に解説します。2026年10月からのChromeの変更にも触れています。", "image": "https://sukizero.com/blog/img/eyecatch-043-v3.webp", "datePublished": "2026-12-14", "dateModified": "2026-12-14", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/ssl-https-migration.html", "inLanguage": "ja", "articleSection": "SSL・ドメイン・メール", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "SSL化の作業には、どのくらいの時間がかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "証明書が使えるようになるまでの時間は、サーバーによって違います。エックスサーバーは最大1時間ほど、ロリポップは5分ほどという案内です。さくらのレンタルサーバは、数十分から数時間かかるとしています。WordPressのアドレスの変更と転送の設定は、画面の操作だけなら短い時間で済むでしょう。混在コンテンツの直しは、ページの数によって変わります。検索への反映は、Googleによると数週間以上かかることがあるのです。"}}, {"@type": "Question", "name": "WordPressではないホームページも、同じやり方でSSL化できますか？", "acceptedAnswer": {"@type": "Answer", "text": "証明書を入れる手順と、転送の設定は同じです。違うのは、WordPressのアドレスの設定がない点になります。代わりに、HTMLのファイルに書かれたhttpのアドレスを自分で直してください。エックスサーバーのマニュアルは、httpsに変えるか相対パスにするよう案内しています。アクセス解析のタグなど、外部から読み込む部品も確かめましょう。ほかのプログラムを使っている場合は、提供元の案内に従うのが安全です。"}}, {"@type": "Question", "name": "SSL化のあとに管理画面へ入れなくなったら、どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、直前に変えた設定を元に戻します。.htaccessを書き換えたなら、控えておいた内容に戻してください。WordPressのアドレスを打ち間違えた場合は、wp-config.phpで直せます。公式ドキュメントに、2つのアドレスをこのファイルに書く方法が載っているのです。ブラウザが転送を覚えていて、戻したのに直らないように見えることもあるでしょう。別のブラウザでも試し、難しければサーバー会社や専門家に相談してください。"}}, {"@type": "Question", "name": "SSL化は、プラグインを入れるだけで済みますか？", "acceptedAnswer": {"@type": "Answer", "text": "プラグインだけでは済みません。証明書は、サーバーの側で入れる必要があるからです。WordPress 5.7以降は、本体の機能でアドレスをhttpsに切り替えられます。まずは、本体とサーバーの機能で進めるのがよいでしょう。さくらのレンタルサーバは、専用のプラグインについて注意を載せています。テーマなどの設定画面に直接入れたhttpのアドレスは、変更できないという内容です。プラグインを使う場合も、残ったhttpのアドレスは自分の目で確かめてください。"}}, {"@type": "Question", "name": "SSL化したら、httpのアドレスはもう使えなくなりますか？", "acceptedAnswer": {"@type": "Answer", "text": "転送を設定してあれば、httpのアドレスから来た人もhttpsのページに届きます。古いリンクや印刷物のアドレスを、すぐに全部直す必要はありません。ただし、転送の設定を消すと届かなくなるので注意してください。Googleは、転送を一般に1年以上、できるだけ長く残すよう勧めています。利用者のことを考えると、期限を決めずに残しておくのがよいでしょう。自分で直せるリンクは、少しずつhttpsのアドレスに書き換えてください。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "ホームページのSSL化のやり方｜httpsになっていないサイトのリスクと切り替え手順"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / SSL・ドメイン・メール</nav>
+    <h1><span class="h1-main">ホームページのSSL化のやり方</span><span class="h1-sub" data-sep="｜">httpsになっていないサイトのリスクと切り替え手順</span></h1>
+    <p><time datetime="2026-12-14">2026.12.14</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-043-v3.webp" alt="ホームページのSSL化のやり方。httpsになっていないサイトのリスクと切り替え手順" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>自社のホームページのアドレスが、まだ「http」のままになっていませんか？</p>
+<p>httpのサイトは通信が暗号化されず、ブラウザに警告が出ます。2026年10月からは、Chromeが開く前に確認の画面を出すようになりました。</p>
+<p>この記事では、<span class="mark-yellow">httpからhttpsへ切り替える一連の手順</span>をまとめます。準備、証明書、WordPressの設定、転送、切り替え後の確認の順に進めてください。</p>
+<p>内容は、サーバー会社のマニュアルとWordPress、Googleの公式の案内で確かめました。確かめた日は2026年11月26日です。</p>
+
+<h2 id="s1">SSL化のやり方の前に知りたい、httpのままのリスク</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-https-migration-fig1.webp" alt="SSL化のやり方の前に知りたいhttpのままのリスクを、開く前に確認の画面が出る、入力した内容をのぞき見される、検索ではhttpsが優先される、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>httpのままだと、信用と集客の両方で不利になります</figcaption></figure>
+<p>httpのままのサイトは、訪れた人とサイトの間の通信が暗号化されていません。そのため、<span class="mark-yellow">警告、のぞき見、検索の3つの面で不利</span>になります。</p>
+<p>とくに警告の出方は、2026年10月から一段ときびしくなりました。SSL化のやり方に入る前に、放っておくと何が起きるのかを押さえてください。理由が分かると、社内で作業の時間を取る説明もしやすいでしょう。</p>
+
+<h3>Chromeは開く前に確認の画面を出すようになった</h3>
+<p>Googleは2026年10月21日に、Chromeの変更を公表しました。httpのサイトへつなぐ前に、利用者の許可を求める動きが既定になっています。<span class="mark-red"><strong>初めて訪れた人には、開く前に確認の画面が出る</strong></span>のです。いちど許可すると、訪問が2週間以上あくまでは再び出ないとされています。それでも、最初の画面で引き返す人は出るでしょう。Chromeのヘルプによると、対象はhttpsに対応していないサイトです。httpsで開けるようにすることが、この画面を出さない近道になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://blog.google/security/chrome-now-warns-before-insecure-http-connections/" target="_blank" rel="noopener noreferrer nofollow">Chrome Now Warns Before Insecure HTTP Connections（2026年10月21日）｜Google</a></li>
+<li>参考：<a href="https://support.google.com/chrome/answer/10468685?hl=ja" target="_blank" rel="noopener noreferrer nofollow">Chrome の安全性とセキュリティを管理する｜Google Chrome ヘルプ</a></li>
+</ul>
+
+<h3>入力した内容をのぞき見や書き換えから守れない</h3>
+<p>Chromeのヘルプは、httpのサイトについて次のように説明しています。送受信される情報は、何者かに見られたり変更されたりする可能性があるという内容です。問い合わせフォームに入れた名前や電話番号も、守られないまま送られます。<span class="mark-yellow">アドレス欄には「保護されていない通信」と表示</span>されるでしょう。ヘルプは、直すにはサイトの持ち主がhttpsを使う必要があるとも書いています。表示の原因の切り分けは、別の記事にまとめました。<a href="not-secure-warning.html">「保護されていない通信」と表示される原因と直し方</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/chrome/answer/95617?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サイトの接続が安全かどうかを確認する｜Google Chrome ヘルプ</a></li>
+</ul>
+
+<h3>検索ではhttpsのページが優先して扱われる</h3>
+<p>Googleは2014年8月に、httpsを検索の順位づけの合図に使い始めたと発表しました。影響は全世界の検索の1%未満で、ごく軽い合図だという説明です。Search Consoleのヘルプには、別の扱いも書かれています。<span class="mark-yellow">httpとhttpsの両方があれば、httpsを優先して登録</span>するという説明です。Googleは、利用者を守るためにhttpsを使うことを強く勧めています。順位が大きく上がると期待するより、不利を残さない手当てと考えてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/search/blog/2014/08/https-as-ranking-signal" target="_blank" rel="noopener noreferrer nofollow">HTTPS as a ranking signal（2014年8月7日）｜Google Search Central Blog</a></li>
+<li>参考：<a href="https://support.google.com/webmasters/answer/11396518?hl=ja" target="_blank" rel="noopener noreferrer nofollow">HTTPS レポート｜Search Console ヘルプ</a></li>
+</ul>
+
+<h2 id="s2">SSL化のやり方の準備：バックアップとサーバーの確認</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-https-migration-fig2.webp" alt="SSL化のやり方の準備として、ファイルとデータベースの控え、.htaccessの控え、無料SSLが使えるか、ドメインの向き先、変更を1つにしぼる、アクセスの少ない時間帯をチェック欄つきで縦に並べたチェックリストの図" width="1200" height="800"><figcaption>戻せる状態を作ってから、設定に手を入れます</figcaption></figure>
+<p>SSL化のやり方で最初に行うのは、設定の変更ではなく準備です。<span class="mark-yellow">バックアップ、無料SSLの確認、段取りの3点</span>を先に済ませてください。</p>
+<p>SSL化では、WordPressのアドレスとサーバーの設定の両方に手を入れることになります。途中でつまずいても戻せるようにしておけば、落ち着いて進められるでしょう。準備の3点は、どれもサーバーとWordPressの管理画面で確かめられます。</p>
+
+<h3>切り替える前にバックアップを取る</h3>
+<p>作業の前に、サイトのファイルとデータベースの両方を控えておきます。SSL化では、WordPressの設定と.htaccessというファイルに手を入れるからです。<span class="mark-yellow">書き換える前の.htaccessも、別に保存して</span>ください。運営者の自社サイトのサーバーには、自動バックアップがあります。保存されるのは、Webデータが7日分、データベースが14日分でした。自動の控えがあっても、作業の直前の状態を手元に残すと安心です。控えから戻す手順も、先にサーバーのマニュアルで確かめておきましょう。</p>
+
+<h3>サーバーの無料SSLが使えるかを確かめる</h3>
+<p>エックスサーバーなど、この記事で確かめた4社はどこも無料の証明書を用意しています。Let's Encryptは、無料で証明書を発行する自動化された認証局です。さくらのレンタルサーバの無料SSLは、このLet's Encryptを使っています。ただし、<span class="mark-yellow">ドメインの向き先によっては発行できません</span>。エックスサーバーは、wwwあり・なしの両方が契約のサーバーを向く必要があるとしています。ConoHa WINGも、ネームサーバーをConoHaにする必要があるという案内です。</p>
+<ul class="ref">
+<li>参考：<a href="https://letsencrypt.org/ja/about/" target="_blank" rel="noopener noreferrer nofollow">Let's Encrypt について｜Let's Encrypt</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_ssl.php" target="_blank" rel="noopener noreferrer nofollow">無料独自SSL設定｜エックスサーバー</a></li>
+<li>参考：<a href="https://support.conoha.jp/w/letsencrypt/" target="_blank" rel="noopener noreferrer nofollow">無料独自SSLを設定する｜ConoHa WINGサポート</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2153/" target="_blank" rel="noopener noreferrer nofollow">無料SSL（Let's Encrypt）を設定したい｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>作業の順番と時間帯を決めておく</h3>
+<p>Googleは、httpからhttpsへの変更をサイトの移転の1つとして扱っています。移転の手引きで勧められているのは、一度に行う変更を1つにしぼることです。<span class="mark-yellow">デザインの変更などを同時に進めない</span>ようにしましょう。アクセスの少ない時間帯に作業することも勧められています。小さなサイトなら、全ページを一度に切り替える進め方が向いているという説明です。順番は、証明書、WordPressのアドレス、転送、確認の流れで進めてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サイトを移転する方法（URL の変更を伴うサイト移転）｜Google 検索セントラル</a></li>
+</ul>
+
+<h2 id="s3">SSL化のやり方の手順1：証明書を入れてWordPressのアドレスを変える</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-https-migration-fig3.webp" alt="SSL化のやり方の手順1として、サーバーで証明書を有効にする、httpsで開けるかを確かめる、WordPressのアドレスをhttpsに変える、の3つを番号つきで左から右へ並べたステップの図" width="1200" height="800"><figcaption>証明書が先、WordPressのアドレスが後です</figcaption></figure>
+<p>SSL化のやり方の手順1は、サーバーで証明書を有効にすることから始まります。<span class="mark-yellow">証明書が先、WordPressのアドレスが後</span>という順番を守ってください。</p>
+<p>証明書が入る前にアドレスだけをhttpsに変えると、サイトが開けなくなるおそれがあります。証明書の反映には時間がかかるので、httpsで開けることを確かめてから次へ進みましょう。WordPressを使っていないサイトは、アドレスの変更を飛ばして手順2へ進めます。</p>
+
+<h3>サーバーの管理画面で証明書を有効にする</h3>
+<p>エックスサーバーでは、サーバーパネルの「SSL設定」を開きます。対象のドメインの設定を「ON」にすれば、設定は完了です。マニュアルによると、反映まで最大1時間ほどかかります。ロリポップは「証明書お申し込み・設定」から設定し、完了まで5分ほどという案内です。さくらのレンタルサーバは、発行に数十分から数時間かかるとしています。<span class="mark-yellow">反映を待ってから、httpsのアドレスで開いて</span>ください。警告が出ずにページが開けば、証明書は働いています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_ssl.php" target="_blank" rel="noopener noreferrer nofollow">無料独自SSL設定｜エックスサーバー</a></li>
+<li>参考：<a href="https://lolipop.jp/manual/user/ssl-free-order/" target="_blank" rel="noopener noreferrer nofollow">独自SSL（無料）のお申込み・設定方法｜ロリポップ！レンタルサーバー</a></li>
+</ul>
+
+<h3>WordPressのアドレスをhttpsに変える</h3>
+<p>管理画面の「設定」から「一般」を開きます。直す欄は、「WordPress アドレス (URL)」と「サイトアドレス (URL)」です。どちらも、httpの後ろに「s」を足して保存します。<span class="mark-red"><strong>ここがhttpのままだと、切り替えは終わりません</strong></span>。運営者の自社サイトでも、httpのまま残っているものがありました。打ち間違えると、管理画面に入れなくなることがあるでしょう。公式ドキュメントには、wp-config.phpにアドレスを書いて戻す方法が載っています。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/https-for-wordpress/" target="_blank" rel="noopener noreferrer nofollow">WordPress の HTTPS 化｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/upgrade/migrating/" target="_blank" rel="noopener noreferrer nofollow">Migrating WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>サイトヘルスの切り替え機能を使う方法もある</h3>
+<p>WordPress 5.7からは、本体にhttpsへの切り替えを助ける機能が入りました。証明書が入っていると、「ツール」の「サイトヘルス」に切り替えのボタンが出ます。押すと、2つのアドレスがまとめてhttpsに書き換わる仕組みです。<span class="mark-yellow">うまく認識できないときは、自動で元に戻ります</span>。古い記事に残った自分のサイトのhttpのアドレスも、表示のときに置き換えられるのです。ConoHa WINGには、WordPress内の設定を自動で行う「かんたんSSL化」があります。</p>
+<ul class="ref">
+<li>参考：<a href="https://make.wordpress.org/core/2021/02/22/improved-https-detection-and-migration-in-wordpress-5-7/" target="_blank" rel="noopener noreferrer nofollow">Improved HTTPS detection and migration in WordPress 5.7｜Make WordPress Core</a></li>
+<li>参考：<a href="https://support.conoha.jp/w/wordpress_ssl/" target="_blank" rel="noopener noreferrer nofollow">WordPressかんたんSSL化を利用する｜ConoHa WINGサポート</a></li>
+</ul>
+
+<h2 id="s4">SSL化のやり方の手順2：httpからhttpsへ転送し、混在コンテンツを直す</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-https-migration-fig4.webp" alt="SSL化のやり方の手順2として、httpのアドレスで来た人をサーバーの転送の設定でhttpsのページへ送り、ページの中に残ったhttpの読み込みをhttpsに直すまでを、左から右への矢印でつないだ流れ図" width="1200" height="800"><figcaption>転送と混在の直しまで終えて、切り替えは完了です</figcaption></figure>
+<p>SSL化のやり方の手順2は、httpのアドレスで来た人をhttpsへ送る設定です。あわせて、<span class="mark-yellow">ページの中に残ったhttpの読み込みを直し</span>ます。</p>
+<p>サーバーによっては、証明書を入れた直後はhttpとhttpsの両方でサイトが開く状態です。古いリンクや名刺のアドレスから来た人は、httpのページを見ることになるでしょう。転送と混在の直しまで終えて、切り替えは完了します。</p>
+
+<h3>サーバーの機能でhttpをhttpsへ転送する</h3>
+<p>エックスサーバーのマニュアルには、大事な注意が書かれています。<span class="mark-red"><strong>証明書を入れただけでは、自動で転送されません</strong></span>。転送は、「ドメイン設定」でドメインの詳細を開いて設定する方法が手軽です。HTTPS転送設定の「HTTPSに転送する」にチェックを入れて保存してください。さくらのレンタルサーバにも、同じ名前のチェック欄があります。ConoHa WINGは、SSLを設定すると自動で転送される仕組みです。使っているサーバーがどちらの型かを、マニュアルで確かめましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_fullssl.php" target="_blank" rel="noopener noreferrer nofollow">Webサイトの常時SSL化｜エックスサーバー</a></li>
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2153/" target="_blank" rel="noopener noreferrer nofollow">無料SSL（Let's Encrypt）を設定したい｜さくらのサポート情報</a></li>
+<li>参考：<a href="https://support.conoha.jp/w/letsencrypt/" target="_blank" rel="noopener noreferrer nofollow">無料独自SSLを設定する｜ConoHa WINGサポート</a></li>
+</ul>
+
+<h3>.htaccessで転送するときはマニュアルの記述を写す</h3>
+<p>エックスサーバーのマニュアルには、.htaccessに記述を足す方法も載っています。足すときは、<span class="mark-yellow">既存の設定を消さず、先頭に追記する</span>のが勧められている形です。記述は自分で考えず、サーバーのマニュアルのとおりに写してください。マニュアルの記述は、301という恒久的な転送を指定しています。Googleも、移転では301などの恒久的な転送を使うよう勧めているのです。転送は、一般に1年以上、できるだけ長く残すよう案内されています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_fullssl.php" target="_blank" rel="noopener noreferrer nofollow">Webサイトの常時SSL化｜エックスサーバー</a></li>
+<li>参考：<a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サイトを移転する方法（URL の変更を伴うサイト移転）｜Google 検索セントラル</a></li>
+</ul>
+
+<h3>混在コンテンツを見つけて直す</h3>
+<p>httpsのページがhttpで画像などを読み込む状態を、混在コンテンツと呼びます。MDNによると、画像や動画、音声の読み込みはhttpsへ自動で切り替わる仕組みです。<span class="mark-yellow">スクリプトなどそれ以外の読み込みは止められます</span>。そのため、表示が崩れたり、機能が動かなくなったりするのです。見つけるには、ブラウザの開発者ツールのコンソールに出る警告を見てください。自分のサイトの部品は、httpsか相対パスに書き換えます。外部の部品も、httpsのアドレスに直しましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content" target="_blank" rel="noopener noreferrer nofollow">Mixed content｜MDN</a></li>
+</ul>
+
+<h2 id="s5">SSL化のやり方の仕上げ：切り替え後に確かめること</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/ssl-https-migration-fig5.webp" alt="SSL化のやり方の仕上げとして、切り替え後の確認を中心に置き、httpからの転送、下の階層のページ、フォームの送信、Search Console、サイトマップ、外部サービスのURLの6つを周りに放射状に並べた図" width="1200" height="800"><figcaption>当日に見るものと、数週間かけて見守るものがあります</figcaption></figure>
+<p>SSL化のやり方の最後は、切り替えたあとの確認です。<span class="mark-yellow">表示、検索への知らせ、外部の登録の3つ</span>を順に見ます。</p>
+<p>設定が済んでも、転送されないページや古いアドレスの登録が残ることは珍しくありません。切り替えた当日に済ませるものと、数週間かけて見守るものに分けて進めてください。確認の結果は、日付と一緒に残しておくと次の担当者も助かるでしょう。</p>
+
+<h3>表示と転送を自分の目で確かめる</h3>
+<p>まず、httpのアドレスを入力して、httpsへ切り替わるかを見ます。<span class="mark-yellow">トップだけでなく、下の階層のページでも試して</span>ください。さくらのサポート情報には、トップだけが転送される例が載っています。問い合わせフォームからの送信も、1件試しておくと安心です。運営者の自社サイトは、外からの点検で証明書の残りが33日でした。期限の見方は、別の記事で扱っています。<a href="ssl-certificate-expiry.html">SSL証明書の期限切れを防ぐ方法と確認のしかた｜有効期間は47日へ短くなる</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://help.sakura.ad.jp/rs/2171/" target="_blank" rel="noopener noreferrer nofollow">【トラブルシューティング】WordPressの常時SSL化プラグイン｜さくらのサポート情報</a></li>
+</ul>
+
+<h3>Search Consoleとサイトマップを更新する</h3>
+<p>Search Consoleでは、httpsのアドレスのサイトも確認できる状態にします。Googleの手引きは、新旧の両方を確認するよう勧めているのです。<span class="mark-yellow">アドレス変更ツールは、httpsへの移行では不要</span>と書かれています。サイトマップは、httpsのアドレスに直したものを送信してください。順位は、再び読み込まれる間に一時的に変動することがあるでしょう。中規模のサイトでは、反映に数週間以上かかる場合があるという説明です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=ja" target="_blank" rel="noopener noreferrer nofollow">サイトを移転する方法（URL の変更を伴うサイト移転）｜Google 検索セントラル</a></li>
+</ul>
+
+<h3>外部サービスに登録したURLを直す</h3>
+<p>転送があっても、外に登録したアドレスはhttpsに直しておきます。Googleの手引きは、SNSのプロフィールや広告のリンク先を例に挙げました。転送は表示を遅くするため、<span class="mark-yellow">届け先のアドレスを直接httpsにする</span>ほうがよいという理由です。地図の店舗情報やメールの署名も、あわせて見直してください。落ち着いたら、httpsだけで開くようブラウザに伝えるHSTSも検討できます。注意点は、次の記事にまとめました。<a href="security-headers.html">セキュリティヘッダーとは？ホームページに入れたい6つの設定｜確かめ方と入れるときの注意</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security" target="_blank" rel="noopener noreferrer nofollow">Strict-Transport-Security header｜MDN</a></li>
+</ul>
+
+<div class="art-cta"><strong>SSL化のあとの状態を、外から確かめませんか</strong><p>URLを入れるだけで、SSL証明書の状態など8項目を無料で判定します。httpsへの切り替えや転送の設定は、対策作業（14,800円から・税込）でもお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">SSL化のやり方に関するよくある質問</h2>
+
+<h3>SSL化の作業には、どのくらいの時間がかかりますか？</h3>
+<p>証明書が使えるようになるまでの時間は、サーバーによって違います。エックスサーバーは最大1時間ほど、ロリポップは5分ほどという案内です。さくらのレンタルサーバは、数十分から数時間かかるとしています。WordPressのアドレスの変更と転送の設定は、画面の操作だけなら短い時間で済むでしょう。混在コンテンツの直しは、ページの数によって変わります。検索への反映は、Googleによると数週間以上かかることがあるのです。</p>
+
+<h3>WordPressではないホームページも、同じやり方でSSL化できますか？</h3>
+<p>証明書を入れる手順と、転送の設定は同じです。違うのは、WordPressのアドレスの設定がない点になります。代わりに、HTMLのファイルに書かれたhttpのアドレスを自分で直してください。エックスサーバーのマニュアルは、httpsに変えるか相対パスにするよう案内しています。アクセス解析のタグなど、外部から読み込む部品も確かめましょう。ほかのプログラムを使っている場合は、提供元の案内に従うのが安全です。</p>
+
+<h3>SSL化のあとに管理画面へ入れなくなったら、どうすればよいですか？</h3>
+<p>まず、直前に変えた設定を元に戻します。.htaccessを書き換えたなら、控えておいた内容に戻してください。WordPressのアドレスを打ち間違えた場合は、wp-config.phpで直せます。公式ドキュメントに、2つのアドレスをこのファイルに書く方法が載っているのです。ブラウザが転送を覚えていて、戻したのに直らないように見えることもあるでしょう。別のブラウザでも試し、難しければサーバー会社や専門家に相談してください。</p>
+
+<h3>SSL化は、プラグインを入れるだけで済みますか？</h3>
+<p>プラグインだけでは済みません。証明書は、サーバーの側で入れる必要があるからです。WordPress 5.7以降は、本体の機能でアドレスをhttpsに切り替えられます。まずは、本体とサーバーの機能で進めるのがよいでしょう。さくらのレンタルサーバは、専用のプラグインについて注意を載せています。テーマなどの設定画面に直接入れたhttpのアドレスは、変更できないという内容です。プラグインを使う場合も、残ったhttpのアドレスは自分の目で確かめてください。</p>
+
+<h3>SSL化したら、httpのアドレスはもう使えなくなりますか？</h3>
+<p>転送を設定してあれば、httpのアドレスから来た人もhttpsのページに届きます。古いリンクや印刷物のアドレスを、すぐに全部直す必要はありません。ただし、転送の設定を消すと届かなくなるので注意してください。Googleは、転送を一般に1年以上、できるだけ長く残すよう勧めています。利用者のことを考えると、期限を決めずに残しておくのがよいでしょう。自分で直せるリンクは、少しずつhttpsのアドレスに書き換えてください。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>httpのままのサイトは、警告、のぞき見、検索の3つの面で不利になります。2026年10月からは、Chromeが開く前に確認の画面を出すようになりました。早めに切り替えておきましょう。</p>
+<p>手順は、<span class="mark-yellow">準備、証明書、アドレス、転送、確認の順</span>です。切り替えたあとは、表示とSearch Console、外部の登録を見直してください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">httpのままのリスク</a></li><li><a href="#s2">準備 バックアップと確認</a></li><li><a href="#s3">手順1 証明書とアドレス</a></li><li><a href="#s4">手順2 転送と混在の直し</a></li><li><a href="#s5">切り替え後の確認</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
