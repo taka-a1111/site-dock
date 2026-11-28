@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>改ざんの再発防止で見直す5つの設定｜復旧のあとの確かめ方と続け方｜スキゼロ</title>
+<meta name="description" content="改ざんの再発防止のために、復旧のあとで見直す5つの設定を解説します。再発しやすい理由、パスワードと秘密鍵や更新の設定の見直し方、効いているかの確かめ方、定期の点検の続け方まで順に紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/tampering-recurrence-prevention.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="改ざんの再発防止で見直す5つの設定｜復旧のあとの確かめ方と続け方">
+<meta property="og:description" content="改ざんの再発防止のために、復旧のあとで見直す5つの設定を解説します。再発しやすい理由、パスワードと秘密鍵や更新の設定の見直し方、効いているかの確かめ方、定期の点検の続け方まで順に紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/tampering-recurrence-prevention.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-050-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-21">
+<meta property="article:section" content="改ざん・被害対応">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "改ざんの再発防止で見直す5つの設定｜復旧のあとの確かめ方と続け方", "description": "改ざんの再発防止のために、復旧のあとで見直す5つの設定を解説します。再発しやすい理由、パスワードと秘密鍵や更新の設定の見直し方、効いているかの確かめ方、定期の点検の続け方まで順に紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-050-v3.webp", "datePublished": "2026-12-21", "dateModified": "2026-12-21", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/tampering-recurrence-prevention.html", "inLanguage": "ja", "articleSection": "改ざん・被害対応", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "パスワードは復旧のときに変えました。もう一度変える必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "片づけの途中で変えただけなら、もう一度変えてください。WordPressの公式のFAQも、サイトがきれいになったあとに再び変えるよう勧めています。片づけが済む前は、裏口が残っていたおそれがあるからです。対象は、管理画面、FTP、サーバーの管理パネル、データベースの4つになります。wp-config.phpの秘密鍵も、あわせて新しくしましょう。パスワードを変えても残るログインを、切るための作業です。"}}, {"@type": "Question", "name": "設定の見直しが終わる前に、サイトの公開を再開してもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "入口をふさぐ前の再開は、勧めません。Googleのweb.devは、公開を再開する前の確認項目を挙げています。最新の版になっているか、使わないプラグインを消したかという項目です。根本の原因を直したか、安全を保つ計画があるかも並んでいます。すべてに「はい」と答えられてから、公開に戻す流れです。急ぐ事情があるときも、パスワードと更新だけは先に済ませてください。"}}, {"@type": "Question", "name": "セキュリティのプラグインを入れれば、再発防止になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "プラグインだけでは、再発防止として足りません。入られた入口や残った裏口は、プラグインを入れても消えないからです。先に、パスワード、ユーザー、更新の3つを見直してください。そのうえで足りない守りを補う使い方なら、役に立つでしょう。プラグイン自身も、更新を続ける必要がある部品です。公式の手引きも、プラグインは常に更新し、使わないものは削除するよう書いています。"}}, {"@type": "Question", "name": "制作会社に復旧を頼みました。自社で確かめることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "何を直し、何を変えたかを、書面やメールで受け取ってください。入口の見当、変えたパスワードの種類、消したユーザーやファイルが主な項目です。更新の設定と、今後の点検を誰が受け持つかも聞きましょう。自社の管理者アカウントで管理画面に入れるかも、確かめておくと安心です。任せきりにすると、次に異変が起きたときに経緯をたどれません。受け取った内容は、点検のメモと一緒に保管してください。"}}, {"@type": "Question", "name": "5つの設定を見直せば、もう改ざんされませんか？", "acceptedAnswer": {"@type": "Answer", "text": "改ざんされないという保証はできません。WordPressの公式の手引きも、安全対策は危険をなくすものではないと書いています。目指すのは、危険を減らすことです。5つの設定は、入口と裏口と鍵をふさぎ、入られにくくするためのものと考えてください。新しい弱点は、あとから見つかります。設定の見直しと定期の点検を組み合わせることが、現実的な備えになるでしょう。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "改ざんの再発防止で見直す5つの設定｜復旧のあとの確かめ方と続け方"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / 改ざん・被害対応</nav>
+    <h1><span class="h1-main">改ざんの再発防止で見直す5つの設定</span><span class="h1-sub" data-sep="｜">復旧のあとの確かめ方と続け方</span></h1>
+    <p><time datetime="2026-12-21">2026.12.21</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-050-v3.webp" alt="改ざんの再発防止で見直す5つの設定。復旧のあとの確かめ方と続け方" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>ホームページの改ざんを復旧したあと、また同じことが起きないかと不安になっていませんか？</p>
+<p>元に戻しただけでは、入られた入口も、相手が残した裏口もそのままのことがあります。エックスサーバーのマニュアルも、根本の原因が残るうちは再発の可能性が非常に高いと書いているのです。</p>
+<p>この記事では、<span class="mark-yellow">復旧のあとに見直す5つの設定</span>を、確かめ方と続け方まで順にまとめました。復旧の作業そのものは、済んでいる前提で進めます。</p>
+<p>メニューの名前や数字は、2026年11月27日に公式の資料で確かめたものです。これで再発しないという保証はできませんが、入られにくい状態には近づけます。</p>
+
+<h2 id="s1">改ざんの再発防止が、復旧の直後に欠かせない理由</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/tampering-recurrence-prevention-fig1.webp" alt="改ざんの再発防止が復旧の直後に欠かせない理由を、入口がふさがれていない、裏口が残っている、鍵と合鍵がそのまま、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>戻しただけでは、入口と裏口と鍵が残ります</figcaption></figure>
+<p>改ざんの再発防止は、復旧の直後に済ませてください。<span class="mark-yellow">元に戻す作業と、入口をふさぐ作業は別もの</span>だからです。</p>
+<p>再発しやすい理由は、大きく3つに分けられます。入口、裏口、鍵のどれかが残っていると、同じ相手にまた入られるのです。Googleのweb.devも、独立した仕掛けが複数あることがあると書いています。理由を知っておけば、見直す設定の意味もつかめるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://web.dev/identify-the-vulnerability/" target="_blank" rel="noopener noreferrer nofollow">Identify the vulnerability｜web.dev</a></li>
+</ul>
+
+<h3>入られた入口がふさがれていない</h3>
+<p>改ざんには、相手が最初に入った入口があります。IPAは、2025年に届いた不正アクセスの被害を原因ごとに分類しました。最も多いのは「ID、パスワード管理の不備」で、30件です。次が、古い版の利用や修正プログラムなどの未導入で、18件でした。「設定の不備」も7件あります。<span class="mark-yellow">バックアップで戻すと、弱点も当時のまま戻る</span>のです。WordPressの公式のFAQ（日本語版）も、古い版は攻撃を受ける危険が高いと書いています。入口の見当をつけてから、設定を見直しましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/todokede/crack-virus/ug65p9000000nnpa-att/2025-report.pdf" target="_blank" rel="noopener noreferrer nofollow">コンピュータウイルス・不正アクセスの届出状況［2025年（1月～12月）］｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_malicious_access.php" target="_blank" rel="noopener noreferrer nofollow">不正アクセス（ファイルの改ざん、不正なファイル設置）について｜エックスサーバー</a></li>
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>裏口のファイルやアカウントが残っている</h3>
+<p>相手は、次に入るための裏口を残していくことがあります。バックドアと呼ばれる仕掛けです。エックスサーバーのマニュアルは、被害にあったサイトについてこう説明しました。不正なファイルのほかに、<span class="mark-red"><strong>裏口が置かれている可能性が非常に高い</strong></span>という内容です。WordPressの公式のFAQによると、不正なファイルは新しく足されることがあります。元からあるファイルを上書きしても、足された分は消えません。身に覚えのないユーザーも、裏口の1つでしょう。見える被害を直しただけでは、裏口まで片づいたとは限らないのです。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_malicious_access.php" target="_blank" rel="noopener noreferrer nofollow">不正アクセス（ファイルの改ざん、不正なファイル設置）について｜エックスサーバー</a></li>
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>パスワードと合鍵がそのままになっている</h3>
+<p>パスワードを変えていなければ、相手は同じ鍵でまた入れます。変えたつもりでも、もれが出やすいのが合鍵です。WordPressの公式のFAQは、<span class="mark-yellow">パスワードを変えてもログインが続く</span>場合を挙げています。ログインの印であるCookieが、有効なまま残るからです。FTPやデータベースのパスワードも、変える対象に入っています。復旧の途中で変えただけなら、片づけのあとにもう一度変えるよう勧める内容です。外部のアプリ用のアプリケーションパスワードも、別の鍵として扱われます。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s2">改ざんの再発防止で見直す5つの設定</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/tampering-recurrence-prevention-fig2.webp" alt="改ざんの再発防止で見直す5つの設定を、パスワードと秘密鍵、ユーザーと合鍵、更新の設定、ファイルの編集と書き込み、サーバー側の守り、の順に番号をつけて上から並べた図" width="1200" height="800"><figcaption>鍵、人、更新、ファイル、サーバーの順に見直します</figcaption></figure>
+<p>改ざんの再発防止で見直す設定は、<span class="mark-yellow">鍵、人、更新、ファイル、サーバーの5つ</span>です。入口と裏口と鍵を、順にふさいでいく並びにしました。</p>
+<p>どれも、WordPressの公式の手引きやサーバー会社のマニュアルにある内容です。作業の前に、今の状態のバックアップを取ってください。5つを終えたら、変えた内容と日付をメモに残しましょう。</p>
+
+<h3>① パスワードと秘密鍵を、片づけのあとにもう一度変える</h3>
+<p>最初に、作業に使うパソコンをウイルス対策ソフトで検査します。次に、サイトに入れるパスワードをすべて変えてください。公式のFAQが挙げる対象は、管理画面、FTP、サーバーの管理パネル、データベースです。<span class="mark-yellow">片づけが済んだあとに、もう一度変える</span>よう勧めています。データベースのパスワードは、wp-config.phpにも書かれた値です。変えたら、ファイルの側も合わせましょう。同じファイルの秘密鍵を新しくすると、残ったログインを切れます。公式の手引きは、2段階認証を足すことも勧める内容です。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>② ユーザーとアプリケーションパスワードを整理する</h3>
+<p>管理画面の「ユーザー」から「ユーザー一覧」を開きます。エックスサーバーのマニュアルも、身に覚えのないユーザーや不要なユーザーの削除を求めました。<span class="mark-yellow">使っていない管理者は、消すか権限を下げて</span>ください。見落としやすいのが、アプリケーションパスワードです。公式の手引きによると、ログイン画面では使えず、外部のアプリの接続に使われます。ユーザーの編集画面で、覚えのないものを取り消しましょう。運営者の自社サイトの点検でも、使わなくなったものが残っていました。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_malicious_access.php" target="_blank" rel="noopener noreferrer nofollow">不正アクセス（ファイルの改ざん、不正なファイル設置）について｜エックスサーバー</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>③ 本体・プラグイン・テーマの更新の設定を見直す</h3>
+<p>入口になりやすいのが、古いままの部品です。公式の手引きは、古い版のWordPressには安全のための更新が届かないと書いています。プラグインは、<span class="mark-yellow">使わないものを止めるだけでなく削除</span>しましょう。web.devも、ファイルごと消すよう勧める内容です。プラグインとテーマの自動更新は、1つずつ有効にできます。運営者の自社サイトの点検では、配布が止まったプラグインも残っていました。任せる範囲は、<a href="wordpress-auto-update.html">WordPressの自動更新は有効にすべき？良い点と注意点｜任せる範囲の決め方と確かめ方</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://web.dev/articles/top-ways-sites-get-hacked-by-spammers" target="_blank" rel="noopener noreferrer nofollow">Top ways sites get hacked by spammers｜web.dev</a></li>
+<li>参考：<a href="https://wordpress.org/documentation/article/plugins-themes-auto-updates/" target="_blank" rel="noopener noreferrer nofollow">Plugin and themes auto-updates｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>④ 管理画面からのファイル編集と、書き込みの権限を絞る</h3>
+<p>WordPressの管理画面には、テーマやプラグインのファイルを書き換える機能があります。公式の手引きによると、<span class="mark-red"><strong>ログインした攻撃者が最初に使うことの多い道具</strong></span>です。wp-config.phpに1行を足すと、この機能を止められます。ただし、不正なファイルのアップロードまでは止まりません。ファイルの権限について、手引きはフォルダを755、ファイルを644にする例を示しています。wp-config.phpは、400か440が目安という説明です。共用のサーバーでは、サーバー会社の案内も確かめましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>⑤ サーバー側の守りの設定を有効にする</h3>
+<p>最後に、サーバーの管理画面にある守りの設定を見ます。エックスサーバーのマニュアルは、予防策にWAF設定を挙げました。WordPressセキュリティ設定も、同じ予防策の1つです。国外からの接続や、ログインの試行回数を制限できます。<span class="mark-yellow">初めから有効とは限らないので、画面で確かめて</span>ください。運営者のサーバーでも、最初からあるドメインのWAFが6つの項目ともオフでした。JPCERT/CCは2016年の注意喚起で、更新できるパソコンを絞る対策も挙げています。FTPをやめ、安全な接続を使うことも勧める内容です。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_malicious_access.php" target="_blank" rel="noopener noreferrer nofollow">不正アクセス（ファイルの改ざん、不正なファイル設置）について｜エックスサーバー</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー</a></li>
+<li>参考：<a href="https://www.jpcert.or.jp/at/2016/at160047.html" target="_blank" rel="noopener noreferrer nofollow">Web サイト改ざんに関する注意喚起｜JPCERT/CC</a></li>
+</ul>
+
+<h2 id="s3">改ざんの再発防止の設定が効いているかの確かめ方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/tampering-recurrence-prevention-fig3.webp" alt="改ざんの再発防止の設定が効いているかの確かめ方を、知らないユーザー、覚えのないプラグイン、サイトヘルスの警告、狙われやすいファイル、uploadsのPHP、Search Consoleの6項目のチェック欄つきで縦に並べた図" width="1200" height="800"><figcaption>管理画面、サーバーのファイル、外からの3か所で確かめます</figcaption></figure>
+<p>設定を見直したら、効いているかを3か所で確かめます。<span class="mark-yellow">管理画面、サーバーのファイル、外からの見え方</span>です。</p>
+<p>どれも、特別な道具を使わずに見られる場所を選びました。1か所だけでは、見えない部分が残ります。管理画面に出てこない不正なファイルもあるからです。確かめた日と結果は、メモに書き足してください。次の点検で、前回との違いを比べられます。</p>
+
+<h3>管理画面でユーザー・更新・サイトヘルスを見る</h3>
+<p>管理画面では、3つの画面を順に開きます。「ユーザー一覧」では、知らないユーザーが増えていないかを見てください。プラグインの一覧では、入れた覚えのないものを探します。更新の知らせが残っていないかも、あわせて見ましょう。「ツール」の「サイトヘルス」も役に立ちます。公式のドキュメントによると、<span class="mark-yellow">注意が要る項目をまとめて示す画面</span>です。更新待ちのプラグインや、自動の更新が動いていない状態が表示されます。警告が出ていたら、内容を読んで1つずつ片づけてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/site-health-screen/" target="_blank" rel="noopener noreferrer nofollow">Site Health screen｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>サーバーのファイルに不審なものがないかを見る</h3>
+<p>サーバーのファイルマネージャーなどで、ファイルの一覧を開きます。WordPressの公式のFAQは、狙われやすい場所を挙げました。最上位の階層の.htaccessとindex.php、テーマのfunctions.phpなどです。<span class="mark-yellow">自分が触っていない日に更新されたファイル</span>を探しましょう。FAQは、ファイルを最後までスクロールして読むよう勧めています。不正なコードが、下のほうに隠されることがあるためです。運営者の自社サイトの点検では、uploadsのフォルダにPHPのファイルがないかも確かめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>Search Consoleと検索結果で外から見る</h3>
+<p>外からの見え方は、GoogleのSearch Consoleで確かめます。「セキュリティの問題」のレポートを開いてください。ヘルプによると、<span class="mark-yellow">問題がなければ緑色のチェックマーク</span>が表示されます。問題の分類は、ハッキングされたコンテンツなどの3つです。運営者も、自社のサイトをSearch Consoleに登録しています。検索結果に見覚えのないページがないかも見ましょう。見分け方は、<a href="website-tampering-check.html">ホームページが改ざんされたかも？確認したい7つのサインと自分でできる確かめ方</a>にまとめました。</p>
+<ul class="ref">
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener noreferrer nofollow">セキュリティの問題レポート｜Search Console ヘルプ</a></li>
+</ul>
+
+<h2 id="s4">改ざんの再発防止を続けるための定期の点検</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/tampering-recurrence-prevention-fig4.webp" alt="改ざんの再発防止を続けるための定期の点検を、中央の定期の点検から、版の確認、ファイルの確認、セキュリティ診断、IDとパスワードの確認の4つへ放射状に広げ、それぞれの頻度の目安を添えた図" width="1200" height="800"><figcaption>JPCERT/CCが2016年8月に示した頻度の目安です</figcaption></figure>
+<p>改ざんの再発防止は、設定を1度見直して終わりではありません。<span class="mark-yellow">点検を定期の仕事として決めておく</span>ことが大切です。</p>
+<p>JPCERT/CCも、運用管理の中で定期的に点検するよう勧めています。Googleのweb.devは、長く続ける保守の計画を作るよう書きました。新しい弱点は、あとから見つかるからです。間隔と担当を決めておけば、忘れにくくなるでしょう。無理のない回数から始めてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.jpcert.or.jp/pr/2016/pr160004.html" target="_blank" rel="noopener noreferrer nofollow">注意喚起「サイバー攻撃に備えてWebサイトの定期的な点検を」｜JPCERT/CC</a></li>
+<li>参考：<a href="https://web.dev/articles/clean-and-maintain-your-site" target="_blank" rel="noopener noreferrer nofollow">Clean and maintain your site｜web.dev</a></li>
+</ul>
+
+<h3>点検の項目と間隔を決める</h3>
+<p>JPCERT/CCは2016年8月の注意喚起で、点検の項目と頻度の目安を示しました。次の表は、その4つの項目です。公表から年数はたっていますが、考え方は今も使えます。<span class="mark-yellow">ファイルの確認は、1週間に1回程度</span>と短めの間隔でした。毎週が難しければ、まず月に1回から始めましょう。WordPressの版は、管理画面の「更新」で確かめられます。パスワードの確認は、使い回しがないかを見る項目です。表を自社の予定に写し、担当の名前も書いておいてください。</p>
+<table>
+<tr><th>点検の項目</th><th>頻度の目安</th></tr>
+<tr><td>利用製品（プラグインなどを含む）の版が最新かの確認</td><td>数週間〜1か月に1回程度</td></tr>
+<tr><td>Webサーバ上のファイルの確認</td><td>1週間に1回程度</td></tr>
+<tr><td>Webアプリケーションのセキュリティ診断</td><td>1年に1回程度と、機能追加などの変更時</td></tr>
+<tr><td>ログインIDとパスワードの確認</td><td>1年に1回程度</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://www.jpcert.or.jp/pr/2016/pr160004.html" target="_blank" rel="noopener noreferrer nofollow">注意喚起「サイバー攻撃に備えてWebサイトの定期的な点検を」｜JPCERT/CC</a></li>
+</ul>
+
+<h3>バックアップを取り、前回との違いを比べる</h3>
+<p>バックアップは、戻すためだけのものではありません。JPCERT/CCは、<span class="mark-yellow">バックアップを取り、差分を定期的に確かめる</span>よう勧めています。前回と比べれば、足されたファイルや書き換えに気づけるからです。公式の手引きも、データベースを含めて定期的に取るよう書いています。公式のFAQによると、きれいな控えがあれば次の復旧が軽く済むのです。取り方は次の記事にまとめました。<a href="wordpress-backup.html">WordPressのバックアップの取り方と、戻す練習のしかた｜ファイルとデータベースの両方を守る</a>。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.jpcert.or.jp/at/2016/at160047.html" target="_blank" rel="noopener noreferrer nofollow">Web サイト改ざんに関する注意喚起｜JPCERT/CC</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h2 id="s5">改ざんが再発したときの動き方と、再発防止を任せる目安</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/tampering-recurrence-prevention-fig5.webp" alt="改ざんが再発したときの動き方を、記録を残す、入口が分かるかで分かれる、分かれば入口をふさいで5つの設定を見直す、分からなければ制作会社や相談窓口に相談する、の順に示したフローチャート" width="1200" height="800"><figcaption>入口が分からないときは、早めに相談します</figcaption></figure>
+<p>設定を見直しても、改ざんがまた起きることはあります。そのときは、<span class="mark-yellow">前回の記録と見比べて入口を探し直し</span>ましょう。</p>
+<p>公式の手引きも、安全対策は危険をなくすものではなく減らすものだと書いています。再発は、どこかに見落としが残っていたという知らせです。自社で追いきれないときは、無理をせず早めに任せる判断をしてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>また起きたら、記録を残して入口を探し直す</h3>
+<p>再発に気づいたら、前回と同じく記録から始めます。画面、気づいた日時、変わっていたファイルを控えてください。web.devは、1つ見つけても探し続けるよう勧めています。WordPressの公式のFAQも、手作業での片づけについて警告しました。<span class="mark-red"><strong>1つでも見落とせば、またハッキングされる</strong></span>という内容です。Googleのヘルプによると、直しきる前の審査の依頼にも注意が要ります。次の結果が出るまでの時間が、延びることがあるのです。戻し方は、<a href="website-tampering-recovery.html">ホームページ改ざんの復旧手順｜発見から再発防止まで</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://web.dev/identify-the-vulnerability/" target="_blank" rel="noopener noreferrer nofollow">Identify the vulnerability｜web.dev</a></li>
+<li>参考：<a href="https://ja.wordpress.org/support/article/faq-my-site-was-hacked/" target="_blank" rel="noopener noreferrer nofollow">FAQ ハッキングされた場合は｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://support.google.com/webmasters/answer/9044101?hl=ja" target="_blank" rel="noopener noreferrer nofollow">セキュリティの問題レポート｜Search Console ヘルプ</a></li>
+</ul>
+
+<h3>自社で続けるのが難しいときに任せる目安</h3>
+<p>次のどれかに当てはまれば、任せることを考えましょう。入口が分からない場合、同じ改ざんが繰り返される場合、点検の時間が取れない場合です。まず、制作会社や保守を頼んでいる会社に、記録を見せて相談します。IPAの企業組織向けの「サイバーセキュリティ相談窓口」も使える窓口です。<span class="mark-yellow">応急処置の助言や、専門業者の一覧の紹介</span>を受けられます。受け付けはメールで、事案の調査や解析は行っていません。IPAの20ヶ条も、定期的な検査や診断を続けることが重要だと書いています。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.ipa.go.jp/security/support/soudan.html" target="_blank" rel="noopener noreferrer nofollow">サイバーセキュリティ 相談・届出窓口一覧｜IPA 独立行政法人 情報処理推進機構</a></li>
+<li>参考：<a href="https://www.ipa.go.jp/security/vuln/websecurity/sitecheck.html" target="_blank" rel="noopener noreferrer nofollow">安全なウェブサイトの運用管理に向けての20ヶ条｜IPA 独立行政法人 情報処理推進機構</a></li>
+</ul>
+
+<div class="art-cta"><strong>設定を見直したあとの状態を、外から確かめませんか</strong><p>URLを入れるだけで、WordPress本体の更新漏れや守りの設定の抜けなど8項目を無料で判定します。無料簡易診断が見るのは、外から見える範囲だけです。続けて確かめたいときは、定期診断（ライト月4,980円・税込、スタンダード月19,800円・税込）もご利用ください。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">改ざんの再発防止に関するよくある質問</h2>
+
+<h3>パスワードは復旧のときに変えました。もう一度変える必要はありますか？</h3>
+<p>片づけの途中で変えただけなら、もう一度変えてください。WordPressの公式のFAQも、サイトがきれいになったあとに再び変えるよう勧めています。片づけが済む前は、裏口が残っていたおそれがあるからです。対象は、管理画面、FTP、サーバーの管理パネル、データベースの4つになります。wp-config.phpの秘密鍵も、あわせて新しくしましょう。パスワードを変えても残るログインを、切るための作業です。</p>
+
+<h3>設定の見直しが終わる前に、サイトの公開を再開してもよいですか？</h3>
+<p>入口をふさぐ前の再開は、勧めません。Googleのweb.devは、公開を再開する前の確認項目を挙げています。最新の版になっているか、使わないプラグインを消したかという項目です。根本の原因を直したか、安全を保つ計画があるかも並んでいます。すべてに「はい」と答えられてから、公開に戻す流れです。急ぐ事情があるときも、パスワードと更新だけは先に済ませてください。</p>
+
+<h3>セキュリティのプラグインを入れれば、再発防止になりますか？</h3>
+<p>プラグインだけでは、再発防止として足りません。入られた入口や残った裏口は、プラグインを入れても消えないからです。先に、パスワード、ユーザー、更新の3つを見直してください。そのうえで足りない守りを補う使い方なら、役に立つでしょう。プラグイン自身も、更新を続ける必要がある部品です。公式の手引きも、プラグインは常に更新し、使わないものは削除するよう書いています。</p>
+
+<h3>制作会社に復旧を頼みました。自社で確かめることはありますか？</h3>
+<p>何を直し、何を変えたかを、書面やメールで受け取ってください。入口の見当、変えたパスワードの種類、消したユーザーやファイルが主な項目です。更新の設定と、今後の点検を誰が受け持つかも聞きましょう。自社の管理者アカウントで管理画面に入れるかも、確かめておくと安心です。任せきりにすると、次に異変が起きたときに経緯をたどれません。受け取った内容は、点検のメモと一緒に保管してください。</p>
+
+<h3>5つの設定を見直せば、もう改ざんされませんか？</h3>
+<p>改ざんされないという保証はできません。WordPressの公式の手引きも、安全対策は危険をなくすものではないと書いています。目指すのは、危険を減らすことです。5つの設定は、入口と裏口と鍵をふさぎ、入られにくくするためのものと考えてください。新しい弱点は、あとから見つかります。設定の見直しと定期の点検を組み合わせることが、現実的な備えになるでしょう。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>改ざんは、元に戻しただけでは再発しやすいものです。入口、裏口、鍵のどれかが残っていると、同じ相手にまた入られます。</p>
+<p>見直す設定は、<span class="mark-yellow">鍵、人、更新、ファイル、サーバーの5つ</span>です。済んだら3か所で確かめ、間隔を決めて点検を続けましょう。入口が分からないまま再発したときは、早めに相談してください。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">復旧の直後に欠かせない理由</a></li><li><a href="#s2">見直す5つの設定</a></li><li><a href="#s3">効いているかの確かめ方</a></li><li><a href="#s4">続けるための定期の点検</a></li><li><a href="#s5">再発したときと任せる目安</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
