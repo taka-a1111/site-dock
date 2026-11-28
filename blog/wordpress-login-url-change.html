@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- BUILD_TAG: 20261106a -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WordPressのログインURLを変更すると安全になる？｜効果と限界、変えるときの注意点｜スキゼロ</title>
+<meta name="description" content="WordPressのログインURLを変更すると安全になるのかを、公式ドキュメントをもとに解説します。変更で減るものと減らないもの、プラグインごとの違い、URLを忘れたときの戻し方、先にやる対策の順番も紹介します。">
+<link rel="canonical" href="https://sukizero.com/blog/wordpress-login-url-change.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPressのログインURLを変更すると安全になる？｜効果と限界、変えるときの注意点">
+<meta property="og:description" content="WordPressのログインURLを変更すると安全になるのかを、公式ドキュメントをもとに解説します。変更で減るものと減らないもの、プラグインごとの違い、URLを忘れたときの戻し方、先にやる対策の順番も紹介します。">
+<meta property="og:url" content="https://sukizero.com/blog/wordpress-login-url-change.html">
+<meta property="og:image" content="https://sukizero.com/blog/img/eyecatch-049-v3.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="スキゼロ">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-12-20">
+<meta property="article:section" content="ログイン・アカウント">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" type="application/rss+xml" title="スキゼロ ブログ" href="https://sukizero.com/feed.xml">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg?v=20261102a" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=20261106a">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "WordPressのログインURLを変更すると安全になる？｜効果と限界、変えるときの注意点", "description": "WordPressのログインURLを変更すると安全になるのかを、公式ドキュメントをもとに解説します。変更で減るものと減らないもの、プラグインごとの違い、URLを忘れたときの戻し方、先にやる対策の順番も紹介します。", "image": "https://sukizero.com/blog/img/eyecatch-049-v3.webp", "datePublished": "2026-12-20", "dateModified": "2026-12-20", "author": {"@type": "Organization", "name": "スキゼロ（インフォサクセス）", "url": "https://sukizero.com/about.html"}, "publisher": {"@type": "Organization", "@id": "https://sukizero.com/#org", "name": "スキゼロ", "url": "https://sukizero.com/", "logo": {"@type": "ImageObject", "url": "https://sukizero.com/assets/logo.svg"}}, "mainEntityOfPage": "https://sukizero.com/blog/wordpress-login-url-change.html", "inLanguage": "ja", "articleSection": "ログイン・アカウント", "isPartOf": {"@id": "https://sukizero.com/#website"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "wp-login.phpのままにしておくと、危ないのでしょうか？", "acceptedAnswer": {"@type": "Answer", "text": "既定のURLのままでも、それだけで危ないとは言えません。WordPressの公式ドキュメントは、主な守りの一覧にログインURLの変更を入れていないのです。挙がっているのは、強いパスワード、2段階認証、試行回数の制限などでした。この3つが整っていれば、既定のURLでも守りは重なっています。反対に、どれも入れていないなら、URLより先に整えてください。変更は、そのあとで考えれば間に合うでしょう。"}}, {"@type": "Question", "name": "変更後のログインURLは、どんな文字列にすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "推測されにくい文字列にします。「login」や「admin」のような、ありがちな名前は避けてください。SiteGuard WP Pluginの開発元も、容易に推測されにくい名前を勧めています。このプラグインで使えるのは、4文字以上の英数字とハイフン、アンダーバーです。会社名やサイト名だけの名前も、避けるのが無難でしょう。決めた名前は、パスワードと同じように控えておきます。"}}, {"@type": "Question", "name": "新しいログインURLを忘れて、管理画面に入れなくなりました。どうすればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "まず、ブラウザーのブックマークと履歴、変更を知らせるメールを探してください。見つからないときは、サーバーのファイルに入って戻します。WordPressの公式ドキュメントには、pluginsフォルダの名前を変える方法があるのです。名前を変えると、すべてのプラグインが止まります。ログインできたら、フォルダの名前を戻して1つずつ有効にしましょう。SiteGuard WP Pluginでは、.htaccessの記述を消す手順も案内されています。不安なときは、制作会社やサーバー会社に相談してください。"}}, {"@type": "Question", "name": "プラグインを使わずに、ログインURLを変更できますか？", "acceptedAnswer": {"@type": "Answer", "text": "本体の設定画面には、ログインURLを変える項目がありません。.htaccessなどを自分で書き換える方法は、勧めにくいのです。公式ドキュメントも、大がかりな.htaccessの書き換えを古い手法として挙げました。当てにならず、ほかの機能を壊すことがあるという理由です。URLを変える代わりに、サーバー側でログイン画面をしぼる方法もあります。接続元のIPアドレスで制限する例が、同じページに載っているのです。サーバーの管理画面に同じ種類の機能がないか、先に確かめましょう。"}}, {"@type": "Question", "name": "無料の診断で、ログインURLが変更されているかは分かりますか？", "acceptedAnswer": {"@type": "Answer", "text": "スキゼロの無料簡易診断は、ログインURLが変わっているかを調べていません。見ているのは、ログイン名の見え方やWordPress本体の更新など、外から見える8項目です。ログイン名が外から見えていると、鍵の半分を知られた状態になります。あわせて確かめておくと、入口の守りを見直すきっかけになるでしょう。ログインURLそのものは、ブラウザーで/wp-login.phpを開けば確かめられます。変更が効いていれば、ログイン画面は表示されません。"}}]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://sukizero.com/"}, {"@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://sukizero.com/blog/index.html"}, {"@type": "ListItem", "position": 3, "name": "WordPressのログインURLを変更すると安全になる？｜効果と限界、変えるときの注意点"}]}]</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" class="logo" aria-label="スキゼロ トップへ"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー"><a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html" class="current" aria-current="page">ブログ</a><a href="../faq.html">よくある質問</a><a href="../#top" class="btn btn-head">無料で診断する</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="gnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg><span>メニュー</span></button>
+  </div>
+</header>
+<main id="main">
+    <div class="page-hero"><div class="wrap">
+    <nav class="crumbs" aria-label="現在地"><a href="../">トップ</a> / <a href="index.html">ブログ</a> / ログイン・アカウント</nav>
+    <h1><span class="h1-main">WordPressのログインURLを変更すると安全になる？</span><span class="h1-sub" data-sep="｜">効果と限界、変えるときの注意点</span></h1>
+    <p><time datetime="2026-12-20">2026.12.20</time></p>
+    <figure class="eyecatch"><img src="img/eyecatch-049-v3.webp" alt="WordPressのログインURLを変更すると安全になるのか。効果と限界、変えるときの注意点" width="1200" height="630"></figure>
+  </div></div>
+<section class="sub-sec"><div class="wrap article">
+  <div class="prose">
+<p>「wp-login.phpのままだと危ない」と聞いて、ログインURLを変えるべきか迷っていませんか？</p>
+<p>ログインURLを変えると、既定のURLをねらう自動の試行は届きにくくなります。ただし、それだけで安全になるわけではありません。</p>
+<p>この記事では、<span class="mark-yellow">変更で減るものと減らないもの</span>を、公式の説明をもとに整理しました。変える方法、注意点、先にやる対策の順番も扱います。</p>
+<p>プラグインの情報は、2026年11月27日にWordPress.orgの配布ページで確かめました。おすすめの順位づけはしていません。</p>
+
+<h2 id="s1">WordPressのログインURLを変更すると安全になる？公式の考え方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-login-url-change-fig1.webp" alt="WordPressのログインURLを変更すると安全になるのかを、雑音は減らせる、唯一の守りにしない、効果と手間を比べる、の3枚のカードで横に並べた図" width="1200" height="800"><figcaption>変更は補助の対策で、守りの柱にはしません</figcaption></figure>
+<p>WordPressのログインURLの変更は、<span class="mark-yellow">攻撃の数を減らすための補助の対策</span>です。変えただけで安全になるわけではありません。</p>
+<p>かといって、意味がないとも言い切れないのです。WordPressの公式ドキュメントは、効果と限界の両方に触れています。「変えれば安全」も「意味がない」も、言いすぎだと考えてください。まず、公式の考え方から見ていきましょう。</p>
+
+<h3>公式は「雑音は減るが、唯一の守りにしない」と書く</h3>
+<p>WordPressの公式ドキュメントに、総当たり攻撃の対策をまとめたページがあります。主な守りとして並ぶのは、強いパスワード、2段階認証、試行回数の制限などです。ログインURLの変更は、この一覧に入っていません。一覧のあとに、補足として1文だけ添えられています。内容は、<span class="mark-red"><strong>雑音は減らせるが、唯一の守りにしない</strong></span>というものです。ページの最終更新は、2026年10月14日でした。変更そのものを否定していない点も、押さえておきましょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>隠す対策は、主な作戦にしないのが公式の立場</h3>
+<p>公式の手引き「Hardening WordPress」には、隠すことで守る方法を扱う節があります。そこでは、隠すことを主な作戦にするのは不確かだと書かれているのです。一方で、情報を隠すと役立つ場面もあるとしています。例に挙がるのは、管理者のユーザー名とデータベースの接頭辞の2つです。ログインURLは、この例に入っていません。<span class="mark-yellow">隠す対策は、足しにはなるが柱にはならない</span>と読めるでしょう。同じ手引きは、安全対策を「危険をなくすことではなく減らすこと」と説明しました。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/hardening/" target="_blank" rel="noopener noreferrer nofollow">Hardening WordPress｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>変更するかどうかは、効果と手間を比べて決める</h3>
+<p>変えるかどうかは、得られるものと手間を比べて決めます。得られるのは、既定のログイン画面をねらう自動の試行が届きにくくなることです。失敗の記録や通知が多くて困っているサイトでは、違いを感じやすいでしょう。手間は、新しいURLの管理と共有にかかります。<span class="mark-yellow">担当者や外注先が多いサイトほど、手間は増える</span>のです。サーバーの機能でログイン画面への接続をしぼれているなら、急ぐ必要はありません。迷うときは、先にほかの対策を済ませてから考えてください。</p>
+
+<h2 id="s2">WordPressのログインURLの変更で減るものと減らないもの</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-login-url-change-fig2.webp" alt="WordPressのログインURLの変更で減るものと減らないものを、左に既定のURLをねらう自動の試行、右にxmlrpc.phpとREST API、弱いパスワード、URLが知られる経路を並べた左右比較の図" width="1200" height="800"><figcaption>減るのは、既定のURLをねらう自動の試行です</figcaption></figure>
+<p>WordPressのログインURLの変更で減るのは、<span class="mark-yellow">既定のURLを決め打ちでねらう自動の試行</span>です。wp-login.phpをそのまま開こうとする相手は、ログイン画面にたどり着けなくなります。</p>
+<p>一方で、ログイン画面を通らない入口と、パスワードそのものの弱さは変わりません。新しいURLが外に知られる経路もあるのです。3つに分けて見ていきましょう。</p>
+
+<h3>減るもの：既定のログイン画面をねらう自動の試行</h3>
+<p>総当たりの試行の多くは、人の手ではなく自動の仕組みで行われます。SiteGuard WP Pluginの開発元も、大半が機械的な攻撃だと説明しました。その攻撃は、既定のログインページに向かうとされています。URLを変えると、<span class="mark-yellow">攻撃の対象になる機会を減らせる</span>という考え方です。WPS Hide Loginの配布ページにも、説明があります。wp-login.phpとwp-adminへ、直接は入れなくなるという内容です。既定のURLだけを試す相手は、ログイン画面に届きません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.jp-secure.com/siteguard_wp_plugin/howto/rename_login/" target="_blank" rel="noopener noreferrer nofollow">ログインページ変更（SiteGuard WP Plugin 使用方法）｜EGセキュアソリューションズ</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/wps-hide-login/" target="_blank" rel="noopener noreferrer nofollow">WPS Hide Login｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>減らないもの：xmlrpc.phpとREST API、パスワードの弱さ</h3>
+<p>ログインを試せる入口は、ログイン画面だけではありません。公式ドキュメントは、xmlrpc.phpも総当たりのねらいになりやすいと書いています。<span class="mark-red"><strong>ログインURLの変更は、この窓口には届かない</strong></span>のです。REST APIも、アプリケーションパスワードという合鍵で使う別の入口になります。パスワードが弱いままなら、URLを知られたあとの守りが残りません。xmlrpc.phpの扱いは、別の記事で紹介しています。<a href="wordpress-xmlrpc.html">WordPressのxmlrpc.phpとは？止めるべきかの判断と安全な止め方</a>を見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/application-passwords/" target="_blank" rel="noopener noreferrer nofollow">Application Passwords｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>変更後のURLが外に知られる経路</h3>
+<p>変えたURLは、秘密のまま保てるとは限りません。SiteGuard WP Pluginの初期設定には、注意が要ります。/wp-admin/を開くと、新しいログイン画面へ転送されるのです。設定画面には、<span class="mark-yellow">この転送を止めるためのチェック欄</span>があります。更新履歴には、URLが漏れる不具合を直した記録も残っていました。WPS Hide Loginは、コメントにログインを求める設定に注意を出します。コメント欄のログインのリンクは隠れないという内容です。メールや引き継ぎの資料から伝わることもあるでしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.jp-secure.com/siteguard_wp_plugin/howto/rename_login/" target="_blank" rel="noopener noreferrer nofollow">ログインページ変更（SiteGuard WP Plugin 使用方法）｜EGセキュアソリューションズ</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s3">WordPressのログインURLを変更する方法とプラグインごとの違い</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-login-url-change-fig3.webp" alt="WordPressのログインURLを変更する3つのプラグインの違いを、WPS Hide Loginは変更だけを足す、SiteGuard WP Pluginは有効にすると変わる、XO Securityはログイン用ファイルを作る、の縦3段で並べた一覧の図" width="1200" height="800"><figcaption>変え方と、有効にしたときの動きが違います</figcaption></figure>
+<p>WordPressのログインURLを変更するには、<span class="mark-yellow">プラグインの機能を使うのが一般的</span>です。本体は、ログイン画面のURLをwp-login.phpと決めています。設定画面に、変えるための項目はありません。</p>
+<p>配布ページで機能を確かめた3つを、表にまとめました。数字は、2026年11月27日に確かめたものです。並びは有効インストール数の多い順で、おすすめの順ではありません。</p>
+<table>
+<tr><th>プラグイン</th><th>有効インストール数</th><th>最終更新日（協定世界時）</th><th>必要な版</th><th>検証済みの版</th><th>ログインURLの変え方</th></tr>
+<tr><td>WPS Hide Login</td><td>200万以上</td><td>2026年11月12日</td><td>WordPress 4.1以上、PHP 7.0以上</td><td>WordPress 7.2</td><td>ページの要求に割り込む。リライトルールは足さない</td></tr>
+<tr><td>SiteGuard WP Plugin</td><td>60万以上</td><td>2026年11月27日</td><td>WordPress 6.0以上</td><td>WordPress 7.2</td><td>Apacheでは.htaccessに書き込む。使えない環境ではURLの末尾が.phpになる</td></tr>
+<tr><td>XO Security</td><td>3万以上</td><td>2026年7月19日</td><td>WordPress 6.0以上、PHP 7.2以上</td><td>WordPress 7.0.9</td><td>.htaccessに書き込まない。ログイン用のファイルを作る</td></tr>
+</table>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_login_url/" target="_blank" rel="noopener noreferrer nofollow">wp_login_url()｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/wps-hide-login/" target="_blank" rel="noopener noreferrer nofollow">WPS Hide Login｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/xo-security/" target="_blank" rel="noopener noreferrer nofollow">XO Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>WPS Hide Login：ログインURLの変更だけを足す</h3>
+<p>WPS Hide Loginは、ログインURLの変更にしぼったプラグインです。配布ページによると、本体のファイル名は変えず、リライトルールも足しません。ページの要求に割り込み、<span class="mark-yellow">wp-login.phpとwp-adminへの直接の接続を止める</span>作りです。無効にすれば、サイトは元の状態に戻ると説明されています。配布ファイルを見ると、初期のURLは「login」でした。本体はもともと、/loginを開いた人をログイン画面へ送ります。同じ名前のままにせず、推測されにくい文字列に変えてください。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/wps-hide-login/" target="_blank" rel="noopener noreferrer nofollow">WPS Hide Login｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://developer.wordpress.org/reference/functions/wp_redirect_admin_locations/" target="_blank" rel="noopener noreferrer nofollow">wp_redirect_admin_locations()｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>SiteGuard WP Plugin：有効にした時点でURLが変わる</h3>
+<p>SiteGuard WP Pluginは、ログインまわりの守りをまとめたプラグインです。「ログインページ変更」は、その機能の1つになります。気をつけたいのは、<span class="mark-red"><strong>有効にした時点でログインURLが変わる</strong></span>ことです。開発元の説明でも、この機能は初期設定でONとされています。初期の名前は、「login_」に5桁の数字が付いた形です。あとから、好きな名前に変えられます。Apacheでは、.htaccessに設定を書き込む作りです。マルチサイトには対応していません。</p>
+<ul class="ref">
+<li>参考：<a href="https://www.jp-secure.com/siteguard_wp_plugin/howto/rename_login/" target="_blank" rel="noopener noreferrer nofollow">ログインページ変更（SiteGuard WP Plugin 使用方法）｜EGセキュアソリューションズ</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>XO Security：.htaccessに書き込まずに変える</h3>
+<p>XO Securityも、ログインまわりの機能をまとめたプラグインです。配布ページには、.htaccessに書き込まないとあります。Apacheのほか、LiteSpeedやNginx、IISでも動くという説明です。ログインページの変更では、<span class="mark-yellow">指定した名前のログイン用ファイルを作る</span>形をとります。そのため、新しいURLの末尾は.phpです。最終更新は2026年7月19日で、3つの中ではいちばん前でした。検証済みの版が今の版に追いついているかも、入れる前に見てください。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/xo-security/" target="_blank" rel="noopener noreferrer nofollow">XO Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s4">WordPressのログインURLを変更するときの注意と戻し方</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-login-url-change-fig4.webp" alt="WordPressのログインURLを変更するときの流れを、バックアップと戻る手段の用意、URLの変更、別のブラウザーで確認、関係者への共有、の順に上から下へ並べ、忘れたらサーバーから戻すと添えた流れ図" width="1200" height="800"><figcaption>戻る手段を用意してから変え、別のブラウザーで確かめます</figcaption></figure>
+<p>WordPressのログインURLの変更で起きやすい失敗は、<span class="mark-yellow">自分がログインできなくなること</span>です。新しいURLを忘れると、管理画面にたどり着けません。</p>
+<p>変える前に、戻し方と共有のしかたを決めておきましょう。サーバーのファイルに入る手段があれば、元に戻す道は残ります。キャッシュやほかのプラグインとの相性も、あわせて確かめてください。</p>
+
+<h3>変える前に、控えと戻る手段を用意する</h3>
+<p>変える前に、ファイルとデータベースのバックアップを取ります。次に、サーバーのファイルに入る手段があるかを確かめてください。FTPか、サーバー会社のファイルマネージャーです。公式ドキュメントも、この手段でプラグインを止める方法を載せています。変えたあとは、<span class="mark-yellow">ログイン中の画面を閉じずに別のブラウザーで試し</span>ましょう。新しいURLで入れると分かってから、元の画面を閉じます。SiteGuard WP Pluginは、変更後のURLを管理者にメールで知らせる作りです。</p>
+<ul class="ref">
+<li>参考：<a href="https://wordpress.org/documentation/article/faq-troubleshooting/" target="_blank" rel="noopener noreferrer nofollow">FAQ Troubleshooting｜WordPress.org Documentation</a></li>
+</ul>
+
+<h3>新しいURLを忘れたときの戻し方</h3>
+<p>忘れたときの戻し方は、プラグインごとに違います。WPS Hide Loginの配布ページは、プラグインのフォルダを外す方法を載せました。外したあとは、wp-login.phpから入れます。SiteGuard WP Pluginは、<span class="mark-yellow">変更を知らせるメールを探すのが近道</span>でしょう。開発元は、.htaccessの記述とフォルダを消す手順も案内しています。XO Securityは、設定の初期化とログイン用ファイルの削除です。どれも、サーバーのファイルに入れることが前提になります。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/wps-hide-login/" target="_blank" rel="noopener noreferrer nofollow">WPS Hide Login｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://www.jp-secure.com/siteguard_wp_plugin/faq.html" target="_blank" rel="noopener noreferrer nofollow">FAQ（SiteGuard WP Plugin）｜EGセキュアソリューションズ</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/xo-security/" target="_blank" rel="noopener noreferrer nofollow">XO Security｜WordPress.org 日本語</a></li>
+</ul>
+
+<h3>キャッシュやほかのプラグインとの相性、関係者への共有</h3>
+<p>相性の注意は、配布ページに書かれています。WPS Hide Loginは、WP Rocket以外のページキャッシュのプラグインに触れました。新しいログインURLを、キャッシュしない対象に加えるという内容です。SiteGuard WP Pluginは、<span class="mark-yellow">同じ機能をほかのプラグインと併用できない</span>としています。ログインURLが2つ残るか、ログイン画面が開かなくなるためです。新しいURLは、保守を頼む制作会社にも伝えてください。伝える相手と保管の場所を、先に決めておくと安心でしょう。</p>
+<ul class="ref">
+<li>参考：<a href="https://ja.wordpress.org/plugins/wps-hide-login/" target="_blank" rel="noopener noreferrer nofollow">WPS Hide Login｜WordPress.org 日本語</a></li>
+<li>参考：<a href="https://ja.wordpress.org/plugins/siteguard/" target="_blank" rel="noopener noreferrer nofollow">SiteGuard WP Plugin｜WordPress.org 日本語</a></li>
+</ul>
+
+<h2 id="s5">WordPressのログインURLの変更より先にやる対策と優先順位</h2>
+<figure class="fig"><img loading="lazy" decoding="async" src="img/wordpress-login-url-change-fig5.webp" alt="WordPressのログインURLの変更より先にやる対策の優先順位を、1パスワードと2段階認証、2試行回数の制限とサーバーの機能、3使わない入口とユーザー名、4ログインURLの変更、の番号つきステップで左から右へ並べた図" width="1200" height="800"><figcaption>ログインURLの変更は、順番の最後に足します</figcaption></figure>
+<p>WordPressのログインURLの変更は、<span class="mark-yellow">ほかの守りを整えたあとの仕上げ</span>に向いています。URLを知られても破られない状態を、先に作りましょう。</p>
+<p>順番は、パスワードと2段階認証、試行回数の制限、使わない入口の整理です。最後に、ログインURLの変更を足すかを考えます。公式ドキュメントが主な守りに挙げる項目から、先に済ませてください。</p>
+
+<h3>先に、パスワードと2段階認証を固める</h3>
+<p>最初に固めるのは、パスワードと2段階認証です。公式ドキュメントは、強く使い回さないパスワードを守りの一覧の最初に挙げました。次に並ぶのが、すべての管理者への2段階認証です。この2つが整えば、<span class="mark-yellow">URLを知られても、破られにくい状態</span>になります。弱いパスワードのままURLだけを変えても、土台は弱いままでしょう。2段階認証は本体に入っていないので、プラグインなどで足します。手順は次の記事にまとめました。<a href="wordpress-two-factor.html">WordPressのログインに2段階認証を設定する方法｜プラグイン選びと締め出されない準備</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+</ul>
+
+<h3>次に、試行回数の制限とサーバーの機能を使う</h3>
+<p>次に、失敗が続いた相手を止める仕組みを入れます。公式ドキュメントは、サーバーや手前の段階で止めるよう勧めました。2026年11月時点のエックスサーバーのマニュアルは、国外からの制限の対象を示しています。/wp-adminと/wp-login.phpの2つです。<span class="mark-yellow">変更後のURLにも制限がかかるかは、書かれていません</span>。変える前に、サーバー会社へ確かめましょう。サーバーとプラグインの使い分けは、次の記事で扱いました。<a href="wordpress-security-plugin.html">WordPressのセキュリティプラグインは必要？｜サーバーの機能との違いと選び方</a>です。</p>
+<ul class="ref">
+<li>参考：<a href="https://developer.wordpress.org/advanced-administration/security/brute-force/" target="_blank" rel="noopener noreferrer nofollow">Brute Force Attacks｜WordPress Developer Resources</a></li>
+<li>参考：<a href="https://www.xserver.ne.jp/manual/man_server_wpsecurity.php" target="_blank" rel="noopener noreferrer nofollow">WordPressセキュリティ設定｜エックスサーバー</a></li>
+</ul>
+
+<h3>使わない入口とユーザー名の見え方を整えてから、URLを変更する</h3>
+<p>続いて、使っていない入口を閉じます。xmlrpc.phpを使っていないなら、止めておきましょう。ユーザー名が外から見えていないかも確かめます。運営者の自社サイトでも、表示名がログイン名のままRSSに出ていました。経路と隠し方は、次の記事にまとめています。<a href="wordpress-username-exposure.html">WordPressのユーザー名が漏洩する5つの経路と隠し方｜見えているかの確かめ方</a>です。ここまで済んでから、<span class="mark-yellow">ログインURLの変更を足すかを決め</span>ましょう。変えたあとも、ほかの守りは外さないでください。</p>
+
+<div class="art-cta"><strong>ログインまわりが外からどう見えるか、確かめませんか</strong><p>URLを入れるだけで、ログイン名の見え方やセキュリティ設定など8項目を無料で判定します。無料簡易診断が見るのは、外から見える範囲だけです。ログインまわりの設定の見直しは、対策作業（14,800円から・税込）でお受けしています。</p><a class="btn btn-cta" href="../#top">無料で診断する</a></div>
+
+<h2 id="s6">WordPressのログインURLの変更に関するよくある質問</h2>
+
+<h3>wp-login.phpのままにしておくと、危ないのでしょうか？</h3>
+<p>既定のURLのままでも、それだけで危ないとは言えません。WordPressの公式ドキュメントは、主な守りの一覧にログインURLの変更を入れていないのです。挙がっているのは、強いパスワード、2段階認証、試行回数の制限などでした。この3つが整っていれば、既定のURLでも守りは重なっています。反対に、どれも入れていないなら、URLより先に整えてください。変更は、そのあとで考えれば間に合うでしょう。</p>
+
+<h3>変更後のログインURLは、どんな文字列にすればよいですか？</h3>
+<p>推測されにくい文字列にします。「login」や「admin」のような、ありがちな名前は避けてください。SiteGuard WP Pluginの開発元も、容易に推測されにくい名前を勧めています。このプラグインで使えるのは、4文字以上の英数字とハイフン、アンダーバーです。会社名やサイト名だけの名前も、避けるのが無難でしょう。決めた名前は、パスワードと同じように控えておきます。</p>
+
+<h3>新しいログインURLを忘れて、管理画面に入れなくなりました。どうすればよいですか？</h3>
+<p>まず、ブラウザーのブックマークと履歴、変更を知らせるメールを探してください。見つからないときは、サーバーのファイルに入って戻します。WordPressの公式ドキュメントには、pluginsフォルダの名前を変える方法があるのです。名前を変えると、すべてのプラグインが止まります。ログインできたら、フォルダの名前を戻して1つずつ有効にしましょう。SiteGuard WP Pluginでは、.htaccessの記述を消す手順も案内されています。不安なときは、制作会社やサーバー会社に相談してください。</p>
+
+<h3>プラグインを使わずに、ログインURLを変更できますか？</h3>
+<p>本体の設定画面には、ログインURLを変える項目がありません。.htaccessなどを自分で書き換える方法は、勧めにくいのです。公式ドキュメントも、大がかりな.htaccessの書き換えを古い手法として挙げました。当てにならず、ほかの機能を壊すことがあるという理由です。URLを変える代わりに、サーバー側でログイン画面をしぼる方法もあります。接続元のIPアドレスで制限する例が、同じページに載っているのです。サーバーの管理画面に同じ種類の機能がないか、先に確かめましょう。</p>
+
+<h3>無料の診断で、ログインURLが変更されているかは分かりますか？</h3>
+<p>スキゼロの無料簡易診断は、ログインURLが変わっているかを調べていません。見ているのは、ログイン名の見え方やWordPress本体の更新など、外から見える8項目です。ログイン名が外から見えていると、鍵の半分を知られた状態になります。あわせて確かめておくと、入口の守りを見直すきっかけになるでしょう。ログインURLそのものは、ブラウザーで/wp-login.phpを開けば確かめられます。変更が効いていれば、ログイン画面は表示されません。</p>
+
+<h2 id="s7">まとめ</h2>
+<p>WordPressのログインURLの変更は、既定のURLをねらう自動の試行を減らす補助の対策です。公式ドキュメントも、雑音は減るが唯一の守りにしないと書いています。xmlrpc.phpなど、ログイン画面を通らない入口は変わりません。</p>
+<p>先に、<span class="mark-yellow">パスワード、2段階認証、回数制限を整えて</span>ください。変える場合は、新しいURLの控えと戻し方を用意してから進めましょう。</p>
+
+    <div class="author"><div><b>この記事を書いた人</b><br>スキゼロ（運営：インフォサクセス）　WordPress制作12年以上、SEO 15年以上。SEO検定1級。<a href="../about.html">運営者情報</a></div></div>
+  </div>
+  <aside class="toc" aria-label="目次"><strong>目次</strong><ol><li><a href="#s1">公式の考え方</a></li><li><a href="#s2">減るものと減らないもの</a></li><li><a href="#s3">変更する方法とプラグイン</a></li><li><a href="#s4">注意と戻し方</a></li><li><a href="#s5">先にやる対策と優先順位</a></li><li><a href="#s6">よくある質問</a></li><li><a href="#s7">まとめ</a></li></ol></aside>
+</div></section>
+<section class="cta-band">
+  <div class="wrap">
+    <div><h2>まずは、今の状態を知るところから。</h2><p>URLを入れるだけで、数十秒で判定が出ます。登録はいりません。</p></div>
+    <a href="../#top" class="btn btn-cta">無料で診断する</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a href="../" class="logo"><img class="logo-img" src="../assets/logo.svg?v=20261102a" alt="スキゼロ" width="322" height="100"></a>
+    <nav class="foot-links" aria-label="サイト情報">
+      <a href="../service.html">診断について</a><a href="../price.html">料金</a><a href="../partner.html">制作会社さまへ</a><a href="../blog/index.html">ブログ</a><a href="../faq.html">よくある質問</a><a href="../about.html">運営者情報</a><a href="../contact.html">お問い合わせ</a><a href="../tokushoho.html">特定商取引法に基づく表記</a><a href="../terms.html">利用規約</a><a href="../privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/site.js?v=20261106a"></script>
+</body>
+</html>
